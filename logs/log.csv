@@ -1,0 +1,12 @@
+date,book,chapter_slug,word_count,sources_count,verify_flag_count,pantry_notes_found,pantry_lib_files_used,thin_pantry,mechanism_explained,contested_claims_flagged
+2026-05-27,ai+1,01-what-ai-plus-one-is,5105,13,3,yes,2,no,"Processing fluency as the cognitive substrate of why polished AI output stops a designer's judgment too early",3
+2026-05-27,ai+1,02-what-tic-toc-does,5415,10,4,yes,1,no,"Phase-gated specification as the curtain between cheap-upstream-rework and expensive-downstream-rework, anchored on the Curtis-Krasner-Iscoe 10-100x ratio",0
+2026-05-27,ai+1,03-domain-research,5747,6,3,yes,2,no,"Investigator triangulation across LLM signatures — what convergence, divergence, and one-only findings each detect",1
+2026-05-27,ai+1,04-generating-your-tiktoc,6252,9,4,yes,1,no,"The side-by-side TIKTOC.md comparison as the chapter's central figure: capability statement vs topic heading propagated downstream as Cowork output",0
+2026-05-27,ai+1,05-book-scaffold,3017,8,2,yes,1,no,"Directory-as-API split between Cowork-facing files (TIKTOC.md, book.md, pantry/) and human-facing files (vision, architecture, chapters-spec, risks, outline)",0
+2026-05-27,ai+1,06-research-pass,4035,13,8,yes,1,no,"Four-questions evaluation pass adapted from SIFT, mapping Cooper's missing evaluation/analysis stages onto the human-driven phase that retrieval-augmented generation does not supply",2
+2026-05-27,ai+1,07-chapter-writing,4697,14,9,yes,1,no,"Five Cowork failure modes mapped to empirical causes and to the specific upstream TIKTOC/pantry weakness that signals each",0
+2026-05-27,ai+1,08-the-human-rewrite,5158,15,2,yes,1,no,"The seam as load-bearing — pipeline does not enforce this gate; Combined Test as the gate's instrumentation (14 items constructed, flagged for author canonical confirmation)",0
+2026-05-27,ai+1,09-finishing-pass-and-figures,4759,13,3,yes,1,no,"The AI+1 visual standard as the device-agnostic constraint that makes content carry the load instead of chrome",0
+2026-05-27,ai+1,10-enrichment-the-llm-layer,4987,11,0,yes,1,no,"The three-question audit (transplant test + requires-irreducible-input + judgment-not-generation) as the operational form of engaged pedagogy",0
+2026-05-27,ai+1,11-final-check-and-build,4960,16,11,yes,1,no,"The OUTDATED → CONTRADICTED → UNVERIFIED triage as fluency-trap final defense",0
