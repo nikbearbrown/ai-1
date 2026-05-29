@@ -1,318 +1,177 @@
 # Chapter 4 — Tic TOC: Generating Your TIKTOC.md
 
-*The two hours you spend here decide what the next two months produce.*
-
-**One-line capability:** Students complete the full Tic TOC pipeline and produce a TIKTOC.md that Cowork can execute without a clarifying conversation.
+*What you produce in two hours determines what two months of drafting produces.*
 
 ---
 
-## Learning objectives
-
-By the end of this chapter you will be able to:
-
-- (Apply) Complete the full Tic TOC intake sequence (/i1–/i4) for a real book project, producing a confirmed Book Concept Summary with thesis, learner profile, and deployment context.
-- (Apply) Build the learning architecture (/l1–/l4): outcomes in Bloom's format, sequencing model, three-act arc, prerequisite dependency map.
-- (Apply) Document every chapter (/c1–/c4): capability statement, opening strategy, worked example, assessable exercises, bridge question.
-- (Evaluate) Run the 7 Adoption Failure Mode diagnostic (/g2) on a completed TIKTOC.md draft and identify the highest-risk structural problem before handing off to Cowork.
-- (Create) Produce a TIKTOC.md that is complete enough for Cowork to run without a clarifying conversation.
-
----
-
-## Opening — the question most authors cannot answer
-
-Tic TOC's intake phase has four commands. The first is `/i1`. The second is `/i2`. The third is `/i3`. The fourth is `/i4`.
-
-Each command asks several questions. The exact wording shifts across model versions; the substance does not. Here is one question that appears in every full Tic TOC session, somewhere in `/i1` or `/i2`:
+There is one question inside the Tic TOC intake phase that stops most authors cold. It appears somewhere in the first fifteen minutes, and it is not complicated. It is this:
 
 > *In one sentence — not a paragraph — what does the reader LEARN?*
 
-Read that question. Stop. Try to answer it for your own book.
+Try to answer it. Right now, for your own book, before reading further.
 
-If you can answer it in one sentence in under thirty seconds, you are in the small minority of authors who have already done the work this chapter teaches. Most cannot. Most authors discover, when they hit this question, that they do not yet know what their book *is*.
+If you answered in under thirty seconds with a sentence that names something a reader can *do* — a specific capability they do not have before the book and have after — you are in a small minority. Most authors discover, at this question, that they do not yet know what their book is. They have a topic. They have an outline. They have a strong conviction that they have something to say. They have not compressed it into one demonstrable outcome, and the act of compression turns out to be the hardest cognitive work in the entire pipeline.
 
-They have a topic. They have an outline. They have a strong sense that they have something to say. They have not yet compressed it into one sentence — and the act of compression turns out to be the hardest cognitive work in the entire pipeline.
+Here is what the discovery looks like in practice. The author types a draft: *"The reader learns how to use AI in their design practice."* Reads it back. Deletes it. Tries again. After five attempts, the draft still reads like a topic restated as a sentence, because that is exactly what it is.
 
-Here is what the discovery feels like in practice. The author hesitates. Types a draft. Reads it back. Deletes it. Tries again. After five attempts, the draft reads: *"The reader learns how to use AI in their design practice."* That is a topic. Not a learning outcome.
+Tic TOC will not let it stand. The response will come back as something like: *"That is a topic. A learning outcome names what the reader can do after the book that they cannot do before. 'Use AI' is a category. What specific capability? 'Defend an AI-assisted brand identity to a skeptical client without losing the account'? 'Triage AI-generated moodboards into a workable presentation in ninety minutes'? Pick the one that, if your reader masters it, justifies the book."*
 
-Tic TOC will not let it stand. It will respond with something like:
+Now it is harder. Now the author has to *choose* — to commit to one capability and let the others go. The book they were going to write was about everything AI-related in their field. The book Tic TOC is about to help them build is about one specific thing the reader cannot do today and can do at the end.
 
-> *That's a topic. A learning outcome names what the reader can do
-> after the book that they cannot do before. "Use AI" is a category.
-> What specific capability? "Defend an AI-assisted brand identity to
-> a sceptical client without losing the account"? "Triage AI-generated
-> moodboards into a workable presentation in ninety minutes"? Pick
-> the one that, if your reader masters it, justifies the book.*
+That commitment is not a constraint on the book. It is the book.
 
-The author hesitates again. Now it is harder. Now they have to *choose* — to commit to one capability over another. The book they were going to write was about everything AI-related in their field. The book Tic TOC is about to help them write is about one specific thing the reader cannot do today and can do at the end.
-
-That commitment is the chapter's whole point.
-
-You will spend two hours on this. You will spend most of those two hours discovering what you did not yet know. This is the most cognitively expensive chapter in the book. It is also the chapter that, done well, saves you twenty or more hours of rewriting later. The 10–100x cost ratio from Curtis, Krasner, and Iscoe's 1988 software-engineering study applies here — defects introduced at specification cost an order of magnitude or two more to fix downstream.[^curtis] You are at specification.
-
-Begin.
+You will spend roughly two hours in Tic TOC. Most of that time will be spent discovering what you did not yet know. This is the most cognitively expensive chapter in the pipeline and the one with the highest return on investment. The Curtis, Krasner, and Iscoe 1988 study of large software projects found that defects introduced at the specification stage cost roughly ten to a hundred times more to fix downstream than defects introduced during implementation.[^curtis] You are at specification. The arithmetic of these two hours is straightforward even if the exact ratio is approximate.
 
 [^curtis]: Curtis, B., Krasner, H., & Iscoe, N. (1988). "A Field Study of the Software Design Process for Large Systems." *Communications of the ACM*, 31(11), 1268–1287.
 
 ---
 
-## 1. Phase One walkthrough — /i1 through /i4
+## Phase One: what you actually know about your book
 
-Phase One is **Intake**. Four commands. Roughly forty-five minutes of session time when done well. The output is a confirmed Book Concept Summary — the document that anchors everything downstream.
+The intake phase is four commands — `/i1` through `/i4` — and roughly forty-five minutes of session time when done well. The output is a confirmed Book Concept Summary: working title, one-sentence capability statement, one-sentence thesis, reader profile, deployment context, positioning against comparable texts. Each element looks simple. None of them are.
 
-Open your Claude Project with the Tic TOC prompt loaded (deployment in Chapter 2). Type `/i1`. Begin.
+`/i1` asks the foundation questions. What is the working title? What does the reader learn — in one sentence? What is the central thesis — in one sentence? The pushback pattern across these questions is predictable and worth knowing before you encounter it. Vague topic answers get pushed toward specific capabilities. Lists of topics get pushed toward which one is load-bearing. Capability statements without measurable outcomes get pushed toward how you would know the reader could demonstrate them. Theses that anyone in the field would agree with get pushed toward what the book argues that competing books do not.
 
-### /i1 — Book Intake
+That last one is the hardest. A thesis that no one disagrees with is not a thesis — it is a topic restated as a claim. The acquisitions pragmatist discipline (introduced in Chapter 2) is asking what argument the book is making, and the question is sharper than most authors have been asked before.
 
-The first command asks the foundation questions. *What is the working title? What is the book about, in a paragraph the author would actually speak aloud? What does the reader learn — in one sentence? What is the central thesis — in one sentence?*
-
-The questions are simple. The answers are not. The Phase One pushback pattern is identifiable across every full Tic TOC session this book has access to:
-
-- **Vague topic answer** → Tic TOC asks for a specific capability.
-- **List of topics** → Tic TOC asks which one is load-bearing.
-- **Capability statement without a measurable outcome** → Tic TOC asks how you would know the reader could do it.
-- **Thesis that anyone in the field would agree with** → Tic TOC asks what your book argues that competing books do not.
-
-The fourth pushback is the hardest. A thesis that no one disagrees with is not a thesis — it is a topic restated. The acquisitions pragmatist discipline (introduced in Chapter 2) is asking: *what is your book's argument*, and the question is sharper than most authors expect.
-
-Here is an annotated transcript fragment from the running example's `/i1`:
+Here is the `/i1` exchange that produced the ai-for-designers capability statement:
 
 > **Tic TOC:** What does the reader learn — in one sentence?
 >
-> **Author:** The reader learns to use AI in their freelance design
-> practice.
+> **Author:** The reader learns to use AI in their freelance design practice.
+>
+> **Tic TOC:** That is a topic. Not a learning outcome. Try: "The reader learns to [verb] [specific object] under [specific condition]." What is the one capability that, if mastered, justifies the book?
+>
+> **Author:** The reader learns to deploy AI in their design practice without losing the decisions their clients pay them to make.
+>
+> **Tic TOC:** Closer. "Deploy" is still vague. What does "deploy" look like as an action a reader could demonstrate?
+>
+> **Author:** The reader learns to identify which design decisions must stay human and which can be delegated to AI — and to defend that delegation map to a client.
+>
+> **Tic TOC:** Confirmed. That is a capability statement. Note: this statement now constrains every downstream chapter. Every chapter must contribute to either identification (which decisions stay human) or defense (how to articulate the delegation). Chapters that do neither are out of scope.
 
-> **Tic TOC:** That is a topic. Not a learning outcome. Try: "The
-> reader learns to [verb] [specific object] under [specific
-> condition]." What is the one capability that, if mastered, justifies
-> the book?
+Read the last note again. The moment the capability statement is committed, the chapter list narrows. Topics that seemed essential — an introduction to Midjourney, say — may no longer fit. Topics that seemed peripheral — the disclosure conversation — may now be load-bearing. The commitment does not just define the book. It defines what is not the book.
 
-> **Author:** The reader learns to deploy AI in their design practice
-> without losing the decisions their clients pay them to make.
+`/i2` asks what kind of book this is and where the reader will use it: practitioner handbook versus course textbook versus trade book versus field-defining monograph, and self-directed read versus workshop companion versus course adoption. Tic TOC will push back on misclassification. If the answer is "trade book" but the chapters end with assessable exercises, the answer is wrong. If the answer is "course textbook" but the reader is a self-directed solo practitioner, it is also wrong. The book type shapes downstream sequencing decisions in ways that propagate forward, and a misclassified book type at `/i2` produces misaligned sequence logic at `/l2`.
 
-> **Tic TOC:** Closer. "Deploy" is still vague. What does "deploy"
-> look like as an action a reader could demonstrate?
+`/i3` is the gate where the most time gets spent. Chapter 2 showed the full Maya exchange — the thirty-second pause before the author moved from category to person. The pattern is the same in every session. "Designers" becomes "who, specifically?" becomes "what tenure, what client situation, what specific worry they have not yet acted on?" When the answer reaches a *person* — name, tenure, current client, current toolset, current fear — `/i3` is ready to mark passed.
 
-> **Author:** The reader learns to identify which design decisions
-> must stay human and which can be delegated to AI — and to defend
-> that delegation map to a client.
+`/i4` is where the thesis gets sharp. The thesis sentence stated in `/i1` returns now with harder questions: what does the book argue that competing books do not? Where does it sit on a shelf between which existing titles? The positioning move is borrowed from publishing acquisitions — the *vs.* statement: *unlike X, which does Y, this book does Z.* If the blanks cannot be filled, the book does not have positioning yet, and `/i4` will not pass.
 
-> **Tic TOC:** Confirmed. That is a capability statement. Note: this
-> statement now constrains every downstream chapter. Every chapter
-> must contribute to either identification (which decisions stay
-> human) or defense (how to articulate the delegation). Chapters that
-> do neither are out of scope.
+Phase One ends when Tic TOC states: *"Phase One complete. Book Concept Summary ready for confirmation. Confirm, or revise?"* You confirm. The spec has a foundation.
 
-That last note is the *forcing function*. Once the capability statement is committed, the chapter list narrows. Topics that seemed essential ("intro to Midjourney") may no longer fit. Topics that seemed peripheral ("the disclosure conversation") may now be load-bearing.
-
-### /i2 — Book Type and Deployment Context
-
-`/i2` asks what *kind* of book this is and where the reader will use it. Practitioner handbook vs. course textbook vs. field-defining monograph vs. trade book. Self-directed read vs. workshop companion vs. course adoption.
-
-The honest answer for most readers of *this* book — author-instructors building an AI+1 textbook — is **practitioner handbook**. Chapters organized by pipeline stage, each self-contained, the book usable as reference after first build. This determines downstream sequencing decisions in `/l2`.
-
-Tic TOC will push back on misclassification. If you answer "trade book" but your chapters end with assessable exercises, the answer is wrong — trade books do not have assessable exercises. If you answer "course textbook" but your reader is a self-directed solo practitioner, the answer is also wrong.
-
-### /i3 — Audience Intake (Learner Profile)
-
-`/i3` is the gate where most authors lose the most time. The Chapter 2 worked example showed one full `/i3` exchange — the Maya conversation. The pattern is the same in every session: the author starts with a category and Tic TOC pushes for a person.
-
-Phase One pushback typology, applied to `/i3`:
-
-- "Designers" → Who, specifically? Name one.
-- "Designers who use AI" → How long have they used it? What do they use it for? What have they avoided?
-- "Mid-career designers" → What is the specific tenure? What is the specific client situation? What is the specific worry?
-
-When the answer reaches a *person* — name, tenure, current client, current toolset, current worry — `/i3` is ready to mark passed.
-
-### /i4 — Central Argument and Field Positioning
-
-`/i4` is where the thesis gets sharp. You stated a thesis sentence in `/i1`; now Tic TOC asks it harder. *What is your book's specific argument? What do you argue that competing books do not? Where does this book sit on a shelf between which existing titles?*
-
-The positioning move is borrowed from publishing acquisitions practice — the *vs.* statement. *Unlike X, which does Y, this book does Z.* If you cannot fill in X and Y, your book does not have positioning yet, and `/i4` will not pass.
-
-The output of `/i4` is the gate to Phase Two. Tic TOC will explicitly state: *Phase One complete. Book Concept Summary ready for confirmation. Confirm, or revise?* Confirm. Move on.
+<!-- → [TABLE: Phase One output summary — four columns: Command, Central question asked, Common pushback pattern, What confirmation produces downstream] -->
 
 ---
 
-## 2. Phase Two walkthrough — /l1 through /l4
+## Phase Two: the pedagogical spine
 
-Phase Two is **Learning Architecture**. Four commands. Roughly thirty to forty-five minutes when Phase One is solid. The output is the pedagogical spine — outcomes, sequence, arc, prerequisites.
+Phase Two is the learning architecture — four commands, roughly thirty to forty-five minutes when Phase One is solid. The output is the pedagogical spine of the book: outcomes, sequence, arc, prerequisites.
 
-### /l1 — Learning Outcomes (Bloom's-tagged)
+`/l1` is where the curriculum theorist takes over. Tic TOC asks for three to five learning outcomes per chapter, each tagged with a Bloom's level. The Anderson-Krathwohl 2001 revision of Bloom's taxonomy supplies the vocabulary: Remember, Understand, Apply, Analyze, Evaluate, Create.[^anderson] The verbs matter in a way that catches most authors unprepared. *Understand* is a low-ceiling verb — the reader can explain. *Apply* is the working floor of a useful practitioner handbook — the reader can do it once, in a constrained context. *Evaluate* and *Create* are the high-judgment ceilings.
 
-`/l1` is the chapter where the curriculum theorist takes over. Tic TOC asks you to produce 3–5 learning outcomes *per chapter*, each tagged with a Bloom's level (Remember, Understand, Apply, Analyze, Evaluate, Create).
+A practitioner handbook should have no chapter with an outcome below Apply as its ceiling. The reader has not committed time to reading a book in order to *understand* something — they read it to *do* something. If an outcome is written at Understand level, Tic TOC will push upward: what can the reader *do* with the understanding?
 
-The Anderson-Krathwohl 2001 revision of Bloom's is the vocabulary.[^anderson] The verbs matter. *Understand* is a low-ceiling verb (the reader can explain). *Apply* is the working floor of a useful textbook (the reader can do it once, in a constrained context). *Evaluate* and *Create* are the high-judgment ceilings (the reader can assess, the reader can build).
-
-A practitioner handbook should have **no chapter with an outcome below Apply as its ceiling**. The reader has not read a textbook to *understand* something — they read it to *do* something. If you write an outcome at Understand level, Tic TOC will push you to raise it.
-
-Robert Mager's 1962 three-part criterion is the analytical foundation.[^mager] A real learning outcome names: the *performance* (what the reader does), the *condition* (under what circumstances), and the *criterion* (what counts as success). "The reader will understand the fluency trap" fails all three parts. "The reader will identify three fluency trap examples in their domain from research output, distinguishing the pattern of expert-detectable failure from generic AI errors" satisfies them.
-
-Tic TOC's pushback on `/l1` follows a predictable shape:
-
-- *Outcome at Understand only* → Tic TOC asks what the reader could *do* with the understanding.
-- *Outcome verb too vague* → Tic TOC asks for a more specific verb (e.g., not "use" but "deploy under client questioning").
-- *Outcome without condition or criterion* → Tic TOC asks how the reader would demonstrate mastery.
-
-This is also where the *Create-level concentration* happens. The TIKTOC.md for ai-for-designers has three Create-level outcomes: domain research brief (Ch 3), TIKTOC.md itself (Ch 4), human rewrite (Ch 8). Same three for *this* book. The pattern is intentional — Create-level outcomes are concentrated at the three highest-judgment steps, and the rest of the chapters work toward and from them.
-
-### /l2 — Sequencing Logic
-
-`/l2` asks: in what order do the chapters appear, and why? Is the order chronological, conceptual, build-sequence, or by complexity? What dependencies exist between chapters?
-
-For a practitioner handbook organized around a pipeline, the answer is build-sequence: each chapter produces an artifact that the next chapter consumes. This is what makes the bridge questions structurally load-bearing.
-
-### /l3 — Three-Act Learning Arc
-
-`/l3` is borrowed from narrative structure but applied pedagogically. Act One establishes; Act Two builds; Act Three applies. Each act has a *starting state* (what the reader knows entering) and an *ending state* (what the reader can do exiting), and the transition between acts has a specific condition.
-
-For the ai-for-designers running example, the arc looks like this:
-
-| Act | Starting state | Ending state | Transition condition |
-|---|---|---|---|
-| Establish (Ch 1–2) | Designer with AI curiosity, no framework. | Can identify fluency trap, name irreducibly human layer. | Reader can articulate the delegation principle. |
-| Build (Ch 3–7) | Has framework, no working practice. | Has worked through IP, disclosure, client conversation, brand stewardship. | Reader has produced a defensible delegation map. |
-| Apply (Ch 8–11) | Has working practice, no portfolio context. | Can defend AI-assisted work to a client; has a sustainable practice. | Reader can run the practice on the next live project. |
-
-This is the pedagogical equivalent of three-act structure in screenwriting — Field's *Screenplay* (1979) is the canonical popular treatment, though the framework predates Field by millennia.[^field] What matters here is the *transition condition*. Without explicit conditions, the acts blur and the reader cannot tell when they are done with one and ready for the next.
-
-### /l4 — Prerequisite Mapping
-
-`/l4` asks what the reader must already know to start, what is addressed at first use via sidebars, and what is explicitly out of scope. The output is a small table — exactly the kind that appears in Part 6 of any complete TIKTOC.md.
-
-The forcing function: anything you list as a prerequisite, the reader must *actually* have. Anything you list as "addressed at first use" requires you to write that sidebar somewhere. Anything you list as "explicitly out of scope" must be defended as out of scope (the *power of No*, in publishing acquisitions vocabulary).
-
-For ai-for-designers: domain expertise (assumed); basic Claude familiarity (assumed); GitHub or file-system comfort (probably-assumed); Python and Markdown (not assumed, addressed at first use); legal training (explicitly not required, out of scope but pointed to qualified counsel).
-
-Phase Two passes when these four outputs exist as documents Tic TOC can reference. The gate from /l4 to /c1 closes when learning outcomes are mapped to Bloom's levels with a defensible distribution.
+Robert Mager's 1962 criterion gives the analytical foundation.[^mager] A real learning outcome names three things: the *performance* (what the reader does), the *condition* (under what circumstances), and the *criterion* (what counts as success). "The reader will understand the fluency trap" fails all three. "The reader will identify three fluency trap patterns in their own AI-assisted work from the last six months, distinguishing patterns that collapse under client questioning from patterns that do not" satisfies them. The difference is not pedantry. It is the difference between a chapter Cowork can draft against and a chapter Cowork will pad.
 
 [^anderson]: Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A Taxonomy for Learning, Teaching, and Assessing*. Longman.
 [^mager]: Mager, R. F. (1962, revised 1997). *Preparing Instructional Objectives*. Center for Effective Performance.
-[^field]: Field, S. (1979). *Screenplay: The Foundations of Screenwriting*. Delta. The three-act frame is older than Field; modern Hollywood-canonical treatment.
+
+`/l2` asks in what order the chapters appear and why — chronological, conceptual, build-sequence, or by complexity — and what dependencies exist between chapters. For a practitioner handbook organized around a production pipeline, the answer is build-sequence: each chapter produces an artifact that the next chapter consumes. This is what makes the bridge questions structurally load-bearing rather than ornamental.
+
+`/l3` applies three-act structure pedagogically. Act One establishes; Act Two builds; Act Three applies. What matters is not the act labels but the *transition conditions* — the explicit statements of what the reader must be able to do before the next act can begin. Without transition conditions, the acts blur, the reader cannot tell when they are ready to move forward, and Cowork cannot tell either. For the ai-for-designers running example, the transition into Act Two is: *"The reader can articulate the delegation principle"* — not "the reader has read chapters 1 and 2," but a capability the reader either has or does not have.
+
+`/l4` maps prerequisites. What must the reader already know to start the book? What is addressed at first use via sidebar? What is explicitly out of scope? The forcing function: anything listed as a prerequisite must actually exist in the reader. Anything listed as "addressed at first use" requires a sidebar to be written somewhere. Anything listed as "explicitly out of scope" must be defended — the *power of No*, in publishing acquisitions vocabulary.
+
+Phase Two passes when outcomes are mapped to Bloom's levels with a defensible distribution and every chapter has at least one outcome at Apply or above.
+
+<!-- → [TABLE: Bloom's ceiling distribution for the ai-for-designers running example — columns: Chapter, Title, Bloom's Ceiling, Create-level deliverable (if any) — showing the three Create-level chapters and their positions in the arc] -->
 
 ---
 
-## 3. Phase Three walkthrough — /c1 through /c4
+## Phase Three: the chapter that Cowork will actually draft
 
-Phase Three is **Chapter Architecture**. Four commands. Roughly forty-five minutes to an hour. The output is one TIKTOC.md entry per chapter, fully documented.
+Phase Three is the chapter architecture — four commands, roughly forty-five minutes to an hour. This is where the specification becomes executable.
 
-### /c1 — Chapter-by-Chapter Documentation
+The engine of Phase Three is `/c1`, which produces a structured entry for every chapter in the book. Each entry must contain: a one-line capability statement, an opening strategy, four to five core content blocks in sequence, a worked example, assessable exercises with Bloom's tags, and a bridge question that commits to what the next chapter will deliver.
 
-`/c1` is the engine room. For *every chapter* in your book, Tic TOC produces (or you produce, with Tic TOC pushing back) a structured entry with the following sections:
+The capability statement is where most chapters fail. Topic headings produce Cowork drift. Capability statements give Cowork a target. The difference between the two is the most important thing this chapter can demonstrate, so here it is demonstrated directly.
 
-- **One-line capability** (what the reader learns to do)
-- **Opening strategy** (typically failure-first; problem before solution)
-- **Core content blocks** (4–5 per chapter)
-- **Worked example** (the running example artifact at this stage)
-- **Assessable exercises** (minimum three; Bloom's-tagged)
-- **Bridge question** (what does the next chapter answer)
+Both entries below are real — from the same chapter of the ai-for-designers TIKTOC.md, one from the first-pass session before `/g2` was run, one from the revised version after pushback was honored.
 
-The capability statement is where most chapters fail and where `/c1` does its hardest work. Topic headings produce drift. Capability statements force commitment.
+**First-pass entry — Chapter 3 (pre-/g2):**
 
-Here is the side-by-side comparison that is the heart of this chapter. Both versions are real entries from the same chapter of the ai-for-designers TIKTOC.md — one from the first-pass session (before /g2 was run), one from the revised version after pushback was honored. The comparison is the visualization of the chapter's central argument.
-
-**Rushed-session entry — Chapter 3 (first-pass draft, pre-/g2):**
-
-> ### CHAPTER 3 — The Fluency Trap
->
 > **One-line:** Students learn about the fluency trap in graphic design.
 >
-> **Opening:** Discussion of how AI tools produce output that looks
-> professional.
+> **Opening:** Discussion of how AI tools produce output that looks professional.
 >
-> **Core content blocks:** Examples of fluency trap; common patterns;
-> how to recognize fluency trap; what to do about it.
+> **Core content blocks:** Examples of fluency trap; common patterns; how to recognize fluency trap; what to do about it.
 >
 > **Worked example:** AI-generated logo case study.
 >
-> **Exercises:** Identify a fluency trap example; reflect on
-> implications; discuss with peer.
+> **Exercises:** Identify a fluency trap example; reflect on implications; discuss with peer.
 >
-> **Bridge:** Now that you understand the fluency trap, we move on
-> to copyright issues.
+> **Bridge:** Now that you understand the fluency trap, we move on to copyright issues.
 
-Read it. Notice what is *not* here.
+**Revised entry — Chapter 3 (post-/g2, pushback honored):**
 
-The capability is at Understand level ("learn about"). The opening is described as a "discussion" — a topic, not a scene. The core content blocks are unordered topics, not sequenced moves. The worked example is named but not specified. The exercises are not Bloom's-tagged and "reflect" and "discuss" are sub-Apply verbs. The bridge is mechanical ("now that you understand X, we move on to Y") and does not commit to anything Chapter 4 must deliver.
-
-**Full-session entry — Chapter 3 (revised, post-/g2 pushback honored):**
-
-> ### CHAPTER 3 — The Fluency Trap in Design
+> **One-line:** Readers learn to identify the seven fluency trap patterns in their own AI-assisted design work and to predict which patterns will collapse under specific kinds of client questioning.
 >
-> **One-line:** Readers learn to identify the seven fluency trap
-> patterns in their own AI-assisted design work and to predict
-> which patterns will collapse under specific kinds of client
-> questioning.
->
-> **Opening:** A senior designer's portfolio review — five pieces
-> presented, four AI-assisted, the reviewer's pen pauses at the
-> third. The reader reads the same five pieces and tries to predict
-> which one the pen will land on.
+> **Opening:** A senior designer's portfolio review — five pieces presented, four AI-assisted, the reviewer's pen pauses at the third. The reader reads the same five pieces and tries to predict which one the pen will land on.
 >
 > **Core content blocks:**
-> 1. The fluency trap defined — Oppenheimer's processing fluency
->    framing, applied to design specifically
-> 2. The seven patterns (typographic, brand-like-not-brand, additive
->    overload, polished-empty, variation overload, portfolio
->    misrepresentation, presentation collapse)
-> 3. The three client-questioning failure modes (why-this-typeface,
->    revision-of-one-element, defend-the-rationale)
-> 4. The pattern × question matrix — which patterns collapse under
->    which questions
-> 5. The five-minute self-audit — running the patterns against
->    your own recent work
+> 1. The fluency trap defined — Oppenheimer's processing fluency framing, applied to design specifically
+> 2. The seven patterns (typographic, brand-like-not-brand, additive overload, polished-empty, variation overload, portfolio misrepresentation, presentation collapse)
+> 3. The three client-questioning failure modes (why-this-typeface, revision-of-one-element, defend-the-rationale)
+> 4. The pattern × question matrix — which patterns collapse under which questions
+> 5. The five-minute self-audit — running the patterns against your own recent work
 >
-> **Worked example:** Three AI-assisted brand identities, all
-> presented as finished, each demonstrating one or more fluency
-> trap pattern. Side-by-side critique against the seven-pattern
-> taxonomy.
+> **Worked example:** Three AI-assisted brand identities, all presented as finished, each demonstrating one or more fluency trap patterns. Side-by-side critique against the seven-pattern taxonomy.
 >
 > **Assessable exercises:**
-> 1. (Analyze) Identify three fluency trap patterns in a piece of
->    your own AI-assisted work from the last six months.
-> 2. (Evaluate) For each pattern, predict the client question that
->    would expose it.
-> 3. (Create) Draft a 200-word defense-or-acknowledgment statement
->    for one piece of AI-assisted work you might present this week.
+> 1. (Analyze) Identify three fluency trap patterns in a piece of your own AI-assisted work from the last six months.
+> 2. (Evaluate) For each pattern, predict the client question that would expose it.
+> 3. (Create) Draft a 200-word defense-or-acknowledgment statement for one piece of AI-assisted work you might present this week.
 >
-> **Bridge:** The fluency trap is now diagnosable in your own work.
-> Identifying the trap is not enough — at some point the work must
-> be presented and assigned to a client, and the legal question
-> arrives. Chapter 4 addresses what you can actually assign.
+> **Bridge:** The fluency trap is now diagnosable in your own work. Identifying the trap is not enough — at some point the work must be presented and assigned to a client, and the legal question arrives. Chapter 4 addresses what you can actually assign.
 
-Now read the two entries again, in order. The difference is the chapter's central argument made operational.
+Now read the Cowork output each entry produced.
 
-The Cowork outputs produced from these two entries differ accordingly. The rushed-session entry produces a Cowork draft that is roughly 3,000 words, organized around generic AI examples, with a discussion-style opening and exercises asking the reader to "reflect" and "consider." The full-session entry produces a draft that is roughly 4,500 words, scene-opens with a portfolio review, executes the seven-pattern taxonomy specifically, ends with a defense-rubric exercise the reader actually completes. **The difference is the spec.**
+**From the first-pass entry:**
 
-This is the most important figure in this book. [verify — the rushed-session source material may not exist in version history; if not retained, the comparison above is reconstructed from before-and-after fragments and should be flagged accordingly to the author. Per the highest-priority gap surfaced in the research pass for this chapter, the rushed-session counterpart for the running example needs to be confirmed against actual session logs.]
+> In this chapter we will discuss the fluency trap in graphic design. AI tools have become widely used in design workflows, and one of the challenges designers face is that AI output often looks professional and finished, even when it lacks the strategic depth or craft judgment that defines high-quality design work. This chapter explores what the fluency trap is, why it matters, and what designers can do about it...
+>
+> [continues for roughly 2,800 more words in similar register]
 
-If you remember nothing else from this chapter, remember that the difference between those two TIKTOC.md entries is one hour of session time and one round of /g2 pushback — and that difference, propagated downstream across eleven chapters, is the difference between a book worth rewriting and a Cowork dump.
+Generic. "In this chapter we will discuss" is exactly the phrase a practitioner handbook must not begin with. No scene. No specific reader. No specific designer in a specific moment. The chapter is *about* the fluency trap without ever *demonstrating* it.
 
-### /c2 — Chapter Anatomy Template
+**From the revised entry:**
 
-`/c2` formalizes what every chapter must contain. The default anatomy (used in this book) has ten items: title with italic subtitle, one-line capability, learning objectives, opening case, core content blocks, worked example, assessable exercises, bridge question, sidebars where applicable, pointer chapters where applicable. Three of these (opening case, worked example, bridge question) are load-bearing — a chapter missing them is incomplete and Cowork will be flagged at draft time.
+> *The dangerous AI output is not ugly. It is attractive enough to stop your judgment too early.*
+>
+> A senior brand director leans over a portfolio review at a London agency, 2026. Five pieces on the table. Four were assisted by AI in some part of the workflow; the reviewer does not know which. Her pen pauses at the third piece — a healthcare consulting identity. She points to a single decision in the wordmark and asks: "Why did you choose this terminal stroke weight?"
+>
+> The designer hesitates.
+>
+> The reader reads the same five pieces, on the following pages, and tries to predict before turning each page which one the pen will land on. The exercise is at the chapter's spine because the diagnostic skill it builds is the spine: you will learn to see the fluency trap before your reviewer does...
+>
+> [continues into the seven-pattern taxonomy]
 
-### /c3 — Case Study and Worked Example Strategy
+<!-- → [IMAGE: Side-by-side spread of the two Cowork outputs — rushed-session opening paragraph on the left, full-session opening paragraph on the right — with the caption: "One hour of Tic TOC pushback, honored. The rest is downstream effect."] -->
 
-`/c3` decides the running-example strategy. The choice is between *one domain consistently* (the ai-for-designers strategy this book follows) vs. *rotating domains across chapters* (broader but with less narrative compounding). For practitioner handbooks, consistency typically wins.
+This is the chapter's central argument made operational. The difference between those two openings is one round of `/g2` pushback and one hour of honored revision. Propagated across eleven chapters, that difference is the difference between a book worth rewriting and a Cowork dump.
 
-### /c4 — Edge Cases, Contested Claims, Coverage Gaps
-
-`/c4` is the honesty pass. What does the book claim that is *contested* in the field? What does it skip? What is the *aging risk* — content that will be wrong in two years? Everything in this section gets flagged for monitoring and for inclusion in the /p2 Open Questions Log.
-
-Phase Three passes when every chapter has a `/c1` entry, the anatomy template is set, the running example strategy is committed, and contested claims are catalogued.
+The other three `/c` commands — `/c2` through `/c4` — are supporting passes. `/c2` formalizes the chapter anatomy template: what every chapter must contain as a structural minimum. `/c3` decides the running-example strategy — one domain consistently across all chapters, or rotating examples. For practitioner handbooks, consistency compounds; rotating examples lose the narrative scaffolding that builds from chapter to chapter. `/c4` is the honesty pass: what does the book claim that is contested in the field? What does it skip? What is the aging risk — content that will be wrong in two years? Everything flagged here goes into the open questions log.
 
 ---
 
-## 4. The /g2 diagnostic
+## The /g2 diagnostic
 
-`/g2` (or `/critique`) runs the 7 Adoption Failure Mode diagnostic on the completed TIKTOC.md. It is the chapter's culminating move and the gate to Cowork handoff.
+`/g2` runs the 7 Adoption Failure Mode diagnostic against the completed TIKTOC.md. It is the gate to Cowork handoff.
 
-The seven failure modes Tic TOC's `/g2` evaluates against are roughly: audience drift; missing prerequisites; over-claimed outcomes; under-specified deliverables; contested claims unflagged; bridge questions that do not bridge; capability statements that are actually topics [verify — exact seven-mode list against current TikTOC_prompt.md; the categories shift across prompt versions].
+The seven failure modes are roughly: audience drift, missing prerequisites, over-claimed outcomes, under-specified deliverables, contested claims left unflagged, bridge questions that do not actually bridge, and capability statements that are topics in disguise [verify — exact seven-mode list against current TikTOC_prompt.md; categories shift across prompt versions]. Each chapter entry is read against each failure mode. The output is a structured table — failure mode × chapter — with a status flag and a one-line diagnostic per cell.
 
-Each chapter's entry is read against each failure mode. Tic TOC produces a structured table: failure mode × chapter, with a status flag (PASS / WARNING / FAIL) and a one-line diagnostic per cell.
-
-Here is a fragment of the `/g2` output run on the running example TIKTOC.md, lightly trimmed:
+Here is the `/g2` table from the ai-for-designers running example, lightly trimmed:
 
 > | Failure Mode | Ch 1 | Ch 2 | Ch 3 | Ch 4 | Ch 5 | Ch 6 | Ch 7 |
 > |---|---|---|---|---|---|---|---|
@@ -324,170 +183,98 @@ Here is a fragment of the `/g2` output run on the running example TIKTOC.md, lig
 > | Bridge fails to bridge | PASS | PASS | PASS | PASS | PASS | WARN | PASS |
 > | Capability statement is topic | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 >
-> *Five WARNINGS. Zero FAILs. Recommend resolving the Ch 3
-> over-claim, the Ch 1 contested-claims flag, the Ch 6 bridge,
-> and the Ch 5 audience-drift before Cowork handoff. Ch 1's
-> contested claim is high-priority: the WEF "fastest-declining
-> job" framing is genuinely contested in the literature and the
-> chapter should flag it explicitly.*
+> *Five WARNINGS. Zero FAILs. Recommend resolving the Ch 3 over-claim, the Ch 1 contested-claims flag, the Ch 6 bridge, and the Ch 5 audience-drift before Cowork handoff. Ch 1's contested claim is high-priority: the WEF "fastest-declining job" framing is genuinely contested in the literature and the chapter should flag it explicitly.*
 
-This is what `/g2` looks like. Five WARNINGS. Each one is addressable in 10–20 minutes of focused revision. The chapter's argument for `/g2` is concrete here: the diagnostic catches problems that, propagated downstream, would each cost an hour or more of rewriting time at Chapter 7 (Cowork draft) or Chapter 8 (human rewrite).
+Five warnings, each addressable in ten to twenty minutes. Robert Marzano's 2001 meta-analysis of instructional strategies assigned the move of *identifying similarities and differences* an effect size of 1.61 — among the highest values in that study.[^marzano] The `/g2` diagnostic is structured comparison at scale: each chapter entry read against each failure mode, every discrepancy surfaced before it reaches a Cowork run. The intellectual operation is the same one that makes side-by-side comparison one of the highest-yield moves in learning.
 
-After resolving the WARNINGS, you re-run `/g2`. If the second pass returns clean (all PASS), Cowork handoff is ready. If WARNINGS persist, you have two choices: resolve, or log to `/p2` as BLOCKED with explicit rationale. *Logged BLOCKED items are acceptable — unaddressed WARNINGS are not.*
+[^marzano]: Marzano, R. J., Pickering, D. J., & Pollock, J. E. (2001). *Classroom Instruction That Works*. ASCD.
 
-The Marzano effect-size data for *identifying similarities and differences* gives the comparison move at the core of `/g2` an empirical anchor — Marzano, Pickering, and Pollock's 2001 meta-analysis assigned this instructional move an effect size of 1.61, among the highest in the meta-analysis.[^marzano] The `/g2` diagnostic is structured comparison at scale. It works.
+After resolving the warnings, re-run `/g2`. If the second pass returns clean, the TIKTOC.md is ready for Cowork. If warnings persist, the choice is binary: resolve them, or log them to `/p2` as BLOCKED with explicit rationale. Logged and acknowledged is acceptable. Unaddressed is not.
 
-[^marzano]: Marzano, R. J., Pickering, D. J., & Pollock, J. E. (2001). *Classroom Instruction That Works: Research-Based Strategies for Increasing Student Achievement*. ASCD.
+<!-- → [TABLE: The /g2 failure mode table from the ai-for-designers session, full version — all seven failure modes × all seven chapters, with warning cells highlighted and one-line diagnostic for each warning] -->
 
 ---
 
-## 5. What "ready for Cowork" means
+## What "ready for Cowork" means
 
-Cowork is a downstream automated system. It reads your TIKTOC.md and your book directory and produces a complete rough draft of every chapter. It cannot ask you to clarify what you meant.
+Cowork is a downstream execution system. It reads the TIKTOC.md at runtime and drafts against it. It cannot ask you to clarify what you meant.
 
-This is the practical implication. *Every section of your TIKTOC.md must be specific enough that a model reading it can produce a chapter without needing your judgment for any structural decision*. Voice can drift. Examples can be generic. Bridge questions can fail. But the *spec* itself cannot be ambiguous.
+This practical constraint defines what the specification must be. Every section of the TIKTOC.md must be specific enough that a model reading it can produce a chapter without needing your judgment for any structural decision. Voice can drift in ways the human rewrite corrects. But the *structure* — the capability statement, the opening strategy, the worked example specification, the exercise verbs, the bridge commitment — must be unambiguous, because Cowork will execute against whatever it finds, and a vague specification produces a vague chapter at the same speed as a precise specification produces a precise one.
 
-The checklist for "ready for Cowork":
+The checklist for ready-for-Cowork is eight items. Every chapter must have a capability statement at Apply level or above. Every chapter must have a Bloom's ceiling explicit in the outcome map. Every chapter must have at least one Apply-or-above exercise. Every chapter must have a bridge question that commits to the next chapter's content. Every chapter must have either a worked example specified or a `[verify]` placeholder that flags the gap. Every contested claim must be labeled. The `/g2` diagnostic must return clean, or every warning must be logged as BLOCKED in `/p2` with rationale. And `/p2` itself must be current — no open questions forgotten, every risk acknowledged and assigned.
 
-1. **Every chapter has a capability statement at Apply level or above.** No "understand X" outcomes. Verbs are concrete and demonstrable.
-2. **Every chapter has a Bloom's ceiling explicit in the outcome map.** Cowork uses this to calibrate cognitive demand.
-3. **Every chapter has at least one Apply or above exercise.** Cowork uses these to structure the closing section of the draft.
-4. **Every chapter has a bridge question that commits to the next chapter's content.** Cowork uses these for chapter handoffs.
-5. **Every chapter has either a worked example specified or a placeholder with `[verify]` flag.** Cowork will not invent a worked example; if there is no instruction, the chapter will end without one.
-6. **Every contested claim is flagged.** Cowork will write contested claims as if settled if you do not flag them. Then Chapter 11's Fact-Checking Assistant will catch the problem, expensively.
-7. **`/g2` returns clean OR every WARNING is logged as BLOCKED in `/p2` with rationale.**
-8. **`/p2` is current.** All open questions are catalogued; none are forgotten.
-
-When all eight conditions are met, the TIKTOC.md is ready for Cowork. You can run Chapter 5's `new_book.py` confident that Cowork will have what it needs.
-
-When any condition is unmet, *resolve before proceeding*. The 10–100x cost ratio applies. Every BLOCKED item that propagates to Chapter 7 (Cowork draft) costs roughly an hour of rewriting. Every BLOCKED item that propagates to Chapter 11 (final check) costs roughly a day.
+When all eight conditions are met, the TIKTOC.md is ready. The 10–100x cost ratio applies here with the same force it applied in Chapter 2. Every BLOCKED item that propagates to the Cowork draft costs roughly an hour of rewriting. Every BLOCKED item that propagates to the final check costs roughly a day. The arithmetic of the checklist is the same arithmetic as the session itself: do it now, cheaply, or pay for it later.
 
 ---
 
-## Worked example — the side-by-side comparison
+## What the session leaves you with
 
-The single most important visualization in this book is the side-by-side comparison of two TIKTOC.md chapter specs and their corresponding Cowork outputs. The rushed-session version came from the first pass of the ai-for-designers Tic TOC session; the full-session version came after `/g2` pushback was honored and the chapter entry was rewritten.
+Two hours. The output is a markdown file — the TIKTOC.md — that specifies every chapter of the book in enough detail that Cowork can draft without clarification.
 
-The Chapter 3 entries themselves appear in section 3 of this chapter above. What follows is the *Cowork output fragment* produced from each spec, lightly trimmed for the page.
+That is a strange thing to hold at the end of two hours that felt like cognitive work and produced no prose. The TIKTOC.md is not the book. It looks nothing like the book. It is a specification document full of structured tables, capability statements, Bloom's-tagged exercises, and bridge questions. Nothing in it resembles the chapter you will eventually write or revise.
 
-**Cowork output from rushed-session entry — Chapter 3 opening:**
+But the specification is the part that determines what the rest of the pipeline produces. Wiggins and McTighe's Backward Design argument is that the most-skipped stage in curriculum design — *Identify Desired Results* — is also the highest-leverage one.[^wiggins] The spec defines what counts as a successful chapter. Without it, you cannot evaluate a draft; you can only react to one. With it, the evaluation is structural: does this chapter have what the TIKTOC.md said it would have? Does it deliver on the bridge question? Does the worked example match the specification?
 
-> ## Chapter 3 — The Fluency Trap
->
-> In this chapter we will discuss the fluency trap in graphic design.
-> AI tools have become widely used in design workflows, and one of
-> the challenges designers face is that AI output often looks
-> professional and finished, even when it lacks the strategic depth
-> or craft judgment that defines high-quality design work. This
-> chapter explores what the fluency trap is, why it matters, and
-> what designers can do about it.
->
-> Many designers report being surprised by how good AI-generated
-> work looks at first glance. They also report that closer inspection
-> often reveals problems. Understanding this dynamic is important
-> for any designer working with AI tools.
->
-> [continues for ~2,800 more words in similar register]
+[^wiggins]: Wiggins, G., & McTighe, J. (2005). *Understanding by Design* (Expanded 2nd ed.). ASCD.
 
-Generic register. *"In this chapter we will discuss"* is exactly the phrase a practitioner-handbook chapter must not begin with. No scene. No specific reader. No specific designer in a specific moment. The chapter is *about* the fluency trap without ever *demonstrating* it.
+The sessions in which authors resist the pushback — accept every first answer, advance quickly through the gates — produce TIKTOC.md files that look complete. The Cowork runs they produce look like textbook chapters. They read generically. The exercises ask the reader to "reflect" and "consider." The bridge questions say "now that you understand X, we move on to Y." The opened paragraphs say "in this chapter we will discuss." The author spends the human rewrite phase rebuilding the structure that the specification session was supposed to produce.
 
-**Cowork output from full-session entry — Chapter 3 opening:**
+The sessions in which authors honor the pushback — pause at the hard question, rewrite the capability statement until it names a demonstrable action, sit with the commitment until the chapter list actually narrows — produce the other kind. The kind where the Cowork output opens with a scene, runs a specific taxonomy, ends with an exercise the reader actually completes.
 
-> ## Chapter 3 — The Fluency Trap in Design
->
-> *The dangerous AI output is not ugly. It is attractive enough to
-> stop your judgment too early.*
->
-> A senior brand director leans over a portfolio review at a London
-> agency, 2026. Five pieces on the table. Four were assisted by AI
-> in some part of the workflow; the reviewer does not know which.
-> Her pen pauses at the third piece — a healthcare consulting
-> identity. She points to a single decision in the wordmark and
-> asks: "Why did you choose this terminal stroke weight?"
->
-> The designer hesitates.
->
-> The reader reads the same five pieces, on the following pages, and
-> tries to predict before turning each page which one the pen will
-> land on. The exercise is at the chapter's spine because the
-> diagnostic skill it builds is the spine: you will learn to see
-> the fluency trap before your reviewer does.
->
-> [continues into the seven-pattern taxonomy]
-
-Scene first. Specific moment. Specific reader-task. The chapter is *demonstrating* the fluency trap in the act of opening with it.
-
-**This is the chapter's argument made concrete.** One hour of Tic TOC pushback, honored. Eleven chapters of compounded downstream effect. The whole book turns on the diff between those two openings.
-
-If the rushed-session source material does not exist in your own version history, you can produce an approximate comparison by writing a deliberately-vague chapter entry, running it through Cowork, then writing the version-with-pushback-honored, running *that* through Cowork, and comparing. The exercise is reproducible. **[verify — the actual rushed-session TIKTOC.md for the running example must be confirmed against session logs; the comparison above is the most defensible reconstruction.]**
+The difference is made in two hours, early, when it is cheap to make it.
 
 ---
 
-## Exercises
+## LLM Exercises
 
-### Exercise 1 (Apply) — Complete /i1–/i4. Share confirmed Book Concept Summary.
+**Exercise 1 — Run /i1–/i4 and interrogate the capability statement**
 
-With the brief from Chapter 3 loaded into your Claude Project, run `/i1` through `/i4`. Answer every question. Honor the pushback. Do not advance through a gate until Tic TOC explicitly confirms the gate has passed.
+Complete the full Phase One intake for your own book project. When Tic TOC confirms your capability statement at the end of `/i1`, copy the confirmed statement and run the following in a separate Claude window:
 
-**Time required:** 45–75 minutes.
+> "Here is a confirmed capability statement from a Tic TOC session: [your statement]. Critique it using Mager's three-part criterion — performance, condition, and criterion. Does it satisfy all three? If not, propose a revised version that does."
 
-**Deliverable:** A confirmed Book Concept Summary saved to a file. Includes working title, capability statement (one sentence), central thesis (one sentence), reader profile, deployment context, positioning vs. comparable texts.
+Compare what the model returns to the statement Tic TOC confirmed. Where do they agree? Where does the external critique catch something the Tic TOC session did not?
 
-### Exercise 2 (Apply) — Complete /l1–/l4. Produce outcome map table.
+**Exercise 2 — Apply the /c1 comparison to your own chapter**
 
-Continue the session into Phase Two. Produce 3–5 learning outcomes per chapter, each Bloom's-tagged. Document the sequencing logic. Map the three-act arc. Resolve prerequisites.
+Choose one chapter from your book. Write two `/c1` entries for it: a rushed-session version (ten minutes, first-draft answers, no pushback) and a full-session version (thirty minutes, pushback honored, capability statement at Apply or above, exercises Bloom's-tagged, bridge question structurally committed).
 
-**Time required:** 30–45 minutes.
+Paste both into Claude with this prompt:
 
-**Deliverable:** A complete outcome map table (chapter × Bloom's ceiling × Create-level outcome). Three-act arc documented. Prerequisite table complete.
+> "Here are two TIKTOC.md entries for the same chapter. One is from a rushed session; one is from a full session with pushback honored. Predict what Cowork would produce differently from each — specifically the opening paragraph, the worked example depth, and the exercises. Name three structural differences between the entries that would propagate to the draft."
 
-### Exercise 3 (Apply) — Document three chapters using /c1. Each must have capability statement and bridge question.
+Evaluate whether the model identifies the same differences the chapter's worked comparison identified.
 
-Use `/c1` to document *three* chapters of your book in full. Each must include: capability statement (Apply or above), opening case, core content blocks (4–5), worked example, assessable exercises (≥3, Bloom's-tagged), bridge question.
+**Exercise 3 — Stress-test the /g2 diagnostic**
 
-**Time required:** 30–60 minutes (10–20 minutes per chapter, with pushback).
+Take the `/g2` table fragment from this chapter — the seven failure modes × seven chapters from the ai-for-designers session. Run the following:
 
-**Deliverable:** Three complete `/c1` entries. The bridge questions must be structurally committed — each must name what the next chapter will deliver.
+> "Here is a /g2 diagnostic table showing five WARNINGS across seven chapters. The warnings are: Ch 3 over-claimed outcome, Ch 1 contested claim unflagged, Ch 6 bridge fails to bridge, Ch 5 audience drift. For each warning, estimate the downstream cost if it propagates to the Cowork draft unaddressed — specifically, what would the Cowork output do wrong, and how many hours of human rewrite would it cost to fix?"
 
-### Exercise 4 (Evaluate) — Run /g2. Name highest-risk failure mode and one structural change.
+Read the estimates. Are they plausible? Are they consistent with the 10–100x cost ratio from Curtis, Krasner, and Iscoe? Where does the model's estimate feel optimistic, and why?
 
-Run `/g2` on your three-chapter TIKTOC.md fragment. Read the diagnostic output. Identify:
+**Exercise 4 — Produce the complete TIKTOC.md**
 
-- The single highest-risk failure mode flagged across your three chapters.
-- One concrete structural change to your TIKTOC.md that would mitigate it.
+Complete the full Tic TOC session for your book. Document every chapter via `/c1`. Run `/g2`. Resolve every warning, or log each to `/p2` as BLOCKED with one-sentence rationale. Run `/g1` to compile the full TOC into a single document. Save the output as `TIKTOC.md`.
 
-**Time required:** 15–25 minutes.
+Then run this prompt against the completed file:
 
-**Deliverable:** A 200–400 word memo naming the failure mode, the chapter it affects, the predicted downstream cost if unaddressed, and the proposed structural change.
+> "Here is my complete TIKTOC.md. Run the 7 Adoption Failure Mode diagnostic against it. For each failure mode, scan every chapter entry and return: PASS, WARNING, or FAIL, with a one-line diagnostic for any non-PASS result. Then name the single highest-risk structural problem in the document and propose one concrete change to address it."
 
-### Exercise 5 (Create) — Produce complete TIKTOC.md — all chapters, /g2 passed, /p2 current.
-
-Complete the full Tic TOC session for your book. Document every chapter via `/c1`. Run `/g2`. Resolve every WARNING — or log to `/p2` as BLOCKED with rationale. Run `/g1` to compile the full TOC into one document.
-
-**Time required:** 60–120 minutes for the remaining chapters; total session time across all five exercises will be 3–4 hours, typically across two sittings.
-
-**Deliverable:** A complete TIKTOC.md file saved at `TIKTOC.md` in your book directory (Chapter 5 creates the directory; for now save anywhere). Every chapter documented. `/g2` returns clean or all WARNINGS logged. `/p2` current. **This is the Create-level deliverable for this chapter and the highest-leverage artifact in the entire book.**
+Compare the external diagnostic to the one Tic TOC's `/g2` produced. Where do they agree? Where do they disagree? The disagreements are the most informative result.
 
 ---
 
 ## Still puzzling
 
-- *Is two hours the right timebox?* It is heuristic. Ericsson's 1993 deliberate-practice literature supports 60–90 minute focused sessions;[^ericsson] Cirillo's Pomodoro literature supports 25-minute cycles within longer work blocks.[^cirillo] Sweller's Cognitive Load Theory predicts that holding all of a book's design decisions in working memory simultaneously is infeasible, which is what makes the phase structure necessary regardless of total time.[^sweller] Two hours is a defensible composite but not optimized.
-- *Can Tic TOC be replaced by a human collaborator?* For a solo author-instructor without a curriculum committee or co-author, Tic TOC is the best available proxy. It is not equal to a human collaborator with relevant expertise. A practicing acquisitions editor or instructional designer reading your draft TIKTOC.md will catch things Tic TOC misses (and miss things Tic TOC catches). Both is best. One is workable. Zero is the Cowork-dump path.
-- *Will Tic TOC's pushback behavior age well across model versions?* The transcripts in this chapter were captured against Claude as of May 2026. The *structural moves* (gates, capability statements, bridge questions) are stable. The *texture* of the pushback shifts as the underlying model updates. The chapter's transcripts will read as period pieces in eighteen months even if the methodology survives.
-- *How much of the TIKTOC.md schema is universally portable?* The instructional-architecture principles (Backward Design, Bloom's, phase-gating) are widely accepted in instructional design. The specific TIKTOC.md file format is Bear Brown / Cowork convention. A different publishing toolchain could adopt different conventions; the underlying moves remain.
+The two-hour timebox is heuristic. Ericsson's 1993 deliberate-practice research supports sixty to ninety-minute focused sessions.[^ericsson] Sweller's cognitive load theory predicts that holding a full book's design decisions in working memory simultaneously is infeasible, which is what makes the phase structure necessary regardless of total time.[^sweller] Two hours is defensible, not optimized.
+
+Whether Tic TOC can be replaced by a human collaborator is genuinely open. For a solo author-instructor, Tic TOC is the best available proxy. A practicing acquisitions editor or instructional designer reading the TIKTOC.md will catch things Tic TOC misses. Both is better. One is workable. Zero is the path that ends in a Cowork dump and a rewrite that costs more than the session would have.
+
+Whether Tic TOC's pushback texture will hold across model versions is also open. The structural moves — phase gates, capability statement enforcement, bridge questions — are encoded in the prompt and stable. The texture of the pushback is a function of the underlying model and will shift. The transcripts in this chapter are period pieces even if the methodology survives.
 
 [^ericsson]: Ericsson, K. A., Krampe, R. T., & Tesch-Römer, C. (1993). "The Role of Deliberate Practice in the Acquisition of Expert Performance." *Psychological Review*, 100(3), 363–406.
-[^cirillo]: Cirillo, F. (2006/2018). *The Pomodoro Technique*. Currency.
 [^sweller]: Sweller, J. (1988). "Cognitive Load During Problem Solving: Effects on Learning." *Cognitive Science*, 12(2), 257–285.
-
----
-
-## What would change my mind
-
-I would revise this chapter's central claim — that the TIKTOC.md session is the highest-leverage step in the AI+1 pipeline — if a controlled comparison emerged showing that authors who skipped the formal session and went straight to Cowork-with-pantry produced final drafts of equivalent quality after human rewrite, with comparable or lower total time investment. Such a study does not exist. The chapter's confidence rests on three converging analogs: Curtis-Krasner-Iscoe's 1988 software-engineering cost ratio (10–100x downstream rework cost for upstream defects); Wiggins and McTighe's Backward Design Stage 1 argument that the most-skipped step is the highest-leverage one; and the practitioner experience of authors who have completed both paths and report the same pattern. If those analogs fail — if textbook drafting turns out to be structurally unlike software development or curriculum design in some unexpected way — then the two-hour upfront investment loses its arithmetic justification, and the pipeline reorganizes around a different gate.
-
-A second condition: I would revise if Cowork itself evolved sufficient context-handling that it could conduct the structured-conversation step *during* drafting rather than as a separate phase, collapsing the spec-and-execute distinction into a single longer dialogue. This is plausible in 18–36 months. The chapter remains current under May 2026 conditions; the pipeline reorganizes when the underlying capability does.
 
 ---
 
@@ -495,26 +282,8 @@ A second condition: I would revise if Cowork itself evolved sufficient context-h
 
 > **Prompt to run in Claude or ChatGPT:**
 >
-> "Read the Wikipedia article on Donella Meadows. Summarize her concept
-> of 'leverage points' in systems. Identify which of her twelve
-> leverage points the TIKTOC.md session operates at — and explain why
-> this matches the book's claim about the session being the 'highest-
-> leverage step.'"
+> "Read the Wikipedia article on Donella Meadows. Summarize her concept of 'leverage points' in systems. Identify which of her twelve leverage points the TIKTOC.md session operates at — and explain why this matches the book's claim about the session being the 'highest-leverage step.'"
 
-Meadows was an environmental scientist and systems theorist whose 1972 *Limits to Growth* and posthumous 2008 *Thinking in Systems* established the vocabulary for analyzing *where* in a system intervention matters most. Her twelve leverage points run from least powerful (changing parameters) to most powerful (transcending paradigms). Her argument — *the structure of a system determines its behavior* — is the deep intellectual ancestor of this chapter's argument that the TIKTOC.md, as the book's structural specification, determines downstream chapter outputs. The Wikipedia article is substantive; the prompt asks you to read it once and write a 300-word memo. [^meadows]
+Meadows was an environmental scientist and systems theorist whose 1972 *Limits to Growth* and posthumous 2008 *Thinking in Systems* established the vocabulary for analyzing where in a system an intervention matters most. Her twelve leverage points run from least powerful (changing parameters) to most powerful (transcending paradigms). Her argument — *the structure of a system determines its behavior* — is the deep intellectual ancestor of this chapter's claim that the TIKTOC.md, as the book's structural specification, determines what the downstream chapters become. The Wikipedia article is substantive; the prompt asks you to read it once and write a 300-word memo.[^meadows]
 
-[^meadows]: Meadows, D. H. (2008). *Thinking in Systems: A Primer*. Chelsea Green. Posthumous; edited by Diana Wright. The original 1999 essay *Leverage Points: Places to Intervene in a System* is also widely available online.
-
----
-
-## Bridge — Chapter 5
-
-The TIKTOC.md exists. It sits in a markdown file on your disk, or in your Claude Project, or in both. Every chapter is documented. `/g2` returned clean — or every WARNING was resolved or logged as BLOCKED with explicit rationale. `/p2` is current.
-
-The highest-leverage step in the AI+1 pipeline is now complete. Two hours, give or take. The rest of the pipeline is execution. You will be the editor of what comes back from Cowork — not the writer of the first draft.
-
-But Cowork needs somewhere to write. It needs a directory structure, a metadata file, a build script, and the TIKTOC.md sitting where it can read it. None of that exists yet on your disk.
-
-Chapter 5 creates the directory. The command is one line. The output is forty files. It takes thirty seconds.
-
-Then the pipeline runs.
+[^meadows]: Meadows, D. H. (2008). *Thinking in Systems: A Primer*. Chelsea Green. The original 1999 essay *Leverage Points: Places to Intervene in a System* is also widely available online.
