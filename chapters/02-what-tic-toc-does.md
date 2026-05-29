@@ -68,6 +68,8 @@ I want to show you what I mean before I explain why. The next several pages cont
 >
 > **Bridge to Chapter 2:** The AI+1 designer is not the designer with the most tools. It is the designer with the clearest boundary between assistance and abdication. Chapter 2 turns the frame into a work tool: the delegation map.
 
+![Vertical document map of the TIKTOC.md: eight uniform boxes stacked top to bottom in reading order, threaded by a thin spine line. Parts 1 (Book Concept and Thesis), 2 (Learner Profile), 7 (Learning Outcomes by Chapter), and 8 (Chapter Entries) are rendered as solid filled boxes because the chapter excerpts them; Parts 3 through 6 are hollow outlines to signal that the structure exists but is not shown.](images/02-what-tic-toc-does-fig-01.png)
+*Figure 2.1 — The TIKTOC.md document map*
 <!-- → [IMAGE: The full TIKTOC.md structure as a visual document map — one box per Part (1–8), with a brief label for each, showing the reader the shape of the whole artifact at a glance before the chapter explains how it gets built] -->
 
 ---
@@ -78,7 +80,19 @@ The capability statements use verbs that name what the reader can *do* — *dist
 
 These three features — capability verbs, Bloom's ceilings, bridge questions — are what separate a TIKTOC.md from an outline. An outline tells you what topics the author intends to cover. A TIKTOC.md tells Cowork what the reader must be able to do, at what cognitive level, and in what sequence. The downstream system can execute against a TIKTOC.md without asking for clarification. It cannot execute against an outline in the same way, because an outline does not resolve those questions. It simply defers them.
 
+![A two-column feature matrix comparing an author's outline against a TIKTOC.md across six rows. The left (outline) column shows hollow, partial cells to mark each feature as deferred; the right (TIKTOC.md) column shows solid filled cells to mark each feature as resolved, with a clear divider between the columns. The fill-versus-hollow contrast carries the message that the outline defers what the specification resolves.](images/02-what-tic-toc-does-fig-02.png)
+*Figure 2.2 — Author's outline vs. TIKTOC.md specification*
+
 <!-- → [TABLE: Side-by-side comparison — Author's outline vs. TIKTOC.md — columns: Feature, Author's Outline, TIKTOC.md — rows covering: What it specifies, Who the audience is, What the reader can do, Cognitive level required, Chapter-to-chapter logic, Whether Cowork can execute without clarification] -->
+
+| Feature | Author's outline | TIKTOC.md |
+|---|---|---|
+| What it specifies | Topics the author intends to cover | What the reader must be able to do, in what order |
+| Who the audience is | A category ("freelance designers") | A specific named person with a job, a tool, and a current problem |
+| What the reader can do | Left implicit — "be aware of," "understand" | Stated as demonstrable capability verbs — distinguish, identify, defend |
+| Cognitive level required | Unspecified | A Bloom's ceiling assigned per chapter, giving the book a cognitive arc |
+| Chapter-to-chapter logic | Topical adjacency only | Bridge questions that put each chapter in a logical contract with the next |
+| Whether Cowork can execute without clarification | No — defers the load-bearing questions | Yes — resolves audience, outcome, level, and sequence at runtime |
 
 ---
 
@@ -115,7 +129,11 @@ The second discipline is that of the **acquisitions pragmatist**. This is the pu
 
 [^publishing-note]: The chapter's references here are to general trade publishing practice. No single text is load-bearing; the vocabulary is standard in imprint editorial culture.
 
-The third discipline is that of the **instructional designer**. Robert Gagné's *Conditions of Learning*, first published in 1965, argued that different types of learning require different instructional sequences — that you cannot teach a student to solve a novel problem without first teaching the component skills, and that the sequence matters as much as the content.[^gagne] The Anderson-Krathwohl 2001 revision of Bloom's taxonomy provides the verb vocabulary: Remember, Understand, Apply, Analyze, Evaluate, Create.[^bloom] Robert Mager's shorter work, *Preparing Instructional Objectives*, argued that a learning objective must specify what the learner will *do*, not what they will *know*, and that the verb is load-bearing in ways that most authors do not appreciate until they try to write an exercise against a poorly formed objective.[^mager]
+The third discipline is that of the **instructional designer**. Robert Gagné's *Conditions of Learning*, first published in 1965, argued that different types of learning require different instructional sequences — that you cannot teach a student to solve a novel problem without first teaching the component skills, and that the sequence matters as much as the content.[^gagne]
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/02-what-tic-toc-does-assertions.md -->
+ The Anderson-Krathwohl 2001 revision of Bloom's taxonomy provides the verb vocabulary: Remember, Understand, Apply, Analyze, Evaluate, Create.[^bloom] Robert Mager's shorter work, *Preparing Instructional Objectives*, argued that a learning objective must specify what the learner will *do*, not what they will *know*, and that the verb is load-bearing in ways that most authors do not appreciate until they try to write an exercise against a poorly formed objective.[^mager]
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/02-what-tic-toc-does-assertions.md -->
+
 
 The instructional designer in Tic TOC is what refuses to let a capability statement pass if the verb is *understand* or *appreciate* or *be familiar with*. Those verbs name states of mind that cannot be observed or tested. *Apply*, *analyze*, *construct*, *defend* — those name actions a reader can actually perform, and a chapter can actually aim at.
 
@@ -125,6 +143,8 @@ The instructional designer in Tic TOC is what refuses to let a capability statem
 
 The three disciplines are not crisp categories. They overlap, and a working professional in any one of them borrows from the others. The point of naming them is not academic taxonomy. It is to give you a vocabulary for noticing which discipline is speaking when Tic TOC pushes back. When the prompt says your audience profile is too vague and asks you to name a specific person — that is the curriculum theorist applying Taba. When it asks what comparable book sits on the shelf next to this one — that is the acquisitions pragmatist. When it says your capability statement has no demonstrable verb — that is the instructional designer applying Mager.
 
+![An equilateral triangle with the three disciplines at its vertices — curriculum theorist, acquisitions pragmatist, and instructional designer — each in a distinct color. From each vertex a single directional arrow points to a small target node naming the phase of Tic TOC that discipline governs: the curriculum theorist points to the intake/audience phase, the instructional designer to capability-verb enforcement, and the acquisitions pragmatist to the positioning and comparable-text check. The triangle edges are thin and neutral to show the disciplines overlap yet stay distinct.](images/02-what-tic-toc-does-fig-03.png)
+*Figure 2.3 — The three disciplines triangle*
 <!-- → [INFOGRAPHIC: The three disciplines as a triangle — curriculum theorist (Wiggins/McTighe, Taba) at one vertex, acquisitions pragmatist at a second, instructional designer (Gagné, Bloom, Mager) at a third — with arrows showing which phase of Tic TOC each discipline governs, and one representative pushback question from each] -->
 
 ---
@@ -137,7 +157,20 @@ Tic TOC is phase-gated. The session moves through three phases — Intake, Learn
 
 Cooper's original model had five gates. Tic TOC has fewer. The architecture is the same.
 
+![A left-to-right process flowchart of three phase blocks — Intake, Learning Architecture, Chapter Architecture — each in a distinct color, separated by diamond checkpoint gates. A final /g2 diagnostic diamond feeds a Cowork-handoff terminal node. A blockage symbol sits on a "skip the gate" branch to convey that compressing a gate produces compounding downstream cost. The thirteen individual gate commands are grouped into the three phase-boundary checkpoints rather than drawn separately.](images/02-what-tic-toc-does-fig-04.png)
+*Figure 2.4 — Phase gates and what each catches*
+
 <!-- → [TABLE: Phase-gate table — columns: Gate, Question the gate asks, What breaks if skipped — rows for each major gate from /i4 → /l1 through /g2 → Cowork handoff] -->
+
+| Gate | Question the gate asks | What breaks if skipped |
+|---|---|---|
+| /i3 → /i4 (audience confirmed) | Who is the specific person you are writing for? | Audience drift — chapters address a category, not a reader, and exercises feel decorative |
+| /i4 → /l1 (thesis confirmed) | What is the one argument this book makes, in a sentence? | The book sprawls; chapters cover topics with no load-bearing claim to serve |
+| /l1 → /l4 (learning architecture) | What must the reader be able to do, at what Bloom's ceiling? | Outcomes stated as "understand" rather than demonstrable verbs; over-claimed outcomes slip through |
+| /l4 → /c1 (architecture confirmed) | Does the cognitive arc sequence prerequisites correctly? | Missing prerequisites; a chapter assumes a skill the book never taught |
+| /c1 → /g1 (chapter entries) | Does each chapter's bridge question commit the next chapter? | Chapter-to-chapter logic collapses; chapters stop connecting |
+| /g1 → /g2 (pre-diagnostic) | Are contested claims flagged and sources attributed? | Contested claims pass as settled; the brief over-promises |
+| /g2 → Cowork handoff | Does the completed TOC pass the seven-failure-mode diagnostic? | A defect ships into 50,000 words of drafting, where it costs 10–100× more to repair |
 
 What "confirmed" means at each gate is concrete. Tic TOC will ask explicitly: *I am proposing to mark this gate as confirmed. Do you confirm, or do you want to revise?* You can revise. You can ask for elaboration. The gate does not advance on inertia. It advances on your explicit agreement, which means you have a record of every architectural decision you made and the moment you made it.
 
@@ -153,7 +186,9 @@ Tic TOC asks one question at a time. It waits for an answer that has *content*. 
 
 The session's value is in the friction. Most of what a Tic TOC session produces could, in principle, be produced by a sufficiently self-critical author working alone. The problem is that self-criticism of this kind is nearly impossible to sustain across an entire specification session. We accept our first approximations. We paper over the vague spots with fluent sentences. We defer the difficult questions because they are difficult and the easy ones are ready. Tic TOC enforces a standard you cannot maintain against yourself, because the standard is applied question by question, and the prompt does not get tired.
 
-The cognitive load is real. John Sweller's work on cognitive load theory argues that sustained working memory engagement — the kind required when you are simultaneously holding audience profile, learning outcomes, chapter sequencing, and prerequisite structure — is finite and fatiguing.[^sweller] A two-hour Tic TOC session is more cognitively demanding than two hours of drafting, because drafting draws on what you already know, while the specification session requires you to construct what you do not yet know you need. Take a break between phases. The session is dialogue, not deliverable.
+The cognitive load is real. John Sweller's work on cognitive load theory argues that sustained working memory engagement — the kind required when you are simultaneously holding audience profile, learning outcomes, chapter sequencing, and prerequisite structure — is finite and fatiguing.[^sweller]
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/02-what-tic-toc-does-assertions.md -->
+ A two-hour Tic TOC session is more cognitively demanding than two hours of drafting, because drafting draws on what you already know, while the specification session requires you to construct what you do not yet know you need. Take a break between phases. The session is dialogue, not deliverable.
 
 [^sweller]: Sweller, J. (1988). "Cognitive Load During Problem Solving: Effects on Learning." *Cognitive Science*, 12(2), 257–285.
 
@@ -265,7 +300,9 @@ Use the response to revise your answer before the session. You are pre-running t
 
 ## Still puzzling
 
-The two-hour timebox is not empirically derived. Ericsson's deliberate-practice research supports focused sessions of sixty to ninety minutes;[^ericsson] Cirillo's Pomodoro literature supports twenty-five-minute cycles.[^cirillo] Two hours is a defensible heuristic — long enough for sustained specification judgment, short enough that a working author will commit to it. The number should be treated as an estimate, not a law.
+The two-hour timebox is not empirically derived. Ericsson's deliberate-practice research supports focused sessions of sixty to ninety minutes;[^ericsson] Cirillo's Pomodoro literature supports twenty-five-minute cycles.[^cirillo]
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/02-what-tic-toc-does-assertions.md -->
+ Two hours is a defensible heuristic — long enough for sustained specification judgment, short enough that a working author will commit to it. The number should be treated as an estimate, not a law.
 
 The three-discipline framing — curriculum theorist, acquisitions pragmatist, instructional designer — is editorial rather than academic. A practicing acquisitions editor might partition their own role differently. The framing is useful for the purposes of this book, not authoritative.
 
@@ -283,3 +320,31 @@ Whether Tic TOC's pushback texture holds across Claude versions is an open quest
 > "Read the Wikipedia article on Hilda Taba. In 300 words, explain how her inductive curriculum model maps onto what Tic TOC's /i1 (audience intake) phase tries to enforce — and identify one place where Tic TOC departs from Taba's approach."
 
 Taba was an Estonian-American curriculum theorist whose 1962 *Curriculum Development: Theory and Practice* argued for an inductive model that starts from specific student needs and builds upward to general principles. Tic TOC's /i3 question — *who is the specific person?* — is Taba's move at the conversation level. The Wikipedia article is short; the prompt asks you to read it once and write the comparison.
+
+---
+
+## Prompts
+
+### Figure 2.1 — The TIKTOC.md document map
+Build a vertical document-map hierarchy as one standalone HTML file with inline CSS and D3 7.9.0 from the CDN. Data shape: eight nodes, one per Part of the TIKTOC.md, in fixed reading order; each node carries a boolean "shown in chapter" flag (true for Parts 1, 2, 7, 8; false for Parts 3–6). Marks: eight uniform rectangles stacked top to bottom, threaded by a single thin vertical spine line. Channels: y position = Part order; fill versus hollow outline = shown versus not-shown. No quantitative axis, no zero baseline. Sort: Part number ascending. Annotate the four shown boxes with their titles (Book Concept and Thesis; Learner Profile; Learning Outcomes by Chapter; Chapter Entries); leave Parts 3–6 unlabeled to honestly mark them as not stated. Deliverable: one self-contained HTML file, inline CSS, D3 7.9.0 CDN, responsive via ResizeObserver, accessible SVG with title/desc.
+
+### Figure 2.2 — Author's outline vs. TIKTOC.md specification
+Build a two-column feature matrix as one standalone HTML file with inline CSS and D3 7.9.0 from the CDN. Data shape: six feature rows, each with a left value (outline = deferred) and a right value (TIKTOC.md = resolved). Marks: a 2-by-6 grid of cells; left-column cells rendered as hollow/partial, right-column cells rendered as solid fills, with a divider line between the two columns. Channels: y = feature row; column = outline versus specification; fill state = deferred versus resolved. No quantitative axis. Sort: rows in the order What it specifies, Audience, Reader capability, Cognitive level, Chapter logic, Executable without clarification. Label each row and both column headers. Deliverable: one self-contained HTML file, inline CSS, D3 7.9.0 CDN, responsive via ResizeObserver, accessible SVG with title/desc.
+
+### Figure 2.3 — The three disciplines triangle
+Build a triangular role-attribution diagram as one standalone HTML file with inline CSS and D3 7.9.0 from the CDN. Data shape: three vertex nodes (curriculum theorist, acquisitions pragmatist, instructional designer) each linked to one governed-phase target node. Marks: an equilateral triangle with a labeled node at each vertex, thin neutral edges, and one directional arrow from each vertex to a small target node. Channels: vertex color encodes discipline; arrow direction encodes governance; target-node label encodes the governed phase (intake/audience, positioning/comparable-text, capability-verb enforcement). No quantitative axis, no zero baseline. Annotate each vertex and each target node. Keep to exactly three vertices and three targets. Deliverable: one self-contained HTML file, inline CSS, D3 7.9.0 CDN, responsive via ResizeObserver, accessible SVG with title/desc.
+
+### Figure 2.4 — Phase gates and what each catches
+Build a left-to-right stage-gate process flowchart as one standalone HTML file with inline CSS and D3 7.9.0 from the CDN. Data shape: three sequential phase blocks (Intake, Learning Architecture, Chapter Architecture), three inter-phase gate checkpoints, a terminal /g2 diagnostic gate, and a Cowork-handoff endpoint — plus one "skip the gate" branch. Marks: rounded rectangles for phase blocks, diamonds for gate checkpoints, an arrow chain left to right, and a blockage glyph (⊣) on the skip branch. Channels: x position = phase order; block color encodes phase; diamond marks decision points. No quantitative axis, no zero baseline. Label the three phases, the gates, the /g2 diagnostic, the handoff, and the skip-branch consequence. Do not enumerate all thirteen individual gate commands. Deliverable: one self-contained HTML file, inline CSS, D3 7.9.0 CDN, responsive via ResizeObserver, accessible SVG with title/desc.
+
+---
+
+## References
+
+The following sources were verified during fact-checking and support confirmed factual claims in this chapter. See `factchecks/02-what-tic-toc-does-assertions.md` for the full report.
+
+1. Curtis, B., Krasner, H., & Iscoe, N. (1988). "A Field Study of the Software Design Process for Large Systems." *Communications of the ACM*, 31(11), 1268–1287. https://dl.acm.org/doi/10.1145/50087.50089
+2. Wiggins, G., & McTighe, J. (1998/2005). *Understanding by Design.* ASCD. https://ascd.org/el/articles/backward-design-for-forward-action
+3. Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives.* Longman.
+4. Cooper, R. G. (1990). "Stage-Gate Systems: A New Tool for Managing New Products." *Business Horizons*, 33(3), 44–54. https://ideas.repec.org/a/eee/bushor/v33y1990i3p44-54.html
+5. Taba, H. (1962). *Curriculum Development: Theory and Practice.* Harcourt, Brace & World.

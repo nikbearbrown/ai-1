@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Anatomy of a Visual Placeholder Comment
+  Book: AI+1
+  Chapter: 09-finishing-pass-and-figures
+  Figure: 01
+  Type: annotated example
+  Generated: 2026-05-28
+  Source: pantry/09-finishing-pass-and-figures-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">Anatomy of a Visual Placeholder Comment</title>
+  <desc>One placeholder comment string broken into three segments — the arrow grep target, the bracket type that selects a generator, and the brief after the colon — each with a callout naming its downstream role.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="09-finishing-pass-and-figures"
+      figure-number="01" figure-title="Anatomy of a Visual Placeholder Comment" figure-slug="placeholder-comment-anatomy"
+      figure-type="annotated example" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/09-finishing-pass-and-figures-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="40" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Anatomy of a Visual Placeholder Comment</text>
+
+  <!-- The comment string bar, segmented -->
+  <!-- Segment 1: arrow -->
+  <rect x="32" y="96" width="70" height="40" rx="0" fill="#FFFFFF" stroke="#C8860E" stroke-width="1.5"/>
+  <text x="67" y="121" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="13" fill="#2a1a0e">&lt;!-- →</text>
+  <!-- Segment 2: bracket type -->
+  <rect x="102" y="96" width="120" height="40" rx="0" fill="#FFFFFF" stroke="#787878" stroke-width="1.5"/>
+  <text x="162" y="121" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="13" fill="#2a1a0e">[INFOGRAPHIC:</text>
+  <!-- Segment 3: brief -->
+  <rect x="222" y="96" width="446" height="40" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="234" y="121" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="13" fill="#2a1a0e">three-node priority decision tree… ] --&gt;</text>
+
+  <!-- Callout lines -->
+  <line x1="67" y1="136" x2="67" y2="196" stroke="#C8860E" stroke-width="1"/>
+  <line x1="162" y1="136" x2="162" y2="196" stroke="#787878" stroke-width="1"/>
+  <line x1="380" y1="136" x2="380" y2="196" stroke="#2a1a0e" stroke-width="1"/>
+
+  <!-- Role cell 1 -->
+  <rect x="32" y="200" width="170" height="84" rx="0" fill="#FFFFFF" stroke="#C8860E" stroke-width="1"/>
+  <text x="46" y="222" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">The arrow</text>
+  <text x="46" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">A grep target —</text>
+  <text x="46" y="258" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">marks every spot the</text>
+  <text x="46" y="272" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">enrichment pass finds.</text>
+
+  <!-- Role cell 2 -->
+  <rect x="214" y="200" width="220" height="84" rx="0" fill="#FFFFFF" stroke="#787878" stroke-width="1"/>
+  <text x="228" y="222" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">The bracket type</text>
+  <text x="228" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Selects which generator</text>
+  <text x="228" y="258" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">to invoke (TABLE,</text>
+  <text x="228" y="272" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">INFOGRAPHIC, IMAGE…).</text>
+
+  <!-- Role cell 3 -->
+  <rect x="446" y="200" width="222" height="84" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="460" y="222" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">The brief (after colon)</text>
+  <text x="460" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">The figure brief — what</text>
+  <text x="460" y="258" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">the generator should</text>
+  <text x="460" y="272" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">actually draw.</text>
+
+  <text x="32" y="324" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">One comment, three jobs: it can be found, it routes to the right tool, and it carries the instructions.</text>
+</svg>

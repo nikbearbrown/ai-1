@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The four-status triage order</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-label { font-size: 12px; fill: var(--color-ink); }
+  .node-rank { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .status-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  .status-first { fill: var(--color-fill); stroke: var(--color-red); stroke-width: 1.5; }
+  .verified-rect { fill: var(--color-fill); stroke: var(--color-secondary); stroke-width: 1; stroke-dasharray: 4 3; }
+  .flow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const queue = [
+    { id: 'OUTDATED',     note: 'fastest · most embarrassing' },
+    { id: 'CONTRADICTED', note: 'slowest · most important' },
+    { id: 'UNVERIFIED',   note: 'decide: source, caveat, or cut' }
+  ];
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 820;
+    const totalHeight = Math.max(300, Math.min(360, totalWidth * 0.42));
+    const margin = { top: 70, right: 30, bottom: 90, left: 30 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('The four-status triage order');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('Three actionable statuses — OUTDATED, CONTRADICTED, UNVERIFIED — in left-to-right triage priority joined by arrows, with VERIFIED set off the track as the resolved no-action state.');
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('The four-status triage order');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Triage in order; the order tracks both urgency and effort.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const n = queue.length;
+    const gap = 40;
+    const nodeW = (chartWidth - gap * (n - 1)) / n;
+    const nodeH = 56;
+    const cy = chartHeight / 2 - 20;
+
+    const defs = svg.append('defs');
+    defs.append('marker').attr('id', 'arrT').attr('viewBox', '0 0 10 10')
+      .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+      .attr('orient', 'auto-start-reverse')
+      .append('path').attr('d', 'M0,0 L10,5 L0,10 z')
+      .attr('fill', getComputedStyle(document.body).getPropertyValue('--color-ink'));
+
+    const xs = queue.map((_, i) => i * (nodeW + gap));
+
+    for (let i = 0; i < n - 1; i++) {
+      gChart.append('path').attr('class', 'flow').attr('marker-end', 'url(#arrT)')
+        .attr('d', `M${xs[i] + nodeW},${cy + nodeH / 2} L${xs[i + 1] - 2},${cy + nodeH / 2}`);
+    }
+
+    queue.forEach((q, i) => {
+      const g = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', `Triage ${i + 1}: ${q.id} — ${q.note}`);
+      g.append('rect').attr('class', i === 0 ? 'status-first' : 'status-rect')
+        .attr('x', xs[i]).attr('y', cy).attr('width', nodeW).attr('height', nodeH).attr('rx', 4);
+      g.append('text').attr('class', 'node-rank')
+        .attr('x', xs[i] + nodeW / 2).attr('y', cy - 8).attr('text-anchor', 'middle').text(`${i + 1}`);
+      g.append('text').attr('class', 'node-label')
+        .attr('x', xs[i] + nodeW / 2).attr('y', cy + nodeH / 2 + 4).attr('text-anchor', 'middle').text(q.id);
+      g.append('text').attr('class', 'node-rank')
+        .attr('x', xs[i] + nodeW / 2).attr('y', cy + nodeH + 16).attr('text-anchor', 'middle').text(q.note);
+    });
+
+    // VERIFIED set off-track, below
+    const vY = cy + nodeH + 50;
+    const vW = nodeW;
+    const vX = xs[n - 1];
+    const g = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+      .attr('aria-label', 'VERIFIED: resolved, requires no triage');
+    g.append('rect').attr('class', 'verified-rect')
+      .attr('x', vX).attr('y', vY).attr('width', vW).attr('height', nodeH * 0.7).attr('rx', 4);
+    g.append('text').attr('class', 'node-label')
+      .attr('x', vX + vW / 2).attr('y', vY + nodeH * 0.35 + 4).attr('text-anchor', 'middle').text('VERIFIED');
+    g.append('text').attr('class', 'node-rank')
+      .attr('x', vX + vW / 2).attr('y', vY - 6).attr('text-anchor', 'middle').text('off the action track');
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

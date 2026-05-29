@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Five Cowork Failure Modes
+  Book: AI+1
+  Chapter: 07-chapter-writing
+  Figure: 01
+  Type: hierarchy/taxonomy
+  Generated: 2026-05-28
+  Source: pantry/07-chapter-writing-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">The Five Cowork Failure Modes</title>
+  <desc>Five failure modes of the Chapter Writer, each shown with its diagnostic test and the upstream signal that produces it, arranged as a three-column taxonomy.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="07-chapter-writing"
+      figure-number="01" figure-title="The Five Cowork Failure Modes" figure-slug="five-cowork-failure-modes"
+      figure-type="hierarchy/taxonomy" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/07-chapter-writing-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="40" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Five Cowork Failure Modes</text>
+
+  <!-- Column headers -->
+  <text x="32" y="74" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">FAILURE MODE</text>
+  <text x="248" y="74" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">DIAGNOSTIC TEST</text>
+  <text x="480" y="74" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#C8860E" letter-spacing="0.08em">UPSTREAM SIGNAL</text>
+
+  <line x1="32" y1="82" x2="668" y2="82" stroke="#2a1a0e" stroke-width="1"/>
+
+  <!-- Row 1: Voice drift -->
+  <text x="32" y="116" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">1. Voice drift</text>
+  <text x="248" y="116" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Read it aloud — does it</text>
+  <text x="248" y="130" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">sound like the author?</text>
+  <text x="480" y="116" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">Generic default register</text>
+  <text x="480" y="130" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">creeping back in</text>
+  <line x1="32" y1="146" x2="668" y2="146" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Row 2: Fabricated specificity -->
+  <text x="32" y="180" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">2. Fabricated specificity</text>
+  <text x="248" y="180" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Can you cite the source</text>
+  <text x="248" y="194" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">for that number or name?</text>
+  <text x="480" y="180" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">Confident detail with</text>
+  <text x="480" y="194" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">no grounding</text>
+  <line x1="32" y1="210" x2="668" y2="210" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Row 3: Missing domain judgment -->
+  <text x="32" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">3. Missing domain</text>
+  <text x="32" y="258" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">judgment</text>
+  <text x="248" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Is there a real call made</text>
+  <text x="248" y="258" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">per page, not just survey?</text>
+  <text x="480" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">Even-handed summary</text>
+  <text x="480" y="258" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">that takes no position</text>
+  <line x1="32" y1="274" x2="668" y2="274" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Row 4: Padded middle -->
+  <text x="32" y="308" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">4. Padded middle</text>
+  <text x="248" y="308" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Cut 25% — does the</text>
+  <text x="248" y="322" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">argument survive intact?</text>
+  <text x="480" y="308" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">Length added without</text>
+  <text x="480" y="322" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">new information</text>
+  <line x1="32" y1="338" x2="668" y2="338" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Row 5: Bridge questions -->
+  <text x="32" y="372" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">5. Bridge questions</text>
+  <text x="32" y="386" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">that don't bridge</text>
+  <text x="248" y="372" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Does the close name the</text>
+  <text x="248" y="386" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">next chapter's deliverable?</text>
+  <text x="480" y="372" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">Rhetorical question</text>
+  <text x="480" y="386" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">standing in for a handoff</text>
+  <line x1="32" y1="402" x2="668" y2="402" stroke="#D4D4D4" stroke-width="1"/>
+
+  <text x="32" y="440" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Each mode is diagnosed by its own test; the upstream signal names what produces it.</text>
+</svg>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The five Cowork failure modes</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-family: 'Inter', sans-serif; font-size: 13px; fill: var(--color-secondary); }
+  .col-header { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; fill: var(--color-secondary); }
+  .cell-text { font-family: 'Inter', sans-serif; font-size: 12px; fill: var(--color-ink); }
+  .cell-text.muted { fill: var(--color-secondary); }
+  .row-rule { stroke: var(--color-border); stroke-width: 1; }
+  .signal-cell { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 260px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const failureData = [
+  { mode: 'Voice drift', diagnostic: 'Read aloud; does the middle sound like the opening?', signal: 'Thin or absent voice section in TIKTOC.md', offlist: false },
+  { mode: 'Fabricated specificity', diagnostic: 'Can every number be named from the pantry?', signal: 'Thin Section 1 (Primary Sources) in the pantry', offlist: false },
+  { mode: 'Missing domain judgment', diagnostic: 'Would a peer see a practitioner-only sentence?', signal: 'Capability statements that describe topics, not outcomes', offlist: false },
+  { mode: 'Padded middle', diagnostic: 'Pencil pass: do >25% of sentences carry no load?', signal: 'Over-broad scope — 5,000-word target for 3,500-word argument', offlist: false },
+  { mode: "Bridge questions that don't bridge", diagnostic: "Does the next chapter's spec answer the closing question?", signal: 'Inter-chapter logic assumed, not specified', offlist: false },
+  { mode: 'Sycophancy', diagnostic: 'Does the draft ever genuinely push back?', signal: 'No declared "What would change my mind" position', offlist: true }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const margin = { top: 64, right: 24, bottom: 24, left: 24 };
+  const rowH = 56;
+  const headerH = 24;
+  const chartWidth = totalWidth - margin.left - margin.right;
+  const totalHeight = margin.top + headerH + failureData.length * rowH + margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The five Cowork failure modes');
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('A taxonomy of five Cowork failure modes plus an off-list sycophancy note, each row giving the mode name, its diagnostic test, and its upstream signal in TIKTOC.md or the pantry.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24)
+    .text('The five Cowork failure modes');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44)
+    .text('Mode, diagnostic test, and upstream signal');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+  const col1 = 0, col2w = chartWidth * 0.26, col3w = chartWidth * 0.43;
+  const col2 = col2w, col3 = col2w + col3w;
+  const colW = [col2w, col3w, chartWidth - col2w - col3w];
+
+  const headers = ['Mode', 'Diagnostic test', 'Upstream signal'];
+  const colX = [col1, col2, col3];
+  gChart.selectAll('.col-header').data(headers).join('text')
+    .attr('class', 'col-header').attr('x', (d, i) => colX[i]).attr('y', 14).text(d => d);
+
+  const rows = gChart.selectAll('.row').data(failureData).join('g')
+    .attr('class', 'row').attr('transform', (d, i) => `translate(0,${headerH + i * rowH})`)
+    .attr('tabindex', 0)
+    .attr('aria-label', d => `${d.mode}. Diagnostic: ${d.diagnostic}. Upstream signal: ${d.signal}.`);
+
+  rows.append('line').attr('class', 'row-rule')
+    .attr('x1', 0).attr('x2', chartWidth).attr('y1', 0).attr('y2', 0).attr('aria-hidden', 'true');
+
+  function wrap(text, width) {
+    text.each(function() {
+      const t = d3.select(this);
+      const words = t.text().split(/\s+/).reverse();
+      let word, line = [], lineNumber = 0;
+      const lineHeight = 14, y = t.attr('y'), x = t.attr('x');
+      let tspan = t.text(null).append('tspan').attr('x', x).attr('y', y).attr('dy', '0');
+      while ((word = words.pop())) {
+        line.push(word); tspan.text(line.join(' '));
+        if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+          line.pop(); tspan.text(line.join(' ')); line = [word];
+          tspan = t.append('tspan').attr('x', x).attr('y', y).attr('dy', ++lineNumber * lineHeight + 'px').text(word);
+        }
+      }
+    });
+  }
+
+  rows.append('text').attr('class', d => 'cell-text' + (d.offlist ? ' muted' : ''))
+    .attr('x', col1).attr('y', 18).text(d => d.mode).call(wrap, colW[0] - 8);
+  rows.append('text').attr('class', 'cell-text muted')
+    .attr('x', col2).attr('y', 18).text(d => d.diagnostic).call(wrap, colW[1] - 8);
+
+  rows.append('rect').attr('class', 'signal-cell')
+    .attr('x', col3 - 6).attr('y', 4).attr('width', colW[2]).attr('height', rowH - 12)
+    .attr('fill', 'var(--color-ochre)').attr('opacity', 0.12).attr('aria-hidden', 'true');
+  rows.append('text').attr('class', 'cell-text')
+    .attr('x', col3).attr('y', 18).text(d => d.signal).call(wrap, colW[2] - 12);
+
+  rows.append('rect').attr('x', 0).attr('y', 0).attr('width', chartWidth).attr('height', rowH)
+    .attr('fill', 'transparent')
+    .on('mouseover', (event, d) => {
+      tooltip.html(`<strong>${d.mode}</strong>${d.offlist ? ' (off the official list)' : ''}<br>${d.diagnostic}`)
+        .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+        .transition().duration(150).style('opacity', 1);
+    })
+    .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+    .on('mouseout', () => tooltip.transition().duration(100).style('opacity', 0));
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Phase gates and what each catches
+  Book: AI+1
+  Chapter: 02-what-tic-toc-does
+  Figure: 04
+  Type: process flowchart
+  Generated: 2026-05-28
+  Source: pantry/02-what-tic-toc-does-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-04">
+  <title id="fig-title-04">Tic TOC phase gates, left to right</title>
+  <desc>Three phases — Intake, Learning Architecture, Chapter Architecture — separated by checkpoint gates, ending in a /g2 diagnostic and the Cowork handoff. Skipping a gate pushes cost downstream.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="02-what-tic-toc-does"
+      figure-number="04" figure-title="Tic TOC phase gates, left to right" figure-slug="phase-gates"
+      figure-type="process flowchart" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/02-what-tic-toc-does-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Tic TOC phase gates, left to right</text>
+
+  <!-- Phase 1: Intake -->
+  <rect x="32" y="150" width="120" height="80" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="92" y="186" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Intake</text>
+  <text x="92" y="204" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">/i4 → /l1</text>
+
+  <!-- gate diamond 1 -->
+  <polygon points="192,190 212,170 232,190 212,210" stroke="#2a1a0e" stroke-width="1" fill="#FFFFFF"/>
+  <line x1="152" y1="190" x2="192" y2="190" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Phase 2: Learning Architecture -->
+  <rect x="252" y="150" width="120" height="80" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="312" y="180" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Learning</text>
+  <text x="312" y="196" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Architecture</text>
+  <text x="312" y="214" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">/l1 → /m1</text>
+  <line x1="232" y1="190" x2="252" y2="190" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- gate diamond 2 -->
+  <polygon points="412,190 432,170 452,190 432,210" stroke="#2a1a0e" stroke-width="1" fill="#FFFFFF"/>
+  <line x1="372" y1="190" x2="412" y2="190" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Phase 3: Chapter Architecture -->
+  <rect x="472" y="150" width="120" height="80" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="532" y="180" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Chapter</text>
+  <text x="532" y="196" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Architecture</text>
+  <text x="532" y="214" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">/c1 → /g2</text>
+  <line x1="452" y1="190" x2="472" y2="190" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- /g2 terminal diagnostic gate -->
+  <polygon points="632,190 652,165 672,190 652,215" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="652" y="148" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">/g2</text>
+  <line x1="592" y1="190" x2="628" y2="190" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- handoff terminal node below g2 -->
+  <line x1="652" y1="215" x2="652" y2="280" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="560" y="282" width="120" height="56" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="620" y="308" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Cowork</text>
+  <text x="620" y="324" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">handoff</text>
+
+  <!-- skip-the-gate branch with blockage (red = the compressed gate) -->
+  <path d="M 92 230 C 92 300, 300 300, 432 230" stroke="#2a1a0e" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <text x="240" y="316" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">skip the gate</text>
+  <!-- blockage symbol on the skip branch -->
+  <line x1="262" y1="278" x2="262" y2="302" stroke="#C8102E" stroke-width="3"/>
+  <text x="262" y="338" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">downstream cost</text>
+
+  <text x="32" y="392" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">ADVANCE ONLY ON EXPLICIT CONFIRMATION — COMPRESSING A GATE COMPOUNDS COST</text>
+</svg>

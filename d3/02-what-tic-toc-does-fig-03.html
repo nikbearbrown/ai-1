@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The three disciplines triangle</title>
+<style>
+  :root {
+    --color-white:#FFFFFF; --color-ink:#2a1a0e; --color-red:#C8102E;
+    --color-secondary:#545454; --color-border:#D4D4D4; --color-ochre:#C8860E; --color-fill:#F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-white:#111111; --color-ink:#F0EBE3; --color-red:#E8243A;
+      --color-secondary:#A0978C; --color-border:#2E2E2E; --color-ochre:#D49A30; --color-fill:#1A1A1A; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-size: 13px; fill: var(--color-secondary); }
+  .vertex-label { font-size: 12px; font-weight: 700; fill: var(--color-ink); }
+  .target-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 10px; fill: var(--color-secondary); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const vertices = [
+  { id:'curriculum',  label:'Curriculum theorist',  target:'Intake / audience',     color:'var(--color-red)' },
+  { id:'acquisitions',label:'Acquisitions pragmatist', target:'Positioning / comps', color:'var(--color-ochre)' },
+  { id:'instructional',label:'Instructional designer', target:'Capability verbs',     color:'var(--color-secondary)' }
+];
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const c = document.getElementById('chart');
+  const totalWidth = c.clientWidth || 800;
+  const totalHeight = Math.max(420, Math.min(520, totalWidth * 0.6));
+  const margin = { top: 64, right: 40, bottom: 40, left: 40 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
+  svg.append('title').attr('id','chart-title').text('The three disciplines triangle');
+  svg.append('desc').attr('id','chart-desc').text('A triangle with curriculum theorist, acquisitions pragmatist, and instructional designer at the vertices, each with an arrow to the Tic TOC phase it governs.');
+
+  svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('Three disciplines inside the prompt');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Each governs a phase of Tic TOC');
+
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const cx = w/2, cy = h/2, R = Math.min(w,h)*0.34;
+  const pts = [
+    { x: cx,            y: cy-R },
+    { x: cx-R*0.92,     y: cy+R*0.6 },
+    { x: cx+R*0.92,     y: cy+R*0.6 }
+  ];
+  // triangle edges
+  g.append('path').attr('d',`M ${pts[0].x} ${pts[0].y} L ${pts[1].x} ${pts[1].y} L ${pts[2].x} ${pts[2].y} Z`)
+    .attr('fill','none').attr('stroke','var(--color-border)').attr('stroke-width',1).attr('aria-hidden','true');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id','arrowT').attr('viewBox','0 0 10 10')
+    .attr('refX',9).attr('refY',5).attr('markerWidth',7).attr('markerHeight',7).attr('orient','auto-start-reverse')
+    .append('path').attr('d','M0,0 L10,5 L0,10 z').attr('fill','var(--color-secondary)');
+
+  // target offsets outward from centroid
+  const targets = [
+    { x: cx,        y: cy-R-46 },
+    { x: cx-R-30,   y: cy+R*0.6+40 },
+    { x: cx+R+30,   y: cy+R*0.6+40 }
+  ];
+
+  const tip = d3.select('body').append('div').attr('class','tooltip')
+    .style('position','absolute').style('pointer-events','none').style('opacity',0)
+    .style('background','var(--color-white)').style('border','1px solid var(--color-border)')
+    .style('padding','6px 10px').style('font',"13px 'Inter',sans-serif").style('color','var(--color-ink)');
+
+  vertices.forEach((v,i)=>{
+    const p = pts[i], t = targets[i];
+    // governance arrow vertex -> target
+    g.append('path').attr('d',`M ${p.x} ${p.y} L ${t.x} ${t.y}`)
+      .attr('stroke','var(--color-secondary)').attr('stroke-width',1).attr('fill','none')
+      .attr('marker-end','url(#arrowT)').attr('aria-hidden','true');
+    g.append('circle').attr('cx',p.x).attr('cy',p.y).attr('r',12)
+      .attr('fill',v.color).attr('stroke',v.color)
+      .attr('tabindex',0).attr('role','img').attr('aria-label',`${v.label} governs ${v.target}`)
+      .on('mouseover',(e)=>tip.html(`<strong>${v.label}</strong><br>governs: ${v.target}`).transition().duration(150).style('opacity',1))
+      .on('mousemove',(e)=>tip.style('left',(e.pageX+12)+'px').style('top',(e.pageY-28)+'px'))
+      .on('mouseout',()=>tip.transition().duration(100).style('opacity',0));
+    g.append('text').attr('class','vertex-label')
+      .attr('x', p.x).attr('y', i===0 ? p.y-20 : p.y+26).attr('text-anchor','middle').text(v.label);
+    g.append('text').attr('class','target-label')
+      .attr('x', t.x).attr('y', i===0 ? t.y-6 : t.y+14).attr('text-anchor','middle').text(v.target);
+  });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Worked Example: Eight-Section Vertical Flow
+  Book: AI+1
+  Chapter: 11-creating-figures
+  Figure: 04
+  Type: process flowchart (vertical, single linear sequence)
+  Generated: 2026-05-28
+  Source: pantry/11-creating-figures-cajal.md
+-->
+<svg viewBox="0 0 700 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-04">
+  <title id="fig-title-04">The Worked Example: Eight-Section Vertical Flow</title>
+  <desc>Eight uniform section boxes stacked top to bottom, one downward arrow between each adjacent pair, no branches or loops—a figure deliberately sitting at the eight-component ceiling.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="11-creating-figures"
+      figure-number="04" figure-title="The Worked Example: Eight-Section Vertical Flow" figure-slug="worked-example-eight-section-vertical-flow"
+      figure-type="process flowchart" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/11-creating-figures-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="600" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Worked Example: Eight-Section Vertical Flow</text>
+
+  <!-- 8 boxes. width 280, x=210. height 44, gap 16 (incl arrow). y0 = 72 -->
+  <!-- Box 1 — entry, red highlight -->
+  <rect x="210" y="72" width="280" height="44" rx="0" fill="#FFFFFF" stroke="#C8102E" stroke-width="1.5"/>
+  <text x="350" y="99" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#C8102E">Section 1 — entry</text>
+  <line x1="350" y1="116" x2="350" y2="136" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="138" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="165" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 2</text>
+  <line x1="350" y1="182" x2="350" y2="202" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="204" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="231" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 3</text>
+  <line x1="350" y1="248" x2="350" y2="268" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="270" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="297" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 4</text>
+  <line x1="350" y1="314" x2="350" y2="334" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="336" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="363" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 5</text>
+  <line x1="350" y1="380" x2="350" y2="400" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="402" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="429" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 6</text>
+  <line x1="350" y1="446" x2="350" y2="466" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="468" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="495" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 7</text>
+  <line x1="350" y1="512" x2="350" y2="532" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="534" width="280" height="44" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="350" y="561" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Section 8</text>
+
+  <!-- ceiling annotation -->
+  <text x="510" y="561" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">at the ceiling</text>
+  <line x1="500" y1="556" x2="492" y2="556" stroke="#C8860E" stroke-width="1.5"/>
+</svg>

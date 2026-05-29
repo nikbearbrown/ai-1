@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three LLM signatures on the same question</title>
+<style>
+  :root {
+    --color-white:#FFFFFF; --color-ink:#2a1a0e; --color-red:#C8102E;
+    --color-secondary:#545454; --color-border:#D4D4D4; --color-ochre:#C8860E; --color-fill:#F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-white:#111111; --color-ink:#F0EBE3; --color-red:#E8243A;
+      --color-secondary:#A0978C; --color-border:#2E2E2E; --color-ochre:#D49A30; --color-fill:#1A1A1A; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-size: 13px; fill: var(--color-secondary); }
+  .panel-head { font-size: 12px; font-weight: 700; fill: var(--color-ink); }
+  .sig-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 10px; fill: var(--color-secondary); }
+  .input-label { font-size: 12px; fill: var(--color-secondary); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const panels = [
+  { id:'claude', label:'Claude', sig:'hedges',      color:'var(--color-ochre)' },
+  { id:'gpt',    label:'GPT',    sig:'confident list', color:'var(--color-secondary)' },
+  { id:'gemini', label:'Gemini', sig:'source pins',  color:'var(--color-red)' }
+];
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const c = document.getElementById('chart');
+  const totalWidth = c.clientWidth || 800;
+  const totalHeight = Math.max(400, Math.min(480, totalWidth * 0.58));
+  const margin = { top: 96, right: 30, bottom: 28, left: 30 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
+  svg.append('title').attr('id','chart-title').text('Three LLM signatures on the same question');
+  svg.append('desc').attr('id','chart-desc').text('One shared question feeds three panels: Claude with hedge markers, GPT with confident enumerated bars, and Gemini with source-pin markers.');
+
+  svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('Three signatures, one question');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Hedges, confident lists, retrieval pins');
+
+  // shared input node at top center
+  const ix = margin.left + w/2, iy = 64;
+  svg.append('rect').attr('x',ix-70).attr('y',iy-16).attr('width',140).attr('height',26).attr('rx',6)
+    .attr('fill','none').attr('stroke','var(--color-ink)').attr('stroke-width',1.5);
+  svg.append('text').attr('class','input-label').attr('x',ix).attr('y',iy+2).attr('text-anchor','middle').text('Same question');
+
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const slot = w/3, panelW = slot*0.74, barH = 14, gap = 8;
+  const nBars = Math.max(3, Math.floor((h-30)/(barH+gap)));
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id','arrowP').attr('viewBox','0 0 10 10')
+    .attr('refX',9).attr('refY',5).attr('markerWidth',7).attr('markerHeight',7).attr('orient','auto-start-reverse')
+    .append('path').attr('d','M0,0 L10,5 L0,10 z').attr('fill','var(--color-secondary)');
+
+  const tip = d3.select('body').append('div').attr('class','tooltip')
+    .style('position','absolute').style('pointer-events','none').style('opacity',0)
+    .style('background','var(--color-white)').style('border','1px solid var(--color-border)')
+    .style('padding','6px 10px').style('font',"13px 'Inter',sans-serif").style('color','var(--color-ink)');
+
+  panels.forEach((p,i)=>{
+    const px = i*slot + (slot-panelW)/2;
+    // arrow from shared node
+    svg.append('path').attr('d',`M ${ix} ${iy+12} L ${margin.left+px+panelW/2} ${margin.top}`)
+      .attr('stroke','var(--color-secondary)').attr('stroke-width',1).attr('fill','none').attr('marker-end','url(#arrowP)').attr('aria-hidden','true');
+    g.append('text').attr('class','panel-head').attr('x',px+panelW/2).attr('y',-6).attr('text-anchor','middle').text(p.label);
+    // text-block bars
+    for(let b=0;b<nBars;b++){
+      const by = b*(barH+gap)+8;
+      const wfrac = (b%3===2)?0.6:1;
+      g.append('rect').attr('x',px).attr('y',by).attr('width',panelW*wfrac).attr('height',barH).attr('rx',2)
+        .attr('fill','var(--color-fill)').attr('stroke','var(--color-border)').attr('stroke-width',1);
+      // signature markers in margin
+      if(p.sig==='hedges'){
+        g.append('circle').attr('cx',px-8).attr('cy',by+barH/2).attr('r',4).attr('fill','none').attr('stroke',p.color).attr('stroke-width',2);
+      } else if(p.sig==='source pins'){
+        g.append('line').attr('x1',px+panelW*wfrac+4).attr('y1',by+barH/2-4).attr('x2',px+panelW*wfrac+4).attr('y2',by+barH/2+4).attr('stroke',p.color).attr('stroke-width',2);
+        g.append('circle').attr('cx',px+panelW*wfrac+4).attr('cy',by+barH/2-5).attr('r',2.5).attr('fill',p.color);
+      } else {
+        g.append('rect').attr('x',px-9).attr('y',by+barH/2-2).attr('width',5).attr('height',4).attr('fill',p.color);
+      }
+    }
+    // signature caption (interactive)
+    g.append('rect').attr('x',px).attr('y',h-20).attr('width',panelW).attr('height',16).attr('fill','none')
+      .attr('tabindex',0).attr('role','img').attr('aria-label',`${p.label} signature: ${p.sig}`)
+      .on('mouseover',(e)=>tip.html(`<strong>${p.label}</strong><br>signature: ${p.sig}`).transition().duration(150).style('opacity',1))
+      .on('mousemove',(e)=>tip.style('left',(e.pageX+12)+'px').style('top',(e.pageY-28)+'px'))
+      .on('mouseout',()=>tip.transition().duration(100).style('opacity',0));
+    g.append('text').attr('class','sig-label').attr('x',px+panelW/2).attr('y',h-8).attr('text-anchor','middle').attr('fill',p.color).text(p.sig);
+  });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

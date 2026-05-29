@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Fact-Check Classification Grid
+  Book: AI+1
+  Chapter: 12-final-check-and-build
+  Figure: 02
+  Type: structural schematic (two-axis classification grid, blank)
+  Generated: 2026-05-28
+  Source: pantry/12-final-check-and-build-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-02">
+  <title id="fig-title-02">Fact-Check Classification Grid</title>
+  <desc>A blank two-axis matrix: five claim-type rows down the left axis, six content-category columns across the top. The intersection cells are left empty by design.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="12-final-check-and-build"
+      figure-number="02" figure-title="Fact-Check Classification Grid" figure-slug="fact-check-classification-grid"
+      figure-type="structural schematic" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/12-final-check-and-build-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Fact-Check Classification Grid</text>
+
+  <!-- Geometry: grid origin x=180, y=110. 6 columns of 78 wide -> width 468 (to 648). 5 rows of 48 -> height 240 (to 350) -->
+  <!-- Column axis band (top) -->
+  <rect x="180" y="86" width="468" height="24" rx="0" fill="#F5F5F5" stroke="#2a1a0e" stroke-width="1"/>
+  <g font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#2a1a0e" letter-spacing="0.04em" text-anchor="middle">
+    <text x="219" y="103">STAT</text>
+    <text x="297" y="103">GUIDELINE</text>
+    <text x="375" y="103">APPROVAL</text>
+    <text x="453" y="103">EVIDENCE</text>
+    <text x="531" y="103">SPECIALIST</text>
+    <text x="609" y="103">CURRENT</text>
+  </g>
+  <text x="414" y="74" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454" letter-spacing="0.08em">CONTENT CATEGORY</text>
+
+  <!-- Row axis band (left) -->
+  <rect x="40" y="110" width="140" height="240" rx="0" fill="#F5F5F5" stroke="#2a1a0e" stroke-width="1"/>
+  <g font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">
+    <text x="110" y="138" text-anchor="middle">Basic</text>
+    <text x="110" y="186" text-anchor="middle">Emphatic</text>
+    <text x="110" y="234" text-anchor="middle">Positive</text>
+    <text x="110" y="282" text-anchor="middle">I-language</text>
+    <text x="110" y="330" text-anchor="middle">Combination</text>
+  </g>
+  <text x="60" y="230" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454" letter-spacing="0.08em" transform="rotate(-90 60 230)">CLAIM TYPE</text>
+
+  <!-- Empty intersection grid -->
+  <rect x="180" y="110" width="468" height="240" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- vertical grid lines (5 interior) -->
+  <g stroke="#D4D4D4" stroke-width="1">
+    <line x1="258" y1="110" x2="258" y2="350"/>
+    <line x1="336" y1="110" x2="336" y2="350"/>
+    <line x1="414" y1="110" x2="414" y2="350"/>
+    <line x1="492" y1="110" x2="492" y2="350"/>
+    <line x1="570" y1="110" x2="570" y2="350"/>
+    <!-- horizontal grid lines (4 interior) -->
+    <line x1="180" y1="158" x2="648" y2="158"/>
+    <line x1="180" y1="206" x2="648" y2="206"/>
+    <line x1="180" y1="254" x2="648" y2="254"/>
+    <line x1="180" y1="302" x2="648" y2="302"/>
+  </g>
+
+  <text x="180" y="378" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">5 CLAIM TYPES × 6 CONTENT CATEGORIES — CELLS POPULATED PER CLAIM</text>
+</svg>

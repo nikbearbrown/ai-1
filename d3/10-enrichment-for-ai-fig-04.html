@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit pattern table</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .head-text { font-size: 12px; font-weight: 700; fill: var(--color-ink); }
+  .cell-text { font-size: 11px; fill: var(--color-ink); }
+  .grid { stroke: var(--color-ink); stroke-width: 1; fill: none; }
+  .head-band { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const cols = ['Pattern', 'Diagnostic symptom', 'Diagnosis', 'Fix'];
+  const rows = [
+    { tag: 'reddishpurple', cells: ['Interchangeable', 'Two exercises could swap chapters', 'At least one is generic', 'Rewrite to a chapter-specific artifact'] },
+    { tag: 'skyblue',       cells: ['Claude-documentation', 'Teaches Claude itself', 'Documentation, not pedagogy', 'Move to Chapter 00'] },
+    { tag: 'orange',        cells: ['No-deliverable', 'No saved artifact', 'A Dig Deeper in disguise', 'Demote or add a deliverable'] }
+  ];
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 820;
+    const totalHeight = Math.max(280, Math.min(340, totalWidth * 0.40));
+    const margin = { top: 64, right: 24, bottom: 24, left: 24 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('Audit pattern table');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('Three labeled audit-failure rows under one header band, each tagged by a left-edge color swatch, with columns reading left to right from diagnostic symptom through diagnosis to fix.');
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('Audit pattern table');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Failure patterns visible only when exercises are read out of context.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const swatchW = 8;
+    const tableW = chartWidth - swatchW;
+    const headH = 30;
+    const rowH = (chartHeight - headH) / rows.length;
+    const colW = tableW / cols.length;
+
+    const tagColor = {
+      reddishpurple: getComputedStyle(document.body).getPropertyValue('--color-ochre'),
+      skyblue: getComputedStyle(document.body).getPropertyValue('--color-secondary'),
+      orange: getComputedStyle(document.body).getPropertyValue('--color-red')
+    };
+
+    // header band
+    gChart.append('rect').attr('class', 'head-band')
+      .attr('x', swatchW).attr('y', 0).attr('width', tableW).attr('height', headH);
+    cols.forEach((c, i) => {
+      gChart.append('text').attr('class', 'head-text')
+        .attr('x', swatchW + i * colW + 8).attr('y', headH / 2 + 4).text(c);
+    });
+
+    rows.forEach((r, ri) => {
+      const ry = headH + ri * rowH;
+      gChart.append('rect')
+        .attr('x', 0).attr('y', ry).attr('width', swatchW).attr('height', rowH)
+        .attr('fill', tagColor[r.tag]);
+      const g = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', r.cells.join(', '));
+      g.append('rect').attr('class', 'grid')
+        .attr('x', swatchW).attr('y', ry).attr('width', tableW).attr('height', rowH);
+      r.cells.forEach((cell, ci) => {
+        if (ci > 0) {
+          gChart.append('line').attr('class', 'grid')
+            .attr('x1', swatchW + ci * colW).attr('y1', ry)
+            .attr('x2', swatchW + ci * colW).attr('y2', ry + rowH);
+        }
+        g.append('text').attr('class', 'cell-text')
+          .attr('x', swatchW + ci * colW + 8).attr('y', ry + rowH / 2 + 4).text(cell);
+      });
+    });
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

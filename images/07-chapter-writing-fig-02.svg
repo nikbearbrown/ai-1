@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Chapter Writer's Read-Then-Draft Sequence
+  Book: AI+1
+  Chapter: 07-chapter-writing
+  Figure: 02
+  Type: process flowchart
+  Generated: 2026-05-28
+  Source: pantry/07-chapter-writing-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-02">
+  <title id="fig-title-02">The Chapter Writer's Read-Then-Draft Sequence</title>
+  <desc>Five ordered steps: read TIKTOC.md, read book.md, audit the chapters folder and skip finished work, read the pantry file, then draft. Step three has an idempotency branch that leaves existing chapters untouched.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="07-chapter-writing"
+      figure-number="02" figure-title="The Chapter Writer's Read-Then-Draft Sequence" figure-slug="read-then-draft-sequence"
+      figure-type="process flowchart" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/07-chapter-writing-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="40" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Chapter Writer's Read-Then-Draft Sequence</text>
+
+  <!-- Node 1 -->
+  <rect x="32" y="150" width="116" height="56" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="90" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">1 — read</text>
+  <text x="90" y="188" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">TIKTOC.md</text>
+
+  <!-- Node 2 -->
+  <rect x="180" y="150" width="116" height="56" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="238" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">2 — read</text>
+  <text x="238" y="188" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">book.md</text>
+
+  <!-- Node 3 (audit + idempotency) -->
+  <rect x="328" y="150" width="116" height="56" rx="0" fill="#FFFFFF" stroke="#C8102E" stroke-width="1.5"/>
+  <text x="386" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">3 — audit</text>
+  <text x="386" y="188" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">chapters/</text>
+
+  <!-- Node 4 -->
+  <rect x="476" y="150" width="116" height="56" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="534" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">4 — read</text>
+  <text x="534" y="188" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">pantry file</text>
+
+  <!-- Node 5 -->
+  <rect x="608" y="150" width="60" height="56" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="638" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">5</text>
+  <text x="638" y="188" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">draft</text>
+
+  <!-- Main flow arrows -->
+  <line x1="148" y1="178" x2="178" y2="178" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="296" y1="178" x2="326" y2="178" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="444" y1="178" x2="474" y2="178" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="592" y1="178" x2="606" y2="178" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Idempotency branch off node 3 -->
+  <line x1="386" y1="206" x2="386" y2="270" stroke="#C8102E" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="318" y="270" width="136" height="48" rx="0" fill="#FFFFFF" stroke="#C8102E" stroke-width="1.5"/>
+  <text x="386" y="290" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">chapter exists →</text>
+  <text x="386" y="305" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">skip, leave alone</text>
+  <text x="460" y="246" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">IDEMPOTENCY CHECK</text>
+
+  <text x="32" y="370" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">For every undrafted chapter, in order. Finished chapters are detected at step 3 and left untouched.</text>
+</svg>

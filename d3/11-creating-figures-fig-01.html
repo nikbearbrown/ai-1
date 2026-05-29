@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The component ceiling: seven vs four</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .bar-rect { fill: var(--color-secondary); }
+  .tick text { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .tick line, .domain { stroke: var(--color-border); }
+  .axis-title { font-size: 12px; fill: var(--color-secondary); }
+  .bar-label { font-size: 12px; fill: var(--color-ink); text-anchor: middle; }
+  .threshold { stroke: var(--color-red); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .threshold-label { font-size: 11px; fill: var(--color-red); }
+  .gridline { stroke: var(--color-border); stroke-opacity: 0.6; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const data = [
+    { label: "Miller 1956", value: 7 },
+    { label: "Cowan 2001",  value: 4 }
+  ];
+  const CEILING = 7;
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 720;
+    const totalHeight = Math.max(340, Math.min(440, totalWidth * 0.6));
+    const margin = { top: 64, right: 40, bottom: 56, left: 64 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('The component ceiling: seven vs four');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text("Two bars on a zero-based count axis: Miller's seven-item working-memory claim and Cowan's revised four-chunk capacity, crossed by a threshold line marking the six-to-eight component ceiling.");
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('The component ceiling: seven vs four');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Working-memory chunks a reader can hold at once.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const xScaleBand = d3.scaleBand().domain(data.map(d => d.label)).range([0, chartWidth]).padding(0.4);
+    const yScaleLinear = d3.scaleLinear().domain([0, 8]).range([chartHeight, 0]);
+
+    const yAxis = d3.axisLeft(yScaleLinear).ticks(8).tickFormat(d3.format('d'));
+    gChart.append('g').attr('class', 'axis').call(yAxis);
+    gChart.append('g').attr('class', 'axis')
+      .attr('transform', `translate(0,${chartHeight})`)
+      .call(d3.axisBottom(xScaleBand));
+
+    // gridlines
+    gChart.append('g').selectAll('line').data(yScaleLinear.ticks(8)).join('line')
+      .attr('class', 'gridline').attr('aria-hidden', 'true')
+      .attr('x1', 0).attr('x2', chartWidth)
+      .attr('y1', d => yScaleLinear(d)).attr('y2', d => yScaleLinear(d));
+
+    gChart.append('text').attr('class', 'axis-title')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -chartHeight / 2).attr('y', -46).attr('text-anchor', 'middle')
+      .text('Items held in working memory');
+
+    gChart.selectAll('.bar-rect').data(data).join('rect')
+      .attr('class', 'bar-rect')
+      .attr('tabindex', 0).attr('role', 'img')
+      .attr('aria-label', d => `${d.label}: ${d.value} items`)
+      .attr('x', d => xScaleBand(d.label))
+      .attr('y', d => yScaleLinear(d.value))
+      .attr('width', xScaleBand.bandwidth())
+      .attr('height', d => chartHeight - yScaleLinear(d.value));
+
+    gChart.selectAll('.bar-label').data(data).join('text')
+      .attr('class', 'bar-label')
+      .attr('x', d => xScaleBand(d.label) + xScaleBand.bandwidth() / 2)
+      .attr('y', d => yScaleLinear(d.value) - 8)
+      .text(d => d.value);
+
+    // threshold line for the 6-8 ceiling, drawn at 7
+    gChart.append('line').attr('class', 'threshold')
+      .attr('x1', 0).attr('x2', chartWidth)
+      .attr('y1', yScaleLinear(CEILING)).attr('y2', yScaleLinear(CEILING));
+    gChart.append('text').attr('class', 'threshold-label')
+      .attr('x', chartWidth - 4).attr('y', yScaleLinear(CEILING) - 6)
+      .attr('text-anchor', 'end').text('6–8 component ceiling');
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

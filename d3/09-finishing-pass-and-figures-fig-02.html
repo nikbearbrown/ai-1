@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAJAL figure-priority decision path</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .node-rect.critical { stroke: var(--color-red); }
+  .node-label { font-size: 12px; fill: var(--color-ink); text-anchor: middle; }
+  .node-test { font-size: 11px; fill: var(--color-secondary); text-anchor: middle; }
+  .flow-arrow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  .keep-arrow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  .keep-label { font-size: 11px; fill: var(--color-ink); }
+  .skip-label { font-size: 11px; fill: var(--color-secondary); }
+  .block-glyph { stroke: var(--color-red); stroke-width: 2; }
+  .demote-arrow { stroke: var(--color-ochre); stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 240px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const nodeData = [
+  { key: 'critical', label: 'Critical', test: 'Maps to a primary outcome?', detail: 'If not, demote it and find one that does.' },
+  { key: 'important', label: 'Important', test: 'Supports a key argument?', detail: 'Usually safe — supports but not load-bearing.' },
+  { key: 'supplementary', label: 'Supplementary', test: 'Skip unless time allows', detail: 'Often the honest answer is to skip this one.' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const margin = { top: 64, right: 24, bottom: 24, left: 24 };
+  const chartWidth = totalWidth - margin.left - margin.right;
+  const nodeW = Math.min(220, chartWidth * 0.5), nodeH = 58, gapY = 44;
+  const nodeX = 0;
+  const totalHeight = margin.top + nodeData.length * nodeH + (nodeData.length - 1) * gapY + margin.bottom + 30;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('CAJAL figure-priority decision path');
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('A top-to-bottom decision path with three nodes — Critical, Important, Supplementary — each with a yes/no test, a keep outcome to the side, a demote redirect off the Critical node, and a terminal skip at the Supplementary node.');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrInkD').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ink)');
+  defs.append('marker').attr('id', 'arrOchreD').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ochre)');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24).text('Figure-priority decision path');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44).text('The ten-minute editorial pass');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const positions = nodeData.map((d, i) => ({ x: nodeX, y: i * (nodeH + gapY) }));
+  const outX = nodeX + nodeW + 30;
+
+  const gLinks = gChart.append('g').attr('aria-hidden', 'true');
+  positions.forEach((p, i) => {
+    if (i === 0) return;
+    const prev = positions[i - 1];
+    gLinks.append('path').attr('class', 'flow-arrow').attr('marker-end', 'url(#arrInkD)')
+      .attr('d', `M${prev.x + nodeW / 2},${prev.y + nodeH} L${p.x + nodeW / 2},${p.y}`);
+  });
+
+  // keep outcomes off Critical and Important nodes
+  [0, 1].forEach(i => {
+    const p = positions[i];
+    gLinks.append('path').attr('class', 'keep-arrow').attr('marker-end', 'url(#arrInkD)')
+      .attr('d', `M${p.x + nodeW},${p.y + nodeH / 2} h${outX - (p.x + nodeW)}`);
+    gChart.append('text').attr('class', 'keep-label').attr('x', outX + 6).attr('y', p.y + nodeH / 2 + 4).text('keep');
+  });
+
+  // demote redirect off Critical (back up / aside in ochre)
+  const c = positions[0];
+  gLinks.append('path').attr('class', 'demote-arrow').attr('marker-end', 'url(#arrOchreD)')
+    .attr('d', `M${c.x},${c.y + nodeH - 8} C${c.x - 20},${c.y + nodeH + 20} ${c.x + nodeW / 2 - 30},${c.y + nodeH + gapY - 4} ${c.x + nodeW / 2 - 10},${c.y + nodeH + gapY}`);
+  gChart.append('text').attr('class', 'skip-label').attr('x', c.x - 6).attr('y', c.y + nodeH + 22).text('demote');
+
+  // skip terminal at Supplementary
+  const s = positions[2];
+  gLinks.append('line').attr('class', 'block-glyph')
+    .attr('x1', s.x + nodeW + 14).attr('y1', s.y + nodeH / 2 - 9)
+    .attr('x2', s.x + nodeW + 14).attr('y2', s.y + nodeH / 2 + 9);
+  gLinks.append('path').attr('class', 'keep-arrow')
+    .attr('d', `M${s.x + nodeW},${s.y + nodeH / 2} h12`);
+  gChart.append('text').attr('class', 'skip-label').attr('x', s.x + nodeW + 22).attr('y', s.y + nodeH / 2 + 4).text('skip');
+
+  const nodes = gChart.selectAll('.node').data(nodeData).join('g')
+    .attr('class', 'node').attr('transform', (d, i) => `translate(${positions[i].x},${positions[i].y})`)
+    .attr('tabindex', 0).attr('aria-label', d => `${d.label}: ${d.test}. ${d.detail}`);
+
+  nodes.append('rect').attr('class', d => 'node-rect' + (d.key === 'critical' ? ' critical' : ''))
+    .attr('width', nodeW).attr('height', nodeH);
+  nodes.append('text').attr('class', 'node-label').attr('x', nodeW / 2).attr('y', 22).text(d => d.label);
+  nodes.append('text').attr('class', 'node-test').attr('x', nodeW / 2).attr('y', 42).text(d => d.test);
+
+  nodes.on('mouseover', (event, d) => {
+    nodes.selectAll('.node-rect').attr('opacity', 0.4);
+    d3.select(event.currentTarget).select('.node-rect').attr('opacity', 1);
+    tooltip.html(`<strong>${d.label}</strong><br>${d.detail}`)
+      .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+      .transition().duration(150).style('opacity', 1);
+  })
+  .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+  .on('mouseout', () => { nodes.selectAll('.node-rect').attr('opacity', 1); tooltip.transition().duration(100).style('opacity', 0); });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

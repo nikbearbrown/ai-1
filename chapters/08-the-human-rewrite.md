@@ -88,6 +88,9 @@ A sixth rewrite target, off the official list: *sycophancy reversal*. Cowork dra
 
 [^sycophancy]: Sharma, Mrinank et al. (2023). "Towards Understanding Sycophancy in Language Models." Anthropic preprint.
 
+![Five paired rows mapping each failure mode on the left to its rewrite move on the right, joined by a left-to-right arrow: voice drift to specificity injection, fabricated specificity to cite-replace-or-cut, missing domain judgment to one judgment per page, padded middle to cut 25 percent, bridge question to name the next deliverable.](images/08-the-human-rewrite-fig-02.png)
+*Figure 8.2 — Five failure modes mapped to their rewrite moves*
+
 ---
 
 ## The Combined Test — fourteen items
@@ -134,6 +137,26 @@ Fourteen items in four groups, reproduced as a scorecard in Appendix F. Applied 
 
 <!-- → [TABLE: Combined Test scorecard — fourteen items, four groups, columns for Pass/Fail and one-sentence evidence; designed for twenty-minute use] -->
 
+| Group | # | Item | Pass / Fail | Evidence (one sentence) |
+|---|---|---|---|---|
+| A — Voice and specificity | 1 | Scene-first opening | | |
+| A — Voice and specificity | 2 | Domain-specific examples throughout (≥80%) | | |
+| A — Voice and specificity | 3 | Author voice consistent (read aloud) | | |
+| A — Voice and specificity | 4 | No fabricated specificity | | |
+| B — Structure | 5 | Mechanism before terminology | | |
+| B — Structure | 6 | Named trade-offs | | |
+| B — Structure | 7 | No padded middle | | |
+| B — Structure | 8 | Bridge question that bridges | | |
+| C — Pedagogy | 9 | Capability statement honored | | |
+| C — Pedagogy | 10 | Bloom's level achieved | | |
+| C — Pedagogy | 11 | Exercises require the action they name | | |
+| D — Authorial accountability | 12 | Author judgment present | | |
+| D — Authorial accountability | 13 | Contested claims flagged or argued | | |
+| D — Authorial accountability | 14 | What would change my mind | | |
+
+![The Combined Test laid out as a scorecard — four group blocks stacked top to bottom (Group A four items, Group B four items, Group C three items, Group D three items) with item rows indented beneath each header and a single right-hand column reserved for the Pass/Fail mark.](images/08-the-human-rewrite-fig-01.png)
+*Figure 8.1 — The Combined Test: fourteen items in four groups*
+
 The two hardest to self-assess: items 3 and 8. Voice drift is gradual and you read your own chapter in your own voice even where the words are not yours. Bridge failures are invisible because you know what is coming in the next chapter — the reader does not. Both require an outside ear. Designers have peers. This is what peers are for.
 
 The Combined Test is a scaffold. Nancy Sommers and Laura Saltz's longitudinal study of Harvard undergraduates found that the move from novice to expert was the move from rule-following to judgment.[^sommers-saltz] The test catches the failures the author can name. Voice, the irreducible thing, is not on the test. The author either supplies it or the chapter does not pass.
@@ -165,6 +188,9 @@ This is the version most authors stop at. It feels finished because the worst fa
 > Three LLMs answering the same question about your profession give you something no single LLM does: a map of agreement, divergence, and silence. Claude knows the published research. ChatGPT has read the trade press. Gemini has scraped the LinkedIn posts. Run the same prompt across all three on a Tuesday afternoon, and by Wednesday morning you have a domain research brief — the document Tic TOC will demand at /i1. The three answers will not match. That is the point. Where they agree, the field has settled. Where they diverge, you have something to ask a colleague about. Where they all hedge, you have probably hit a contested claim worth flagging.
 
 What changed from first to second pass: the opening is now a scene — Tuesday, Wednesday, three named LLMs; the mechanism is explained from first principles, with each LLM's training texture named; a trade-off is embedded — three answers won't match, and that is the point, not a problem; one judgment is present — "worth flagging" is the author's call, not the model's. Items 1, 3, 5, 6, 12 now pass. The paragraph is forty words longer than the first pass, but every word is doing work.
+
+![Three panels left to right — the Cowork draft, the first-pass structural rewrite, the second-pass voice rewrite — joined by two transition arrows differentiated to mark the novice fix-failure delta and the expert argument-and-voice delta.](images/08-the-human-rewrite-fig-03.png)
+*Figure 8.3 — The three-pass rewrite progression*
 
 <!-- → [IMAGE: Side-by-side spread of the three-pass progression — Cowork draft, first-pass, second-pass — with marginal annotations matching each revision to the Combined Test item it addresses] -->
 
@@ -208,7 +234,8 @@ One practical note on the blank-page counter-move: rewrite in your own document,
 
 The pipeline is indifferent to whether the human rewrite happens. It does not check. The Finishing Pass in Chapter 9 will run on whatever text is in `chapters/`. The EPUB will validate. KDP will accept it. The book will be on sale.
 
-The pipeline is indifferent. The reader is not. The reader who opens your chapter in six months will know in the second sentence whether this is your book or a Cowork dump with your name on it. Padmakumar and He's 2024 measurement of 10–20% lexical-diversity reduction in LLM-assisted writing is the empirical version of that reader's instinct.[^padmakumar] The model's tendency is to converge on the cheap phrase forms that make up most of its training data. The rewrite is what breaks the convergence. Nothing else in the pipeline does.
+The pipeline is indifferent. The reader is not. The reader who opens your chapter in six months will know in the second sentence whether this is your book or a Cowork dump with your name on it. Padmakumar and He's 2024 measurement of 10–20% lexical-diversity reduction in LLM-assisted writing is the empirical version of that reader's instinct.[^padmakumar]
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/08-the-human-rewrite-assertions.md --> The model's tendency is to converge on the cheap phrase forms that make up most of its training data. The rewrite is what breaks the convergence. Nothing else in the pipeline does.
 
 [^padmakumar]: Padmakumar, Vishakh and He He (2024). "Does Writing with Language Models Reduce Content Diversity?" *ICLR 2024*.
 
@@ -287,3 +314,27 @@ What about voice drift in the rewrite itself? Lee and colleagues at CHI 2022 mea
 Does the Combined Test apply to frontmatter and backmatter? Partially. Items 1, 2, 3, 12, 14 still apply. Items 5–11 apply differently — frontmatter does not need a worked example. Use judgment. The test is a scaffold, not a rulebook.
 
 What if a chapter passes the test and the author still hates it? The test catches the failures it specifies. Persistent dissatisfaction is information. There is usually an item the test should have that this draft has not yet articulated. Investigate. Add it.
+
+---
+
+## Prompts
+
+### Figure 8.1 — The Combined Test: fourteen items in four groups
+Build a grouped scorecard table as a single self-contained HTML file with inline CSS and D3 7.9.0 from the cdnjs CDN. Data shape: four group objects (A, B, C, D) each containing an array of item objects with number and label; group sizes are 4, 4, 3, 3 for fourteen items total. Marks: four group blocks stacked top to bottom, each opening with a group header rule; item rows indented beneath their header; one narrow right-hand column per row reserved for a Pass/Fail mark. Channels: vertical position encodes group and item order; indentation encodes the row-subordinate-to-header hierarchy; the Pass/Fail column carries a distinct tint to separate it from item structure. Sort: fixed group then item order. Annotation: group headers; a column header for Pass/Fail. No zero baseline (categorical). Deliverable: one HTML file, inline CSS, D3 7.9.0, responsive via ResizeObserver, role="img" with title and desc.
+
+### Figure 8.2 — Five failure modes mapped to their rewrite moves
+Build a two-column comparison-panel figure as a single self-contained HTML file with inline CSS and D3 7.9.0 from the cdnjs CDN. Data shape: five pair objects, each with a failure field and a move field — voice drift / specificity injection, fabricated specificity / cite-replace-or-cut, missing domain judgment / one judgment per page, padded middle / cut 25 percent, bridge question / name next deliverable. Marks: five rows; each row a left failure cell and a right move cell joined by one left-to-right arrow. Channels: left-right position encodes the failure-to-move transformation; the left column uses a set-apart fill for failures and the right column a distinct fill for moves. Sort: fixed authored order matching the chapter's five sub-sections. Annotation: one arrow per row. No zero baseline (categorical). Deliverable: one HTML file, inline CSS, D3 7.9.0, responsive via ResizeObserver, role="img" with title and desc.
+
+### Figure 8.3 — The three-pass rewrite progression
+Build a three-panel progression figure as a single self-contained HTML file with inline CSS and D3 7.9.0 from the cdnjs CDN. Data shape: three panel objects (Cowork draft, first-pass structural, second-pass voice) and two transition objects (delta 1 = fix failure / novice, delta 2 = argument and voice / expert). Marks: three equal panels left to right connected by two arrows; the two arrows visually differentiated to encode the novice-versus-expert delta distinction. Channels: x-position encodes pass order; arrow styling encodes the qualitative difference between the two deltas. Sort: fixed left-to-right pass order. If width-constrained, stack panels vertically with downward arrows. Annotation: panel labels and a short delta tag on each arrow. No zero baseline (progression diagram). Deliverable: one HTML file, inline CSS, D3 7.9.0, responsive via ResizeObserver, role="img" with title and desc.
+
+---
+
+## References
+
+1. Baldwin, James (1962). "The Creative Process." In *Creative America*. Ridge Press. https://www.themarginalian.org/2014/08/20/james-baldwin-the-creative-process/
+2. Sommers, Nancy (1980). "Revision Strategies of Student Writers and Experienced Adult Writers." *College Composition and Communication*, 31(4), 378–388. https://eric.ed.gov/?id=EJ240356
+3. Sommers, Nancy & Saltz, Laura (2004). "The Novice as Expert: Writing the Freshman Year." *College Composition and Communication*, 56(1), 124–149. https://eric.ed.gov/?id=EJ728781
+4. Williams, Joseph M. & Bizup, Joseph (2014). *Style: Lessons in Clarity and Grace* (11th ed.). Pearson. https://en.wikipedia.org/wiki/Style:_Lessons_in_Clarity_and_Grace
+5. Lee, Mina; Liang, Percy; Yang, Qian (2022). "CoAuthor: Designing a Human-AI Collaborative Writing Dataset for Exploring Language Model Capabilities." *CHI 2022*. https://dl.acm.org/doi/10.1145/3491102.3502030
+6. Bhat, Advait, et al. (2023). "Interacting with Next-Phrase Suggestions: How Suggestion Systems Aid and Influence the Cognitive Processes of Writing." *IUI 2023*. https://dl.acm.org/doi/10.1145/3581641.3584060

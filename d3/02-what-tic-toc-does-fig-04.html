@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase gates and what each catches</title>
+<style>
+  :root {
+    --color-white:#FFFFFF; --color-ink:#2a1a0e; --color-red:#C8102E;
+    --color-secondary:#545454; --color-border:#D4D4D4; --color-ochre:#C8860E; --color-fill:#F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-white:#111111; --color-ink:#F0EBE3; --color-red:#E8243A;
+      --color-secondary:#A0978C; --color-border:#2E2E2E; --color-ochre:#D49A30; --color-fill:#1A1A1A; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-size: 13px; fill: var(--color-secondary); }
+  .block-label { font-size: 12px; font-weight: 700; fill: var(--color-white); }
+  .gate-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 10px; fill: var(--color-secondary); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const phases = [
+  { label:'Intake', color:'var(--color-secondary)' },
+  { label:'Learning architecture', color:'var(--color-ochre)' },
+  { label:'Chapter architecture', color:'var(--color-ink)' }
+];
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const c = document.getElementById('chart');
+  const totalWidth = c.clientWidth || 800;
+  const totalHeight = Math.max(320, Math.min(400, totalWidth * 0.42));
+  const margin = { top: 64, right: 30, bottom: 64, left: 30 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
+  svg.append('title').attr('id','chart-title').text('Phase gates and what each catches');
+  svg.append('desc').attr('id','chart-desc').text('Three phase blocks flow left to right through gate diamonds to a /g2 diagnostic and a Cowork handoff; a skip branch carries a blockage symbol marking downstream cost.');
+
+  svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('Stage-gate flow');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Advance only on explicit confirmation; skipping compounds cost');
+
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const cy = h*0.42, blockW = w*0.20, blockH = 54, gateR = 16;
+  const slot = w / 3;
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id','arrowG').attr('viewBox','0 0 10 10')
+    .attr('refX',9).attr('refY',5).attr('markerWidth',7).attr('markerHeight',7).attr('orient','auto-start-reverse')
+    .append('path').attr('d','M0,0 L10,5 L0,10 z').attr('fill','var(--color-ink)');
+
+  const tip = d3.select('body').append('div').attr('class','tooltip')
+    .style('position','absolute').style('pointer-events','none').style('opacity',0)
+    .style('background','var(--color-white)').style('border','1px solid var(--color-border)')
+    .style('padding','6px 10px').style('font',"13px 'Inter',sans-serif").style('color','var(--color-ink)');
+
+  const blockX = i => i*slot + (slot-blockW)/2;
+  // blocks
+  phases.forEach((p,i)=>{
+    g.append('rect').attr('x',blockX(i)).attr('y',cy-blockH/2).attr('width',blockW).attr('height',blockH).attr('rx',8)
+      .attr('fill',p.color)
+      .attr('tabindex',0).attr('role','img').attr('aria-label',`Phase: ${p.label}`)
+      .on('mouseover',(e)=>tip.html(`<strong>${p.label}</strong>`).transition().duration(150).style('opacity',1))
+      .on('mousemove',(e)=>tip.style('left',(e.pageX+12)+'px').style('top',(e.pageY-28)+'px'))
+      .on('mouseout',()=>tip.transition().duration(100).style('opacity',0));
+    const words = p.label.split(' ');
+    g.append('text').attr('class','block-label').attr('x',blockX(i)+blockW/2).attr('y',cy + (words.length>1?-2:4)).attr('text-anchor','middle').text(words[0]);
+    if(words.length>1) g.append('text').attr('class','block-label').attr('x',blockX(i)+blockW/2).attr('y',cy+14).attr('text-anchor','middle').text(words.slice(1).join(' '));
+  });
+
+  // gate diamonds between blocks + arrows
+  function diamond(x,y,r,fill,stroke,label){
+    g.append('path').attr('d',`M ${x} ${y-r} L ${x+r} ${y} L ${x} ${y+r} L ${x-r} ${y} Z`)
+      .attr('fill',fill).attr('stroke',stroke).attr('stroke-width',1.5);
+    if(label) g.append('text').attr('class','gate-label').attr('x',x).attr('y',y+r+14).attr('text-anchor','middle').text(label);
+  }
+  for(let i=0;i<2;i++){
+    const gx = blockX(i)+blockW + (blockX(i+1) - (blockX(i)+blockW))/2;
+    g.append('path').attr('d',`M ${blockX(i)+blockW} ${cy} L ${gx-gateR} ${cy}`).attr('stroke','var(--color-ink)').attr('stroke-width',1.5).attr('marker-end','url(#arrowG)').attr('aria-hidden','true');
+    diamond(gx,cy,gateR,'none','var(--color-ink)','gate');
+    g.append('path').attr('d',`M ${gx+gateR} ${cy} L ${blockX(i+1)} ${cy}`).attr('stroke','var(--color-ink)').attr('stroke-width',1.5).attr('marker-end','url(#arrowG)').attr('aria-hidden','true');
+  }
+
+  // /g2 diagnostic after last block + handoff
+  const lastRight = blockX(2)+blockW;
+  const g2x = lastRight + (w-lastRight)*0.4;
+  g.append('path').attr('d',`M ${lastRight} ${cy} L ${g2x-gateR} ${cy}`).attr('stroke','var(--color-ink)').attr('stroke-width',1.5).attr('marker-end','url(#arrowG)').attr('aria-hidden','true');
+  diamond(g2x,cy,gateR+2,'var(--color-red)','var(--color-red)','/g2');
+  g.append('circle').attr('cx',g2x).attr('cy',cy).attr('r',0); // anchor
+  const hoX = w-2;
+  g.append('path').attr('d',`M ${g2x+gateR} ${cy} L ${hoX-4} ${cy}`).attr('stroke','var(--color-ink)').attr('stroke-width',1.5).attr('marker-end','url(#arrowG)').attr('aria-hidden','true');
+  g.append('circle').attr('cx',hoX-2).attr('cy',cy).attr('r',9).attr('fill','var(--color-ochre)')
+    .attr('tabindex',0).attr('role','img').attr('aria-label','Cowork handoff');
+  g.append('text').attr('class','gate-label').attr('x',hoX-2).attr('y',cy+gateR+14).attr('text-anchor','middle').text('handoff');
+
+  // skip branch with blockage off gate 1
+  const sgx = blockX(0)+blockW + (slot-blockW)/2;
+  const skipY = cy + blockH*1.4;
+  g.append('path').attr('d',`M ${sgx} ${cy+gateR} L ${sgx} ${skipY}`).attr('stroke','var(--color-red)').attr('stroke-width',1.5).attr('stroke-dasharray','5 4').attr('fill','none').attr('aria-hidden','true');
+  g.append('line').attr('x1',sgx-12).attr('y1',skipY).attr('x2',sgx+12).attr('y2',skipY).attr('stroke','var(--color-red)').attr('stroke-width',3).attr('aria-hidden','true');
+  g.append('text').attr('class','gate-label').attr('fill','var(--color-red)').attr('x',sgx).attr('y',skipY+16).attr('text-anchor','middle').text('skip ⊣ downstream cost');
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

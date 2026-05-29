@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Combined Test: Fourteen Items in Four Groups
+  Book: AI+1
+  Chapter: 08-the-human-rewrite
+  Figure: 01
+  Type: hierarchy/taxonomy (scorecard structure)
+  Generated: 2026-05-28
+  Source: pantry/08-the-human-rewrite-cajal.md
+-->
+<svg viewBox="0 0 700 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">The Combined Test: Fourteen Items in Four Groups</title>
+  <desc>A scorecard of fourteen review items grouped into four uneven blocks — Group A items 1 to 4, Group B 5 to 8, Group C 9 to 11, Group D 12 to 14 — each item carrying a pass or fail mark.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="08-the-human-rewrite"
+      figure-number="01" figure-title="The Combined Test: Fourteen Items in Four Groups" figure-slug="combined-test-fourteen-items"
+      figure-type="hierarchy/taxonomy" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/08-the-human-rewrite-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="540" fill="#FFFFFF"/>
+
+  <text x="32" y="40" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Combined Test: Fourteen Items in Four Groups</text>
+
+  <text x="600" y="66" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#C8860E" letter-spacing="0.08em">PASS / FAIL</text>
+  <line x1="32" y1="74" x2="668" y2="74" stroke="#2a1a0e" stroke-width="1"/>
+
+  <!-- Group A -->
+  <text x="32" y="98" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">Group A — Voice &amp; Register (items 1–4)</text>
+  <line x1="56" y1="112" x2="56" y2="180" stroke="#56B4E9" stroke-width="0"/>
+  <text x="56" y="120" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">1 — Sounds like the author, not the default</text>
+  <text x="56" y="136" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">2 — Cold open lands; no throat-clearing</text>
+  <text x="56" y="152" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">3 — Sentence rhythm varies</text>
+  <text x="56" y="168" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">4 — Reads aloud without stumble</text>
+  <rect x="600" y="108" width="14" height="62" fill="#FFFFFF" stroke="#C8860E" stroke-width="1"/>
+
+  <line x1="32" y1="184" x2="668" y2="184" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Group B -->
+  <text x="32" y="208" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">Group B — Evidence &amp; Specificity (items 5–8)</text>
+  <text x="56" y="230" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">5 — Every number has a source</text>
+  <text x="56" y="246" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">6 — No fabricated names or dates</text>
+  <text x="56" y="262" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">7 — Examples are concrete, not generic</text>
+  <text x="56" y="278" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">8 — No unresolved [verify] flags remain</text>
+  <rect x="600" y="218" width="14" height="62" fill="#FFFFFF" stroke="#C8860E" stroke-width="1"/>
+
+  <line x1="32" y1="294" x2="668" y2="294" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Group C -->
+  <text x="32" y="318" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">Group C — Judgment &amp; Argument (items 9–11)</text>
+  <text x="56" y="340" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">9 — At least one real judgment per page</text>
+  <text x="56" y="356" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">10 — Argument survives a 25% cut</text>
+  <text x="56" y="372" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">11 — Takes a position, not a survey</text>
+  <rect x="600" y="328" width="14" height="46" fill="#FFFFFF" stroke="#C8860E" stroke-width="1"/>
+
+  <line x1="32" y1="388" x2="668" y2="388" stroke="#D4D4D4" stroke-width="1"/>
+
+  <!-- Group D -->
+  <text x="32" y="412" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e" font-weight="600">Group D — Structure &amp; Handoff (items 12–14)</text>
+  <text x="56" y="434" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">12 — Sections follow the planned arc</text>
+  <text x="56" y="450" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">13 — Close names next chapter's deliverable</text>
+  <text x="56" y="466" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">14 — No padded middle</text>
+  <rect x="600" y="422" width="14" height="46" fill="#FFFFFF" stroke="#C8860E" stroke-width="1"/>
+
+  <line x1="32" y1="482" x2="668" y2="482" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="32" y="506" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Fourteen items, four uneven groups (4 / 4 / 3 / 3). A chapter passes only when every box is marked.</text>
+</svg>

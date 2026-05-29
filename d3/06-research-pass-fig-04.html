@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 6.4 — Three note layers: literature notes vs. permanent notes</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1A1A1A;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .band-label { font-size: 12px; fill: var(--color-white); font-weight: 600; }
+  .way-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .block-label { font-size: 11px; fill: var(--color-red); }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+             background: var(--color-white); color: var(--color-ink);
+             border: 1px solid var(--color-border); border-radius: 8px;
+             padding: 8px 10px; font-size: 13px; max-width: 240px;
+             box-shadow: 0 6px 20px -6px rgb(18 18 18 / 0.14); }
+  .band { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const layers = [
+  { id: 'perm', label: 'Permanent notes — chapter draft', tier: 2, color: 'var(--color-red)',
+    desc: 'The writer\'s own argued claim. The chapter draft. Cites primary sources, never the pantry.' },
+  { id: 'lit', label: 'Literature notes — the pantry', tier: 1, color: 'var(--color-ink)',
+    desc: 'What a source actually said. The pantry file. Reference, not citation.' },
+  { id: 'fleet', label: 'Fleeting notes', tier: 0, color: 'var(--color-secondary)',
+    desc: 'Captured in the moment, before they are organized.' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const margin = { top: 64, right: 140, bottom: 32, left: 24 };
+  const container = document.getElementById('chart');
+  const totalWidth = container.clientWidth || 800;
+  const bandH = 56, gap = 28;
+  const totalHeight = margin.top + layers.length * bandH + (layers.length - 1) * gap + margin.bottom;
+  const chartWidth = totalWidth - margin.left - margin.right;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('Three note layers: literature notes vs. permanent notes');
+  svg.append('desc').attr('id', 'chart-desc').text('A three-tier stack with a correct path routing through a primary-source waypoint and a blocked shortcut from literature notes directly to permanent notes.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24).text('Keep the layers separate');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44).text('The blocked shortcut is the AI-laundered citation');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const bandW = chartWidth;
+  layers.forEach((d, i) => { d.y = i * (bandH + gap); });
+
+  const litY = layers.find(l => l.id === 'lit').y;
+  const permY = layers.find(l => l.id === 'perm').y;
+  const wayX = bandW + 70;
+  const wayY = (litY + permY) / 2 + bandH / 2;
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrow64').attr('viewBox', '0 0 10 10')
+    .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto-start-reverse')
+    .append('path').attr('d', 'M0,0 L10,5 L0,10 Z').attr('fill', 'var(--color-ink)');
+
+  const gAxes = gChart.append('g').attr('aria-hidden', 'true');
+  // correct path: lit -> waypoint -> perm
+  gAxes.append('path').attr('fill', 'none').attr('stroke', 'var(--color-ink)').attr('stroke-width', 1.5)
+    .attr('marker-end', 'url(#arrow64)')
+    .attr('d', `M${bandW},${litY + bandH / 2} H${wayX} V${wayY + 0}`);
+  gAxes.append('path').attr('fill', 'none').attr('stroke', 'var(--color-ink)').attr('stroke-width', 1.5)
+    .attr('marker-end', 'url(#arrow64)')
+    .attr('d', `M${wayX},${wayY} V${permY + bandH / 2} H${bandW}`);
+  // waypoint node
+  gChart.append('circle').attr('cx', wayX).attr('cy', wayY).attr('r', 8)
+    .attr('fill', 'var(--color-ink)').attr('aria-hidden', 'true');
+  gChart.append('text').attr('class', 'way-label').attr('x', wayX + 14).attr('y', wayY + 4).text('primary source');
+
+  // blocked shortcut: lit directly to perm
+  const shortX = bandW * 0.35;
+  gAxes.append('line').attr('x1', shortX).attr('y1', litY).attr('x2', shortX).attr('y2', permY + bandH + 6)
+    .attr('stroke', 'var(--color-red)').attr('stroke-width', 1.5).attr('stroke-dasharray', '5 4');
+  // stop glyph
+  gChart.append('line').attr('x1', shortX - 12).attr('y1', (litY + permY) / 2 + bandH / 2)
+    .attr('x2', shortX + 12).attr('y2', (litY + permY) / 2 + bandH / 2)
+    .attr('stroke', 'var(--color-red)').attr('stroke-width', 3).attr('aria-hidden', 'true');
+  gChart.append('text').attr('class', 'block-label').attr('x', shortX - 16).attr('y', (litY + permY) / 2 + bandH / 2 - 8)
+    .attr('text-anchor', 'end').text('blocked');
+
+  const g = gChart.selectAll('.band-g').data(layers).join('g').attr('class', 'band-g')
+    .attr('tabindex', 0).attr('role', 'img').attr('aria-label', d => `${d.label}: ${d.desc}`);
+  g.append('rect').attr('class', 'band').attr('x', 0).attr('y', d => d.y).attr('width', bandW).attr('height', bandH)
+    .attr('rx', 8).attr('fill', d => d.color).attr('stroke', 'var(--color-ink)').attr('stroke-width', 1);
+  g.append('text').attr('class', 'band-label').attr('x', 14).attr('y', d => d.y + bandH / 2 + 4).text(d => d.label);
+
+  function show(event, d) { tooltip.html(`<strong>${d.label}</strong><br>${d.desc}`)
+    .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+    .transition().duration(150).style('opacity', 1); }
+  function move(event) { tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'); }
+  function hide() { tooltip.transition().duration(100).style('opacity', 0); }
+
+  g.on('mouseover', function(event, d) { g.selectAll('.band').attr('opacity', 0.35); d3.select(this).select('.band').attr('opacity', 1); show(event, d); })
+    .on('mousemove', move)
+    .on('mouseout', function() { g.selectAll('.band').attr('opacity', 1); hide(); })
+    .on('focus', function(event, d) { show(event, d); }).on('blur', hide);
+}
+
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

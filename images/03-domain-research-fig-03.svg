@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The four synthesis markers
+  Book: AI+1
+  Chapter: 03-domain-research
+  Figure: 03
+  Type: conceptual map
+  Generated: 2026-05-28
+  Source: pantry/03-domain-research-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-03">
+  <title id="fig-title-03">The four synthesis markers as overlap regions</title>
+  <desc>Three overlapping source circles define four markers: all three agree (triple overlap), two agree (pairwise lens), one only (single crescent), and divergent (a fork where sources conflict).</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="03-domain-research"
+      figure-number="03" figure-title="The four synthesis markers as overlap regions" figure-slug="four-synthesis-markers"
+      figure-type="conceptual map" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/03-domain-research-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The four synthesis markers as overlap regions</text>
+
+  <!-- three source circles (outline only) -->
+  <circle cx="290" cy="250" r="100" stroke="#2a1a0e" stroke-width="1" fill="none"/>
+  <circle cx="410" cy="250" r="100" stroke="#2a1a0e" stroke-width="1" fill="none"/>
+  <circle cx="350" cy="160" r="100" stroke="#2a1a0e" stroke-width="1" fill="none"/>
+
+  <!-- source circle labels (abstract A/B/C, source-agnostic) -->
+  <text x="350" y="100" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Source A</text>
+  <text x="210" y="310" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Source B</text>
+  <text x="490" y="310" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Source C</text>
+
+  <!-- marker 1: ALL THREE AGREE = triple overlap (center, highlighted) -->
+  <circle cx="350" cy="222" r="4" fill="#C8102E"/>
+  <line x1="350" y1="222" x2="350" y2="222" stroke="#C8102E" stroke-width="1"/>
+  <text x="350" y="240" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">ALL THREE AGREE</text>
+
+  <!-- marker 2: TWO AGREE = pairwise lens (lower center) -->
+  <circle cx="350" cy="300" r="4" fill="#2a1a0e"/>
+  <line x1="350" y1="300" x2="350" y2="350" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="350" y="366" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">TWO AGREE</text>
+
+  <!-- marker 3: ONE ONLY = single crescent (left circle's outer area) -->
+  <circle cx="225" cy="240" r="4" fill="#2a1a0e"/>
+  <line x1="225" y1="240" x2="120" y2="240" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="112" y="244" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">ONE ONLY</text>
+
+  <!-- marker 4: DIVERGENT = forked arrow beside cluster (disagreement) -->
+  <line x1="540" y1="180" x2="600" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="540" y1="180" x2="600" y2="210" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="475" y1="200" x2="540" y2="180" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="615" y="184" text-anchor="start" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">DIVERGENT</text>
+
+  <text x="32" y="448" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Overlap geometry carries the marker; divergence is a fork, not a region — positions stated, not merged.</text>
+  <text x="32" y="468" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">ABSTRACT MARKER KEY — SOURCE-AGNOSTIC</text>
+</svg>

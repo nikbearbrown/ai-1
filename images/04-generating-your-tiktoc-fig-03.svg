@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bloom's Verb Ceiling for a Practitioner Handbook
+  Book: AI+1
+  Chapter: 04-generating-your-tiktoc
+  Figure: 03
+  Type: statistical/quantitative
+  Generated: 2026-05-28
+  Source: pantry/04-generating-your-tiktoc-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-03">
+  <title id="fig-title-03">Bloom's Verb Ceiling for a Practitioner Handbook</title>
+  <desc>Six Bloom's levels as ascending bars; a working-floor threshold line at Apply marks the minimum ceiling — no chapter outcome should fall below it.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="04-generating-your-tiktoc"
+      figure-number="03" figure-title="Bloom's Verb Ceiling for a Practitioner Handbook" figure-slug="blooms-verb-ceiling"
+      figure-type="statistical/quantitative" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/04-generating-your-tiktoc-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Bloom's Verb Ceiling for a Practitioner Handbook</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Cognitive ceiling rises across the taxonomy; Apply is the working floor for every chapter outcome</text>
+
+  <!-- plot region -->
+  <rect x="64" y="80" width="596" height="284" stroke="#D4D4D4" stroke-width="0.75" fill="#F5F5F5"/>
+
+  <!-- baseline (y axis at zero) -->
+  <line x1="64" y1="364" x2="660" y2="364" stroke="#2a1a0e" stroke-width="1"/>
+  <line x1="64" y1="80" x2="64" y2="364" stroke="#2a1a0e" stroke-width="1"/>
+
+  <!-- bars: Remember, Understand below floor (lower sat gray); Apply..Create at/above (ink) -->
+  <!-- Remember -->
+  <rect x="92" y="324" width="64" height="40" fill="#ADADAD"/>
+  <text x="124" y="380" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Remember</text>
+  <!-- Understand -->
+  <rect x="184" y="284" width="64" height="80" fill="#ADADAD"/>
+  <text x="216" y="380" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Understand</text>
+  <!-- Apply (floor) -->
+  <rect x="276" y="244" width="64" height="120" fill="#2a1a0e"/>
+  <text x="308" y="380" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Apply</text>
+  <!-- Analyze -->
+  <rect x="368" y="200" width="64" height="164" fill="#2a1a0e"/>
+  <text x="400" y="380" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Analyze</text>
+  <!-- Evaluate -->
+  <rect x="460" y="156" width="64" height="208" fill="#2a1a0e"/>
+  <text x="492" y="380" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Evaluate</text>
+  <!-- Create -->
+  <rect x="552" y="112" width="64" height="252" fill="#2a1a0e"/>
+  <text x="584" y="380" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Create</text>
+
+  <!-- working floor threshold line at Apply top (y=244) -->
+  <line x1="64" y1="244" x2="660" y2="244" stroke="#C8102E" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="656" y="238" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">working floor</text>
+
+  <text x="32" y="404" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">NO CHAPTER WITH A CEILING BELOW APPLY</text>
+</svg>

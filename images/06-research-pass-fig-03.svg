@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The _lib_ Shared Library: One Authoritative Home
+  Book: AI+1
+  Chapter: 06-research-pass
+  Figure: 03
+  Type: systems diagram
+  Generated: 2026-05-28
+  Source: pantry/06-research-pass-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-03">
+  <title id="fig-title-03">The _lib_ Shared Library: One Authoritative Home</title>
+  <desc>A single _lib_ hub holds each definition once; the Gatherer reads it before drafting, so reference arrows flow out to every chapter pantry file. Update once, all runs see it.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="06-research-pass"
+      figure-number="03" figure-title="The _lib_ Shared Library: One Authoritative Home" figure-slug="lib-shared-library-hub-spoke"
+      figure-type="systems diagram" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/06-research-pass-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The _lib_ Shared Library: One Authoritative Home</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Every definition lives in one _lib_ file; update it once and every later run sees the change</text>
+
+  <!-- central hub -->
+  <rect x="290" y="200" width="120" height="64" stroke="#C8102E" stroke-width="1.5" fill="#F5F5F5"/>
+  <text x="350" y="228" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" font-weight="600" fill="#2a1a0e">_lib_</text>
+  <text x="350" y="246" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">shared definition</text>
+
+  <!-- five chapter pantry nodes around it -->
+  <rect x="300" y="92" width="100" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="350" y="119" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">ch1 pantry</text>
+
+  <rect x="540" y="148" width="100" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="590" y="175" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">ch2 pantry</text>
+
+  <rect x="540" y="272" width="100" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="590" y="299" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">ch3 pantry</text>
+
+  <rect x="60" y="148" width="100" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="110" y="175" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">ch4 pantry</text>
+
+  <rect x="60" y="272" width="100" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="110" y="299" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">ch5 pantry</text>
+
+  <!-- reference arrows from hub OUT to each chapter (definition flows out) -->
+  <line x1="350" y1="200" x2="350" y2="138" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="408" y1="208" x2="538" y2="176" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="408" y1="256" x2="538" y2="290" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="292" y1="208" x2="162" y2="176" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="292" y1="256" x2="162" y2="290" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="32" y="380" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">READ BEFORE DRAFTING — A SINGLE SOURCE OF TRUTH</text>
+</svg>

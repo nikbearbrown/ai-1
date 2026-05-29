@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TIKTOC.md to new_book.py to Directory
+  Book: AI+1
+  Chapter: 05-book-scaffold
+  Figure: 02
+  Type: process flowchart
+  Generated: 2026-05-28
+  Source: pantry/05-book-scaffold-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-02">
+  <title id="fig-title-02">TIKTOC.md to new_book.py to Directory</title>
+  <desc>A TIKTOC spec fed by two arguments into new_book.py, which generates a directory; an idempotency guard on the process refuses to overwrite an existing scaffold.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="05-book-scaffold"
+      figure-number="02" figure-title="TIKTOC.md to new_book.py to Directory" figure-slug="tiktoc-to-newbook-to-directory"
+      figure-type="process flowchart" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/05-book-scaffold-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">TIKTOC.md to new_book.py to Directory</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">The script reads the spec and two arguments, then writes a directory — refusing to overwrite</text>
+
+  <!-- TIKTOC.md input -->
+  <rect x="48" y="160" width="120" height="72" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="108" y="190" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">TIKTOC.md</text>
+  <text x="108" y="210" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">spec document</text>
+
+  <!-- process node new_book.py -->
+  <rect x="296" y="160" width="128" height="72" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="360" y="190" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" font-weight="600" fill="#2a1a0e">new_book.py</text>
+  <text x="360" y="210" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">reads + scaffolds</text>
+
+  <!-- generated directory -->
+  <rect x="540" y="160" width="120" height="72" stroke="#787878" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="600" y="190" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#2a1a0e">Directory</text>
+  <text x="600" y="210" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">generated tree</text>
+
+  <!-- main flow arrows -->
+  <line x1="168" y1="196" x2="294" y2="196" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="424" y1="196" x2="538" y2="196" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- two argument prongs entering process node from below -->
+  <rect x="280" y="304" width="72" height="36" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="316" y="327" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">--tiktoc</text>
+  <rect x="368" y="304" width="72" height="36" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="404" y="327" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">--slug</text>
+  <line x1="316" y1="304" x2="338" y2="234" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="404" y1="304" x2="382" y2="234" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- idempotency guard: self-return arc on process node, highlighted -->
+  <path d="M 296 172 C 256 140, 256 196, 294 178" stroke="#C8102E" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow)"/>
+  <text x="220" y="150" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">refuses to</text>
+  <text x="220" y="166" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">overwrite</text>
+
+  <text x="32" y="396" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">THE DIRECTORY IS THE CONVERSATION MADE LEGIBLE AS A FILESYSTEM</text>
+</svg>

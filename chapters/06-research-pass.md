@@ -43,6 +43,9 @@ This is a research synthesis task in Harris Cooper's sense. Cooper's 1982 framew
 
 [^cooper]: Cooper, Harris M. (1982). "Scientific Guidelines for Conducting Integrative Research Reviews." *Review of Educational Research*, 52(2), 291–302.
 
+![A horizontal six-stage process flow along Cooper's review chain: problem formulation, data collection, and presentation grouped inside a machine band on the left, then a vertical dividing seam marking the machine-to-human hand-off, then evaluation and analysis inside a human band, ending in a draft-ready pantry-file terminal; machine stages tinted one color, human stages another.](images/06-research-pass-fig-01.png)
+*Figure 6.1 — The Gatherer pipeline and where the human re-enters*
+
 The Gatherer runs on a long-context model with retrieval — what has been called a "Deep Research" agent since the generation of tools Anthropic, OpenAI, and Google shipped between 2024 and 2025. Retrieval-augmented generation has moved citation fabrication from roughly half the time toward something lower and harder to measure.[^goddard][^bhattacharyya] The improvement is real. The risk is not gone.
 
 There is a structural reason fabrication persists even with retrieval: language models trained on aggregate text learn the *surface form* of citation — the author-year-title shape — without modeling the act of verifying the source.[^parrots] Citation-shaped text is cheap to generate. Verified citation is not. Someone must do the verification. The pantry evaluation pass is where that someone is you.
@@ -84,6 +87,13 @@ If all four answers are good: draft-ready. Move on. If any answer fails: thin. T
 
 <!-- → [TABLE: Four-question evaluation rubric — columns: Question, What to open, Pass condition, Fail signal, Common failure pattern — one row per question] -->
 
+| Question | What to open | Pass condition | Fail signal | Common failure pattern |
+|---|---|---|---|---|
+| 1 — Is the strongest source primary or secondary? | Section 1, Primary Sources | The leading source is a study, dataset, release note, ruling, or an organization's own publication | The strongest source is a Medium post, Forbes article, or trend piece | Section drafts on summaries of summaries; derivatives compound |
+| 2 — Do the domain examples match your reader? | Section 3, Application Domain Examples | Most examples sit squarely in the book's actual domain | Examples come from adjacent fields — marketing, small business, education | Domain drift: right-shaped output, wrong substance, only visible to a peer |
+| 3 — Is anything flagged `[verify]` or `[contested]`? | Whole file (search) | Uncertainty is marked where confidence wavered | Zero flags across the file | Sycophantic over-confidence: fewer uncertainty markers than the topic deserves |
+| 4 — Would a peer in your domain recognize these sources? | Section 1, read aloud | A demanding colleague would nod | A demanding colleague would wince | Sources sound field-adjacent but were not written by practitioners in the field |
+
 ---
 
 ## What thin means, and the three responses
@@ -114,6 +124,9 @@ Pantry file thin?
    └── TIKTOC.md vague     → Return to /c1, sharpen spec, rerun Gatherer
 ```
 
+![A left-to-right decision tree: one root node "pantry thin?" branching into three cause nodes — topic hard, field evidence thin, TIKTOC.md vague — each routing by a single arrow to one paired response on the right: supplement by hand, accept with flag into risks.md, and return to /c1; the return-to-/c1 response carries an upstream back-loop arc.](images/06-research-pass-fig-02.png)
+*Figure 6.2 — Thin-pantry triage: three causes, three responses*
+
 Write the choice in `risks.md`. Future-you, four chapters deep in the human rewrite, will need to remember which chapters were accepted with flags and why.
 
 ---
@@ -130,7 +143,17 @@ The Chapter Research Gatherer reads `_lib_` files before generating chapter-spec
 
 What belongs in `_lib_`: terms used across more than two chapters, framework definitions, the book's position on contested claims, style notes that apply everywhere, author bio. What does not belong: chapter-specific examples, citations specific to one chapter's topic, per-chapter image briefs. The line is between what is shared and what is particular.
 
+![A radial hub-and-spoke diagram: a central _lib_ hub node with four to five chapter pantry-file nodes arranged around it, each connected by a reference arrow pointing from the hub into the chapter file — the definition flowing outward from a single authoritative source, so one update at the hub propagates along every arrow.](images/06-research-pass-fig-03.png)
+*Figure 6.3 — The `_lib_` shared library: one authoritative home*
+
 <!-- → [TABLE: `_lib_` file taxonomy — columns: File, Contents, When Gatherer reads it, Update trigger — rows for glossary, framework definitions, contested claims, style notes] -->
+
+| File | Contents | When the Gatherer reads it | Update trigger |
+|---|---|---|---|
+| `_lib_glossary.md` | Terms used across more than two chapters, with one authoritative definition each | Before generating any chapter's notes | A term's meaning changes or a new cross-chapter term appears |
+| `_lib_ai-plus-one-frame.md` | The AI+1 framework definition the whole book leans on | Before every chapter run | The framework's articulation is sharpened or revised |
+| `_lib_contested-claims.md` | The book's house position on claims that are disputed in the field | Before every chapter run | New evidence shifts the house position on a contested claim |
+| `_lib_style.md` | Style notes and author bio that apply everywhere | Before every chapter run | Voice or house-style guidance changes book-wide |
 
 ---
 
@@ -143,6 +166,9 @@ The pantry is reference, not citation. The distinction is the same one every des
 The pantry plays the same role for chapter drafting. Cowork consults it while drafting. The chapter draft does not cite the pantry. Chapter drafts cite primary sources. If a chapter draft says "according to a 2024 article" without naming the article, that draft is citing the pantry — which means the claim was sourced from the Gatherer's notes rather than traced back to a primary source. The human rewrite must then trace the claim through the pantry to the original source and either cite it properly or remove it. This is the AI-laundered citation pattern. The pantry structure is the defense against it, but only if the defense is maintained in the rewrite.
 
 Sönke Ahrens's *How to Take Smart Notes* describes the same distinction in a different vocabulary.[^ahrens] Niklas Luhmann's Zettelkasten — the 90,000-card archive that produced 70 books and 400 papers — had three layers: fleeting notes taken in the moment, literature notes recording what a source actually said, and permanent notes carrying the writer's own argued claim. Pantry files are Ahrens's literature notes. Chapter drafts are permanent notes. Treating literature notes as if they were already permanent — cutting from the Gatherer's prose into the chapter without tracing back to the primary source — is what produces academic embarrassment in human writers and hallucinated citations in language models. The fix is structural: keep the layers separate.
+
+![A vertical three-tier stack — fleeting notes at the base, literature notes (the pantry) in the middle, permanent notes (the chapter draft) at the top — with a correct-path arrow routing from the literature layer through a primary-source waypoint up to the permanent layer, and a second arrow attempting to skip the waypoint terminated by a blockage glyph marking the forbidden AI-laundered citation shortcut.](images/06-research-pass-fig-04.png)
+*Figure 6.4 — Three note layers: literature notes vs. permanent notes*
 
 Luhmann's system is worth knowing about for a second reason. It was boring. Index cards, a wooden cabinet, a numbering scheme he invented. No magic. The infrastructure was simple and the practice was relentless. The pantry is the same way. The technology is unimpressive. The discipline of evaluating each file before letting Cowork read it is the entire game.
 
@@ -345,3 +371,29 @@ Whether the Gatherer produces URLs or full bibliographic entries by default is a
 Whether the Gatherer infers the reader's domain from the TIKTOC.md or needs it stated explicitly is worth testing for niche subfields. Medical illustration, scientific publishing, and motion design authors sometimes get better Section 3 results by adding an explicit domain hint to the Gatherer prompt. This is a user-discovered workaround, not a documented feature.
 
 [^lost]: Liu, Nelson F. et al. (2024). "Lost in the Middle: How Language Models Use Long Contexts." *Transactions of the Association for Computational Linguistics*.
+
+---
+
+## Prompts
+
+### Figure 6.1 — The Gatherer pipeline and where the human re-enters
+Build a horizontal left-to-right process flow of six stages along Cooper's review chain. Group the first three stages — problem formulation, data collection, presentation — inside a machine band tinted one accent. Draw a vertical dividing seam after stage three marking the machine-to-human hand-off. Place the next two stages — evaluation, analysis — inside a human band tinted a second accent. End in a sixth terminal node, draft-ready pantry file, in a third accent. Connect stages with solid arrows. The seam is a heavy vertical rule in ink. Encode machine versus human by band color only. Uniform 1pt strokes, white canvas, no text baked in beyond stage names. Deliverable: a single self-contained HTML file with inline CSS and D3 7.9.0 from the pinned CDN; SVG only; ResizeObserver redraw; tooltips per stage. Structural, not aesthetic.
+
+### Figure 6.2 — Thin-pantry triage: three causes, three responses
+Build a left-to-right decision tree with seven nodes: one root decision node on the left, three cause nodes fanning out in parallel, and three paired response nodes on the right. Connect the root to each cause with a branch edge, and each cause to its single response with one arrow. The third response (return to /c1) carries an additional upstream back-loop arc indicating the fix is upstream. Encode the root in ink, the cause nodes in a neutral fill, and the three responses in three distinct accents with the most severe response in the warning accent. Uniform 1pt strokes, white canvas, no cause or response text baked in beyond short labels. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw, tooltips per node. Structural, not aesthetic.
+
+### Figure 6.3 — The `_lib_` shared library: one authoritative home
+Build a radial hub-and-spoke diagram: one central hub node and five chapter-file nodes arranged evenly around it. Draw an arrow from the hub outward into each chapter node, encoding the read-before-drafting direction so the definition flows from a single source. Encode the hub in one accent and the chapter nodes in a second; arrows in ink. Imply that one update at the hub propagates along all arrows. Uniform 1pt strokes, white canvas, no filenames baked in. Do not draw a competing duplicated-definition-drift diagram. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw, hover highlights the hub and one spoke. Structural, not aesthetic.
+
+### Figure 6.4 — Three note layers: literature notes vs. permanent notes
+Build a vertical three-tier stack, bottom to top: fleeting notes at the base, literature notes (the pantry) in the middle, permanent notes (the chapter draft) at the top, each a horizontal band. Draw a correct-path arrow routing from the literature band through a small primary-source waypoint node up to the permanent band. Draw a second arrow attempting to skip the waypoint, terminated with a blockage glyph marking the forbidden direct cut (the AI-laundered citation shortcut). Encode each layer in a distinct accent; the blocked-shortcut arrow in the warning accent ending in a stop glyph. Uniform 1pt strokes, white canvas, no biographical figures baked in. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw, tooltips per layer. Structural, not aesthetic.
+
+---
+
+## References
+
+1. Cooper, H. M. (1982). Scientific Guidelines for Conducting Integrative Research Reviews. *Review of Educational Research*, 52(2), 291–302. https://journals.sagepub.com/doi/10.3102/00346543052002291
+2. Bhattacharyya, M., et al. (2023). High Rates of Fabricated and Inaccurate References in ChatGPT-Generated Medical Content. *Cureus*, 15(5). https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10277170/
+3. Sharma, M., et al. (2023). Towards Understanding Sycophancy in Language Models. arXiv:2310.13548 (Anthropic). https://arxiv.org/abs/2310.13548
+4. Liu, N. F., et al. (2024). Lost in the Middle: How Language Models Use Long Contexts. *Transactions of the Association for Computational Linguistics*, 12, 157–173. https://aclanthology.org/2024.tacl-1.9/
+5. Padmakumar, V., & He, H. (2024). Does Writing with Language Models Reduce Content Diversity? *ICLR 2024*. arXiv:2309.05196. https://arxiv.org/abs/2309.05196

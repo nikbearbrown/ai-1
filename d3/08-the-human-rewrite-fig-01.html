@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Combined Test: fourteen items in four groups</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .group-header { font-size: 13px; font-weight: 700; fill: var(--color-ink); }
+  .item-num { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; fill: var(--color-secondary); }
+  .item-label { font-size: 12px; fill: var(--color-ink); }
+  .item-rule { stroke: var(--color-border); stroke-width: 1; }
+  .pf-cell { fill: var(--color-ochre); opacity: 0.12;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .pf-col-header { font-size: 11px; font-weight: 700; fill: var(--color-secondary); text-anchor: middle; }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 260px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const groupData = [
+  { group: 'A — Voice and specificity', items: [
+    { n: 1, label: 'Scene-first opening' },
+    { n: 2, label: 'Domain-specific examples throughout' },
+    { n: 3, label: 'Author voice consistent' },
+    { n: 4, label: 'No fabricated specificity' } ] },
+  { group: 'B — Structure', items: [
+    { n: 5, label: 'Mechanism before terminology' },
+    { n: 6, label: 'Named trade-offs' },
+    { n: 7, label: 'No padded middle' },
+    { n: 8, label: 'Bridge question that bridges' } ] },
+  { group: 'C — Pedagogy', items: [
+    { n: 9, label: 'Capability statement honored' },
+    { n: 10, label: "Bloom's level achieved" },
+    { n: 11, label: 'Exercises require the action they name' } ] },
+  { group: 'D — Authorial accountability', items: [
+    { n: 12, label: 'Author judgment present' },
+    { n: 13, label: 'Contested claims flagged or argued' },
+    { n: 14, label: 'What would change my mind' } ] }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const margin = { top: 64, right: 24, bottom: 24, left: 24 };
+  const chartWidth = totalWidth - margin.left - margin.right;
+  const headerH = 30, itemH = 30, groupGap = 14, colHeaderH = 20;
+  const pfW = 56;
+
+  let runningY = colHeaderH;
+  const layout = [];
+  groupData.forEach(g => {
+    const gy = runningY;
+    runningY += headerH;
+    g.items.forEach(it => { layout.push({ ...it, group: g.group, y: runningY }); runningY += itemH; });
+    runningY += groupGap;
+    layout.filter(l => l.group === g.group).forEach(l => l.groupY = gy);
+  });
+  const totalHeight = margin.top + runningY + margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The Combined Test: fourteen items in four groups');
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('A scorecard structure of fourteen Combined Test items in four groups of sizes four, four, three, and three, with a reserved right-hand column for the Pass or Fail mark on each item.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24)
+    .text('The Combined Test');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44)
+    .text('Fourteen items in four groups (4 / 4 / 3 / 3)');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const itemX = 0;
+  const pfX = chartWidth - pfW;
+
+  gChart.append('text').attr('class', 'pf-col-header').attr('x', pfX + pfW / 2).attr('y', 13).text('Pass / Fail');
+
+  // group headers
+  const seen = new Set();
+  layout.forEach(l => {
+    if (!seen.has(l.group)) {
+      seen.add(l.group);
+      gChart.append('text').attr('class', 'group-header').attr('x', itemX).attr('y', l.groupY + 20).text(l.group);
+    }
+  });
+
+  const rows = gChart.selectAll('.item-row').data(layout).join('g')
+    .attr('class', 'item-row').attr('transform', d => `translate(0,${d.y})`)
+    .attr('tabindex', 0).attr('aria-label', d => `Item ${d.n}, ${d.group}: ${d.label}. Pass or fail.`);
+
+  rows.append('line').attr('class', 'item-rule')
+    .attr('x1', itemX).attr('x2', chartWidth).attr('y1', 0).attr('y2', 0).attr('aria-hidden', 'true');
+  rows.append('text').attr('class', 'item-num').attr('x', itemX + 12).attr('y', itemH / 2 + 4)
+    .attr('text-anchor', 'middle').text(d => d.n);
+  rows.append('text').attr('class', 'item-label').attr('x', itemX + 28).attr('y', itemH / 2 + 4)
+    .text(d => d.label);
+  rows.append('rect').attr('class', 'pf-cell')
+    .attr('x', pfX).attr('y', 4).attr('width', pfW).attr('height', itemH - 8).attr('aria-hidden', 'true');
+
+  rows.append('rect').attr('x', 0).attr('y', 0).attr('width', chartWidth).attr('height', itemH)
+    .attr('fill', 'transparent')
+    .on('mouseover', (event, d) => {
+      d3.select(event.currentTarget.parentNode).select('.pf-cell').attr('opacity', 0.3);
+      tooltip.html(`<strong>Item ${d.n}</strong> — ${d.group}<br>${d.label}`)
+        .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+        .transition().duration(150).style('opacity', 1);
+    })
+    .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+    .on('mouseout', (event) => {
+      d3.select(event.currentTarget.parentNode).select('.pf-cell').attr('opacity', 0.12);
+      tooltip.transition().duration(100).style('opacity', 0);
+    });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The SCOPE frame, E carries the weight</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .band { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  .band-e { fill: var(--color-fill); stroke: var(--color-red); stroke-width: 1.5; }
+  .band-letter { font-size: 18px; font-weight: 700; fill: var(--color-ink); }
+  .band-letter-e { font-size: 22px; font-weight: 700; fill: var(--color-red); }
+  .band-name { font-size: 12px; fill: var(--color-secondary); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const bands = [
+    { letter: 'S', name: 'Specification', weight: 1 },
+    { letter: 'C', name: 'Content',       weight: 1 },
+    { letter: 'O', name: 'Organization',  weight: 1 },
+    { letter: 'P', name: 'Presentation',  weight: 1 },
+    { letter: 'E', name: 'Exclusions — the parameter that does the work', weight: 2.4 }
+  ];
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 640;
+    const totalHeight = Math.max(360, Math.min(460, totalWidth * 0.7));
+    const margin = { top: 64, right: 40, bottom: 24, left: 40 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('The SCOPE frame, E carries the weight');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('Five stacked bands in fixed S, C, O, P, E order; the bottom E band is rendered much taller than the four uniform bands above it to encode that the exclusion list does the most work.');
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('The SCOPE frame, E carries the weight');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('The exclusion list is more important than the inclusion list.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const totalWeight = d3.sum(bands, b => b.weight);
+    const gap = 6;
+    const usableH = chartHeight - gap * (bands.length - 1);
+    let y = 0;
+    bands.forEach(b => {
+      const h = usableH * (b.weight / totalWeight);
+      const isE = b.letter === 'E';
+      const g = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', `${b.letter} — ${b.name}`);
+      g.append('rect').attr('class', isE ? 'band-e' : 'band')
+        .attr('x', 0).attr('y', y).attr('width', chartWidth).attr('height', h).attr('rx', 4);
+      g.append('text').attr('class', isE ? 'band-letter-e' : 'band-letter')
+        .attr('x', 16).attr('y', y + h / 2 + 6).text(b.letter);
+      g.append('text').attr('class', 'band-name')
+        .attr('x', 44).attr('y', y + h / 2 + 5).text(b.name);
+      y += h + gap;
+    });
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

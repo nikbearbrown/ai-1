@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Three-LLM triangulation to synthesis
+  Book: AI+1
+  Chapter: 01-what-ai-plus-one-is
+  Figure: 04
+  Type: systems diagram
+  Generated: 2026-05-28
+  Source: pantry/01-what-ai-plus-one-is-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-04">
+  <title id="fig-title-04">Three-LLM triangulation to a synthesis</title>
+  <desc>The same prompt runs in Claude, ChatGPT and Gemini; their answers overlap in four ways — all three agree, two agree, divergent, or one only — and converge into one synthesis.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="01-what-ai-plus-one-is"
+      figure-number="04" figure-title="Three-LLM triangulation to a synthesis" figure-slug="three-llm-triangulation"
+      figure-type="systems diagram" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/01-what-ai-plus-one-is-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Three-LLM triangulation to a synthesis</text>
+
+  <!-- three source nodes across top -->
+  <rect x="80" y="70" width="120" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="140" y="99" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Claude</text>
+  <rect x="290" y="70" width="120" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="350" y="99" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">ChatGPT</text>
+  <rect x="500" y="70" width="120" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="560" y="99" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Gemini</text>
+
+  <!-- 3-way overlap region: three circles -->
+  <circle cx="290" cy="250" r="80" stroke="#2a1a0e" stroke-width="1" fill="none"/>
+  <circle cx="410" cy="250" r="80" stroke="#2a1a0e" stroke-width="1" fill="none"/>
+  <circle cx="350" cy="180" r="80" stroke="#2a1a0e" stroke-width="1" fill="none"/>
+
+  <!-- arrows from sources into overlap region -->
+  <line x1="140" y1="118" x2="280" y2="175" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="350" y1="118" x2="350" y2="105" stroke="#2a1a0e" stroke-width="1.5" fill="none"/>
+  <line x1="350" y1="118" x2="350" y2="130" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="560" y1="118" x2="420" y2="175" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- four claim-category callouts on the overlap regions -->
+  <!-- triple overlap = all three agree (center) -->
+  <text x="350" y="222" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">all three agree</text>
+  <!-- pairwise = two agree (lower lens) -->
+  <text x="350" y="285" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">two agree</text>
+  <!-- one only = single spur -->
+  <text x="232" y="300" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">one only</text>
+  <!-- divergent = single spur other side -->
+  <text x="470" y="300" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">divergent</text>
+
+  <!-- converge to synthesis node -->
+  <line x1="350" y1="330" x2="350" y2="380" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="250" y="385" width="200" height="56" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="350" y="412" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Synthesis</text>
+  <text x="350" y="428" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">read across all three</text>
+
+  <text x="32" y="464" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">OVERLAP GEOMETRY ENCODES THE FOUR CLAIM CATEGORIES</text>
+</svg>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author's outline vs. TIKTOC.md specification
+  Book: AI+1
+  Chapter: 02-what-tic-toc-does
+  Figure: 02
+  Type: comparison panels
+  Generated: 2026-05-28
+  Source: pantry/02-what-tic-toc-does-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-02">
+  <title id="fig-title-02">Author's outline vs. TIKTOC.md specification</title>
+  <desc>Six features compared. An author's outline leaves each one partial and deferred; the TIKTOC.md specification resolves each into something Cowork can execute without clarification.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="02-what-tic-toc-does"
+      figure-number="02" figure-title="Author's outline vs. TIKTOC.md specification" figure-slug="outline-vs-tiktoc"
+      figure-type="comparison panels" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/02-what-tic-toc-does-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Author's outline vs. TIKTOC.md specification</text>
+
+  <!-- column headers -->
+  <text x="430" y="80" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Outline</text>
+  <text x="580" y="80" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">TIKTOC.md</text>
+
+  <!-- divider between columns -->
+  <line x1="505" y1="92" x2="505" y2="452" stroke="#2a1a0e" stroke-width="1"/>
+
+  <!-- six rows -->
+  <!-- row labels left, then outline cell (hollow), tiktoc cell (filled red highlight) -->
+  <!-- Row 1 -->
+  <text x="40" y="124" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">What it specifies</text>
+  <rect x="370" y="104" width="120" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="520" y="104" width="120" height="36" rx="0" fill="#C8102E"/>
+  <!-- Row 2 -->
+  <text x="40" y="172" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Who the audience is</text>
+  <rect x="370" y="152" width="120" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="520" y="152" width="120" height="36" rx="0" fill="#C8102E"/>
+  <!-- Row 3 -->
+  <text x="40" y="220" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">What the reader can do</text>
+  <rect x="370" y="200" width="120" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="520" y="200" width="120" height="36" rx="0" fill="#C8102E"/>
+  <!-- Row 4 -->
+  <text x="40" y="268" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Cognitive level required</text>
+  <rect x="370" y="248" width="120" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="520" y="248" width="120" height="36" rx="0" fill="#C8102E"/>
+  <!-- Row 5 -->
+  <text x="40" y="316" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Chapter-to-chapter logic</text>
+  <rect x="370" y="296" width="120" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="520" y="296" width="120" height="36" rx="0" fill="#C8102E"/>
+  <!-- Row 6 -->
+  <text x="40" y="364" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Cowork can execute it</text>
+  <rect x="370" y="344" width="120" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="520" y="344" width="120" height="36" rx="0" fill="#C8102E"/>
+
+  <!-- hairline row dividers -->
+  <line x1="32" y1="146" x2="660" y2="146" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="32" y1="194" x2="660" y2="194" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="32" y1="242" x2="660" y2="242" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="32" y1="290" x2="660" y2="290" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="32" y1="338" x2="660" y2="338" stroke="#D4D4D4" stroke-width="1"/>
+
+  <text x="430" y="412" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">deferred / partial</text>
+  <text x="580" y="412" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">resolved</text>
+
+  <text x="32" y="464" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">HOLLOW = DEFERRED · FILLED = RESOLVED — THE CONTRAST IS THE MESSAGE</text>
+</svg>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wage premium by sector and skill level</title>
+<style>
+  :root {
+    --color-white:#FFFFFF; --color-ink:#2a1a0e; --color-red:#C8102E;
+    --color-secondary:#545454; --color-border:#D4D4D4; --color-ochre:#C8860E; --color-fill:#F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-white:#111111; --color-ink:#F0EBE3; --color-red:#E8243A;
+      --color-secondary:#A0978C; --color-border:#2E2E2E; --color-ochre:#D49A30; --color-fill:#1A1A1A; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-size: 13px; fill: var(--color-secondary); }
+  .tick text { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .axis-title { font-size: 12px; fill: var(--color-secondary); }
+  .bar-label { font-size: 12px; fill: var(--color-ink); font-weight: 700; }
+  .gridline line { stroke: var(--color-border); stroke-opacity: 0.6; }
+  .domain { stroke: var(--color-ink); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const data = [
+  { source: 'PwC US, advanced AI', value: 56, contested: false },
+  { source: 'Lightcast AI postings', value: 28, contested: false },
+  { source: 'Contested cut', value: 14, contested: true }
+].sort((a,b) => b.value - a.value);
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const c = document.getElementById('chart');
+  const totalWidth = c.clientWidth || 800;
+  const totalHeight = Math.max(360, Math.min(440, totalWidth * 0.5));
+  const margin = { top: 64, right: 40, bottom: 64, left: 64 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
+  svg.append('title').attr('id','chart-title').text('Wage premium by sector and skill level');
+  svg.append('desc').attr('id','chart-desc').text('A bar chart of AI wage-premium percentages from a zero baseline: PwC US advanced-skills 56 percent, Lightcast AI postings 28 percent, and a contested cut at 14 percent shown in a distinct fill to mark the premium as uneven.');
+
+  svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('AI wage premium');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Uneven and sector-specific, not universal');
+
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const x = d3.scaleBand().domain(data.map(d=>d.source)).range([0,w]).padding(0.28);
+  const y = d3.scaleLinear().domain([0,60]).range([h,0]);
+
+  g.append('g').attr('class','gridline').call(d3.axisLeft(y).tickSize(-w).tickFormat('').ticks(6))
+    .selectAll('text').remove();
+  g.selectAll('.gridline .domain').remove();
+
+  const tip = d3.select('body').append('div').attr('class','tooltip')
+    .style('position','absolute').style('pointer-events','none').style('opacity',0)
+    .style('background','var(--color-white)').style('border','1px solid var(--color-border)')
+    .style('padding','6px 10px').style('font',"13px 'Inter',sans-serif").style('color','var(--color-ink)');
+
+  g.selectAll('.bar-rect').data(data).join('rect').attr('class','bar-rect')
+    .attr('x', d=>x(d.source)).attr('width', x.bandwidth())
+    .attr('y', d=>y(d.value)).attr('height', d=>h-y(d.value))
+    .attr('fill', d=> d.contested ? 'var(--color-secondary)' : 'var(--color-red)')
+    .attr('tabindex',0).attr('role','img').attr('aria-label', d=>`${d.source}: ${d.value} percent${d.contested?', contested cut':''}`)
+    .on('mouseover',(e,d)=>tip.html(`<strong>${d.source}</strong><br>${d.value}% premium${d.contested?'<br><em>contested</em>':''}`).transition().duration(150).style('opacity',1))
+    .on('mousemove',(e)=>tip.style('left',(e.pageX+12)+'px').style('top',(e.pageY-28)+'px'))
+    .on('mouseout',()=>tip.transition().duration(100).style('opacity',0));
+
+  g.selectAll('.bar-label').data(data).join('text').attr('class','bar-label')
+    .attr('x', d=>x(d.source)+x.bandwidth()/2).attr('y', d=>y(d.value)-8)
+    .attr('text-anchor','middle').text(d=>d.value+'%');
+
+  const xa = g.append('g').attr('transform',`translate(0,${h})`).call(d3.axisBottom(x));
+  xa.selectAll('text').style('font-family',"'Inter',sans-serif").style('font-size','11px').style('fill','var(--color-secondary)');
+  g.append('g').call(d3.axisLeft(y).ticks(6).tickFormat(d=>d+'%'));
+  g.append('text').attr('class','axis-title').attr('transform','rotate(-90)')
+    .attr('x',-h/2).attr('y',-46).attr('text-anchor','middle').text('Wage premium (%)');
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Three-Phase Tic TOC Pipeline
+  Book: AI+1
+  Chapter: 04-generating-your-tiktoc
+  Figure: 01
+  Type: process flowchart
+  Generated: 2026-05-28
+  Source: pantry/04-generating-your-tiktoc-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">The Three-Phase Tic TOC Pipeline</title>
+  <desc>Three sequential gated phases — know, spine, draft — each producing an artifact, feeding the /g2 diagnostic gate that loops back or hands off to Cowork.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="04-generating-your-tiktoc"
+      figure-number="01" figure-title="The Three-Phase Tic TOC Pipeline" figure-slug="three-phase-tiktoc-pipeline"
+      figure-type="process flowchart" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/04-generating-your-tiktoc-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Three-Phase Tic TOC Pipeline</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Three gated stages, each producing an artifact the next consumes, ending at the Cowork handoff</text>
+
+  <!-- Phase One block -->
+  <rect x="32" y="120" width="120" height="120" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="92" y="148" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" font-weight="600" fill="#2a1a0e">Phase One</text>
+  <text x="92" y="166" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">What you know</text>
+  <line x1="56" y1="200" x2="56" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="80" y1="200" x2="80" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="104" y1="200" x2="104" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="128" y1="200" x2="128" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="92" y="234" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">/i1–/i4</text>
+
+  <!-- Phase Two block -->
+  <rect x="208" y="120" width="120" height="120" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="268" y="148" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" font-weight="600" fill="#2a1a0e">Phase Two</text>
+  <text x="268" y="166" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Pedagogical spine</text>
+  <line x1="232" y1="200" x2="232" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="256" y1="200" x2="256" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="280" y1="200" x2="280" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="304" y1="200" x2="304" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="268" y="234" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">/l1–/l4</text>
+
+  <!-- Phase Three block -->
+  <rect x="384" y="120" width="120" height="120" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="444" y="148" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" font-weight="600" fill="#2a1a0e">Phase Three</text>
+  <text x="444" y="166" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Chapter draft</text>
+  <line x1="408" y1="200" x2="408" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="432" y1="200" x2="432" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="456" y1="200" x2="456" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="480" y1="200" x2="480" y2="220" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="444" y="234" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">/c1–/c4</text>
+
+  <!-- /g2 diagnostic gate (diamond) -->
+  <polygon points="572,120 622,180 572,240 522,180" stroke="#C8102E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="572" y="176" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">/g2</text>
+  <text x="572" y="192" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">gate</text>
+
+  <!-- Cowork handoff terminal -->
+  <rect x="588" y="300" width="80" height="56" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="628" y="326" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" font-weight="600" fill="#2a1a0e">Cowork</text>
+  <text x="628" y="342" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">handoff</text>
+
+  <!-- progression arrows -->
+  <line x1="152" y1="180" x2="206" y2="180" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="328" y1="180" x2="382" y2="180" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="504" y1="180" x2="520" y2="180" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- forward to handoff -->
+  <path d="M 600 232 L 628 298" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="648" y="270" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">pass</text>
+
+  <!-- return-loop back to Phase Three (re-run path) -->
+  <path d="M 540 240 C 480 320, 444 300, 444 244" stroke="#2a1a0e" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow)"/>
+  <text x="470" y="312" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">re-run</text>
+
+  <text x="32" y="404" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">RESOLVE OR LOG AT THE GATE BEFORE HANDOFF</text>
+</svg>

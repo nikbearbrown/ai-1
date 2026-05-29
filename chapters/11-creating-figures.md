@@ -32,6 +32,9 @@ So here is the trade-off, named plainly, because every figure decision is a trad
 
 This is why the operative rule across the entire craft is a ceiling: **six to eight labeled components per figure, and never more.** Not as a stylistic preference — as a working-memory budget. When a concept genuinely has more than eight moving parts, the answer is not a smaller font and a bigger canvas. The answer is two figures.
 
+![Two vertical bars on a shared zero-based count axis — a taller bar for Miller's seven-item claim and a shorter bar for Cowan's four-chunk capacity — crossed by a horizontal threshold line marking the six-to-eight component ceiling.](images/11-creating-figures-fig-01.png)
+*Figure 11.1 — The component ceiling: seven vs four*
+
 Knowing *when* to split is itself a decision with criteria. The cleanest test is Cowan's number applied directly: more than four distinct interacting components, and you are probably past one figure. Branching structure — parallel paths, competing outcomes, a policy that hits the economic and legal and social systems at once — splits, because branches multiply the relations a reader must track. A process that crosses scales (individual to institution to society; short-run to long-run) splits, because forcing a reader to translate between scales inside one frame is its own load. The reductive instinct here is correct. When in doubt, the figure wants to be two figures.
 
 [^miller]: Miller, G. A. (1956). "The Magical Number Seven, Plus or Minus Two." *Psychological Review*, 63(2), 81–97.
@@ -56,9 +59,15 @@ If the component ceiling is the constraint, SCOPE is the instrument for staying 
 
 Here is the claim at the center of the whole craft, the one sentence to carry out of this chapter: **the exclusion list is more important than the inclusion list.** Anyone can say what a figure is about. The figures that fail — the fourteen-node monsters — fail because no one ever wrote down what the figure was *not* about. Left without that list, every image model defaults to comprehensive. It will pull in adjacent concepts, upstream context, the downstream implications, the related framework you mentioned once. A populated E block is the difference between a figure that clarifies and a figure you spend an afternoon editing clutter out of. A SCOPE prompt without an E block is not finished.
 
+![Five stacked horizontal bands in fixed S-C-O-P-E order, with the bottom E band rendered visibly larger than the four uniform bands above it to encode its dominant weight.](images/11-creating-figures-fig-02.png)
+*Figure 11.2 — The SCOPE frame, E carries the weight*
+
 This is also where the tool's two personalities diverge, and choosing between them is a real decision. In **silent mode**, CAJAL infers concept, audience, and components from whatever text you hand it and returns a clean SCOPE immediately — no questions. Fast, and correct often enough to be useful when you already know what you want. In **interactive mode**, it refuses to move until you have answered, in order: what chapter is this for; what is the concept, in exactly one sentence; what does the reader already know; what are the three-to-eight components; and — the gate it holds hardest — what must not appear. It will not generate output while the exclusion list is empty.
 
 The gates are not bureaucracy. They are the order in which a figure has to be decided to come out clarifying. Skip the one-sentence concept and you get a figure about two things. Skip the audience and you get components a novice can't read or an expert doesn't need. Skip the exclusions and you get the consulting deck. Silent mode trades the gates for speed; you take that trade knowingly, on figures simple enough that the inference is safe.
+
+![Two left-to-right tracks converging on one shared SCOPE-output node — a top track running a single silent node straight to the output, and a bottom track passing through five sequential gate nodes whose final exclusions gate is drawn as a hard blocking lock.](images/11-creating-figures-fig-03.png)
+*Figure 11.3 — Silent vs interactive mode gates*
 
 Before any of this, the tool reads the chapter and triages — one pass per *concept*, not per section, because a section with six ideas wants six independent decisions, not one averaged compromise. Three signals fire a figure. **Mechanism complexity:** a process with three or more interdependent steps. **Verification gap:** a structural claim the reader can't confirm from prose alone — "the test has fourteen items in two groups" is something you must be *shown*. **Proportional or quantitative:** any number that compares to another number. Each candidate comes ranked. Critical means the reader misunderstands a core claim without it. Important means it cuts real cognitive load. Supplementary means the prose stands without it — and the honest fate of most Supplementary figures is the cutting-room floor. A textbook is not improved by a figure on every page.
 
@@ -106,6 +115,9 @@ E — No interface screenshots. No pantry/Writer depiction. No metrics.
     No return arrows. No example text inside boxes.
 ```
 
+![Eight identical section boxes stacked vertically and connected by a single downward arrow between each adjacent pair — a flat linear sequence sitting exactly at the eight-component ceiling, with no branches or return loops.](images/11-creating-figures-fig-04.png)
+*Figure 11.4 — The worked example: eight-section vertical process flow*
+
 What did the discipline buy? A reader scans the figure in about twelve seconds and leaves knowing the sequence — which was the only job. The version without an exclusion list would have arrived with a Cowork logo, a sidebar of token counts, and a helpful loop back to the top, and it would have taught the sequence to no one.
 
 ---
@@ -151,3 +163,30 @@ That is the exclusion list, a hundred years early. The figure earns its place no
 The figures are now decided, not just generated — each one holding a single relation a reader can carry, each one surviving grayscale and reflow, each one having left out more than it kept.
 
 The book is, at this point, as good as the author and the pipeline can make it. What remains is the part no generator can do for you: checking that every claim in it is true, building the files a store will accept, and shipping. Chapter 12 runs the final fact-check, builds the EPUB and the PDF, and submits the book to the world — where it discovers what the pipeline could not check on your behalf.
+
+---
+
+## Prompts
+
+### Figure 11.1 — The component ceiling: seven vs four
+Build a two-bar comparison chart as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: two values on a shared count axis — Miller's claim at 7 and Cowan's revised capacity at 4 — plus a horizontal reference line at the 6-to-8 component ceiling (draw the line at 7). Marks: two vertical bars and one horizontal threshold line. Channels: x position encodes the named source; bar height encodes item count. Use a linear y-scale with a zero baseline; bars must rise from zero. Keep the two bars in author order (Miller then Cowan); do not sort by value. Annotate the threshold line as the component ceiling and label each bar with its source and value. Use the red series color for the threshold line only; render both bars in neutral palette grays. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 11.2 — The SCOPE frame, E carries the weight
+Build a stacked-band schematic as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: five bands in fixed top-to-bottom order S, C, O, P, E, where E carries a larger weight than the four uniform bands above it. Marks: five horizontal rectangles stacked vertically. Channels: vertical position encodes SCOPE order; band height (and a single accent fill) encodes E's dominant weight. Keep bands in fixed S-to-E order; do not sort. No quantitative axis. Annotate each band with its SCOPE letter and label E as the parameter that does the work. Use the red series color for the E band emphasis only; render S, C, O, P in neutral palette grays. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 11.3 — Silent vs interactive mode gates
+Build a two-path flow diagram as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: a top path of one silent node flowing directly to a shared SCOPE-output node, and a bottom path of five sequential gate nodes (chapter, one-sentence concept, prior knowledge, components, exclusions) flowing to the same output, with the final exclusions gate marked as a hard blocking lock. Marks: rectangle nodes joined by left-to-right arrows, plus a lock glyph on the exclusions gate. Channels: y position separates the two tracks; x position encodes gate order on the bottom track; the lock glyph encodes the held-hardest gate. Keep gates in fixed order; do not sort. No quantitative scale. Annotate each node and mark the shared output. Use the red series color for the exclusions lock only. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 11.4 — The worked example: eight-section vertical process flow
+Build a vertical process flowchart as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: eight identical section boxes in a single linear sequence, connected by one downward arrow between each adjacent pair (the deliberate at-ceiling case). Marks: eight uniform rectangles and seven connecting arrows. Channels: vertical position encodes sequence order; no branches, no loops, no return arrows. Keep boxes in fixed sequence order; do not sort. No quantitative scale. Annotate each box with its section name and the entry box distinctly. Use the red series color for the first (entry) box only; render the remaining seven in neutral palette grays. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+---
+
+## References
+
+1. Miller, G. A. (1956). "The Magical Number Seven, Plus or Minus Two." *Psychological Review*, 63(2), 81–97. https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two
+2. Cowan, N. (2001). "The magical number 4 in short-term memory." *Behavioral and Brain Sciences*, 24(1), 87–114. https://pubmed.ncbi.nlm.nih.gov/11515286/
+3. Sweller, J. (1988). "Cognitive Load During Problem Solving." *Cognitive Science*, 12(2), 257–285. https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog1202_4
+4. Okabe, M., & Ito, K. (2008). "Color Universal Design (CUD)." jfly.uni-koeln.de/color/. https://conceptviz.app/blog/okabe-ito-palette-hex-codes-complete-reference
+5. W3C (2023). *EPUB Accessibility 1.1*. https://www.w3.org/TR/epub-a11y-11/
+6. NobelPrize.org. "Life and discoveries of Santiago Ramón y Cajal." https://www.nobelprize.org/prizes/medicine/1906/cajal/article/

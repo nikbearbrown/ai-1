@@ -32,8 +32,10 @@
      Not a full CV. End with a line about where to find you online. -->
 
 Nik Bear Brown is an Associate Teaching Professor at Northeastern University's College of Engineering, where he has taught artificial intelligence, computer science, statistics, applied mathematics, data visualization, web programming, and game development. He holds a Ph.D. in computer science from UCLA — his major field was computational and systems biology, with minor fields in artificial intelligence and statistics — and completed a part-time postdoc at Harvard Medical School. He also holds a Master's in Information Design and Data Visualization and an MBA, both from Northeastern.
+<!-- FACT-CHECK FLAG: UNVERIFIED (Harvard Medical School postdoc; completed Master's in Information Design and MBA) — see factchecks/99-back-matter-assertions.md -->
 
 He is the founder of Humanitarians AI, a 501(c)(3) nonprofit, and of Bear Brown & Company. His work sits at the intersection of artificial intelligence, machine learning, computational biology, data visualization, and education, organized around a single question: what should humans become better at now that machines are becoming better at so much? That question runs through his Irreducibly Human framework, a curriculum and book project about the cognitive capacities the AI era most urgently requires us to develop.
+<!-- FACT-CHECK FLAG: UNVERIFIED (founder of Humanitarians AI; 501(c)(3) status; 2019 founding) — see factchecks/99-back-matter-assertions.md -->
 
 Find him at [nikbearbrown.com](https://www.nikbearbrown.com), [irreducibly.xyz](https://irreducibly.xyz), and bear@bearbrown.co.
 
@@ -88,3 +90,11 @@ This book ships expecting revision — that is the rebuild loop of Chapter 12, n
      (e.g., indexd, Word indexing tools) or a professional indexer. -->
 
 [INDEX PLACEHOLDER — omit for online release]
+
+---
+
+## References
+
+<!-- Fact-check references (confirmed sources only). Added by fact-check pass 2026-05-29. -->
+
+- Northeastern University College of Engineering. *Nicholas Brown — faculty profile.* https://coe.northeastern.edu/people/brown-nicholas/ — confirms Associate Teaching Professor title, Ph.D. in computer science from UCLA (major: computational and systems biology; minors: AI, statistics), and the subjects taught.

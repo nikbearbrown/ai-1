@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAJAL pipeline: prose to publication artifact</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .node-rect.ships { stroke: var(--color-red); }
+  .node-rect.branch { stroke: var(--color-ochre); }
+  .node-label { font-size: 11px; fill: var(--color-ink); text-anchor: middle; }
+  .node-out { font-size: 10px; fill: var(--color-secondary); text-anchor: middle; }
+  .flow-arrow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  .branch-arrow { stroke: var(--color-ochre); stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; }
+  .divider { stroke: var(--color-ink); stroke-width: 1; stroke-dasharray: 2 3; }
+  .divider-label { font-size: 11px; font-weight: 700; fill: var(--color-secondary); }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 260px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const stageData = [
+  { n: 1, label: 'Finishing Pass', out: 'subtitle + comments', kind: 'main', detail: 'Inserts an italic subtitle and visual placeholder comments.' },
+  { n: 2, label: 'CAJAL Image Suggest', out: 'cajal.md (ranked)', kind: 'main', detail: 'Proposes figures per chapter, ranked, with SCOPE prompts.' },
+  { n: 3, label: 'SVG Generator', out: 'SVG source', kind: 'main', detail: 'Produces editable SVG source files in images/.' },
+  { n: 4, label: 'svg-to-png', out: 'PNG (300 DPI)', kind: 'ships', detail: 'The publication artifact — renders reliably on every device.' },
+  { n: 5, label: 'Enrichment pass', out: 'markdown links', kind: 'main', detail: 'Inserts image links at the placeholder locations.' }
+];
+const branchNode = { label: 'D3 companion', out: 'd3/*.html', detail: 'Authorable source for MC/PQ figures; not for the EPUB.' };
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const stacked = totalWidth < 680;
+  const margin = { top: 64, right: 20, bottom: 56, left: 20 };
+  const chartWidth = totalWidth - margin.left - margin.right;
+
+  const nodeH = 52;
+  const gap = stacked ? 30 : 14;
+  const nodeW = stacked ? Math.min(chartWidth, 220) : (chartWidth - 4 * gap) / 5;
+
+  const totalHeight = stacked
+    ? margin.top + (stageData.length + 1) * (nodeH + gap) + margin.bottom
+    : margin.top + nodeH + 90 + margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The CAJAL pipeline: prose to publication artifact');
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('A pipeline from Finishing Pass through CAJAL Image Suggest, SVG Generator, the svg-to-png converter, and the enrichment pass, with a D3 companion branch and a divider marking SVG and D3 as source artifacts versus the PNG that ships in the EPUB.');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrInkP').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ink)');
+  defs.append('marker').attr('id', 'arrOchreP').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ochre)');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24).text('The CAJAL pipeline');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44).text('Prose to publication artifact');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+  const positions = stageData.map((d, i) => stacked
+    ? { x: (chartWidth - nodeW) / 2, y: i * (nodeH + gap) }
+    : { x: i * (nodeW + gap), y: 0 });
+
+  const gLinks = gChart.append('g').attr('aria-hidden', 'true');
+  positions.forEach((p, i) => {
+    if (i === 0) return;
+    const prev = positions[i - 1];
+    if (stacked) gLinks.append('path').attr('class', 'flow-arrow').attr('marker-end', 'url(#arrInkP)')
+      .attr('d', `M${prev.x + nodeW / 2},${prev.y + nodeH} L${p.x + nodeW / 2},${p.y}`);
+    else gLinks.append('path').attr('class', 'flow-arrow').attr('marker-end', 'url(#arrInkP)')
+      .attr('d', `M${prev.x + nodeW},${prev.y + nodeH / 2} L${p.x},${p.y + nodeH / 2}`);
+  });
+
+  // D3 branch off stage 3 (SVG source) — index 2
+  const b = positions[2];
+  const bPos = stacked
+    ? { x: b.x + nodeW + 24, y: b.y }
+    : { x: b.x, y: b.y + nodeH + 38 };
+  if (stacked) {
+    gLinks.append('path').attr('class', 'branch-arrow').attr('marker-end', 'url(#arrOchreP)')
+      .attr('d', `M${b.x + nodeW},${b.y + nodeH / 2} h24`);
+  } else {
+    gLinks.append('path').attr('class', 'branch-arrow').attr('marker-end', 'url(#arrOchreP)')
+      .attr('d', `M${b.x + nodeW / 2},${b.y + nodeH} v38`);
+  }
+
+  // draw branch node
+  const gBranch = gChart.append('g').attr('transform', `translate(${bPos.x},${bPos.y})`)
+    .attr('tabindex', 0).attr('aria-label', `${branchNode.label}: ${branchNode.detail}`)
+    .datum(branchNode).attr('class', 'node');
+  gBranch.append('rect').attr('class', 'node-rect branch').attr('width', nodeW).attr('height', nodeH);
+  gBranch.append('text').attr('class', 'node-label').attr('x', nodeW / 2).attr('y', 22).text(branchNode.label);
+  gBranch.append('text').attr('class', 'node-out').attr('x', nodeW / 2).attr('y', 38).text(branchNode.out);
+
+  // source-vs-ships divider (between stage 3 SVG source and stage 4 PNG)
+  if (!stacked) {
+    const dx = (positions[2].x + nodeW + positions[3].x) / 2;
+    gChart.append('line').attr('class', 'divider').attr('aria-hidden', 'true')
+      .attr('x1', dx).attr('x2', dx).attr('y1', -8).attr('y2', nodeH + 50);
+    gChart.append('text').attr('class', 'divider-label').attr('x', dx - 6).attr('y', nodeH + 64).attr('text-anchor', 'end').text('source');
+    gChart.append('text').attr('class', 'divider-label').attr('x', dx + 6).attr('y', nodeH + 64).text('ships');
+  }
+
+  const nodes = gChart.selectAll('.stage').data(stageData).join('g')
+    .attr('class', 'stage node').attr('transform', (d, i) => `translate(${positions[i].x},${positions[i].y})`)
+    .attr('tabindex', 0).attr('aria-label', d => `Stage ${d.n}: ${d.label}, produces ${d.out}. ${d.detail}`);
+
+  nodes.append('rect').attr('class', d => 'node-rect' + (d.kind === 'ships' ? ' ships' : ''))
+    .attr('width', nodeW).attr('height', nodeH);
+  nodes.append('text').attr('class', 'node-label').attr('x', nodeW / 2).attr('y', 22)
+    .each(function(d) {
+      const words = d.label.split(' '); const t = d3.select(this);
+      if (words.length > 1 && nodeW < 150) {
+        t.text(null);
+        t.append('tspan').attr('x', nodeW / 2).attr('dy', '-0.1em').text(words[0]);
+        t.append('tspan').attr('x', nodeW / 2).attr('dy', '1.1em').text(words.slice(1).join(' '));
+      } else { t.text(d.label); }
+    });
+  nodes.append('text').attr('class', 'node-out').attr('x', nodeW / 2).attr('y', nodeH - 8).text(d => d.out);
+
+  d3.selectAll('.node').on('mouseover', function(event, d) {
+    d3.selectAll('.node-rect').attr('opacity', 0.4);
+    d3.select(this).select('.node-rect').attr('opacity', 1);
+    tooltip.html(`<strong>${d.label}</strong><br>${d.detail}`)
+      .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+      .transition().duration(150).style('opacity', 1);
+  })
+  .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+  .on('mouseout', () => { d3.selectAll('.node-rect').attr('opacity', 1); tooltip.transition().duration(100).style('opacity', 0); });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

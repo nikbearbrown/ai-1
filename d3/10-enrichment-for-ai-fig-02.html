@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dig Deeper vs LLM Exercise</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .panel-head { font-size: 13px; font-weight: 700; fill: var(--color-ink); }
+  .attr-label { font-size: 12px; fill: var(--color-secondary); }
+  .cell-text { font-size: 12px; fill: var(--color-ink); }
+  .panel-dig { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  .panel-ex  { fill: var(--color-fill); stroke: var(--color-red); stroke-width: 1.5; }
+  .rowline { stroke: var(--color-border); stroke-width: 1; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const attrs = [
+    { key: 'Placement',  dig: 'Inline in prose',          ex: 'Chapter-end block' },
+    { key: 'Obligation', dig: 'Optional rabbit hole',      ex: 'Required assignment' },
+    { key: 'Output',     dig: 'No enforced deliverable',   ex: 'Saved running-project artifact' }
+  ];
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 800;
+    const totalHeight = Math.max(340, Math.min(440, totalWidth * 0.52));
+    const margin = { top: 70, right: 40, bottom: 40, left: 120 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('Dig Deeper vs LLM Exercise');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('Two panels share a vertical attribute axis so placement, obligation, and output align row by row: Dig Deeper is inline, optional, and discardable; the LLM Exercise is a required chapter-end block that produces a saved artifact.');
+
+    svg.append('text').attr('x', 16).attr('y', 28).attr('class', 'chart-title')
+      .text('Dig Deeper vs LLM Exercise');
+    svg.append('text').attr('x', 16).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Same client brief, different scaffolding — compared across three attributes.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const colW = (chartWidth - 24) / 2;
+    const rowH = chartHeight / attrs.length;
+
+    // panel backgrounds spanning all rows
+    gChart.append('rect').attr('class', 'panel-dig')
+      .attr('x', 0).attr('y', 0).attr('width', colW).attr('height', chartHeight).attr('rx', 6);
+    gChart.append('rect').attr('class', 'panel-ex')
+      .attr('x', colW + 24).attr('y', 0).attr('width', colW).attr('height', chartHeight).attr('rx', 6);
+
+    gChart.append('text').attr('class', 'panel-head')
+      .attr('x', colW / 2).attr('y', -10).attr('text-anchor', 'middle').text('Dig Deeper');
+    gChart.append('text').attr('class', 'panel-head')
+      .attr('x', colW + 24 + colW / 2).attr('y', -10).attr('text-anchor', 'middle').text('LLM Exercise');
+
+    attrs.forEach((a, i) => {
+      const yMid = i * rowH + rowH / 2;
+      if (i > 0) {
+        gChart.append('line').attr('class', 'rowline')
+          .attr('x1', 0).attr('y1', i * rowH).attr('x2', chartWidth).attr('y2', i * rowH);
+      }
+      svg.append('text').attr('class', 'attr-label')
+        .attr('x', margin.left - 12).attr('y', margin.top + yMid + 4)
+        .attr('text-anchor', 'end').text(a.key);
+
+      const dg = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', `${a.key}, Dig Deeper: ${a.dig}`);
+      dg.append('text').attr('class', 'cell-text')
+        .attr('x', colW / 2).attr('y', yMid + 4).attr('text-anchor', 'middle').text(a.dig);
+
+      const eg = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', `${a.key}, LLM Exercise: ${a.ex}`);
+      eg.append('text').attr('class', 'cell-text')
+        .attr('x', colW + 24 + colW / 2).attr('y', yMid + 4).attr('text-anchor', 'middle').text(a.ex);
+    });
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

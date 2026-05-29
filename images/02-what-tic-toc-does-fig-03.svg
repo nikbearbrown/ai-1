@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The three disciplines triangle
+  Book: AI+1
+  Chapter: 02-what-tic-toc-does
+  Figure: 03
+  Type: conceptual map
+  Generated: 2026-05-28
+  Source: pantry/02-what-tic-toc-does-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-03">
+  <title id="fig-title-03">Three disciplines, three governed phases</title>
+  <desc>Tic TOC draws on three disciplines at the vertices of a triangle — curriculum theorist, instructional designer, acquisitions pragmatist — each governing one phase of the process.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="02-what-tic-toc-does"
+      figure-number="03" figure-title="Three disciplines, three governed phases" figure-slug="three-disciplines-triangle"
+      figure-type="conceptual map" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/02-what-tic-toc-does-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Three disciplines, three governed phases</text>
+
+  <!-- triangle edges (neutral) -->
+  <polygon points="350,90 130,400 570,400" stroke="#D4D4D4" stroke-width="1" fill="none"/>
+
+  <!-- Top vertex: curriculum theorist -->
+  <rect x="260" y="72" width="180" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="350" y="94" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Curriculum theorist</text>
+  <text x="350" y="110" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Wiggins/McTighe, Taba</text>
+
+  <!-- Left vertex: instructional designer -->
+  <rect x="40" y="376" width="180" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="130" y="398" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Instructional designer</text>
+  <text x="130" y="414" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Gagné, Bloom, Mager</text>
+
+  <!-- Right vertex: acquisitions pragmatist -->
+  <rect x="480" y="376" width="180" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="570" y="398" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Acquisitions pragmatist</text>
+  <text x="570" y="414" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">market positioning</text>
+
+  <!-- governance arrows to phase-target nodes -->
+  <!-- curriculum theorist -> intake/audience -->
+  <line x1="350" y1="120" x2="350" y2="190" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="270" y="192" width="160" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#F5F5F5"/>
+  <text x="350" y="217" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Intake / audience phase</text>
+
+  <!-- instructional designer -> capability verbs -->
+  <line x1="180" y1="376" x2="225" y2="312" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="155" y="270" width="160" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#F5F5F5"/>
+  <text x="235" y="295" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Capability-verb check</text>
+
+  <!-- acquisitions pragmatist -> positioning/comparables -->
+  <line x1="520" y1="376" x2="475" y2="312" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="385" y="270" width="160" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#F5F5F5"/>
+  <text x="465" y="295" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Comparable-text check</text>
+
+  <text x="32" y="464" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">EACH VERTEX GOVERNS ONE PHASE — OVERLAPPING BUT DISTINCT</text>
+</svg>

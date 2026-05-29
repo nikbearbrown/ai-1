@@ -30,6 +30,9 @@ No interactive prompts, no global config file, no choices to make beyond those t
 
 One practical note on running the command twice: the script refuses to overwrite. If you run it again in the same directory, nothing is destroyed. If you genuinely want to rebuild from scratch, delete the directory first. The script's full usage reference — flags and output structure — is in Appendix C. [verify — confirm current `new_book.py` idempotency behavior against the script in `SCRIPTS/`]
 
+![A horizontal three-stage process flow: the TIKTOC.md spec document on the left feeds the new_book.py process node, with the --tiktoc and --slug arguments entering the process node from below as two short prongs; an arrow runs from the process node to the generated project directory on the right; a small self-return guard arc on the process node marks its refuse-to-overwrite behavior.](images/05-book-scaffold-fig-02.png)
+*Figure 5.2 — TIKTOC.md → new_book.py → directory*
+
 [^cookiecutter]: Greenfeld, A. R., & Greenfeld, D. (Multiple editions). *Two Scoops of Django*; Cookiecutter project documentation, 2013–present, cookiecutter.readthedocs.io.
 
 ---
@@ -82,6 +85,26 @@ Back to the three audiences. This is the taxonomy the directory makes visible, a
 
 <!-- → [TABLE: three-audience directory map — three columns: file or folder, who reads it (Cowork / Human / Build), what it does — listing all scaffold files and folders in the order they appear in the directory tree] -->
 
+| File or folder | Who reads it | What it does |
+|---|---|---|
+| `TIKTOC.md` | Cowork | The spec; read first by the Chapter Writer at draft time |
+| `book.md` | Cowork | Cross-chapter coherence summary so early drafts know what is coming |
+| `vision.md` | Human | One-paragraph statement of the book's purpose |
+| `architecture.md` | Human | Three-act arc plus the prerequisite map |
+| `chapters-spec.md` | Human | Full chapter list with capability statements and outcomes |
+| `risks.md` | Human | Contested-claims and aging-risk register |
+| `outline.md` | Human | Human-readable table of contents, for sharing |
+| `README.md` | Human | Three-line description and what to run |
+| `metadata.yaml` | Build | Pandoc reads this at build time; fields land in the EPUB |
+| `build.sh` | Build | The EPUB + PDF build script |
+| `chapters/` | Cowork writes, Build reads | One numbered `.md` per chapter; filename order is build order |
+| `pantry/` | Cowork | Research notes, one file per chapter; populated in Chapter 6 |
+| `images/` | Build | PNG figures (Chapter 9 fills) |
+| `d3/` | Build | Interactive D3 HTML (Chapter 9 fills) |
+| `styles/` | Build | Pandoc CSS and LaTeX templates |
+| `output/` | Build | EPUB + PDF land here; gitignored |
+| `_working/` | Build | Pandoc temp files; gitignored |
+
 Here is the full directory for `ai-for-designers`, with each file's audience labeled:
 
 ```
@@ -113,6 +136,9 @@ ai-for-designers/
 ```
 
 Commit the three-color taxonomy to memory. Cowork-facing in one mental color, human-facing in another, build-facing in a third. The cognitive load of the pipeline mostly lives in not knowing which color a file is. Once you know, the rest is ordinary file management.
+
+![A vertical directory tree for the scaffold, root folder at top with its top-level entries indented beneath, color-coded into three audience clusters — a Cowork-facing cluster, a human-facing cluster, and a build-facing cluster — with the chapters/ node carrying a split dual-audience marker showing it is both written by Cowork and read by the build script.](images/05-book-scaffold-fig-01.png)
+*Figure 5.1 — The scaffold directory tree by audience*
 
 ---
 
@@ -190,6 +216,9 @@ pandoc _working/combined.md \
 
 Concatenation: every file in `chapters/` is glued together in filename order. This is why the numbering prefix matters. The number is the build order. Pandoc: the universal document converter takes Markdown plus a metadata file and produces EPUB and PDF.[^pandoc] The `metadata.yaml` schema is pandoc's own, not invented by this pipeline. Output: everything lands in `output/`, which is gitignored. The output directory is not the book. The book is in `chapters/`. Treat `output/` as disposable — if you delete it, the next `./build.sh` recreates it in under a minute.
 
+![An ordered sequence of numbered chapter file tiles on the left, stacked top to bottom in ascending filename-prefix order (00-frontmatter, 01, 02, an ellipsis tile, 99-back-matter), with an arrow feeding a single concatenated document stack on the right whose internal divisions mirror the tile order — showing that lexical filename order is preserved as final EPUB chapter order.](images/05-book-scaffold-fig-03.png)
+*Figure 5.3 — Chapter filename order = EPUB build order*
+
 The Turing Way community calls a build script "the covenant that anyone can reproduce the artifact."[^turingway] `build.sh` is your covenant with future-you. Six months from now, after a typo fix, you run one command. No memory required. Quarto and Jupyter Book offer more elaborate build systems for scientific publishing; they are excellent and they are overkill for a practitioner handbook produced by one author. `new_book.py` ships pandoc and bash because that combination has been stable for fifteen years and will be stable for another ten.
 
 [^wilson]: Wilson, G., et al. (2014). "Best Practices for Scientific Computing." *PLoS Biology*, 12(1), e1001745.
@@ -237,3 +266,26 @@ The directory exists. `TIKTOC.md` is in place. `chapters/` is full of empty stub
 The pantry is empty.
 
 Chapter 6 runs the Chapter Research Gatherer — the automation that produces one notes file per chapter — and then teaches you to read those notes critically before handing them to the drafting system. The pantry is what stands between a Cowork draft worth rewriting and a Cowork dump. The difference, in practice, is whether someone did the Chapter 6 work first.
+
+---
+
+## Prompts
+
+### Figure 5.1 — The scaffold directory tree by audience
+Build a vertical hierarchy diagram of a project directory tree: a root folder node at top, with its top-level entries indented beneath as child nodes connected by tree elbow lines. Color-code nodes into exactly three audience classes — Cowork-facing, human-facing, build-facing — each class a distinct fill. To stay under eight visible components, group rather than enumerate: a root node, a Cowork cluster, a human cluster, a build cluster, and a shared chapters/ node. Give the chapters/ node a split dual-tint marker indicating two audiences (written by one, read by another). Uniform 1pt strokes, white canvas, no filenames baked in. Encode audience by hue only; structure by indentation. Deliverable: a single self-contained HTML file with inline CSS and D3 7.9.0 from the pinned CDN; SVG only; ResizeObserver redraw; hover reveals each node's member files. Structural, not aesthetic.
+
+### Figure 5.2 — TIKTOC.md → new_book.py → directory
+Build a horizontal left-to-right process flowchart with five to six elements: an input document node (the spec), a process node, two short argument prongs entering the process node from below, an output directory node, and a small self-return guard arc on the process node. Main flow connected by solid arrows: input → process → output. The two arguments enter as short vertical prongs feeding the process node. The guard arc is a small loop on the process node marking refuse-to-overwrite behavior. Use one accent for the input, neutral for the process node, a second accent for the generated directory, and a warning accent for the guard arc. Uniform 1pt strokes, white canvas, no text baked in. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw, tooltips on each stage. Structural, not aesthetic.
+
+### Figure 5.3 — Chapter filename order = EPUB build order
+Build a sequence-to-concatenation schematic. On the left, a vertical ordered list of file tiles stacked top to bottom in ascending order: five numbered tiles plus one lower-saturation ellipsis tile implying the full set. An arrow runs from the stack into a single concatenated document block on the right; the output block's internal horizontal divisions mirror the tile order to make order-preservation visible. Encode sequence by vertical position; the output is one accent, the source tiles another. Uniform 1pt strokes, white canvas, no filenames baked in. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw, hover highlights the matching segment in the output stack. Structural, not aesthetic.
+
+---
+
+## References
+
+1. Cookiecutter project documentation (Greenfeld, A. R., & Greenfeld, D.; first released 2013). https://cookiecutter.readthedocs.io/ — https://github.com/cookiecutter/cookiecutter
+2. Guo, P. (2014). Python Is Now the Most Popular Introductory Teaching Language at Top U.S. Universities. *BLOG@CACM*, Communications of the ACM. https://cacm.acm.org/blogcacm/python-is-now-the-most-popular-introductory-teaching-language-at-top-u-s-universities/
+3. Knuth, D. E. (1984). Literate Programming. *The Computer Journal*, 27(2), 97–111. https://academic.oup.com/comjnl/article/27/2/97/343244
+4. MacFarlane, J. (2006–present). *Pandoc User's Guide*. https://pandoc.org/
+5. Nygaard, K., & Dahl, O.-J. (1978). The Development of the SIMULA Languages. *ACM SIGPLAN Notices*, 13(8), 245–272. (OOP/Simula origin confirmed: https://en.wikipedia.org/wiki/Kristen_Nygaard)

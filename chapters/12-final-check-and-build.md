@@ -17,6 +17,9 @@ The author did not write a bad book. The author wrote a book and skipped the fin
 
 Four things, in order. Run the Fact-Checking Assistant, triage, resolve the contradicted claims at minimum. Run `./build.sh` and produce the EPUB and the PDF. Read the EPUB on a device — not on a desktop, on an actual Kindle or the Kindle app on your phone. Submit to KDP. Then accept that you will rebuild. The rebuild loop is not a failure of the pipeline. It is the pipeline.
 
+![Four step nodes — fact-check, build, device-read, submit — connected left to right by forward arrows, with a single curved return arc looping from the final node back to the build step to mark the intentional rebuild loop.](images/12-final-check-and-build-fig-01.png)
+*Figure 12.1 — The four-step ship sequence*
+
 ---
 
 The Fact-Checking Assistant scans every chapter file and classifies every assertion along two dimensions: what kind of claim it is, and what the claim is about. The full prompt is reproduced in Appendix J — copy it from there, paste it into your project, and point it at your book directory.
@@ -25,6 +28,9 @@ The five claim types come from Sarah Harrison Smith's *The Fact Checker's Bible*
 
 The six content categories are drawn from professional fact-checking practice — Peter Canby's department at *The New Yorker* is the gold standard.[^canby] **STAT** covers statistical claims, which must be verified against the primary source, not a derivative summary. **GUIDELINE** covers best-practice claims attributed to a standards body, verified against current published guidance. **APPROVAL** covers claims about authority decisions, verified against the authority's published policy as of a named date. **EVIDENCE** covers claims that evidence supports a conclusion, verified against the cited study with strength assessed. **SPECIALIST** covers claims attributed to a named expert, verified against published work. **CURRENT** covers claims true *now* — the most aging-prone category, requiring a verification date.
 
+![A blank two-axis classification grid — five claim-type rows stacked down the left vertical axis, six content-category columns across the top horizontal axis, and the empty intersection matrix they define, with cell labels left for typography.](images/12-final-check-and-build-fig-02.png)
+*Figure 12.2 — Fact-check classification: claim type by content category*
+
 Every assertion returns one of four statuses: VERIFIED, OUTDATED, CONTRADICTED, or UNVERIFIED. You triage in that exact order, because the order tracks both urgency and effort.
 
 OUTDATED first. A claim that was true at writing time but is no longer true. *"KDP requires a 1600×2400 minimum cover"* — as of 2026 the minimum is higher. These are the fastest to fix: replace the number, re-verify, move on. They are also the most embarrassing if they ship.
@@ -32,6 +38,9 @@ OUTDATED first. A claim that was true at writing time but is no longer true. *"K
 CONTRADICTED second. A claim where the cited or implied source says something different from what the chapter claims. *"Pandoc supports EPUB 3.3 natively"* — Pandoc supports much of EPUB 3.3; some features require post-processing. These take longer because they require rewriting. They are the most important to catch — a contradicted claim is exactly the kind that gets quoted in a one-star review.
 
 UNVERIFIED third. A claim the checker could not verify in either direction. *"About 80% of indie ebook units in the US are sold through KDP"* — no single authoritative source confirms this number. Two resolutions: find a source and upgrade to VERIFIED, or rewrite to make the uncertainty visible. *"Probably the largest share of indie ebook units in the US, though no single authoritative source confirms a precise figure"* is honest in a way the original was not.
+
+![Three actionable status nodes — OUTDATED, CONTRADICTED, UNVERIFIED — arranged left to right in triage priority order and joined by progression arrows, with the VERIFIED node set off the action track as the resolved no-action state.](images/12-final-check-and-build-fig-03.png)
+*Figure 12.3 — The four-status triage order*
 
 The pipeline does not require you to resolve every UNVERIFIED claim. It requires you to make a deliberate decision on each one — keep with caveat language, find a source, or remove the claim. The Fact-Checking Assistant writes its output to `factchecks/MASTER_REPORT.md` and inserts inline `<!-- FACT-CHECK FLAG -->` comments at every claim that did not return VERIFIED. The flags travel with the chapter file until you resolve them.
 
@@ -69,12 +78,13 @@ You will find others specific to your book. Read every chapter on the device. No
 ---
 
 Kindle Direct Publishing (kdp.amazon.com) accounts for the dominant share of indie ebook units in the US as of May 2026. [verify — share estimates from 2025 Authors Guild and industry analyst sources, subject to drift] The submission flow has five parts and takes about forty-five minutes the first time.
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/12-final-check-and-build-assertions.md -->
 
 Before the details: every form field name, every dropdown option, every price-tier rule, and every program-eligibility requirement in this section is current-state as of May 2026 and carries the highest aging risk in this book (TIKTOC.md Part 11). The KDP dashboard changes meaningfully every six to twelve months. Re-check every detail against kdp.amazon.com before submitting. The *structural framework* of submission — account, metadata, cover, manuscript, pricing — is stable. The specific *fields* are not. [verify — all KDP submission details throughout this section]
 
 **Account.** You need a KDP account (free) and a bank account Amazon's payment system supports. The first time, you complete a tax interview (W-9 for US residents, W-8BEN for others) and a banking form — about fifteen minutes, not repeated for future books.
 
-**Metadata.** From the KDP dashboard: *Create New Title → Kindle eBook*. Title and subtitle (subtitles count toward search relevance). Series name (optional; links related books). Author name (the name you want in perpetuity; pen names accepted). Description (up to 4,000 characters — write it as carefully as Chapter 1). Keywords (seven slots; use all seven; each can be a phrase; Dave Chesson's Kindlepreneur is the practitioner reference [verify — slot count subject to change]). Categories (two from KDP's hierarchy, as specific as possible). And the AI-content disclosure, required since August 2023: AI+1 books use AI-assisted drafting — Cowork drafts, human rewrites — which falls under Amazon's *AI-assisted* rather than *AI-generated* distinction. [verify — disclosure boundaries have shifted multiple times since 2023 and remain unsettled]
+**Metadata.** From the KDP dashboard: *Create New Title → Kindle eBook*. Title and subtitle (subtitles count toward search relevance). Series name (optional; links related books). Author name (the name you want in perpetuity; pen names accepted). Description (up to 4,000 characters — write it as carefully as Chapter 1). Keywords (seven slots; use all seven; each can be a phrase; Dave Chesson's Kindlepreneur is the practitioner reference [verify — slot count subject to change]). Categories (two from KDP's hierarchy, as specific as possible). And the AI-content disclosure introduced in September 2023: Amazon requires you to disclose *AI-generated* content but not merely *AI-assisted* content. AI+1 books use AI-assisted drafting — Cowork drafts, human rewrites — which falls under Amazon's *AI-assisted* category, so a disclosure is not strictly required; confirm the current boundary before you declare. [verify — disclosure boundaries have shifted multiple times since 2023 and remain unsettled]
 
 **Cover.** JPEG or TIFF, RGB color space, ideally 2560 × 1600 pixels, minimum 1000 × 625. Ideal ratio at least 1.6:1. File under 50MB. [verify — cover spec is the single most aging-prone detail in this section] The designer-reader has a real advantage here. Design the cover at the recommended size, in a sans-serif typeface that survives thumbnail rendering, with the title legible at 200-pixel preview width. Amazon's discovery surfaces show 200-pixel thumbnails primarily. The cover that wins is the one that reads at that scale.
 
@@ -85,6 +95,9 @@ Before the details: every form field name, every dropdown option, every price-ti
 The KDP royalty structure: books priced between $2.99 and $9.99 earn 70%. Outside that range — including $0.99 — 35%. At $0.99 you keep about $0.35 per sale. The economic case is volume, not margin. This is a contested position. The Authors Guild argues low price points depress perceived value.[^authorsguild] Mike Shatzkin argues pricing is contextual and low points work for narrow professional handbooks. Joanna Penn frames pricing as one variable inside a multi-stream income model.[^penn] The $0.99 decision for this series is a defensible bet, not settled strategy.
 
 KDP Select grants Amazon 90-day exclusivity — no distribution through Apple Books, Kobo, or your own site — in exchange for Kindle Unlimited inclusion, promotional pricing windows, and debated discoverability benefits. [verify — 90-day term, KU page-read economics, and Countdown Deal rules subject to Amazon policy change] Pro (Howey, Penn early-career): KU access dwarfs the cross-platform reach most new authors would build otherwise. Con (Penn more recent, authors with existing mailing lists): exclusivity locks you out of platforms where your audience already exists. For the AI+1 series the decision was to enroll: audience is on Amazon, workshop distribution is well-served by KU, cross-platform loss is acceptable at current series scale. Defensible, not the only defensible position.
+
+![A step function of royalty rate against list price on a zero-based percentage axis — a low 35% band below $2.99, a raised 70% band between $2.99 and $9.99, a drop back to 35% above $9.99, with a single marker on the $0.99 series price sitting in the leftmost low band.](images/12-final-check-and-build-fig-04.png)
+*Figure 12.4 — KDP royalty tiers by price*
 
 Click *Publish*. The book enters review. Approval typically arrives within 24–72 hours.
 
@@ -98,6 +111,21 @@ The worked example is the complete KDP submission for *ai-for-designers* capture
 Title: *AI for Designers*. Subtitle: *A Practitioner's Guide*. Series: AI+1, volume 1. Author: Bear Brown. Description: *A working handbook for freelance graphic designers integrating AI into client practice. From brief intake to portfolio positioning, this book teaches AI+1 fluency — the AI literacy that makes you more valuable to your clients, not interchangeable with the model.* Keywords, all seven slots: AI for designers; graphic design workflow; Claude for creatives; freelance design business; AI tools for designers; Adobe Firefly Midjourney Figma; design practitioner handbook. Categories: Computers & Technology → AI & Semantics; Arts & Photography → Graphic Design → Commercial. AI-content disclosure: AI-assisted. Cover: 2560 × 1600 JPEG, RGB, flat fills in ink and ochre on cream, title legible at 200-pixel thumbnail. [verify — pixel specs subject to drift] Manuscript: `output/ai-for-designers.epub`. EPUBCheck result: 0 critical errors, 2 informational warnings. KDP Online Previewer: all 11 chapters rendered cleanly. Price: $0.99 USD, 35% royalty tier. KDP Select: enrolled, 90-day exclusivity from publish date. [verify — KDP Select term subject to Amazon policy change] Status: approved 27 hours after submission, May 15, 2026. Live on Amazon.com and every regional storefront.
 
 <!-- → [TABLE: KDP submission checklist — two columns: field/step and verification note — covering all five submission stages with aging-risk flags on the fields most likely to drift] -->
+
+| Field / step | Verification note |
+|---|---|
+| Account — KDP account + supported bank account | One-time tax interview (W-9 US, W-8BEN non-US) and banking form, about fifteen minutes; not repeated for future books. |
+| Metadata — title and subtitle | Subtitles count toward search relevance; write them deliberately. |
+| Metadata — series name | Optional; links related volumes (AI+1, volume 1). |
+| Metadata — description | Up to 4,000 characters. [verify — character limit subject to drift] |
+| Metadata — keywords | Seven slots; use all seven; each can be a phrase. [verify — slot count subject to change] |
+| Metadata — categories | Two from KDP's hierarchy, as specific as possible. |
+| Metadata — AI-content disclosure | AI-assisted (not AI-generated) for the AI+1 drafting model. [verify — disclosure boundaries unsettled since 2023] |
+| Cover — file | JPEG or TIFF, RGB, ideally 2560 × 1600, minimum 1000 × 625, ratio at least 1.6:1, under 50MB. [verify — most aging-prone detail in this section] |
+| Manuscript — upload | Upload `output/[book-slug].epub`; KDP runs its own validation and Online Previewer. |
+| Pricing — list price | AI+1 series ships at $0.99 (35% royalty tier). [verify — royalty-tier boundaries subject to Amazon change] |
+| Pricing — KDP Select | 90-day exclusivity for Kindle Unlimited inclusion. [verify — term and KU economics subject to policy change] |
+| Publish — review | Approval typically within 24–72 hours. [verify — review window subject to drift] |
 
 ---
 
@@ -166,3 +194,32 @@ This is not failure. This is the pipeline at work. A book is not finished the wa
 The TIKTOC.md is still on disk. The `chapters/` directory still exists. The build script still runs.
 
 Monday morning, you will look at the next book you want to build. You will open Tic TOC. You will run `/i1`. The next pipeline is ready when you are.
+
+---
+
+## Prompts
+
+### Figure 12.1 — The four-step ship sequence
+Build a horizontal process flowchart with a return loop as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: four sequential step nodes (fact-check, build, device-read, submit) plus one return arc from the final node back to the build step. Marks: four rectangle nodes joined by left-to-right forward arrows, and one curved return arc drawn distinctly. Channels: x position encodes step order; the curved arc encodes the intentional rebuild loop. Keep steps in fixed order; do not sort. No quantitative scale. Annotate each node with its step name and label the arc as the rebuild loop. Use the red series color for the return arc only. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 12.2 — Fact-check classification: claim type by content category
+Build a blank two-axis classification grid as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: five claim-type rows (basic, emphatic, positive, I-language, combination) and six content-category columns (STAT, GUIDELINE, APPROVAL, EVIDENCE, SPECIALIST, CURRENT), defining an empty 5 by 6 intersection matrix. Marks: a ruled grid with a labeled left vertical axis band and a labeled top horizontal axis band; cells left empty. Channels: row position encodes claim type; column position encodes content category. Keep both axes in fixed order; do not sort. No quantitative scale. Annotate only the axis labels — leave all 30 cells blank. Use neutral palette colors for the axis bands; reserve the red series color for at most one emphasis element. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 12.3 — The four-status triage order
+Build an ordered priority sequence as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: three actionable statuses in triage order (OUTDATED, CONTRADICTED, UNVERIFIED) plus VERIFIED set aside as the no-action terminal. Marks: three nodes on a horizontal track joined by progression arrows, and one VERIFIED node placed off the track. Channels: x position encodes triage priority; off-track placement encodes the resolved state. Keep statuses in fixed triage order; do not sort. No quantitative scale. Annotate each node with its status name and mark VERIFIED as requiring no triage. Use the red series color for the OUTDATED node only (fastest, most embarrassing); render the others in neutral palette colors. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 12.4 — KDP royalty tiers by price
+Build a step-function chart as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: royalty rate as a function of list price — 35% below $2.99, 70% between $2.99 and $9.99, 35% above $9.99 — plus a single marker at the $0.99 series price in the low band. Marks: a stepped line or banded area profile and one point marker. Channels: x position encodes list price increasing rightward; y position encodes royalty percentage. Use a linear y-scale with a zero baseline; the royalty axis starts at zero. Do not sort; price runs naturally left to right. Annotate the three bands with their rates, the breakpoints at $2.99 and $9.99, and the $0.99 marker. Use the red series color for the $0.99 decision marker only; render the bands in neutral palette colors. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+---
+
+## References
+
+1. KDP. "What criteria does my eBook's cover image need to meet?" https://kdp.amazon.com/en_US/help/topic/G200645690
+2. KDP. "Digital Book Pricing Page" (royalty tiers). https://kdp.amazon.com/en_US/help/topic/G200634500
+3. KDP. "KDP Select." https://kdp.amazon.com/en_US/help/topic/G200798990
+4. Authors Guild (2023). "Amazon's New Disclosure Policy for AI-Generated Book Content" (policy announced September 2023). https://authorsguild.org/news/amazons-new-disclosure-policy-for-ai-generated-book-content-is-a-welcome-first-step/
+5. MacFarlane, J. *Pandoc User's Guide* / "Creating an ebook with pandoc." https://pandoc.org/MANUAL.html
+6. W3C (2023). *EPUB 3.3* (Recommendation, 25 May 2023). https://www.w3.org/TR/epub-33/
+7. Preston-Werner, T. (2013). *Semantic Versioning 2.0.0*. https://semver.org/
+8. Wikipedia. "Aldus Manutius." https://en.wikipedia.org/wiki/Aldus_Manutius

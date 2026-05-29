@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eight-section prompt mapped to Tic TOC intake
+  Book: AI+1
+  Chapter: 03-domain-research
+  Figure: 02
+  Type: structural schematic
+  Generated: 2026-05-28
+  Source: pantry/03-domain-research-cajal.md
+-->
+<svg viewBox="0 0 700 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-02">
+  <title id="fig-title-02">The eight research sections feed the intake questions</title>
+  <desc>A crosswalk: eight research-prompt sections on the left connect to five Tic TOC intake targets on the right. Only mappings stated in the chapter are drawn; unstated links are left out.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="03-domain-research"
+      figure-number="02" figure-title="The eight research sections feed the intake questions" figure-slug="eight-section-crosswalk"
+      figure-type="structural schematic" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/03-domain-research-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="540" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The eight research sections feed the intake questions</text>
+
+  <text x="120" y="80" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Prompt sections</text>
+  <text x="560" y="80" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Tic TOC intake</text>
+
+  <!-- left: 8 section blocks -->
+  <!-- y centers spaced 52 apart from 110 -->
+  <rect x="48" y="98" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="121" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 1</text>
+  <rect x="48" y="150" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="173" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 2</text>
+  <rect x="48" y="202" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="225" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 3</text>
+  <rect x="48" y="254" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="277" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 4</text>
+  <rect x="48" y="306" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="329" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 5</text>
+  <rect x="48" y="358" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="381" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 6</text>
+  <rect x="48" y="410" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="433" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 7</text>
+  <rect x="48" y="462" width="144" height="36" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="120" y="485" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">Section 8</text>
+
+  <!-- right: 5 intake-target nodes -->
+  <!-- y centers spaced to span ~98..498, 5 nodes -->
+  <rect x="500" y="110" width="120" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#FFFFFF"/>
+  <text x="560" y="135" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">/i2</text>
+  <rect x="500" y="190" width="120" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#FFFFFF"/>
+  <text x="560" y="215" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">/i3</text>
+  <rect x="500" y="270" width="120" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#FFFFFF"/>
+  <text x="560" y="295" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">/i4</text>
+  <rect x="500" y="350" width="120" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#FFFFFF"/>
+  <text x="560" y="375" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">/l1</text>
+  <rect x="500" y="430" width="120" height="40" rx="0" stroke="#C8860E" stroke-width="1" fill="#FFFFFF"/>
+  <text x="560" y="455" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">/m1</text>
+
+  <!-- crosswalk connectors (only confirmed/clear mappings drawn) -->
+  <!-- S1,S2 -> /i2 (audience/domain framing) -->
+  <line x1="192" y1="116" x2="500" y2="128" stroke="#2a1a0e" stroke-width="1"/>
+  <line x1="192" y1="168" x2="500" y2="134" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- S3,S4 -> /i3 -->
+  <line x1="192" y1="220" x2="500" y2="206" stroke="#2a1a0e" stroke-width="1"/>
+  <line x1="192" y1="272" x2="500" y2="214" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- S5,S6 -> /i4 -->
+  <line x1="192" y1="324" x2="500" y2="286" stroke="#2a1a0e" stroke-width="1"/>
+  <line x1="192" y1="376" x2="500" y2="294" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- S7 -> /l1 -->
+  <line x1="192" y1="428" x2="500" y2="370" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- S8 -> /m1 -->
+  <line x1="192" y1="480" x2="500" y2="450" stroke="#2a1a0e" stroke-width="1"/>
+
+  <text x="32" y="524" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">CONNECTORS DRAWN ONLY FOR MAPPINGS THE CHAPTER STATES — UNSTATED LINKS OMITTED</text>
+</svg>

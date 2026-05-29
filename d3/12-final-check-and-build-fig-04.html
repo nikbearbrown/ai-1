@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDP royalty tiers by price</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .step-line { fill: none; stroke: var(--color-ink); stroke-width: 2; }
+  .band-fill { fill: var(--color-fill); }
+  .tick text { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .tick line, .domain { stroke: var(--color-border); }
+  .axis-title { font-size: 12px; fill: var(--color-secondary); }
+  .gridline { stroke: var(--color-border); stroke-opacity: 0.6; }
+  .marker-dot { fill: var(--color-red); stroke: var(--color-white); stroke-width: 1.5; }
+  .marker-label { font-size: 11px; fill: var(--color-red); }
+  .band-label { font-size: 11px; fill: var(--color-secondary); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  // Step function: royalty rate vs list price (USD)
+  const steps = [
+    { x: 0.00, y: 35 }, { x: 2.99, y: 35 },
+    { x: 2.99, y: 70 }, { x: 9.99, y: 70 },
+    { x: 9.99, y: 35 }, { x: 14.00, y: 35 }
+  ];
+  const seriesPrice = { x: 0.99, y: 35 };
+  const XMAX = 14;
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 760;
+    const totalHeight = Math.max(340, Math.min(440, totalWidth * 0.6));
+    const margin = { top: 64, right: 40, bottom: 56, left: 64 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('KDP royalty tiers by price');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('A step function of royalty rate against list price on a zero-based percentage axis: 35 percent below 2.99 dollars, 70 percent between 2.99 and 9.99 dollars, and 35 percent above, with the 0.99 dollar series price marked in the leftmost low band.');
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('KDP royalty tiers by price');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('The $0.99 series price sits in the 35% band — the economic case is volume.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const xScaleLinear = d3.scaleLinear().domain([0, XMAX]).range([0, chartWidth]);
+    const yScaleLinear = d3.scaleLinear().domain([0, 80]).range([chartHeight, 0]);
+
+    // gridlines
+    gChart.append('g').selectAll('line').data(yScaleLinear.ticks(8)).join('line')
+      .attr('class', 'gridline').attr('aria-hidden', 'true')
+      .attr('x1', 0).attr('x2', chartWidth)
+      .attr('y1', d => yScaleLinear(d)).attr('y2', d => yScaleLinear(d));
+
+    // area under step (the 70% middle band) for visual emphasis of the high band
+    const area = d3.area().x(d => xScaleLinear(d.x)).y0(yScaleLinear(0)).y1(d => yScaleLinear(d.y)).curve(d3.curveStepAfter);
+    gChart.append('path').datum(steps).attr('class', 'band-fill').attr('d', area).attr('aria-hidden', 'true');
+
+    // step line
+    const line = d3.line().x(d => xScaleLinear(d.x)).y(d => yScaleLinear(d.y));
+    gChart.append('path').datum(steps).attr('class', 'step-line').attr('d', line);
+
+    // axes
+    gChart.append('g').call(d3.axisLeft(yScaleLinear).ticks(8).tickFormat(d => d + '%'));
+    gChart.append('g').attr('transform', `translate(0,${chartHeight})`)
+      .call(d3.axisBottom(xScaleLinear).tickValues([0, 0.99, 2.99, 9.99, 14]).tickFormat(d => '$' + d.toFixed(2)));
+
+    gChart.append('text').attr('class', 'axis-title')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -chartHeight / 2).attr('y', -46).attr('text-anchor', 'middle').text('Royalty rate');
+    gChart.append('text').attr('class', 'axis-title')
+      .attr('x', chartWidth / 2).attr('y', chartHeight + 44).attr('text-anchor', 'middle').text('List price (USD)');
+
+    // band labels
+    gChart.append('text').attr('class', 'band-label')
+      .attr('x', xScaleLinear(6.5)).attr('y', yScaleLinear(70) - 8).attr('text-anchor', 'middle').text('70% tier');
+    gChart.append('text').attr('class', 'band-label')
+      .attr('x', xScaleLinear(1.5)).attr('y', yScaleLinear(35) - 8).attr('text-anchor', 'middle').text('35%');
+    gChart.append('text').attr('class', 'band-label')
+      .attr('x', xScaleLinear(12)).attr('y', yScaleLinear(35) - 8).attr('text-anchor', 'middle').text('35%');
+
+    // $0.99 marker
+    gChart.append('circle').attr('class', 'marker-dot')
+      .attr('tabindex', 0).attr('role', 'img')
+      .attr('aria-label', 'AI+1 series price: $0.99 at 35% royalty')
+      .attr('cx', xScaleLinear(seriesPrice.x)).attr('cy', yScaleLinear(seriesPrice.y)).attr('r', 5);
+    gChart.append('text').attr('class', 'marker-label')
+      .attr('x', xScaleLinear(seriesPrice.x) + 8).attr('y', yScaleLinear(seriesPrice.y) - 8)
+      .text('$0.99 series price');
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

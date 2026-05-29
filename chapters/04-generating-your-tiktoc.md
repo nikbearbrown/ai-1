@@ -24,6 +24,9 @@ You will spend roughly two hours in Tic TOC. Most of that time will be spent dis
 
 [^curtis]: Curtis, B., Krasner, H., & Iscoe, N. (1988). "A Field Study of the Software Design Process for Large Systems." *Communications of the ACM*, 31(11), 1268–1287.
 
+![Horizontal process flowchart of the three-phase Tic TOC pipeline: a Phase One block, a Phase Two block, and a Phase Three block in sequence — each carrying four small command sub-ticks — feeding a /g2 diagnostic decision diamond that loops back to the relevant phase on a re-run and arrows forward to the Cowork handoff terminal.](images/04-generating-your-tiktoc-fig-01.png)
+*Figure 4.1 — The three-phase Tic TOC pipeline*
+
 ---
 
 ## Phase One: what you actually know about your book
@@ -50,6 +53,9 @@ Here is the `/i1` exchange that produced the ai-for-designers capability stateme
 >
 > **Tic TOC:** Confirmed. That is a capability statement. Note: this statement now constrains every downstream chapter. Every chapter must contribute to either identification (which decisions stay human) or defense (how to articulate the delegation). Chapters that do neither are out of scope.
 
+![Ascending staircase of four refinement rungs left to right — a vague topic rung, a rung that adds a constraint, a rung that adds an action, and a confirmed-capability rung at the top — connected by arrows, with three short Mager-criterion stubs (performance, condition, criterion) branching off the final rung.](images/04-generating-your-tiktoc-fig-02.png)
+*Figure 4.2 — Capability statement: topic vs. demonstrable outcome*
+
 Read the last note again. The moment the capability statement is committed, the chapter list narrows. Topics that seemed essential — an introduction to Midjourney, say — may no longer fit. Topics that seemed peripheral — the disclosure conversation — may now be load-bearing. The commitment does not just define the book. It defines what is not the book.
 
 `/i2` asks what kind of book this is and where the reader will use it: practitioner handbook versus course textbook versus trade book versus field-defining monograph, and self-directed read versus workshop companion versus course adoption. Tic TOC will push back on misclassification. If the answer is "trade book" but the chapters end with assessable exercises, the answer is wrong. If the answer is "course textbook" but the reader is a self-directed solo practitioner, it is also wrong. The book type shapes downstream sequencing decisions in ways that propagate forward, and a misclassified book type at `/i2` produces misaligned sequence logic at `/l2`.
@@ -61,6 +67,13 @@ Read the last note again. The moment the capability statement is committed, the 
 Phase One ends when Tic TOC states: *"Phase One complete. Book Concept Summary ready for confirmation. Confirm, or revise?"* You confirm. The spec has a foundation.
 
 <!-- → [TABLE: Phase One output summary — four columns: Command, Central question asked, Common pushback pattern, What confirmation produces downstream] -->
+
+| Command | Central question asked | Common pushback pattern | What confirmation produces downstream |
+|---|---|---|---|
+| `/i1` | Working title, one-sentence learning outcome, one-sentence thesis — what does the reader learn? | Vague topics pushed toward specific capabilities; lists pushed toward the one load-bearing item; theses everyone agrees with pushed toward what the book argues that competitors do not | A confirmed capability statement that constrains every later chapter — any chapter contributing to neither identification nor defense is out of scope |
+| `/i2` | What kind of book (handbook / textbook / trade / monograph) and where the reader uses it (self-directed / workshop / course) | Misclassification: "trade book" with assessable exercises, or "course textbook" for a solo practitioner | A locked book type that governs sequencing at `/l2`; a misclassified type here produces misaligned sequence logic later |
+| `/i3` | Who, specifically, is the reader — tenure, current client, current toolset, current fear? | "Designers" pushed to "who, specifically?"; category pushed to a named person with a concrete unacted-on worry | A reader profile sharp enough to test every example and exercise against a real person |
+| `/i4` | What does the book argue that competing books do not? Where does it sit between which titles? | The positioning *vs.* move: *unlike X, which does Y, this book does Z* — if the blanks cannot be filled, positioning does not exist yet | A defensible shelf position and a thesis sharp enough to survive acquisitions scrutiny |
 
 ---
 
@@ -74,6 +87,9 @@ A practitioner handbook should have no chapter with an outcome below Apply as it
 
 Robert Mager's 1962 criterion gives the analytical foundation.[^mager] A real learning outcome names three things: the *performance* (what the reader does), the *condition* (under what circumstances), and the *criterion* (what counts as success). "The reader will understand the fluency trap" fails all three. "The reader will identify three fluency trap patterns in their own AI-assisted work from the last six months, distinguishing patterns that collapse under client questioning from patterns that do not" satisfies them. The difference is not pedantry. It is the difference between a chapter Cowork can draft against and a chapter Cowork will pad.
 
+![Bar chart of the six Bloom's taxonomy levels in order — Remember, Understand, Apply, Analyze, Evaluate, Create — with bars rising from a zero baseline to encode increasing cognitive ceiling, and a single horizontal threshold line drawn at the Apply level marking the practitioner-handbook working floor; bars below the floor (Remember, Understand) shown in lower saturation than bars at or above it.](images/04-generating-your-tiktoc-fig-03.png)
+*Figure 4.3 — Bloom's verb ceiling for a practitioner handbook*
+
 [^anderson]: Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A Taxonomy for Learning, Teaching, and Assessing*. Longman.
 [^mager]: Mager, R. F. (1962, revised 1997). *Preparing Instructional Objectives*. Center for Effective Performance.
 
@@ -86,6 +102,16 @@ Robert Mager's 1962 criterion gives the analytical foundation.[^mager] A real le
 Phase Two passes when outcomes are mapped to Bloom's levels with a defensible distribution and every chapter has at least one outcome at Apply or above.
 
 <!-- → [TABLE: Bloom's ceiling distribution for the ai-for-designers running example — columns: Chapter, Title, Bloom's Ceiling, Create-level deliverable (if any) — showing the three Create-level chapters and their positions in the arc] -->
+
+| Chapter | Title | Bloom's ceiling | Create-level deliverable (if any) |
+|---|---|---|---|
+| Ch 1 | The fluency trap | Analyze | — |
+| Ch 2 | The AI+1 designer | Apply | — |
+| Ch 3 | Diagnosing the fluency trap in your own work | Create | A 200-word defense-or-acknowledgment statement for one piece of AI-assisted work |
+| Ch 4 | What you can actually assign | Evaluate | — |
+| Ch 5 | The delegation map | Create | A documented delegation map separating human-only from AI-eligible decisions |
+| Ch 6 | Presenting AI-assisted work | Apply | — |
+| Ch 7 | Defending the account | Create | A rehearsed client-defense script for a skeptical revision review |
 
 ---
 
@@ -191,7 +217,22 @@ Five warnings, each addressable in ten to twenty minutes. Robert Marzano's 2001 
 
 After resolving the warnings, re-run `/g2`. If the second pass returns clean, the TIKTOC.md is ready for Cowork. If warnings persist, the choice is binary: resolve them, or log them to `/p2` as BLOCKED with explicit rationale. Logged and acknowledged is acceptable. Unaddressed is not.
 
+![A seven-row by seven-column status grid — seven failure modes read against seven chapters — with five cells filled solid to mark WARN and the remaining forty-four shown as outline-only PASS cells, and zero FAIL; thin grid rules throughout.](images/04-generating-your-tiktoc-fig-04.png)
+*Figure 4.4 — The /g2 failure-mode × chapter diagnostic grid*
+
 <!-- → [TABLE: The /g2 failure mode table from the ai-for-designers session, full version — all seven failure modes × all seven chapters, with warning cells highlighted and one-line diagnostic for each warning] -->
+
+| Failure mode | Ch 1 | Ch 2 | Ch 3 | Ch 4 | Ch 5 | Ch 6 | Ch 7 | Diagnostic for the warning |
+|---|---|---|---|---|---|---|---|---|
+| Audience drift | PASS | PASS | PASS | PASS | **WARN** | PASS | PASS | Ch 5 examples drift toward agency teams; reader is a solo practitioner |
+| Missing prerequisites | PASS | PASS | PASS | PASS | PASS | PASS | PASS | — |
+| Over-claimed outcomes | PASS | PASS | **WARN** | PASS | PASS | PASS | PASS | Ch 3 promises seven-pattern mastery but exercises test only three |
+| Under-specified deliverables | PASS | PASS | PASS | PASS | PASS | PASS | PASS | — |
+| Contested claims unflagged | **WARN** | PASS | PASS | PASS | PASS | PASS | PASS | Ch 1 uses the WEF "fastest-declining job" framing without flagging it as contested |
+| Bridge fails to bridge | PASS | PASS | PASS | PASS | PASS | **WARN** | PASS | Ch 6 bridge restates the topic rather than committing to Ch 7's deliverable |
+| Capability statement is topic | PASS | PASS | PASS | PASS | PASS | PASS | PASS | — |
+
+*Five WARNINGS. Zero FAILs. Each warning is addressable in ten to twenty minutes; the Ch 1 contested-claim flag is highest-priority.*
 
 ---
 
@@ -287,3 +328,27 @@ Whether Tic TOC's pushback texture will hold across model versions is also open.
 Meadows was an environmental scientist and systems theorist whose 1972 *Limits to Growth* and posthumous 2008 *Thinking in Systems* established the vocabulary for analyzing where in a system an intervention matters most. Her twelve leverage points run from least powerful (changing parameters) to most powerful (transcending paradigms). Her argument — *the structure of a system determines its behavior* — is the deep intellectual ancestor of this chapter's claim that the TIKTOC.md, as the book's structural specification, determines what the downstream chapters become. The Wikipedia article is substantive; the prompt asks you to read it once and write a 300-word memo.[^meadows]
 
 [^meadows]: Meadows, D. H. (2008). *Thinking in Systems: A Primer*. Chelsea Green. The original 1999 essay *Leverage Points: Places to Intervene in a System* is also widely available online.
+
+---
+
+## Prompts
+
+### Figure 4.1 — The three-phase Tic TOC pipeline
+Build a horizontal left-to-right process flowchart with exactly five nodes: three sequential phase blocks, a decision diamond, and a terminal node. Each of the three phase blocks carries four small unlabeled command sub-ticks. Connect the three phase blocks with solid progression arrows. The fourth node is a decision diamond with two outgoing edges: a return-loop arc back to the preceding phase (the re-run path) and a forward arrow to the fifth node, a terminal handoff node. Layout strictly horizontal, single row. Use one primary accent color for the decision diamond and neutral fills for the phase blocks; the terminal node in ink. Uniform 1pt strokes, white canvas, no baked-in text labels. Deliverable: a single self-contained HTML file with inline CSS and D3 7.9.0 loaded from the pinned CDN; SVG only; responsive via ResizeObserver. Structural, not decorative.
+
+### Figure 4.2 — Capability statement: topic vs. demonstrable outcome
+Build an ascending staircase progression with four rungs rising left to right, each rung a labeled tile connected to the next by a single arrow: rung 1 lowest (vague topic), rung 2 (adds a constraint), rung 3 (adds an action), rung 4 highest (confirmed capability). From the top rung, branch three short stub marks representing Mager's three criteria — performance, condition, criterion. Five to seven marks total. Encode refinement as vertical height gain. Use a sequence of distinct neutral-to-accent fills with the final rung in the primary accent; stubs in ink. Uniform 1pt strokes, white canvas, no sentence text baked in. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw. Structural, not aesthetic.
+
+### Figure 4.3 — Bloom's verb ceiling for a practitioner handbook
+Build a vertical bar chart with six bars, one per Bloom's taxonomy level in fixed order: Remember, Understand, Apply, Analyze, Evaluate, Create. Bar height encodes ordinal cognitive ceiling, rising left to right; y-axis baseline anchored at zero. Draw one horizontal threshold rule across all bars at the Apply position, marking the working floor. Bars below the floor (Remember, Understand) rendered in lower saturation; bars at or above (Apply through Create) in full primary accent. Threshold line in the secondary accent. Sort order is the canonical taxonomy order, not by value. Annotate the threshold line only. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, zero baseline, ResizeObserver redraw, tooltip on each bar. Structural, not aesthetic.
+
+### Figure 4.4 — The /g2 failure-mode × chapter diagnostic grid
+Build a seven-by-seven matrix heatmap: rows are seven failure modes top to bottom, columns are seven chapters left to right, forty-nine cells. Two states only — PASS and WARN, zero FAIL. Render PASS cells as outline-only and WARN cells as solid fill in the decorative accent. Place exactly five WARN cells at fixed positions: audience-drift × Ch 5, over-claimed × Ch 3, contested-claims × Ch 1, bridge-fails × Ch 6, and one over-claimed warning, per the source matrix. Thin grid rules between all cells, uniform 1pt. White canvas. No row or column header text baked in. On hover, surface the one-line diagnostic for a WARN cell via tooltip. Deliverable: single self-contained HTML file, inline CSS, D3 7.9.0 from the pinned CDN, SVG only, ResizeObserver redraw. Structural, not aesthetic.
+
+---
+
+## References
+
+1. Curtis, B., Krasner, H., & Iscoe, N. (1988). A Field Study of the Software Design Process for Large Systems. *Communications of the ACM*, 31(11), 1268–1287. https://dl.acm.org/doi/10.1145/50087.50089
+2. Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. Longman.
+3. Marzano, R. J., Pickering, D. J., & Pollock, J. E. (2001). *Classroom Instruction That Works*. ASCD. (Effect size 1.61 for identifying similarities and differences.) https://files.eric.ed.gov/fulltext/ED543521.pdf

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Five failure modes mapped to their rewrite moves</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .col-header { font-size: 12px; font-weight: 700; fill: var(--color-secondary); }
+  .failure-rect { fill: var(--color-red); opacity: 0.10; stroke: var(--color-red); stroke-width: 1;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .move-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .cell-label { font-size: 12px; fill: var(--color-ink); }
+  .map-arrow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 260px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const mapData = [
+  { failure: 'Voice drift', move: 'Specificity injection', detail: 'Cut the generality; replace with a specific named moment.' },
+  { failure: 'Fabricated specificity', move: 'Cite, replace, or cut', detail: 'Find the source, replace with a defensible number, or cut the sentence.' },
+  { failure: 'Missing domain judgment', move: 'One judgment per page', detail: 'Add a claim only a practitioner who lived the work could make.' },
+  { failure: 'Padded middle', move: 'Cut 25 percent, restructure', detail: 'Pencil-pass pages two to four; cut what carries no load.' },
+  { failure: "Bridge questions that don't bridge", move: "Name the next chapter's deliverable", detail: 'Open the next spec; rewrite the bridge to name what it delivers.' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const margin = { top: 70, right: 24, bottom: 24, left: 24 };
+  const chartWidth = totalWidth - margin.left - margin.right;
+  const rowH = 56, rowGap = 14;
+  const totalHeight = margin.top + mapData.length * (rowH + rowGap) + margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('Five failure modes mapped to their rewrite moves');
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('Five paired rows mapping each Cowork failure mode on the left to its prescriptive rewrite move on the right, joined by a left-to-right arrow.');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrowInk2').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path')
+    .attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ink)');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24)
+    .text('Failure modes to rewrite moves');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44)
+    .text('Diagnostic to prescriptive');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const arrowW = 36;
+  const colW = (chartWidth - arrowW) / 2;
+  const leftX = 0, rightX = colW + arrowW;
+
+  gChart.append('text').attr('class', 'col-header').attr('x', leftX).attr('y', -8).text('Failure mode');
+  gChart.append('text').attr('class', 'col-header').attr('x', rightX).attr('y', -8).text('Rewrite move');
+
+  function wrapInBox(sel, width, h) {
+    sel.each(function(d) {
+      const t = d3.select(this);
+      const txt = t.text(); const words = txt.split(/\s+/).reverse();
+      let word, line = [], lineNumber = 0; const lineHeight = 14;
+      const x = t.attr('x');
+      t.text(null);
+      let tspan = t.append('tspan').attr('x', x).attr('dy', 0);
+      while ((word = words.pop())) {
+        line.push(word); tspan.text(line.join(' '));
+        if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+          line.pop(); tspan.text(line.join(' ')); line = [word];
+          tspan = t.append('tspan').attr('x', x).attr('dy', lineHeight).text(word); lineNumber++;
+        }
+      }
+      const totalLines = lineNumber + 1;
+      t.attr('transform', `translate(0,${h / 2 - (totalLines - 1) * lineHeight / 2})`);
+    });
+  }
+
+  const rows = gChart.selectAll('.map-row').data(mapData).join('g')
+    .attr('class', 'map-row').attr('transform', (d, i) => `translate(0,${i * (rowH + rowGap)})`)
+    .attr('tabindex', 0).attr('aria-label', d => `Failure mode ${d.failure} maps to rewrite move ${d.move}. ${d.detail}`);
+
+  rows.append('rect').attr('class', 'failure-rect').attr('x', leftX).attr('y', 0).attr('width', colW).attr('height', rowH);
+  rows.append('rect').attr('class', 'move-rect').attr('x', rightX).attr('y', 0).attr('width', colW).attr('height', rowH);
+
+  rows.append('path').attr('class', 'map-arrow').attr('marker-end', 'url(#arrowInk2)')
+    .attr('d', `M${leftX + colW + 4},${rowH / 2} h${arrowW - 12}`).attr('aria-hidden', 'true');
+
+  rows.append('text').attr('class', 'cell-label').attr('x', leftX + 10).attr('y', 0).text(d => d.failure)
+    .call(wrapInBox, colW - 20, rowH);
+  rows.append('text').attr('class', 'cell-label').attr('x', rightX + 10).attr('y', 0).text(d => d.move)
+    .call(wrapInBox, colW - 20, rowH);
+
+  rows.on('mouseover', (event, d) => {
+    rows.selectAll('rect').attr('opacity', null);
+    rows.style('opacity', 0.4);
+    d3.select(event.currentTarget).style('opacity', 1);
+    tooltip.html(`<strong>${d.failure}</strong> &rarr; ${d.move}<br>${d.detail}`)
+      .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+      .transition().duration(150).style('opacity', 1);
+  })
+  .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+  .on('mouseout', () => { rows.style('opacity', 1); tooltip.transition().duration(100).style('opacity', 0); });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

@@ -47,6 +47,15 @@ An exercise that passes all three is doing AI+1 work. An exercise that fails any
 
 <!-- → [TABLE: Three-question audit scorecard — columns: Question, Pass condition, Fail signal, Common failure pattern — one row per question, with the graphic-design worked examples in each cell] -->
 
+| Question | Pass condition | Fail signal | Common failure pattern |
+|---|---|---|---|
+| Could this appear in a different field's textbook unchanged? | The exercise breaks if you swap "graphic design" for "accounting" — it names a client brief, a portfolio, a Figma file. | The prompt reads cleanly in any field; "Ask Claude to explain the eight-section chapter structure" works for cooking or veterinary medicine alike. | Generic prompt-craft dressed as domain work — teaching how Claude responds to structure, not how a designer uses Claude. |
+| Does it require the reader to bring something only they have? | The reader must supply a real brief, a real portfolio, a real client whose voice they have calibrated, or a remembered failure. | "Pick a topic of your choice" — nothing the reader owns is required; any input would do. | The exercise runs fine on invented or hypothetical material, so no irreducibly human layer is exercised. |
+| Is the deliverable a judgment the reader produces, not just LLM output? | The reader writes the verdict — three places Claude missed, three it misread, one decision they will change. | The deliverable is "read Claude's answer" with nothing the reader is asked to author. | The artifact is the model's text, not the reader's analysis of it — consumption mistaken for assessment. |
+
+![A horizontal chain of three decision gates with a passing arrow continuing rightward to a PASS terminal node, and each gate also draining downward to a single shared FAIL sink below.](images/10-enrichment-for-ai-fig-01.png)
+*Figure 10.1 — The three-question audit scorecard*
+
 ---
 
 ## Two kinds of LLM-integrated content — and why mixing them breaks the chapter
@@ -62,6 +71,9 @@ An **LLM Exercise** sits at the end of the chapter, inside the assessable-exerci
 > **(Apply.)** Take the brief you used in the Dig Deeper above. Paste it into Claude with the prompt: "Read this brief as a senior creative director would. Where is the client telling me what they want, and where are they telling me what they don't want? Quote the lines and explain." Save Claude's response. Write 250 words naming three places Claude saw something you missed, three places Claude misread the client because the model has no relationship history, and one revision decision you will make differently on the next round.
 
 Same chapter. Same client brief. Different scaffolding. The Dig Deeper is permission-to-explore. The LLM Exercise is the assignment. The 250-word comparison from the Exercise becomes part of the *running project* — the cumulative artifact the reader builds across chapters — that the next chapter will reference.
+
+![Two side-by-side panels against a shared horizontal attribute axis — left panel Dig Deeper, right panel LLM Exercise — with three aligned rows comparing placement, obligation, and output.](images/10-enrichment-for-ai-fig-02.png)
+*Figure 10.2 — Dig Deeper vs LLM Exercise*
 
 The failure mode: putting what should be an LLM Exercise inline as a Dig Deeper, or giving a Dig Deeper the formal structure of an Exercise. An LLM Exercise without an explicit "Save this. You will use it in Chapter X" belongs as a Dig Deeper. A Dig Deeper that says "write 250 words and submit them in your portfolio" belongs as an LLM Exercise. The distinction is structural, not just cosmetic — the scaffolding tells the reader what to keep and what to let go.
 
@@ -90,6 +102,9 @@ The pipeline has a name: *"With LLMs" Series — Curriculum Enrichment Generator
 **Phase three** proposes three to five candidate *running projects* — the cumulative artifact the reader builds across chapters via LLM Exercises — and asks the author to pick one. Once the project is chosen, the generator runs across every chapter and inserts two to four Dig Deeper prompts inline and one LLM Exercise at chapter end. It updates the TOC and logs every insertion. The book becomes an AI+1 textbook at the pedagogy layer.
 
 Two failure modes appear regularly in phase three. First: the generator produces a Dig Deeper that is too generic because the chapter prose did not give it enough domain hooks. If the chapter prose does not name specific tools, specific deliverables, or specific moments in the reader's workflow, the generator has nothing to attach to. The fix is to enrich the chapter prose before re-running the generator on that chapter. Second: the LLM Exercise does not advance the running project because the chapter covers a topic that does not cleanly connect. Either the running project was poorly chosen — pick a different one and regenerate — or the chapter needs a different end-of-chapter exercise that does not advance the project. A book does not need every chapter to feed the running project. Three-quarters is fine.
+
+![A horizontal flow of three phase nodes connected by arrows, with small interrupt glyphs sitting on the arrows between phases to mark author-judgment pauses, ending in a terminal node.](images/10-enrichment-for-ai-fig-03.png)
+*Figure 10.3 — The enrichment generator, three phases*
 
 ---
 
@@ -134,6 +149,15 @@ The **interchangeable pattern**: two exercises that could swap chapter positions
 When an exercise fails the audit, rewrite it by hand, not by re-running the enrichment generator. The generator produced the failure once; it is more likely than not to produce a similar failure on the second run. The rewrite is where you name the specific domain knowledge the exercise now requires the reader to bring. The acid test for a rewrite: can you state, in one sentence, why no generic prompt could have supplied the same outcome? If the answer is "the reader has to bring [the specific thing only they have]," the rewrite passes. If the answer is "the reader has to bring expertise" — that is not specific enough. Every exercise in every textbook requires expertise. The standard demands the specific thing.
 
 <!-- → [TABLE: Audit pattern table — columns: Pattern name, Diagnostic symptom, Diagnosis, Fix — rows for interchangeable, Claude-documentation, no-deliverable] -->
+
+| Pattern name | Diagnostic symptom | Diagnosis | Fix |
+|---|---|---|---|
+| Interchangeable | Two exercises could swap chapter positions without losing anything. | At least one is generic — neither is bound to the chapter's specific domain moment. | Rewrite by hand so each names the chapter-specific artifact only that chapter's reader would have. |
+| Claude-documentation | The exercise teaches Claude itself — "try this prompt format and observe how Claude responds." | This is documentation, not pedagogy; it tests prompt syntax, not domain integration. | Move it to Chapter 00 if it belongs anywhere; replace the chapter-end slot with a domain-integration exercise. |
+| No-deliverable | The exercise ends without a saved artifact the reader will reference later. | This is a Dig Deeper wearing Exercise clothing — permission-to-explore, not an assignment. | Demote it to an inline Dig Deeper, or add an explicit "Save this; you will use it in Chapter X" deliverable. |
+
+![A blank ruled grid with one header band over three labeled pattern rows, each row marked by a distinct left-edge color swatch, and four empty columns reading left to right as a diagnostic-to-fix progression.](images/10-enrichment-for-ai-fig-04.png)
+*Figure 10.4 — Audit pattern table*
 
 ---
 
@@ -206,3 +230,27 @@ If the model finds a phrase that undermines any claim, revise it. Repeat until t
 The enrichment layer is in. The exercises treat the reader as a domain expert, not a generic AI user, and the prompts are useful in this field and no other.
 
 One craft remains before the book ships. You ran the figure pipeline back in Chapter 9 — the finishing pass, CAJAL Image Suggest, the SVG-to-PNG build — and it produced figures. Whether those figures *teach* is a separate question, and it is the one Chapter 11 answers: how a single figure decides what it is allowed to contain, and how to make a generator that wants to give you everything give you only that.
+
+---
+
+## Prompts
+
+### Figure 10.1 — The three-question audit scorecard
+Build a left-to-right decision-gate diagram as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: three sequential gate nodes (Q1 transplant test, Q2 reader-brings-something, Q3 deliverable-is-judgment), one PASS terminal node, one shared FAIL sink. Marks: rounded-rectangle nodes joined by straight arrows. Channels: a horizontal "pass" arrow continues rightward through all three gates into the PASS terminal; each gate also emits a downward blockage stub draining to the single FAIL sink below the chain. Lay the three gates out evenly on one horizontal axis; do not sort by any value. There is no quantitative scale, so no baseline applies. Annotate each node with its short label and each arrow with its pass/fail semantics. Use the red series color for the FAIL path only. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 10.2 — Dig Deeper vs LLM Exercise
+Build a side-by-side comparison panel as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: two categories (Dig Deeper, LLM Exercise) each carrying three attributes — placement (inline vs chapter-end), obligation (optional vs required), output (no enforced deliverable vs saved artifact). Marks: two vertical panels sharing a horizontal attribute axis, with three aligned rows so each attribute lines up across both panels for row-by-row reading. Channels: panel position encodes category; row position encodes attribute; text encodes the value. Keep attribute rows in fixed top-to-bottom order; do not sort. No quantitative axis. Annotate each cell with its value and each row with its attribute name. Use the red series color for the required LLM Exercise panel emphasis only. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 10.3 — The enrichment generator, three phases
+Build a horizontal process flowchart as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: three phase nodes (Phase 1 state detection, Phase 2 Chapter 00 generation, Phase 3 running project plus insertions), two author-judgment pause markers on the connecting arrows, one terminal node (AI+1 textbook). Marks: rectangle nodes joined by left-to-right arrows, with small distinct interrupt glyphs sitting on the two inter-phase arrows. Channels: x position encodes sequence order; the pause glyphs encode "stop for judgment." Keep nodes in fixed phase order; do not sort. No quantitative scale. Annotate each node with its phase label and each pause marker as a judgment gate. Use the red series color for the terminal node emphasis only. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+### Figure 10.4 — Audit pattern table
+Build a structured matrix as a single self-contained HTML file with inline CSS and D3 7.9.0 from the CDN. Data: three rows (interchangeable, Claude-documentation, no-deliverable) across four columns (pattern name, diagnostic symptom, diagnosis, fix), each row tagged by a distinct left-edge color swatch. Marks: a ruled grid with one header band over three data rows and a colored swatch rectangle at each row's left edge. Channels: row position encodes pattern; column position encodes field; the swatch color distinguishes the three patterns. Keep rows in fixed order; columns read left to right as a diagnostic-to-fix progression. No quantitative scale. Annotate header cells with column names and each cell with its value. Use neutral and accent palette colors for swatches; reserve the red series color for at most one emphasized row. Deliverable: one HTML file, role="img" SVG with title and desc, ResizeObserver redraw, dark-mode and reduced-motion media queries.
+
+---
+
+## References
+
+1. Freire, Paulo (1968; English trans. 1970). *Pedagogy of the Oppressed*. Continuum. https://en.wikipedia.org/wiki/Pedagogy_of_the_Oppressed
+2. hooks, bell (1994). *Teaching to Transgress*. Routledge. https://infed.org/dir/welcome/bell-hooks-on-education/
+3. Mazur, Eric (1997). *Peer Instruction: A User's Manual*. Prentice Hall. https://mazur.harvard.edu/publications/peer-instruction-users-manual

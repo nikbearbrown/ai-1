@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three-LLM triangulation to synthesis</title>
+<style>
+  :root {
+    --color-white:#FFFFFF; --color-ink:#2a1a0e; --color-red:#C8102E;
+    --color-secondary:#545454; --color-border:#D4D4D4; --color-ochre:#C8860E; --color-fill:#F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-white:#111111; --color-ink:#F0EBE3; --color-red:#E8243A;
+      --color-secondary:#A0978C; --color-border:#2E2E2E; --color-ochre:#D49A30; --color-fill:#1A1A1A; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-size: 13px; fill: var(--color-secondary); }
+  .src-label { font-size: 12px; font-weight: 700; fill: var(--color-ink); }
+  .region-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 10px; fill: var(--color-secondary); }
+  .syn-label { font-size: 12px; font-weight: 700; fill: var(--color-white); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const sources = [
+  { id:'claude', label:'Claude', color:'var(--color-ochre)' },
+  { id:'gpt',    label:'GPT',    color:'var(--color-secondary)' },
+  { id:'gemini', label:'Gemini', color:'var(--color-ink)' }
+];
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const c = document.getElementById('chart');
+  const totalWidth = c.clientWidth || 800;
+  const totalHeight = Math.max(420, Math.min(520, totalWidth * 0.62));
+  const margin = { top: 64, right: 40, bottom: 32, left: 40 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
+  svg.append('title').attr('id','chart-title').text('Three-LLM triangulation to synthesis');
+  svg.append('desc').attr('id','chart-desc').text('Three source circles for Claude, GPT, and Gemini overlap in a Venn whose regions encode the four claim categories, feeding a single synthesis node below.');
+
+  svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('Three-LLM triangulation');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Overlap geometry encodes the four claim categories');
+
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const cx = w/2, cy = h*0.34, r = Math.min(w,h)*0.20, off = r*0.62;
+  const centers = [
+    { x: cx,        y: cy-off,   ...sources[0] },
+    { x: cx-off*0.95, y: cy+off*0.55, ...sources[1] },
+    { x: cx+off*0.95, y: cy+off*0.55, ...sources[2] }
+  ];
+
+  centers.forEach(s => {
+    g.append('circle').attr('cx',s.x).attr('cy',s.y).attr('r',r)
+      .attr('fill','none').attr('stroke',s.color).attr('stroke-width',2)
+      .attr('tabindex',0).attr('role','img').attr('aria-label',`${s.label} source`);
+  });
+  // source labels just outside each circle
+  g.append('text').attr('class','src-label').attr('x',centers[0].x).attr('y',centers[0].y-r-8).attr('text-anchor','middle').text('Claude');
+  g.append('text').attr('class','src-label').attr('x',centers[1].x-r*0.5).attr('y',centers[1].y+r+18).attr('text-anchor','middle').text('GPT');
+  g.append('text').attr('class','src-label').attr('x',centers[2].x+r*0.5).attr('y',centers[2].y+r+18).attr('text-anchor','middle').text('Gemini');
+
+  // region callouts
+  g.append('text').attr('class','region-label').attr('x',cx).attr('y',cy+4).attr('text-anchor','middle').text('all three');
+  g.append('text').attr('class','region-label').attr('x',cx).attr('y',cy-off*0.5).attr('text-anchor','middle').text('two agree');
+  g.append('text').attr('class','region-label').attr('x',centers[2].x+r*0.45).attr('y',centers[2].y).attr('text-anchor','middle').text('one only');
+  // divergent fork marker
+  const fx = w*0.06, fy = cy;
+  g.append('path').attr('d',`M ${fx} ${fy} l 14 -10 M ${fx} ${fy} l 14 10`).attr('stroke','var(--color-red)').attr('stroke-width',2).attr('fill','none').attr('aria-hidden','true');
+  g.append('text').attr('class','region-label').attr('fill','var(--color-red)').attr('x',fx).attr('y',fy+24).text('divergent');
+
+  // arrows to synthesis
+  const sy = h*0.86, synW = w*0.42, synH = 44, synX = cx - synW/2;
+  centers.forEach(s => {
+    g.append('path').attr('d',`M ${s.x} ${s.y+r} L ${cx} ${sy}`)
+      .attr('stroke','var(--color-secondary)').attr('stroke-width',1).attr('fill','none')
+      .attr('marker-end','url(#arrowS)').attr('aria-hidden','true');
+  });
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id','arrowS').attr('viewBox','0 0 10 10')
+    .attr('refX',9).attr('refY',5).attr('markerWidth',7).attr('markerHeight',7).attr('orient','auto-start-reverse')
+    .append('path').attr('d','M0,0 L10,5 L0,10 z').attr('fill','var(--color-secondary)');
+
+  g.append('rect').attr('x',synX).attr('y',sy).attr('width',synW).attr('height',synH).attr('rx',8)
+    .attr('fill','var(--color-red)')
+    .attr('tabindex',0).attr('role','img').attr('aria-label','Synthesis node');
+  g.append('text').attr('class','syn-label').attr('x',cx).attr('y',sy+synH/2+4).attr('text-anchor','middle').text('Synthesis');
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

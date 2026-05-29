@@ -91,3 +91,11 @@ This handbook is written for [YOUR SPECIFIC CONTEXT — e.g. "the one-client fre
 ---
 
 **Flag:** Any evidence of the fluency trap in [FIELD] — where AI output looks like competent professional work but lacks the craft judgment, domain knowledge, and accountability that make it defensible. Give specific attention to the highest-exposure cases in this field.
+
+---
+
+## References
+
+<!-- Fact-check references (confirmed sources only). Added by fact-check pass 2026-05-29. -->
+
+- PwC. (2025). *The Fearless Future: PwC's 2025 Global AI Jobs Barometer.* https://www.pwc.com/gx/en/issues/artificial-intelligence/job-barometer/2025/report.pdf — confirms the ~56% cross-industry wage premium for jobs requiring AI skills referenced in this prompt.

@@ -67,6 +67,15 @@ Three rules for a brief that does not produce a generic figure. Name the data, n
 
 <!-- → [TABLE: visual placeholder comment anatomy — three columns: element (arrow / bracket type / brief), what it does, example — showing how the three parts of the comment format map to different downstream uses] -->
 
+| Element | What it does | Example |
+|---|---|---|
+| The arrow | A grep target so you can find every pending visual at once | `→` |
+| The bracket type | Tells the enrichment pass which generator to invoke | `INFOGRAPHIC`, `CHART`, `TABLE`, `IMAGE`, `DIAGRAM` |
+| The brief (after the colon) | The instruction the figure-generation step reads — names data, constraint, and load | `Five Failure Modes — a 5-row table... Two-color (ink + ochre), no gradients.` |
+
+![A single placeholder-comment string segmented into three regions left to right — the arrow as grep target, the bracket type as generator selector, the brief after the colon — each region dropping a callout line to a reserved cell naming its downstream role.](images/09-finishing-pass-and-figures-fig-01.png)
+*Figure 9.1 — Anatomy of a visual placeholder comment*
+
 ---
 
 CAJAL Image Suggest runs across every chapter and proposes figures. It does not generate any SVG yet. It writes one file per chapter at `pantry/{chapter-slug}-cajal.md`, listing every figure it thinks would help, ranked by priority, with a full SCOPE prompt for each. The Finishing Pass and Image Suggest prompts are reproduced in Appendix G.
@@ -103,6 +112,9 @@ The SCOPE prompt is what the SVG Generator reads. Title, ranking, trigger, and f
 
 The editorial pass through a `cajal.md` takes ten minutes per chapter and is worth every minute of it. Critical figures should map directly to a primary learning outcome. Open the chapter. If the Critical figure does not encode the thing the reader is supposed to leave knowing, demote it and find one that does. Important figures support a key argument but are not load-bearing — these are usually safe. Supplementary figures are nice-to-have, and the honest answer is often "skip this one." A textbook is not improved by having a figure on every page.
 
+![A top-to-bottom decision tree with three nodes — Critical (does it map to a primary outcome?), Important (does it support a key argument?), Supplementary (skip unless time allows) — each with a pass-through arrow to the next test, the Critical node carrying a demote redirect and the Supplementary node terminating in a skip glyph.](images/09-finishing-pass-and-figures-fig-02.png)
+*Figure 9.2 — CAJAL figure-priority decision path*
+
 <!-- → [INFOGRAPHIC: CAJAL figure priority decision tree — three nodes: Critical (does it map to a primary outcome?), Important (does it support a key argument?), Supplementary (skip unless time allows) — flat two-color, no decorative elements] -->
 
 [^knaflic]: Knaflic, C. N. (2015). *Storytelling with Data*. Wiley.
@@ -116,6 +128,9 @@ The SVG Generator reads the `cajal.md` files you have edited and produces real S
 You do not write any JavaScript. You read the `cajal-svg-log.md` written at the end, and you open the PNGs.
 
 PNG is the publication artifact. Kindle's reflow engine renders PNGs reliably across every device — Paperwhite, iPad, iPhone, Colorsoft, desktop Kindle app. SVG is the source artifact. You keep it because it is editable, version-controlled, and re-renderable at any resolution. PNG is what ships in the EPUB. SVG is what survives a redesign. This is the same separation as `combined.md` → EPUB+PDF: the source is text, the build output is the binary the device renders. You do not edit the build output. You edit the source and rebuild.
+
+![A left-to-right systems diagram of the CAJAL pipeline — Finishing Pass, CAJAL Image Suggest producing cajal.md, SVG Generator producing SVG source, the svg-to-png converter producing the 300-DPI PNG, the enrichment pass inserting markdown links — with a downward D3 companion branch off the source stage and a divider marking SVG and D3 as source artifacts versus the PNG that ships in the EPUB.](images/09-finishing-pass-and-figures-fig-03.png)
+*Figure 9.3 — The CAJAL pipeline: prose to publication artifact*
 
 The D3 files in `d3/` are for figures that have data structure underneath them — anything CAJAL flagged as MC or PQ that could be interactive. What they are honestly for: not for the published EPUB (EPUBs do not reliably execute JavaScript), but as authorable source artifacts so the next edition has editable chart code, and optionally as a companion-web property if you want readers to explore the data. If you do not plan to host the D3 files anywhere, they cost nothing to keep in the repository. The PNG is what the reader sees in the book.
 
@@ -218,3 +233,27 @@ The chart earned its place by changing policy. That is the only criterion for a 
 The book is now visually complete. Subtitles surface the arguments. Figures encode what prose cannot encode efficiently. The PNGs render on every device. The SVGs are version-controlled and editable.
 
 What is missing is the layer that makes this an *AI+1* textbook rather than a textbook about AI. The reader needs LLM exercises and Dig Deeper prompts that are only useful in this domain, for this reader, at this career stage. Chapter 10 adds that layer — and the fluency trap returns one final time, at pedagogy scale.
+
+---
+
+## Prompts
+
+### Figure 9.1 — Anatomy of a visual placeholder comment
+Build an annotated-schematic figure as a single self-contained HTML file with inline CSS and D3 7.9.0 from the cdnjs CDN. Data shape: one comment string decomposed into three segment objects (arrow, bracket type, brief) each with a downstream-role string (grep target, generator selector, figure brief). Marks: one horizontal bar at top segmented into three regions left to right; one callout line dropping from each region to a reserved role cell below. Channels: x-position within the bar encodes reading order of the comment syntax; each segment carries a distinct fill tint to separate the three parts; callout lines encode the segment-to-role mapping. Sort: fixed left-to-right syntax order (arrow, bracket, brief). Annotation: region labels and role-cell labels. No zero baseline (schematic). Deliverable: one HTML file, inline CSS, D3 7.9.0, responsive via ResizeObserver, role="img" with title and desc.
+
+### Figure 9.2 — CAJAL figure-priority decision path
+Build a top-to-bottom decision-tree flowchart as a single self-contained HTML file with inline CSS and D3 7.9.0 from the cdnjs CDN. Data shape: three decision-node objects (Critical, Important, Supplementary) each with a yes/no test string, plus two terminal outcomes (keep, skip) and one demote redirect off the Critical node. Marks: three stacked decision nodes; pass-through arrows linking each test to the next; a side outcome arrow per node; the Supplementary node terminating in a skip glyph; the Critical node showing one demote redirect arrow. Channels: vertical position encodes the order tests are applied; the keep outcome and skip glyph are visually distinguished. Sort: fixed Critical then Important then Supplementary order. Annotation: node test labels and outcome labels. No zero baseline (decision tree). Deliverable: one HTML file, inline CSS, D3 7.9.0, responsive via ResizeObserver, role="img" with title and desc.
+
+### Figure 9.3 — The CAJAL pipeline: prose to publication artifact
+Build a left-to-right systems flowchart as a single self-contained HTML file with inline CSS and D3 7.9.0 from the cdnjs CDN. Data shape: six node objects — Finishing Pass, CAJAL Image Suggest (cajal.md), SVG Generator (SVG source), svg-to-png converter (PNG), enrichment pass (markdown links), D3 companion (branch) — plus one source-versus-output divider flag. Marks: five main-flow nodes left to right joined by single arrows; the D3 node as one downward branch off the SVG/source stage; a divider glyph separating source artifacts (SVG, D3) from the PNG that ships in the EPUB. Channels: x-position encodes pipeline sequence; the PNG/ships node and the D3 branch each carry a distinct fill to mark the source-versus-output split. Sort: fixed pipeline order 1 to 5 with the branch off stage 3. Annotation: node labels and a source/ships divider label. No zero baseline (process diagram). Deliverable: one HTML file, inline CSS, D3 7.9.0, responsive via ResizeObserver, role="img" with title and desc.
+
+---
+
+## References
+
+1. Knaflic, C. N. (2015). *Storytelling with Data*. Wiley. https://www.wiley.com/en-us/Storytelling+with+Data:+A+Data+Visualization+Guide+for+Business+Professionals-p-9781119002253
+2. Munzner, T. (2014). *Visualization Analysis and Design*. CRC Press. https://infovis-wiki.net/wiki/Munzner,_T.:Visualization_Analysis_and_Design,_A_K_Peters/CRC_Press,_2014
+3. W3C (2023). *EPUB Accessibility 1.1*. https://www.w3.org/TR/epub-a11y-11/
+4. Tufte, E. R. (2001). *The Visual Display of Quantitative Information* (2nd ed.). Graphics Press. https://infovis-wiki.net/wiki/Data-Ink_Ratio
+5. Bateman, S., et al. (2010). "Useful Junk? The Effects of Visual Embellishment on Comprehension and Memorability of Charts." *CHI 2010*. https://dl.acm.org/doi/10.1145/1753326.1753716
+6. Royal Statistical Society (2020). "Nightingale 2020: the bicentenary of our first female fellow." https://rss.org.uk/news-publication/news-publications/2020/general-news/nightingale-2020-the-bicentenary-our-first-female/

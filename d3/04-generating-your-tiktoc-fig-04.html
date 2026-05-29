@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 4.4 — The /g2 failure-mode × chapter diagnostic grid</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1A1A1A;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .row-label { font-size: 11px; fill: var(--color-secondary); }
+  .col-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+             background: var(--color-white); color: var(--color-ink);
+             border: 1px solid var(--color-border); border-radius: 8px;
+             padding: 8px 10px; font-size: 13px; max-width: 240px;
+             box-shadow: 0 6px 20px -6px rgb(18 18 18 / 0.14); }
+  .cell { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const modes = [
+  'Audience drift', 'Missing prerequisites', 'Over-claimed outcomes',
+  'Under-specified deliverables', 'Contested claims unflagged',
+  'Bridge fails to bridge', 'Capability statement is topic'
+];
+const chapters = ['Ch 1', 'Ch 2', 'Ch 3', 'Ch 4', 'Ch 5', 'Ch 6', 'Ch 7'];
+// WARN cells: [modeIndex, chapterIndex, diagnostic]
+const warns = {
+  '0_4': 'Ch 5 examples drift toward agency teams; reader is a solo practitioner.',
+  '2_2': 'Ch 3 promises seven-pattern mastery but exercises test only three.',
+  '4_0': 'Ch 1 uses the WEF "fastest-declining job" framing without flagging it as contested.',
+  '5_5': 'Ch 6 bridge restates the topic rather than committing to Ch 7\'s deliverable.',
+  '2_4': 'Ch 5 over-claim — outcome ceiling exceeds what the exercises assess.'
+};
+
+const cellData = [];
+modes.forEach((m, r) => chapters.forEach((c, k) => {
+  const key = r + '_' + k;
+  cellData.push({ r, k, mode: m, chapter: c, warn: !!warns[key], diag: warns[key] || '' });
+}));
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const margin = { top: 84, right: 24, bottom: 24, left: 160 };
+  const container = document.getElementById('chart');
+  const totalWidth = container.clientWidth || 800;
+  const cell = Math.min((totalWidth - margin.left - margin.right) / chapters.length, 48);
+  const gridW = cell * chapters.length;
+  const gridH = cell * modes.length;
+  const totalHeight = margin.top + gridH + margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The /g2 failure-mode by chapter diagnostic grid');
+  svg.append('desc').attr('id', 'chart-desc').text('Seven failure modes read against seven chapters; five cells are flagged WARN, the rest PASS, with zero FAIL.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', 16).attr('y', 24).text('/g2 diagnostic grid');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', 16).attr('y', 44).text('Five warnings, zero fails — solid cells are WARN');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+  // column headers
+  chapters.forEach((c, k) => {
+    gChart.append('text').attr('class', 'col-label').attr('x', k * cell + cell / 2).attr('y', -10)
+      .attr('text-anchor', 'middle').text(c);
+  });
+  // row headers
+  modes.forEach((m, r) => {
+    gChart.append('text').attr('class', 'row-label').attr('x', -8).attr('y', r * cell + cell / 2 + 4)
+      .attr('text-anchor', 'end').text(m);
+  });
+
+  const cells = gChart.selectAll('.cell').data(cellData).join('rect')
+    .attr('class', 'cell')
+    .attr('x', d => d.k * cell + 1).attr('y', d => d.r * cell + 1)
+    .attr('width', cell - 2).attr('height', cell - 2)
+    .attr('fill', d => d.warn ? 'var(--color-ochre)' : 'var(--color-white)')
+    .attr('stroke', 'var(--color-ink)').attr('stroke-width', 1)
+    .attr('tabindex', 0).attr('role', 'img')
+    .attr('aria-label', d => d.warn ? `WARN — ${d.mode} on ${d.chapter}: ${d.diag}` : `PASS — ${d.mode} on ${d.chapter}`);
+
+  function show(event, d) {
+    const status = d.warn ? '<strong>WARN</strong>' : '<strong>PASS</strong>';
+    const body = d.warn ? `<br>${d.mode} × ${d.chapter}<br>${d.diag}` : `<br>${d.mode} × ${d.chapter}`;
+    tooltip.html(status + body)
+      .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+      .transition().duration(150).style('opacity', 1);
+  }
+  function move(event) { tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'); }
+  function hide() { tooltip.transition().duration(100).style('opacity', 0); }
+
+  cells.on('mouseover', function(event, d) { cells.attr('opacity', 0.35); d3.select(this).attr('opacity', 1); show(event, d); })
+    .on('mousemove', move)
+    .on('mouseout', function() { cells.attr('opacity', 1); hide(); })
+    .on('focus', function(event, d) { show(event, d); }).on('blur', hide);
+}
+
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

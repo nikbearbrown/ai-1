@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Four-Step Ship Sequence
+  Book: AI+1
+  Chapter: 12-final-check-and-build
+  Figure: 01
+  Type: process flowchart (horizontal sequence with rebuild loop)
+  Generated: 2026-05-28
+  Source: pantry/12-final-check-and-build-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">The Four-Step Ship Sequence</title>
+  <desc>Four steps in order—fact-check, build, read on device, submit to KDP—with a single return arc from submit back to build encoding the intentional rebuild loop.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="12-final-check-and-build"
+      figure-number="01" figure-title="The Four-Step Ship Sequence" figure-slug="four-step-ship-sequence"
+      figure-type="process flowchart" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/12-final-check-and-build-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Four-Step Ship Sequence</text>
+
+  <!-- Four step nodes. width 130, y=176. x: 40,200,360,520 -->
+  <g font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">
+    <rect x="40" y="176" width="130" height="64" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+    <text x="105" y="205" text-anchor="middle">Fact-check</text>
+    <text x="105" y="223" text-anchor="middle" font-size="11" fill="#545454">scan chapters</text>
+
+    <rect x="200" y="176" width="130" height="64" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+    <text x="265" y="205" text-anchor="middle">Build</text>
+    <text x="265" y="223" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">./build.sh</text>
+
+    <rect x="360" y="176" width="130" height="64" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+    <text x="425" y="205" text-anchor="middle">Read on device</text>
+    <text x="425" y="223" text-anchor="middle" font-size="11" fill="#545454">the EPUB</text>
+
+    <rect x="520" y="176" width="130" height="64" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+    <text x="585" y="205" text-anchor="middle">Submit</text>
+    <text x="585" y="223" text-anchor="middle" font-size="11" fill="#545454">to KDP</text>
+  </g>
+
+  <!-- forward arrows -->
+  <g stroke="#2a1a0e" stroke-width="1.5">
+    <line x1="170" y1="208" x2="198" y2="208" marker-end="url(#arrow)"/>
+    <line x1="330" y1="208" x2="358" y2="208" marker-end="url(#arrow)"/>
+    <line x1="490" y1="208" x2="518" y2="208" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- rebuild return arc from Submit (bottom) back to Build (bottom), ochre -->
+  <path d="M 585 240 C 585 320, 265 320, 265 242" fill="none" stroke="#C8860E" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="425" y="312" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">rebuild loop — the pipeline, not a failure</text>
+</svg>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Three Note Layers: Literature Notes vs. Permanent Notes
+  Book: AI+1
+  Chapter: 06-research-pass
+  Figure: 04
+  Type: conceptual map
+  Generated: 2026-05-28
+  Source: pantry/06-research-pass-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-04">
+  <title id="fig-title-04">Three Note Layers: Literature Notes vs. Permanent Notes</title>
+  <desc>Zettelkasten's three layers mapped to AI+1 artifacts; the correct path routes literature notes through a primary source to permanent notes. The direct shortcut is blocked.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="06-research-pass"
+      figure-number="04" figure-title="Three Note Layers: Literature Notes vs. Permanent Notes" figure-slug="three-note-layers-blocked-shortcut"
+      figure-type="conceptual map" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/06-research-pass-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Three Note Layers: Literature Notes vs. Permanent Notes</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Pantry files are literature notes — treating them as permanent is what produces hallucinated citations</text>
+
+  <!-- three stacked bands, bottom-to-top -->
+  <!-- permanent (top) -->
+  <rect x="80" y="96" width="300" height="56" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="100" y="122" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#2a1a0e">Permanent notes</text>
+  <text x="100" y="140" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">your argued claim = chapter draft</text>
+
+  <!-- literature (middle = pantry) -->
+  <rect x="80" y="200" width="300" height="56" stroke="#2a1a0e" stroke-width="1.5" fill="#F5F5F5"/>
+  <text x="100" y="226" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#2a1a0e">Literature notes</text>
+  <text x="100" y="244" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">what a source said = pantry file</text>
+
+  <!-- fleeting (base) -->
+  <rect x="80" y="304" width="300" height="56" stroke="#787878" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="100" y="330" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#2a1a0e">Fleeting notes</text>
+  <text x="100" y="348" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">passing thoughts</text>
+
+  <!-- primary-source waypoint (inferred element, ochre accent) -->
+  <rect x="476" y="200" width="148" height="56" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="550" y="224" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Primary source</text>
+  <text x="550" y="242" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">verify the claim</text>
+
+  <!-- correct path: literature -> primary source -> permanent -->
+  <line x1="380" y1="228" x2="474" y2="228" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 550 200 C 550 150, 460 124, 382 124" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="466" y="180" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">correct path</text>
+
+  <!-- blocked shortcut: literature -> permanent directly, ends in blocking bar -->
+  <line x1="230" y1="200" x2="230" y2="158" stroke="#C8102E" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <line x1="212" y1="158" x2="248" y2="158" stroke="#C8102E" stroke-width="3"/>
+  <text x="240" y="186" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">forbidden shortcut</text>
+
+  <text x="32" y="396" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">PANTRY IS NOT CITATION — TRACE EVERY CLAIM TO ITS SOURCE</text>
+</svg>

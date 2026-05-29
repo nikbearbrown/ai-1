@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Three LLM signatures on the same question
+  Book: AI+1
+  Chapter: 03-domain-research
+  Figure: 01
+  Type: comparison panels
+  Generated: 2026-05-28
+  Source: pantry/03-domain-research-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">Three LLM signatures on the same question</title>
+  <desc>One question feeds three models. Claude hedges with uncertainty flags, ChatGPT returns confident enumerated lists, and Gemini grounds claims with source pins — three distinct response signatures.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="03-domain-research"
+      figure-number="01" figure-title="Three LLM signatures on the same question" figure-slug="three-llm-signatures"
+      figure-type="comparison panels" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/03-domain-research-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Three LLM signatures on the same question</text>
+
+  <!-- shared input node -->
+  <rect x="280" y="64" width="140" height="40" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <text x="350" y="89" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Same question</text>
+
+  <!-- splitting arrows -->
+  <line x1="320" y1="104" x2="150" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="350" y1="104" x2="350" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="380" y1="104" x2="550" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- PANEL 1: Claude (uncertainty-explicit, hedge rings) -->
+  <text x="120" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Claude</text>
+  <rect x="48" y="182" width="144" height="220" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="64" y="200" width="100" height="14" fill="#787878"/>
+  <rect x="64" y="226" width="100" height="14" fill="#787878"/>
+  <rect x="64" y="252" width="80" height="14" fill="#787878"/>
+  <rect x="64" y="278" width="100" height="14" fill="#787878"/>
+  <rect x="64" y="304" width="70" height="14" fill="#787878"/>
+  <!-- hedge rings (hollow) -->
+  <circle cx="178" cy="207" r="6" stroke="#C8102E" stroke-width="1.5" fill="#FFFFFF"/>
+  <circle cx="152" cy="259" r="6" stroke="#C8102E" stroke-width="1.5" fill="#FFFFFF"/>
+  <circle cx="142" cy="311" r="6" stroke="#C8102E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="120" y="430" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">uncertainty-explicit</text>
+  <text x="120" y="446" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">(hedge flags)</text>
+
+  <!-- PANEL 2: GPT (confident enumeration, list ticks) -->
+  <text x="350" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">ChatGPT</text>
+  <rect x="278" y="182" width="144" height="220" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <!-- list tick marks + uniform bars -->
+  <rect x="312" y="200" width="94" height="14" fill="#2a1a0e"/>
+  <rect x="294" y="200" width="10" height="14" fill="#2a1a0e"/>
+  <rect x="312" y="226" width="94" height="14" fill="#2a1a0e"/>
+  <rect x="294" y="226" width="10" height="14" fill="#2a1a0e"/>
+  <rect x="312" y="252" width="94" height="14" fill="#2a1a0e"/>
+  <rect x="294" y="252" width="10" height="14" fill="#2a1a0e"/>
+  <rect x="312" y="278" width="94" height="14" fill="#2a1a0e"/>
+  <rect x="294" y="278" width="10" height="14" fill="#2a1a0e"/>
+  <rect x="312" y="304" width="94" height="14" fill="#2a1a0e"/>
+  <rect x="294" y="304" width="10" height="14" fill="#2a1a0e"/>
+  <text x="350" y="430" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">confident enumeration</text>
+  <text x="350" y="446" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">(no source ticks)</text>
+
+  <!-- PANEL 3: Gemini (retrieval-grounded, source pins) -->
+  <text x="580" y="172" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Gemini</text>
+  <rect x="508" y="182" width="144" height="220" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <rect x="524" y="200" width="100" height="14" fill="#787878"/>
+  <rect x="524" y="226" width="100" height="14" fill="#787878"/>
+  <rect x="524" y="252" width="90" height="14" fill="#787878"/>
+  <rect x="524" y="278" width="100" height="14" fill="#787878"/>
+  <rect x="524" y="304" width="80" height="14" fill="#787878"/>
+  <!-- source pins (solid small squares with stem) -->
+  <line x1="632" y1="207" x2="640" y2="207" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="640" y="203" width="8" height="8" fill="#2a1a0e"/>
+  <line x1="632" y1="259" x2="640" y2="259" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="640" y="255" width="8" height="8" fill="#2a1a0e"/>
+  <line x1="624" y1="311" x2="632" y2="311" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="632" y="307" width="8" height="8" fill="#2a1a0e"/>
+  <text x="580" y="430" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">retrieval-grounded</text>
+  <text x="580" y="446" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">(source pins)</text>
+
+  <text x="32" y="470" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">SAME QUESTION · THREE SIGNATURES</text>
+</svg>

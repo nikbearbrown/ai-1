@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Capability Statement: Topic to Demonstrable Outcome
+  Book: AI+1
+  Chapter: 04-generating-your-tiktoc
+  Figure: 02
+  Type: timeline/progression
+  Generated: 2026-05-28
+  Source: pantry/04-generating-your-tiktoc-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-02">
+  <title id="fig-title-02">Capability Statement: Topic to Demonstrable Outcome</title>
+  <desc>A four-rung refinement ladder from vague topic to confirmed capability, with Mager's three criteria — performance, condition, criterion — branching off the final rung.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="04-generating-your-tiktoc"
+      figure-number="02" figure-title="Capability Statement: Topic to Demonstrable Outcome" figure-slug="capability-statement-refinement-ladder"
+      figure-type="timeline/progression" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/04-generating-your-tiktoc-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Capability Statement: Topic to Demonstrable Outcome</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Four refinement turns sharpen a topic into a confirmed capability the reader can demonstrate</text>
+
+  <!-- Rung 1: vague topic (lowest, left) -->
+  <rect x="40" y="312" width="128" height="48" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="104" y="334" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Vague topic</text>
+  <text x="104" y="350" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">"use AI"</text>
+
+  <!-- Rung 2: adds constraint -->
+  <rect x="180" y="256" width="128" height="48" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="244" y="278" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Adds constraint</text>
+  <text x="244" y="294" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">design practice</text>
+
+  <!-- Rung 3: adds action -->
+  <rect x="320" y="200" width="128" height="48" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <text x="384" y="222" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Adds action</text>
+  <text x="384" y="238" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">identify / delegate</text>
+
+  <!-- Rung 4: confirmed capability (highest) — highlighted -->
+  <rect x="460" y="144" width="140" height="48" stroke="#C8102E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="530" y="166" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#C8102E">Confirmed</text>
+  <text x="530" y="182" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">defend the map</text>
+
+  <!-- ascending arrows between rungs -->
+  <line x1="168" y1="320" x2="178" y2="298" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="308" y1="264" x2="318" y2="242" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="448" y1="208" x2="458" y2="186" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Mager's three criteria stubs branching off the top rung -->
+  <line x1="600" y1="156" x2="636" y2="120" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="600" y1="168" x2="640" y2="168" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="600" y1="180" x2="636" y2="216" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="644" y="118" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">performance</text>
+  <text x="644" y="172" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">condition</text>
+  <text x="644" y="220" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">criterion</text>
+
+  <text x="32" y="404" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">MAGER: PERFORMANCE + CONDITION + CRITERION = A TESTABLE OUTCOME</text>
+</svg>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The fluency trap as a two-component mechanism</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1A1A1A;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-family: 'Inter', sans-serif; font-size: 13px; fill: var(--color-secondary); }
+  .node-label { font-family: 'Inter', sans-serif; font-size: 12px; fill: var(--color-ink); }
+  .node-sub { font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace; font-size: 10px; fill: var(--color-secondary); }
+  .flow { fill: none; stroke: var(--color-ink); stroke-width: 1.5; }
+  .flow-amp { fill: none; stroke: var(--color-red); stroke-width: 2; }
+  .flow-skip { fill: none; stroke: var(--color-secondary); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const nodes = [
+  { id: 'output',  label: 'Model output',   sub: 'statistical coherence, no intent', x: 0.12, y: 0.34, primary: true },
+  { id: 'reader',  label: 'Reader cognition', sub: 'processing-fluency reward',       x: 0.42, y: 0.34, primary: true },
+  { id: 'check',   label: 'Is it informed?', sub: 'check bypassed',                    x: 0.42, y: 0.78, bypass: true },
+  { id: 'trap',    label: 'Trap closed',     sub: 'fluent, not informed',             x: 0.80, y: 0.34, terminal: true }
+];
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const container = document.getElementById('chart');
+  const totalWidth  = container.clientWidth || 800;
+  const totalHeight = Math.max(360, Math.min(440, totalWidth * 0.52));
+  const margin = { top: 64, right: 40, bottom: 40, left: 40 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The fluency trap as a two-component mechanism');
+  svg.append('desc').attr('id', 'chart-desc').text('A causal chain: model output and reader cognition reinforce each other and feed forward past a bypassed check into a closed trap, with a point where professional judgment can interrupt the chain.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 28).text('The fluency trap');
+  svg.append('text').attr('class', 'chart-sub').attr('x', margin.left).attr('y', 48).text('Two components amplify; the informed-check is skipped');
+
+  const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const px = d => d.x * w, py = d => d.y * h;
+  const NW = 132, NH = 50;
+
+  // amplification arc (between output and reader)
+  const a = nodes[0], b = nodes[1];
+  g.append('path').attr('class', 'flow-amp')
+    .attr('d', `M ${px(a)+NW/2} ${py(a)} C ${px(a)+NW/2} ${py(a)-58}, ${px(b)+NW/2} ${py(b)-58}, ${px(b)+NW/2} ${py(b)} M ${px(b)+NW/2} ${py(b)} C ${px(b)+NW/2} ${py(b)-46}, ${px(a)+NW/2} ${py(a)-46}, ${px(a)+NW/2} ${py(a)}`)
+    .attr('aria-hidden', 'true');
+  g.append('text').attr('class', 'node-sub').attr('fill', 'var(--color-red)')
+    .attr('x', (px(a)+px(b))/2 + NW/2).attr('y', py(a) - 64).attr('text-anchor', 'middle').text('amplify');
+
+  // forward flows
+  function arrow(x1,y1,x2,y2,cls){
+    g.append('path').attr('class', cls)
+      .attr('d', `M ${x1} ${y1} L ${x2} ${y2}`).attr('marker-end', 'url(#arrow)').attr('aria-hidden', 'true');
+  }
+  // output -> reader
+  arrow(px(a)+NW, py(a)+NH/2, px(b), py(b)+NH/2, 'flow');
+  // reader -> trap
+  arrow(px(b)+NW, py(b)+NH/2, px(nodes[3]), py(nodes[3])+NH/2, 'flow');
+  // reader -> check (skipped, dashed)
+  arrow(px(b)+NW/2, py(b)+NH, px(nodes[2])+NW/2, py(nodes[2]), 'flow-skip');
+
+  // interruption blockage on reader->trap segment
+  const ix = (px(b)+NW + px(nodes[3]))/2;
+  const iy = py(b)+NH/2;
+  g.append('line').attr('x1', ix).attr('y1', iy-12).attr('x2', ix).attr('y2', iy+12)
+    .attr('stroke', 'var(--color-ochre)').attr('stroke-width', 3).attr('aria-hidden', 'true');
+  g.append('text').attr('class', 'node-sub').attr('fill', 'var(--color-ochre)')
+    .attr('x', ix).attr('y', iy+30).attr('text-anchor', 'middle').text('judgment ⊣');
+
+  // arrow marker
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrow').attr('viewBox', '0 0 10 10')
+    .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto-start-reverse')
+    .append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ink)');
+
+  // nodes
+  const tip = d3.select('body').append('div').attr('class', 'tooltip')
+    .style('position', 'absolute').style('pointer-events', 'none').style('opacity', 0)
+    .style('background', 'var(--color-white)').style('border', '1px solid var(--color-border)')
+    .style('padding', '6px 10px').style('font', "13px 'Inter', sans-serif").style('color', 'var(--color-ink)');
+
+  const sel = g.selectAll('.node').data(nodes).join('g')
+    .attr('transform', d => `translate(${px(d)},${py(d)})`)
+    .attr('tabindex', 0).attr('role', 'listitem')
+    .attr('aria-label', d => `${d.label}: ${d.sub}`);
+  sel.append('rect').attr('width', NW).attr('height', NH).attr('rx', 8)
+    .attr('fill', d => d.terminal ? 'var(--color-red)' : (d.bypass ? 'none' : 'var(--color-fill)'))
+    .attr('stroke', d => d.terminal ? 'var(--color-red)' : (d.primary ? 'var(--color-ink)' : 'var(--color-secondary)'))
+    .attr('stroke-width', 1.5)
+    .attr('stroke-dasharray', d => d.bypass ? '4 3' : null);
+  sel.append('text').attr('class', 'node-label').attr('x', NW/2).attr('y', 22).attr('text-anchor', 'middle')
+    .attr('fill', d => d.terminal ? 'var(--color-white)' : 'var(--color-ink)').text(d => d.label);
+  sel.append('text').attr('class', 'node-sub').attr('x', NW/2).attr('y', 38).attr('text-anchor', 'middle')
+    .attr('fill', d => d.terminal ? 'var(--color-white)' : 'var(--color-secondary)').text(d => d.sub);
+  sel.on('mouseover', (event, d) => tip.html(`<strong>${d.label}</strong><br>${d.sub}`).transition().duration(150).style('opacity', 1))
+     .on('mousemove', (event) => tip.style('left', (event.pageX+12)+'px').style('top', (event.pageY-28)+'px'))
+     .on('mouseout', () => tip.transition().duration(100).style('opacity', 0));
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

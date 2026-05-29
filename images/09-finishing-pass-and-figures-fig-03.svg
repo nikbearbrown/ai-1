@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The CAJAL Pipeline: Prose to Publication Artifact
+  Book: AI+1
+  Chapter: 09-finishing-pass-and-figures
+  Figure: 03
+  Type: systems diagram / process flowchart
+  Generated: 2026-05-28
+  Source: pantry/09-finishing-pass-and-figures-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-03">
+  <title id="fig-title-03">The CAJAL Pipeline: Prose to Publication Artifact</title>
+  <desc>Six-stage pipeline: finishing pass, image suggest writing cajal.md, SVG generator, SVG-to-PNG converter, enrichment pass inserting links, with a D3 companion branch. SVG and D3 are source; PNG ships in the EPUB.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="09-finishing-pass-and-figures"
+      figure-number="03" figure-title="The CAJAL Pipeline: Prose to Publication Artifact" figure-slug="cajal-pipeline-prose-to-artifact"
+      figure-type="systems diagram" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/09-finishing-pass-and-figures-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="40" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The CAJAL Pipeline: Prose to Publication Artifact</text>
+
+  <!-- Node 1: Finishing Pass -->
+  <rect x="32" y="120" width="118" height="60" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="91" y="146" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">1 — Finishing</text>
+  <text x="91" y="161" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Pass</text>
+  <text x="91" y="176" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454">subtitle + comments</text>
+
+  <line x1="150" y1="150" x2="178" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Node 2: Image Suggest -->
+  <rect x="180" y="120" width="118" height="60" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="239" y="146" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">2 — Image</text>
+  <text x="239" y="161" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Suggest</text>
+  <text x="239" y="176" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="10" fill="#545454">→ cajal.md</text>
+
+  <line x1="298" y1="150" x2="326" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Node 3: SVG Generator -->
+  <rect x="328" y="120" width="118" height="60" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="387" y="146" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">3 — SVG</text>
+  <text x="387" y="161" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Generator</text>
+  <text x="387" y="176" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="10" fill="#545454">→ *.svg</text>
+
+  <line x1="446" y1="150" x2="474" y2="150" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Node 4: SVG-to-PNG -->
+  <rect x="476" y="120" width="118" height="60" rx="0" fill="#FFFFFF" stroke="#C8102E" stroke-width="1.5"/>
+  <text x="535" y="146" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">4 — svg-to-png</text>
+  <text x="535" y="161" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">converter</text>
+  <text x="535" y="176" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="10" fill="#C8102E">→ 300-DPI PNG</text>
+
+  <!-- arrow down from PNG to enrichment -->
+  <line x1="535" y1="180" x2="535" y2="244" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Node 5: Enrichment Pass -->
+  <rect x="412" y="246" width="246" height="56" rx="0" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="535" y="270" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">5 — Enrichment pass</text>
+  <text x="535" y="288" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454">inserts markdown image links</text>
+
+  <!-- Node 6: D3 branch (off SVG/data stage) -->
+  <line x1="387" y1="180" x2="387" y2="244" stroke="#C8860E" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="328" y="246" width="60" height="56" rx="0" fill="#FFFFFF" stroke="#C8860E" stroke-width="1.5"/>
+  <text x="358" y="268" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">6 — D3</text>
+  <text x="358" y="284" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="10" fill="#545454">d3/</text>
+  <text x="328" y="320" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454">branch: MC / PQ figures only</text>
+
+  <!-- Source vs output divider -->
+  <line x1="32" y1="356" x2="668" y2="356" stroke="#2a1a0e" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="32" y="380" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">SOURCE ARTIFACTS</text>
+  <text x="180" y="380" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">SVG and D3 — editable, version-controlled, never shipped directly</text>
+
+  <text x="32" y="408" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#C8102E" letter-spacing="0.08em">SHIPS IN EPUB</text>
+  <text x="180" y="408" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">PNG — the publication artifact the reader actually sees</text>
+
+  <text x="32" y="444" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Three operations in sequence, one branch. Prose becomes a flagged comment, a plan, a vector, then a pixel image.</text>
+</svg>

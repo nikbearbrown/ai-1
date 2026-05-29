@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight-section prompt mapped to Tic TOC intake</title>
+<style>
+  :root {
+    --color-white:#FFFFFF; --color-ink:#2a1a0e; --color-red:#C8102E;
+    --color-secondary:#545454; --color-border:#D4D4D4; --color-ochre:#C8860E; --color-fill:#F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --color-white:#111111; --color-ink:#F0EBE3; --color-red:#E8243A;
+      --color-secondary:#A0978C; --color-border:#2E2E2E; --color-ochre:#D49A30; --color-fill:#1A1A1A; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-sub { font-size: 13px; fill: var(--color-secondary); }
+  .col-head { font-size: 12px; font-weight: 700; fill: var(--color-ink); }
+  .node-label { font-size: 11px; fill: var(--color-ink); }
+  .gate-code { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-white); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const sections = [
+  { n:1, label:'Tool adoption',        targets:['/i2'] },
+  { n:2, label:'Failure modes',        targets:['/l1'] },
+  { n:3, label:'IP / legal',           targets:['/m1'] },
+  { n:4, label:'Fluency trap',         targets:['/l1'] },
+  { n:5, label:'Labor market',         targets:['/i2'] },
+  { n:6, label:'Human taxonomy',       targets:['/i4'] },
+  { n:7, label:'Training / certs',     targets:['/i2','/m1'] },
+  { n:8, label:'Solo-practitioner risk', targets:['/i3'] }
+];
+const gates = ['/i2','/i3','/i4','/l1','/m1'];
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const c = document.getElementById('chart');
+  const totalWidth = c.clientWidth || 800;
+  const totalHeight = Math.max(420, Math.min(520, totalWidth * 0.62));
+  const margin = { top: 72, right: 30, bottom: 24, left: 30 };
+  const w = totalWidth - margin.left - margin.right;
+  const h = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
+  svg.append('title').attr('id','chart-title').text('Eight-section prompt mapped to Tic TOC intake');
+  svg.append('desc').attr('id','chart-desc').text('Eight research-prompt sections on the left link by connector lines to five Tic TOC intake targets on the right.');
+
+  svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('Research sections feed intake');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Eight sections crosswalk to five intake questions');
+
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const leftX = 0, leftW = w*0.42, rightW = w*0.20, rightX = w-rightW;
+  const lRowH = h/sections.length, lBoxH = lRowH*0.66;
+  const rRowH = h/gates.length, rBoxH = rRowH*0.5;
+
+  g.append('text').attr('class','col-head').attr('x',leftW/2).attr('y',-12).attr('text-anchor','middle').text('Prompt sections');
+  g.append('text').attr('class','col-head').attr('x',rightX+rightW/2).attr('y',-12).attr('text-anchor','middle').text('Intake targets');
+
+  const ly = i => i*lRowH + (lRowH)/2;
+  const gateIndex = {}; gates.forEach((gt,i)=>gateIndex[gt]=i);
+  const ry = i => i*rRowH + (rRowH)/2;
+
+  // connectors first
+  sections.forEach((s,i)=>{
+    s.targets.forEach(t=>{
+      const j = gateIndex[t];
+      g.append('path').attr('d',`M ${leftW} ${ly(i)} C ${leftW+40} ${ly(i)}, ${rightX-40} ${ry(j)}, ${rightX} ${ry(j)}`)
+        .attr('fill','none').attr('stroke','var(--color-secondary)').attr('stroke-width',1).attr('stroke-opacity',0.7).attr('aria-hidden','true');
+    });
+  });
+
+  const tip = d3.select('body').append('div').attr('class','tooltip')
+    .style('position','absolute').style('pointer-events','none').style('opacity',0)
+    .style('background','var(--color-white)').style('border','1px solid var(--color-border)')
+    .style('padding','6px 10px').style('font',"13px 'Inter',sans-serif").style('color','var(--color-ink)');
+
+  // left boxes
+  sections.forEach((s,i)=>{
+    const y = ly(i)-lBoxH/2;
+    g.append('rect').attr('x',leftX).attr('y',y).attr('width',leftW).attr('height',lBoxH).attr('rx',4)
+      .attr('fill','var(--color-fill)').attr('stroke','var(--color-ink)').attr('stroke-width',1)
+      .attr('tabindex',0).attr('role','img').attr('aria-label',`Section ${s.n}: ${s.label}, feeds ${s.targets.join(' and ')}`)
+      .on('mouseover',(e)=>tip.html(`<strong>${s.n}. ${s.label}</strong><br>feeds ${s.targets.join(', ')}`).transition().duration(150).style('opacity',1))
+      .on('mousemove',(e)=>tip.style('left',(e.pageX+12)+'px').style('top',(e.pageY-28)+'px'))
+      .on('mouseout',()=>tip.transition().duration(100).style('opacity',0));
+    g.append('text').attr('class','node-label').attr('x',leftX+8).attr('y',ly(i)+4).text(`${s.n}. ${s.label}`);
+  });
+  // right gate nodes
+  gates.forEach((gt,i)=>{
+    const y = ry(i)-rBoxH/2;
+    g.append('rect').attr('x',rightX).attr('y',y).attr('width',rightW).attr('height',rBoxH).attr('rx',4)
+      .attr('fill','var(--color-red)')
+      .attr('tabindex',0).attr('role','img').attr('aria-label',`Intake target ${gt}`);
+    g.append('text').attr('class','gate-code').attr('x',rightX+rightW/2).attr('y',ry(i)+4).attr('text-anchor','middle').text(gt);
+  });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

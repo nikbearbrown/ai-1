@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chapter Writer's five-step read-then-draft sequence</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .node-label { font-size: 12px; fill: var(--color-ink); text-anchor: middle; }
+  .step-num { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; fill: var(--color-secondary); text-anchor: middle; }
+  .flow-arrow { stroke: var(--color-red); stroke-width: 1.5; fill: none; }
+  .branch-arrow { stroke: var(--color-ochre); stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; }
+  .branch-label { font-size: 11px; fill: var(--color-secondary); text-anchor: middle; }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 240px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const stepData = [
+  { n: 1, label: 'Read TIKTOC.md', detail: 'The contract: spec, voice, chapter list, three-act arc, contested claims.' },
+  { n: 2, label: 'Read book.md', detail: 'Cross-chapter context — what came before and what comes next.' },
+  { n: 3, label: 'Audit chapters/', detail: 'Idempotency: existing chapters are left untouched (skip branch).' },
+  { n: 4, label: 'Read pantry file', detail: 'The nine-section notes populated in Chapter 6.' },
+  { n: 5, label: 'Draft', detail: 'Attenborough x Feynman house style.' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const stacked = totalWidth < 620;
+  const margin = { top: 64, right: 24, bottom: 64, left: 24 };
+  const chartWidth = totalWidth - margin.left - margin.right;
+
+  const nodeW = stacked ? Math.min(chartWidth, 240) : (chartWidth - 4 * 18) / 5;
+  const nodeH = 56;
+  const gapX = 18, gapY = 34;
+  const totalHeight = stacked
+    ? margin.top + stepData.length * (nodeH + gapY) + margin.bottom
+    : margin.top + nodeH + margin.bottom + 40;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text("The Chapter Writer's five-step read-then-draft sequence");
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('Five sequential nodes — read TIKTOC.md, read book.md, audit chapters/ and skip existing work, read the pantry file, draft — with a branch at the audit step marking the idempotency skip.');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrowRed').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path')
+    .attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-red)');
+  defs.append('marker').attr('id', 'arrowOchre').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path')
+    .attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ochre)');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24)
+    .text('The five-step read-then-draft sequence');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44)
+    .text('Run in order for every undrafted chapter');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+  const positions = stepData.map((d, i) => stacked
+    ? { x: (chartWidth - nodeW) / 2, y: i * (nodeH + gapY) }
+    : { x: i * (nodeW + gapX), y: 0 });
+
+  // links
+  const gLinks = gChart.append('g').attr('aria-hidden', 'true');
+  positions.forEach((p, i) => {
+    if (i === 0) return;
+    const prev = positions[i - 1];
+    if (stacked) {
+      gLinks.append('path').attr('class', 'flow-arrow').attr('marker-end', 'url(#arrowRed)')
+        .attr('d', `M${prev.x + nodeW / 2},${prev.y + nodeH} L${p.x + nodeW / 2},${p.y}`);
+    } else {
+      gLinks.append('path').attr('class', 'flow-arrow').attr('marker-end', 'url(#arrowRed)')
+        .attr('d', `M${prev.x + nodeW},${prev.y + nodeH / 2} L${p.x},${p.y + nodeH / 2}`);
+    }
+  });
+
+  // idempotency branch off node 3 (index 2)
+  const b = positions[2];
+  if (stacked) {
+    gLinks.append('path').attr('class', 'branch-arrow').attr('marker-end', 'url(#arrowOchre)')
+      .attr('d', `M${b.x + nodeW},${b.y + nodeH / 2} h28`);
+    gChart.append('text').attr('class', 'branch-label')
+      .attr('x', b.x + nodeW + 14).attr('y', b.y + nodeH / 2 - 6).text('skip');
+  } else {
+    gLinks.append('path').attr('class', 'branch-arrow').attr('marker-end', 'url(#arrowOchre)')
+      .attr('d', `M${b.x + nodeW / 2},${b.y + nodeH} v26`);
+    gChart.append('text').attr('class', 'branch-label')
+      .attr('x', b.x + nodeW / 2).attr('y', b.y + nodeH + 40).text('skip / leave alone');
+  }
+
+  const nodes = gChart.selectAll('.node').data(stepData).join('g')
+    .attr('class', 'node').attr('transform', (d, i) => `translate(${positions[i].x},${positions[i].y})`)
+    .attr('tabindex', 0).attr('aria-label', d => `Step ${d.n}: ${d.label}. ${d.detail}`);
+
+  nodes.append('rect').attr('class', 'node-rect')
+    .attr('width', nodeW).attr('height', nodeH);
+  nodes.append('text').attr('class', 'step-num').attr('x', nodeW / 2).attr('y', 16).text(d => d.n);
+  nodes.append('text').attr('class', 'node-label').attr('x', nodeW / 2).attr('y', 36)
+    .each(function(d) {
+      const words = d.label.split(' ');
+      const t = d3.select(this);
+      if (words.length > 2 && nodeW < 160) {
+        t.text(null);
+        t.append('tspan').attr('x', nodeW / 2).attr('dy', 0).text(words.slice(0, Math.ceil(words.length / 2)).join(' '));
+        t.append('tspan').attr('x', nodeW / 2).attr('dy', 14).text(words.slice(Math.ceil(words.length / 2)).join(' '));
+      } else { t.text(d.label); }
+    });
+
+  nodes.on('mouseover', (event, d) => {
+    nodes.selectAll('.node-rect').attr('opacity', 0.35);
+    d3.select(event.currentTarget).select('.node-rect').attr('opacity', 1);
+    tooltip.html(`<strong>${d.label}</strong><br>${d.detail}`)
+      .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+      .transition().duration(150).style('opacity', 1);
+  })
+  .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+  .on('mouseout', () => {
+    nodes.selectAll('.node-rect').attr('opacity', 1);
+    tooltip.transition().duration(100).style('opacity', 0);
+  });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

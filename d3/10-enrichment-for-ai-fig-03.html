@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The enrichment generator, three phases</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-label { font-size: 12px; fill: var(--color-ink); }
+  .edge-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .phase-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  .term-rect  { fill: var(--color-fill); stroke: var(--color-red); stroke-width: 1.5; }
+  .flow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  .pause { fill: var(--color-white); stroke: var(--color-ochre); stroke-width: 1.5; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const phases = [
+    { id: 'p1', lines: ['Phase 1', 'State detection'] },
+    { id: 'p2', lines: ['Phase 2', 'Chapter 00'] },
+    { id: 'p3', lines: ['Phase 3', 'Project + inserts'] }
+  ];
+  const terminal = { id: 't', lines: ['AI+1 textbook', 'at pedagogy layer'] };
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 800;
+    const totalHeight = Math.max(280, Math.min(360, totalWidth * 0.42));
+    const margin = { top: 70, right: 30, bottom: 50, left: 30 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('The enrichment generator, three phases');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('Three phase nodes run left to right to a terminal AI+1 textbook node, with author-judgment pause markers sitting on the arrows between phases.');
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('The enrichment generator, three phases');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Each phase pauses for author judgment before the next begins.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const nodes = [...phases, terminal];
+    const n = nodes.length;
+    const gap = 28;
+    const nodeW = (chartWidth - gap * (n - 1)) / n;
+    const nodeH = 64;
+    const y = chartHeight / 2 - nodeH / 2;
+
+    const defs = svg.append('defs');
+    defs.append('marker').attr('id', 'arr').attr('viewBox', '0 0 10 10')
+      .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+      .attr('orient', 'auto-start-reverse')
+      .append('path').attr('d', 'M0,0 L10,5 L0,10 z')
+      .attr('fill', getComputedStyle(document.body).getPropertyValue('--color-ink'));
+
+    nodes.forEach((nd, i) => { nd.x = i * (nodeW + gap); });
+
+    // arrows + pause markers between consecutive phase nodes (not into terminal differently)
+    for (let i = 0; i < n - 1; i++) {
+      const x1 = nodes[i].x + nodeW, x2 = nodes[i + 1].x, cy = y + nodeH / 2;
+      gChart.append('path').attr('class', 'flow').attr('marker-end', 'url(#arr)')
+        .attr('d', `M${x1},${cy} L${x2 - 2},${cy}`);
+      // pause marker only between the three phases (i < 2)
+      if (i < 2) {
+        const mx = (x1 + x2) / 2;
+        gChart.append('rect').attr('class', 'pause')
+          .attr('x', mx - 7).attr('y', cy - 7).attr('width', 14).attr('height', 14)
+          .attr('transform', `rotate(45 ${mx} ${cy})`);
+        gChart.append('text').attr('class', 'edge-label')
+          .attr('x', mx).attr('y', cy - 16).attr('text-anchor', 'middle').text('pause');
+      }
+    }
+
+    nodes.forEach((nd, i) => {
+      const cls = (i === n - 1) ? 'term-rect' : 'phase-rect';
+      const g = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', nd.lines.join(' '));
+      g.append('rect').attr('class', cls)
+        .attr('x', nd.x).attr('y', y).attr('width', nodeW).attr('height', nodeH).attr('rx', 4);
+      nd.lines.forEach((ln, j) => {
+        g.append('text').attr('class', 'node-label')
+          .attr('x', nd.x + nodeW / 2).attr('y', y + nodeH / 2 - 4 + j * 16)
+          .attr('text-anchor', 'middle').text(ln);
+      });
+    });
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Chapter Filename Order Equals EPUB Build Order
+  Book: AI+1
+  Chapter: 05-book-scaffold
+  Figure: 03
+  Type: structural schematic
+  Generated: 2026-05-28
+  Source: pantry/05-book-scaffold-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-03">
+  <title id="fig-title-03">Chapter Filename Order Equals EPUB Build Order</title>
+  <desc>Numbered chapter files concatenate in lexical filename order into a single combined document, preserving that order as the EPUB's chapter sequence.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="05-book-scaffold"
+      figure-number="03" figure-title="Chapter Filename Order Equals EPUB Build Order" figure-slug="filename-order-equals-build-order"
+      figure-type="structural schematic" priority="Important"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/05-book-scaffold-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Chapter Filename Order Equals EPUB Build Order</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Files glue together in filename order — change the number, change the position in the book</text>
+
+  <!-- ordered file tiles on left, top-to-bottom ascending prefix -->
+  <rect x="80" y="100" width="200" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="180" y="127" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">00-frontmatter.md</text>
+
+  <rect x="80" y="156" width="200" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="180" y="183" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">01-introduction.md</text>
+
+  <rect x="80" y="212" width="200" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="180" y="239" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">02-foundations.md</text>
+
+  <rect x="80" y="268" width="200" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="180" y="295" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">03-workflow.md</text>
+
+  <!-- ellipsis / implied-set tile (lower saturation gray) -->
+  <rect x="80" y="324" width="200" height="44" stroke="#ADADAD" stroke-width="1.5" stroke-dasharray="4 3" fill="#F5F5F5"/>
+  <text x="180" y="351" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#787878">. . .  (NN-*)</text>
+
+  <rect x="80" y="380" width="200" height="44" stroke="#2a1a0e" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="180" y="407" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#2a1a0e">99-back-matter.md</text>
+
+  <!-- concatenation arrow -->
+  <line x1="288" y1="262" x2="420" y2="262" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="354" y="252" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">cat *.md</text>
+
+  <!-- output EPUB stack on right, internal divisions mirror tile order (highlighted) -->
+  <rect x="440" y="120" width="180" height="284" stroke="#C8102E" stroke-width="1.5" fill="#FFFFFF"/>
+  <line x1="440" y1="167" x2="620" y2="167" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="440" y1="214" x2="620" y2="214" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="440" y1="261" x2="620" y2="261" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="440" y1="308" x2="620" y2="308" stroke="#D4D4D4" stroke-width="1"/>
+  <line x1="440" y1="355" x2="620" y2="355" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="530" y="148" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="600" fill="#2a1a0e">combined.md → EPUB</text>
+  <text x="530" y="195" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">front matter</text>
+  <text x="530" y="242" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">introduction</text>
+  <text x="530" y="289" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">foundations</text>
+  <text x="530" y="336" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">workflow . . .</text>
+  <text x="530" y="383" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">back matter</text>
+
+  <text x="32" y="452" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">LEXICAL FILENAME ORDER DETERMINISTICALLY MAPS TO BOOK POSITION</text>
+</svg>

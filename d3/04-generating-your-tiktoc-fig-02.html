@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 4.2 — Capability statement: topic vs. demonstrable outcome</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1A1A1A;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-label { font-size: 12px; fill: var(--color-ink); }
+  .tick-label { font-family: 'JetBrains Mono','Fira Code','Courier New',monospace; font-size: 11px; fill: var(--color-secondary); }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+             background: var(--color-white); color: var(--color-ink);
+             border: 1px solid var(--color-border); border-radius: 8px;
+             padding: 8px 10px; font-size: 13px; max-width: 240px;
+             box-shadow: 0 6px 20px -6px rgb(18 18 18 / 0.14); }
+  .rung { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const rungData = [
+  { id: 1, label: 'Topic', desc: 'Use AI in their freelance design practice. A category, not an outcome.' },
+  { id: 2, label: '+ constraint', desc: 'Deploy AI without losing the decisions clients pay for. Adds a condition.' },
+  { id: 3, label: '+ action', desc: 'Identify which decisions stay human and which can be delegated. Adds a verb.' },
+  { id: 4, label: 'Confirmed capability', desc: 'Identify the human/AI split and defend the delegation map to a client.' }
+];
+const mager = [
+  { id: 'p', label: 'performance', desc: 'What the reader does.' },
+  { id: 'c', label: 'condition', desc: 'Under what circumstances.' },
+  { id: 'r', label: 'criterion', desc: 'What counts as success.' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const margin = { top: 64, right: 120, bottom: 40, left: 40 };
+  const container = document.getElementById('chart');
+  const totalWidth = container.clientWidth || 800;
+  const totalHeight = 380;
+  const chartWidth = totalWidth - margin.left - margin.right;
+  const chartHeight = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('Capability statement refinement ladder');
+  svg.append('desc').attr('id', 'chart-desc').text('Four ascending rungs from a vague topic to a confirmed capability, with three Mager criteria branching off the top rung.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24).text('Topic vs. demonstrable outcome');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44).text('Each /i1 turn adds one missing element');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const n = rungData.length;
+  const slot = chartWidth / n;
+  const boxW = Math.min(slot * 0.78, 130);
+  const boxH = 46;
+  rungData.forEach((d, i) => {
+    d.cx = slot * i + slot / 2;
+    d.cy = chartHeight - (i + 1) * (chartHeight / (n + 0.5));
+  });
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrow2').attr('viewBox', '0 0 10 10')
+    .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto-start-reverse')
+    .append('path').attr('d', 'M0,0 L10,5 L0,10 Z').attr('fill', 'var(--color-ink)');
+
+  const gAxes = gChart.append('g').attr('aria-hidden', 'true');
+  for (let i = 0; i < n - 1; i++) {
+    const a = rungData[i], b = rungData[i + 1];
+    gAxes.append('line').attr('x1', a.cx + boxW / 2).attr('y1', a.cy + boxH / 2)
+      .attr('x2', b.cx - boxW / 2 - 4).attr('y2', b.cy + boxH / 2)
+      .attr('stroke', 'var(--color-ink)').attr('stroke-width', 1).attr('marker-end', 'url(#arrow2)');
+  }
+
+  const top = rungData[n - 1];
+  mager.forEach((m, i) => {
+    const sx = top.cx + boxW / 2, sy = top.cy + boxH / 2;
+    const ex = sx + 70, ey = sy - 22 + i * 22;
+    gAxes.append('line').attr('x1', sx).attr('y1', sy).attr('x2', ex).attr('y2', ey)
+      .attr('stroke', 'var(--color-secondary)').attr('stroke-width', 1);
+    const g = gChart.append('g').attr('class', 'rung mager').attr('tabindex', 0)
+      .attr('role', 'img').attr('aria-label', `Mager criterion ${m.label}: ${m.desc}`)
+      .datum(m);
+    g.append('circle').attr('cx', ex + 6).attr('cy', ey).attr('r', 5)
+      .attr('fill', 'var(--color-ink)').attr('stroke', 'none');
+    g.append('text').attr('class', 'tick-label').attr('x', ex + 14).attr('y', ey + 4).text(m.label);
+  });
+
+  const colors = ['var(--color-fill)', 'var(--color-fill)', 'var(--color-fill)', 'var(--color-red)'];
+  const txtcol = ['var(--color-ink)', 'var(--color-ink)', 'var(--color-ink)', 'var(--color-white)'];
+
+  const gNodes = gChart.append('g');
+  const nodes = gNodes.selectAll('.rung-box').data(rungData).join('g').attr('class', 'rung-box')
+    .attr('tabindex', 0).attr('role', 'img').attr('aria-label', d => `${d.label}: ${d.desc}`);
+  nodes.append('rect').attr('class', 'rung')
+    .attr('x', d => d.cx - boxW / 2).attr('y', d => d.cy).attr('width', boxW).attr('height', boxH)
+    .attr('rx', 8).attr('fill', (d, i) => colors[i]).attr('stroke', 'var(--color-ink)').attr('stroke-width', 1);
+  nodes.append('text').attr('class', 'node-label').attr('x', d => d.cx).attr('y', d => d.cy + boxH / 2 + 4)
+    .attr('text-anchor', 'middle').attr('fill', (d, i) => txtcol[i]).text(d => d.label);
+
+  function show(event, d) { tooltip.html(`<strong>${d.label}</strong><br>${d.desc}`)
+    .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+    .transition().duration(150).style('opacity', 1); }
+  function move(event) { tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'); }
+  function hide() { tooltip.transition().duration(100).style('opacity', 0); }
+
+  d3.selectAll('.rung-box, .mager')
+    .on('mouseover', function(event, d) { show(event, d); })
+    .on('mousemove', move).on('mouseout', hide)
+    .on('focus', function(event, d) { show(event, d); }).on('blur', hide);
+}
+
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

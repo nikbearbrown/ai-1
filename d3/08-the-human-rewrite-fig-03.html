@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The three-pass rewrite progression</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .panel-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  .panel-rect.final { stroke: var(--color-red); }
+  .panel-title { font-size: 13px; font-weight: 700; fill: var(--color-ink); text-anchor: middle; }
+  .panel-sub { font-size: 11px; fill: var(--color-secondary); text-anchor: middle; }
+  .line-stub { stroke: var(--color-border); stroke-width: 1; }
+  .delta-novice { stroke: var(--color-ochre); stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; }
+  .delta-expert { stroke: var(--color-ink); stroke-width: 2; fill: none; }
+  .delta-label { font-size: 11px; fill: var(--color-secondary); text-anchor: middle; }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+    background: var(--color-white); color: var(--color-ink);
+    border: 1px solid var(--color-border); padding: 6px 10px; font-size: 13px;
+    font-family: 'Inter', sans-serif; max-width: 260px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const panelData = [
+  { title: 'Cowork draft', sub: 'Five failure modes present', final: false,
+    detail: 'The model output: summary-first, fabricated specificity, generic examples.' },
+  { title: 'First pass', sub: 'Structure fixed, voice generic', final: false,
+    detail: 'Novice revision: word and sentence level. Items 1, 2, 3, 12 still fail.' },
+  { title: 'Second pass', sub: 'Voice present, test passed', final: true,
+    detail: 'Expert revision: argument and voice reconstruction. Combined Test passes.' }
+];
+const deltaData = [
+  { label: 'fix failure (novice)', kind: 'novice' },
+  { label: 'argument + voice (expert)', kind: 'expert' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const totalWidth = document.getElementById('chart').clientWidth || 800;
+  const stacked = totalWidth < 620;
+  const margin = { top: 64, right: 24, bottom: 40, left: 24 };
+  const chartWidth = totalWidth - margin.left - margin.right;
+
+  const arrowGap = stacked ? 40 : 48;
+  const panelW = stacked ? Math.min(chartWidth, 260) : (chartWidth - 2 * arrowGap) / 3;
+  const panelH = stacked ? 92 : 150;
+  const totalHeight = stacked
+    ? margin.top + panelData.length * panelH + (panelData.length - 1) * arrowGap + margin.bottom
+    : margin.top + panelH + margin.bottom + 24;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The three-pass rewrite progression');
+  svg.append('desc').attr('id', 'chart-desc')
+    .text('Three panels — the Cowork draft, the first-pass structural rewrite, the second-pass voice rewrite — joined by two arrows differentiated to mark the novice fix-failure delta and the expert argument-and-voice delta.');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrOchre').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ochre)');
+  defs.append('marker').attr('id', 'arrInk').attr('viewBox', '0 0 10 10')
+    .attr('refX', 8).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+    .attr('orient', 'auto-start-reverse').append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', 'var(--color-ink)');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24).text('The three-pass rewrite progression');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44).text("Sommers's novice-to-expert revision delta");
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+  const positions = panelData.map((d, i) => stacked
+    ? { x: (chartWidth - panelW) / 2, y: i * (panelH + arrowGap) }
+    : { x: i * (panelW + arrowGap), y: 0 });
+
+  // delta arrows
+  const gLinks = gChart.append('g').attr('aria-hidden', 'true');
+  positions.forEach((p, i) => {
+    if (i === 0) return;
+    const prev = positions[i - 1];
+    const cls = deltaData[i - 1].kind === 'novice' ? 'delta-novice' : 'delta-expert';
+    const marker = deltaData[i - 1].kind === 'novice' ? 'url(#arrOchre)' : 'url(#arrInk)';
+    if (stacked) {
+      gLinks.append('path').attr('class', cls).attr('marker-end', marker)
+        .attr('d', `M${prev.x + panelW / 2},${prev.y + panelH} L${p.x + panelW / 2},${p.y}`);
+      gChart.append('text').attr('class', 'delta-label')
+        .attr('x', p.x + panelW / 2 + 70).attr('y', (prev.y + panelH + p.y) / 2 + 4).text(deltaData[i - 1].label);
+    } else {
+      const midY = panelH / 2;
+      gLinks.append('path').attr('class', cls).attr('marker-end', marker)
+        .attr('d', `M${prev.x + panelW},${midY} L${p.x},${midY}`);
+      gChart.append('text').attr('class', 'delta-label')
+        .attr('x', (prev.x + panelW + p.x) / 2).attr('y', midY - 10).text(deltaData[i - 1].label);
+    }
+  });
+
+  const panels = gChart.selectAll('.panel').data(panelData).join('g')
+    .attr('class', 'panel').attr('transform', (d, i) => `translate(${positions[i].x},${positions[i].y})`)
+    .attr('tabindex', 0).attr('aria-label', d => `${d.title}: ${d.sub}. ${d.detail}`);
+
+  panels.append('rect').attr('class', d => 'panel-rect' + (d.final ? ' final' : ''))
+    .attr('width', panelW).attr('height', panelH);
+
+  // representative text-line stubs inside each panel
+  panels.each(function(d, i) {
+    const g = d3.select(this);
+    const lines = stacked ? 2 : 4;
+    for (let k = 0; k < lines; k++) {
+      const w = panelW * (0.85 - 0.12 * (k % 3));
+      g.append('line').attr('class', 'line-stub')
+        .attr('x1', 12).attr('x2', 12 + w).attr('y1', 34 + k * 14).attr('y2', 34 + k * 14).attr('aria-hidden', 'true');
+    }
+  });
+
+  panels.append('text').attr('class', 'panel-title').attr('x', panelW / 2).attr('y', 18).text(d => d.title);
+  panels.append('text').attr('class', 'panel-sub').attr('x', panelW / 2).attr('y', panelH - 10).text(d => d.sub);
+
+  panels.on('mouseover', (event, d) => {
+    panels.selectAll('.panel-rect').attr('opacity', 0.4);
+    d3.select(event.currentTarget).select('.panel-rect').attr('opacity', 1);
+    tooltip.html(`<strong>${d.title}</strong> — ${d.sub}<br>${d.detail}`)
+      .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+      .transition().duration(150).style('opacity', 1);
+  })
+  .on('mousemove', (event) => tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'))
+  .on('mouseout', () => { panels.selectAll('.panel-rect').attr('opacity', 1); tooltip.transition().duration(100).style('opacity', 0); });
+}
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

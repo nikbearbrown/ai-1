@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The eight-section vertical process flow</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .box-rect { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  .box-entry { fill: var(--color-fill); stroke: var(--color-red); stroke-width: 1.5; }
+  .box-label { font-size: 12px; fill: var(--color-ink); }
+  .flow { stroke: var(--color-ink); stroke-width: 1.5; fill: none; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const sections = [
+    'Hook', 'Concept unfold', 'Mechanism deep-dive', 'Worked example',
+    'Trade-off', 'Synthesis', 'Exercises', 'Bridge'
+  ];
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 560;
+    const totalHeight = Math.max(560, Math.min(720, totalWidth * 1.05));
+    const margin = { top: 64, right: 40, bottom: 24, left: 40 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('The eight-section vertical process flow');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('Eight identical section boxes stacked top to bottom, joined by a single downward arrow between each pair — a flat linear sequence sitting exactly at the eight-component ceiling, with no branches or loops.');
+
+    svg.append('text').attr('x', margin.left).attr('y', 28).attr('class', 'chart-title')
+      .text('The eight-section chapter sequence');
+    svg.append('text').attr('x', margin.left).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Exactly eight boxes — at the component ceiling. A ninth forces a split.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const n = sections.length;
+    const gap = 16;
+    const boxH = (chartHeight - gap * (n - 1)) / n;
+    const boxW = chartWidth;
+
+    const defs = svg.append('defs');
+    defs.append('marker').attr('id', 'arr4').attr('viewBox', '0 0 10 10')
+      .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7)
+      .attr('orient', 'auto-start-reverse')
+      .append('path').attr('d', 'M0,0 L10,5 L0,10 z')
+      .attr('fill', getComputedStyle(document.body).getPropertyValue('--color-ink'));
+
+    sections.forEach((s, i) => {
+      const y = i * (boxH + gap);
+      const isEntry = (i === 0);
+      const g = gChart.append('g').attr('tabindex', 0).attr('role', 'img')
+        .attr('aria-label', `Section ${i + 1}: ${s}`);
+      g.append('rect').attr('class', isEntry ? 'box-entry' : 'box-rect')
+        .attr('x', 0).attr('y', y).attr('width', boxW).attr('height', boxH).attr('rx', 4);
+      g.append('text').attr('class', 'box-label')
+        .attr('x', boxW / 2).attr('y', y + boxH / 2 + 4).attr('text-anchor', 'middle').text(s);
+      if (i < n - 1) {
+        const x = boxW / 2;
+        gChart.append('path').attr('class', 'flow').attr('marker-end', 'url(#arr4)')
+          .attr('d', `M${x},${y + boxH} L${x},${y + boxH + gap - 2}`);
+      }
+    });
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

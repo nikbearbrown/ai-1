@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 6.2 — Thin-pantry triage: three causes, three responses</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1A1A1A;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-label { font-size: 11px; }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+             background: var(--color-white); color: var(--color-ink);
+             border: 1px solid var(--color-border); border-radius: 8px;
+             padding: 8px 10px; font-size: 13px; max-width: 240px;
+             box-shadow: 0 6px 20px -6px rgb(18 18 18 / 0.14); }
+  .node-rect { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const root = { id: 'root', label: 'Pantry thin?', desc: 'The triage decision after reading a pantry file against the four questions.' };
+const branches = [
+  { cause: { id: 'c1', label: 'Topic is hard', desc: 'Recent, niche, or contested — the Gatherer found little.' },
+    resp: { id: 'r1', label: 'Supplement (45 min)', kind: 'supplement', desc: 'Add primary sources and lived examples by hand.' } },
+  { cause: { id: 'c2', label: 'Field evidence thin', desc: 'The evidence genuinely does not exist yet.' },
+    resp: { id: 'r2', label: 'Accept with flag → risks.md', kind: 'accept', desc: 'Banner the file and record it in risks.md.' } },
+  { cause: { id: 'c3', label: 'TIKTOC.md vague', desc: 'The spec did not ask for what is missing.' },
+    resp: { id: 'r3', label: 'Return to /c1, rerun', kind: 'return', desc: 'Sharpen the capability statement upstream, then rerun the Gatherer.' } }
+];
+const respColor = { supplement: 'var(--color-secondary)', accept: 'var(--color-ochre)', return: 'var(--color-red)' };
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const margin = { top: 64, right: 40, bottom: 40, left: 40 };
+  const container = document.getElementById('chart');
+  const totalWidth = container.clientWidth || 800;
+  const totalHeight = 340;
+  const chartWidth = totalWidth - margin.left - margin.right;
+  const chartHeight = totalHeight - margin.top - margin.bottom;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('Thin-pantry triage: three causes, three responses');
+  svg.append('desc').attr('id', 'chart-desc').text('A root decision branching to three causes, each routing to one response; the return-to-/c1 response carries an upstream back-loop.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', margin.left).attr('y', 24).text('Thin-pantry triage');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', margin.left).attr('y', 44).text('The cause decides the response — wrong response wastes hours or weeks');
+
+  const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const colX = [0, chartWidth * 0.4, chartWidth * 0.78];
+  const boxW = 150, boxH = 44;
+  const rootY = chartHeight / 2 - boxH / 2;
+  const rowY = i => (chartHeight / 3) * i + (chartHeight / 6) - boxH / 2;
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrow62').attr('viewBox', '0 0 10 10')
+    .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto-start-reverse')
+    .append('path').attr('d', 'M0,0 L10,5 L0,10 Z').attr('fill', 'var(--color-ink)');
+
+  const gAxes = gChart.append('g').attr('aria-hidden', 'true');
+  // root to causes
+  branches.forEach((b, i) => {
+    gAxes.append('path').attr('fill', 'none').attr('stroke', 'var(--color-ink)').attr('stroke-width', 1)
+      .attr('marker-end', 'url(#arrow62)')
+      .attr('d', `M${colX[0] + boxW},${rootY + boxH / 2} C${colX[1] - 40},${rootY + boxH / 2} ${colX[1] - 40},${rowY(i) + boxH / 2} ${colX[1] - 4},${rowY(i) + boxH / 2}`);
+    // cause to response
+    gAxes.append('line').attr('x1', colX[1] + boxW).attr('y1', rowY(i) + boxH / 2)
+      .attr('x2', colX[2] - 4).attr('y2', rowY(i) + boxH / 2)
+      .attr('stroke', 'var(--color-ink)').attr('stroke-width', 1).attr('marker-end', 'url(#arrow62)');
+  });
+  // back-loop on return response (row 2) to root
+  const ry = rowY(2);
+  gAxes.append('path').attr('fill', 'none').attr('stroke', 'var(--color-red)').attr('stroke-width', 1.5)
+    .attr('stroke-dasharray', '4 3').attr('marker-end', 'url(#arrow62)')
+    .attr('d', `M${colX[2] + boxW / 2},${ry + boxH} V${chartHeight + 4} H${colX[0] + boxW / 2} V${rootY + boxH}`);
+
+  const allNodes = [{ ...root, x: colX[0], y: rootY, kind: 'root' }];
+  branches.forEach((b, i) => {
+    allNodes.push({ ...b.cause, x: colX[1], y: rowY(i), kind: 'cause' });
+    allNodes.push({ ...b.resp, x: colX[2], y: rowY(i) });
+  });
+
+  const colorFor = d => d.kind === 'root' ? 'var(--color-ink)' : d.kind === 'cause' ? 'var(--color-fill)' : respColor[d.kind];
+  const txtFor = d => (d.kind === 'root' || (d.kind && respColor[d.kind] && d.kind !== 'cause')) ? 'var(--color-white)' : 'var(--color-ink)';
+
+  const g = gChart.selectAll('.node-g').data(allNodes).join('g').attr('class', 'node-g')
+    .attr('tabindex', 0).attr('role', 'img').attr('aria-label', d => `${d.label}: ${d.desc}`);
+  g.append('rect').attr('class', 'node-rect').attr('x', d => d.x).attr('y', d => d.y)
+    .attr('width', boxW).attr('height', boxH).attr('rx', d => d.kind === 'root' ? 8 : 6)
+    .attr('fill', colorFor).attr('stroke', 'var(--color-ink)').attr('stroke-width', 1);
+  g.append('text').attr('class', 'node-label').attr('x', d => d.x + boxW / 2).attr('y', d => d.y + boxH / 2 + 4)
+    .attr('text-anchor', 'middle').attr('fill', txtFor).text(d => d.label);
+
+  function show(event, d) { tooltip.html(`<strong>${d.label}</strong><br>${d.desc}`)
+    .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+    .transition().duration(150).style('opacity', 1); }
+  function move(event) { tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'); }
+  function hide() { tooltip.transition().duration(100).style('opacity', 0); }
+
+  g.on('mouseover', function(event, d) { g.selectAll('.node-rect').attr('opacity', 0.35); d3.select(this).select('.node-rect').attr('opacity', 1); show(event, d); })
+    .on('mousemove', move)
+    .on('mouseout', function() { g.selectAll('.node-rect').attr('opacity', 1); hide(); })
+    .on('focus', function(event, d) { show(event, d); }).on('blur', hide);
+}
+
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

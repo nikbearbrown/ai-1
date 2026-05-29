@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Three-Question Audit Scorecard
+  Book: AI+1
+  Chapter: 10-enrichment-for-ai
+  Figure: 01
+  Type: statistical/quantitative (decision-gate flow)
+  Generated: 2026-05-28
+  Source: pantry/10-enrichment-for-ai-cajal.md
+-->
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">The Three-Question Audit Scorecard</title>
+  <desc>A left-to-right gate chain: three audit questions in sequence. Passing flows right to AI+1 work; failing any gate drains down to a single generic-work sink.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="10-enrichment-for-ai"
+      figure-number="01" figure-title="The Three-Question Audit Scorecard" figure-slug="three-question-audit-scorecard"
+      figure-type="statistical/quantitative" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/10-enrichment-for-ai-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The Three-Question Audit Scorecard</text>
+
+  <!-- Gate 1 -->
+  <rect x="40" y="96" width="150" height="72" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="115" y="120" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Q1</text>
+  <text x="115" y="138" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Could it appear in</text>
+  <text x="115" y="154" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">another field?</text>
+
+  <!-- Gate 2 -->
+  <rect x="270" y="96" width="150" height="72" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="345" y="120" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Q2</text>
+  <text x="345" y="138" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Reader brings</text>
+  <text x="345" y="154" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">something only they have?</text>
+
+  <!-- Gate 3 -->
+  <rect x="500" y="96" width="150" height="72" rx="0" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="575" y="120" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Q3</text>
+  <text x="575" y="138" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Deliverable is</text>
+  <text x="575" y="154" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">reader's judgment?</text>
+
+  <!-- Forward (pass) arrows -->
+  <line x1="190" y1="132" x2="268" y2="132" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="420" y1="132" x2="498" y2="132" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="227" y="124" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">PASS</text>
+  <text x="457" y="124" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">PASS</text>
+
+  <!-- PASS terminal -->
+  <rect x="500" y="232" width="150" height="60" rx="0" fill="#FFFFFF" stroke="#C8102E" stroke-width="1.5"/>
+  <text x="575" y="258" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#C8102E">PASS</text>
+  <text x="575" y="276" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">AI+1 work</text>
+  <line x1="575" y1="168" x2="575" y2="230" stroke="#2a1a0e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- FAIL sink -->
+  <rect x="40" y="332" width="610" height="52" rx="0" fill="#F5F5F5" stroke="#D4D4D4" stroke-width="1"/>
+  <text x="345" y="362" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">FAIL — generic, transplantable work</text>
+
+  <!-- Downward blockage stubs (fail = blocked) -->
+  <g stroke="#2a1a0e" stroke-width="1.5">
+    <line x1="115" y1="168" x2="115" y2="330"/>
+    <line x1="100" y1="252" x2="130" y2="252"/>
+    <line x1="345" y1="168" x2="345" y2="330"/>
+    <line x1="330" y1="252" x2="360" y2="252"/>
+  </g>
+  <line x1="575" y1="292" x2="575" y2="330" stroke="#2a1a0e" stroke-width="1.5"/>
+  <line x1="560" y1="312" x2="590" y2="312" stroke="#2a1a0e" stroke-width="1.5"/>
+  <text x="345" y="316" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">FAIL ANY GATE (&#8867;)</text>
+</svg>

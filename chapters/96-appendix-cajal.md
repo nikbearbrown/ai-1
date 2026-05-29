@@ -735,6 +735,7 @@ DO NOT USE: Red-green combinations (#FF0000 + #00FF00)
 Affects approximately 8% of Caucasian men and 0.5% of women.
 Elsevier, Wiley, Springer Nature, and most academic publishers strongly
 discourage or prohibit red-green combinations in submitted figures.
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/96-appendix-cajal-assertions.md -->
 
 Conventional color mapping (adapt semantics to discipline):
 Active / positive / affirming       → Bluish Green  #009E73
@@ -754,7 +755,7 @@ Neutral / background                → Light gray    (contextual)
 For /scope Specification blocks:
 
 Nature / Nature Reviews (any subject area)
-Column widths: 88mm (single), 120mm (1.5), 180mm (double)
+Column widths: 90mm (single), 120mm (1.5), 180mm (double)
 Font: Helvetica or Arial, 5–7pt labels, 6–8pt axes
 Panel labels: 8pt bold lowercase (a, b, c)
 Max figures per paper: 4–6
@@ -774,6 +775,7 @@ American Economic Review / AER
 Full-page width: 6.5 inches; half-page: 3.25 inches
 Font: Times New Roman, 10pt minimum
 Figures: greyscale preferred; color permitted in online edition
+<!-- FACT-CHECK FLAG: UNVERIFIED — see factchecks/96-appendix-cajal-assertions.md -->
 
 University Press / Humanities / Social Science (default if no journal):
 Single column, 89mm–120mm width depending on trim size
@@ -1002,3 +1004,13 @@ These run; you do not paste them. They live in the book repository.
 - **`SCRIPTS/svg-to-png.mjs`** — converts every new SVG in `images/` to a 300-DPI PNG (the publication artifact Kindle renders reliably). Requires Node 18+ and the `sharp` package (`cd SCRIPTS/ && npm install sharp`). Run: `node SCRIPTS/svg-to-png.mjs` from the book root.
 - **`graphs.sh`** — local helper that processes `<!-- → [TYPE: …] -->` placeholder comments in `chapters/` into placeholder images and rendered tables, for fast iteration without Cowork. Run: `./graphs.sh` (all chapters) or `./graphs.sh chapters/01-foo.md` (one). Always run from the repo root.
 - **`build.sh`** — the final build (see Appendix J): assembles `metadata.yaml` + `chapters/*.md` into the EPUB and PDF via Pandoc. Run: `./build.sh` from the book root.
+
+---
+
+## References
+
+1. Okabe, M. & Ito, K. *Color Universal Design (CUD): How to make figures and presentations that are friendly to colorblind people.* Jikei Medical School / University of Tokyo, 2002 (rev. 2008). https://jfly.uni-koeln.de/color/
+2. Cowan, N. The magical number 4 in short-term memory: A reconsideration of mental storage capacity. *Behavioral and Brain Sciences* 24(1), 87–114, 2001. https://pubmed.ncbi.nlm.nih.gov/11515286/
+3. Science (AAAS). *Author Figure Preparation Guide.* https://www.science.org/do/10.5555/page.2385607/full/author_figure_prep_guide_2022.pdf
+4. Cell Press. *Figure Guidelines.* https://www.cell.com/information-for-authors/figure-guidelines
+5. Nature. *Formatting guide* (Figures section). https://www.nature.com/nature/for-authors/formatting-guide

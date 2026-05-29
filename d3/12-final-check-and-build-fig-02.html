@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fact-check classification grid</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1B1B1B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .grid-cell { fill: none; stroke: var(--color-border); stroke-width: 1; }
+  .axis-band { fill: var(--color-fill); stroke: var(--color-ink); stroke-width: 1; }
+  .axis-text { font-size: 11px; fill: var(--color-ink); }
+  .axis-title { font-size: 12px; font-weight: 700; fill: var(--color-secondary); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+  const claimTypes = ['Basic', 'Emphatic', 'Positive', 'I-language', 'Combination'];
+  const contentCats = ['STAT', 'GUIDELINE', 'APPROVAL', 'EVIDENCE', 'SPECIALIST', 'CURRENT'];
+
+  function draw() {
+    d3.select('#chart').selectAll('*').remove();
+    const container = document.getElementById('chart');
+    const totalWidth = container.clientWidth || 820;
+    const totalHeight = Math.max(360, Math.min(440, totalWidth * 0.55));
+    const margin = { top: 96, right: 30, bottom: 30, left: 130 };
+    const chartWidth = totalWidth - margin.left - margin.right;
+    const chartHeight = totalHeight - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart').append('svg')
+      .attr('width', totalWidth).attr('height', totalHeight)
+      .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+    svg.append('title').attr('id', 'chart-title').text('Fact-check classification grid');
+    svg.append('desc').attr('id', 'chart-desc')
+      .text('A blank two-axis classification matrix: five claim-type rows down the left axis and six content-category columns across the top, defining an empty intersection grid where each assertion is cross-classified.');
+
+    svg.append('text').attr('x', 16).attr('y', 28).attr('class', 'chart-title')
+      .text('Fact-check classification: claim type by content category');
+    svg.append('text').attr('x', 16).attr('y', 46).attr('class', 'chart-subtitle')
+      .text('Every assertion is cross-classified — 5 claim types by 6 content categories.');
+
+    const gChart = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const colW = chartWidth / contentCats.length;
+    const rowH = chartHeight / claimTypes.length;
+
+    // grid cells
+    for (let r = 0; r < claimTypes.length; r++) {
+      for (let c = 0; c < contentCats.length; c++) {
+        gChart.append('rect').attr('class', 'grid-cell')
+          .attr('x', c * colW).attr('y', r * rowH).attr('width', colW).attr('height', rowH);
+      }
+    }
+
+    // top axis band (content categories)
+    contentCats.forEach((cat, c) => {
+      gChart.append('text').attr('class', 'axis-text')
+        .attr('x', c * colW + colW / 2).attr('y', -10)
+        .attr('text-anchor', 'middle')
+        .attr('transform', `rotate(-30 ${c * colW + colW / 2} -10)`)
+        .text(cat);
+    });
+    gChart.append('text').attr('class', 'axis-title')
+      .attr('x', chartWidth / 2).attr('y', -52).attr('text-anchor', 'middle')
+      .text('Content category');
+
+    // left axis band (claim types)
+    claimTypes.forEach((ct, r) => {
+      svg.append('text').attr('class', 'axis-text')
+        .attr('x', margin.left - 12).attr('y', margin.top + r * rowH + rowH / 2 + 4)
+        .attr('text-anchor', 'end').text(ct);
+    });
+    svg.append('text').attr('class', 'axis-title')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -(margin.top + chartHeight / 2)).attr('y', 20)
+      .attr('text-anchor', 'middle').text('Claim type');
+  }
+
+  draw();
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>

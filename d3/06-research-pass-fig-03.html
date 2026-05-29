@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 6.3 — The _lib_ shared library: one authoritative home</title>
+<style>
+  :root {
+    --color-white:     #FFFFFF;
+    --color-ink:       #2a1a0e;
+    --color-red:       #C8102E;
+    --color-secondary: #545454;
+    --color-border:    #D4D4D4;
+    --color-ochre:     #C8860E;
+    --color-fill:      #F5F5F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-white:     #111111;
+      --color-ink:       #F0EBE3;
+      --color-red:       #E8243A;
+      --color-secondary: #A0978C;
+      --color-border:    #2E2E2E;
+      --color-ochre:     #D49A30;
+      --color-fill:      #1A1A1A;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--color-white); color: var(--color-ink);
+         font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif; }
+  #chart { width: 100%; }
+  .chart-title { font-size: 16px; font-weight: 700; fill: var(--color-ink); }
+  .chart-subtitle { font-size: 13px; fill: var(--color-secondary); }
+  .node-label { font-size: 11px; fill: var(--color-white); }
+  .tooltip { position: absolute; pointer-events: none; opacity: 0;
+             background: var(--color-white); color: var(--color-ink);
+             border: 1px solid var(--color-border); border-radius: 8px;
+             padding: 8px 10px; font-size: 13px; max-width: 240px;
+             box-shadow: 0 6px 20px -6px rgb(18 18 18 / 0.14); }
+  .node-shape { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); cursor: pointer; }
+  .spoke { transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="chart" role="main"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const hub = { id: 'hub', label: '_lib_', desc: 'The single authoritative home: glossary, framework, contested-claim position, style. Update once, every run sees it.' };
+const spokes = [
+  { id: 's1', label: 'ch-01', desc: 'Chapter 1 pantry — references the shared definition rather than copying it.' },
+  { id: 's2', label: 'ch-02', desc: 'Chapter 2 pantry — references the shared definition.' },
+  { id: 's3', label: 'ch-03', desc: 'Chapter 3 pantry — references the shared definition.' },
+  { id: 's4', label: 'ch-04', desc: 'Chapter 4 pantry — references the shared definition.' },
+  { id: 's5', label: 'ch-05', desc: 'Chapter 5 pantry — references the shared definition.' }
+];
+
+const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+function draw() {
+  d3.select('#chart').selectAll('*').remove();
+  const margin = { top: 64, right: 24, bottom: 24, left: 24 };
+  const container = document.getElementById('chart');
+  const totalWidth = container.clientWidth || 800;
+  const totalHeight = 380;
+  const cx = totalWidth / 2;
+  const cy = margin.top + (totalHeight - margin.top - margin.bottom) / 2;
+  const R = Math.min(totalWidth, totalHeight - margin.top) / 2 - 70;
+
+  const svg = d3.select('#chart').append('svg')
+    .attr('width', totalWidth).attr('height', totalHeight)
+    .attr('role', 'img').attr('aria-labelledby', 'chart-title chart-desc');
+  svg.append('title').attr('id', 'chart-title').text('The _lib_ shared library: one authoritative home');
+  svg.append('desc').attr('id', 'chart-desc').text('A central _lib_ hub feeds shared definitions outward to five chapter pantry files; one update propagates to all.');
+
+  svg.append('text').attr('class', 'chart-title').attr('x', 16).attr('y', 24).text('One authoritative home');
+  svg.append('text').attr('class', 'chart-subtitle').attr('x', 16).attr('y', 44).text('Update the hub once — every subsequent run sees it');
+
+  const defs = svg.append('defs');
+  defs.append('marker').attr('id', 'arrow63').attr('viewBox', '0 0 10 10')
+    .attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto-start-reverse')
+    .append('path').attr('d', 'M0,0 L10,5 L0,10 Z').attr('fill', 'var(--color-ink)');
+
+  const hubR = 40, nodeR = 30;
+  spokes.forEach((d, i) => {
+    const ang = (-Math.PI / 2) + (i / spokes.length) * 2 * Math.PI;
+    d.x = cx + R * Math.cos(ang); d.y = cy + R * Math.sin(ang);
+  });
+
+  const gAxes = svg.append('g').attr('aria-hidden', 'true');
+  spokes.forEach(d => {
+    const dx = d.x - cx, dy = d.y - cy, len = Math.hypot(dx, dy);
+    const sx = cx + (dx / len) * hubR, sy = cy + (dy / len) * hubR;
+    const ex = d.x - (dx / len) * (nodeR + 4), ey = d.y - (dy / len) * (nodeR + 4);
+    gAxes.append('line').attr('class', 'spoke').attr('data-id', d.id)
+      .attr('x1', sx).attr('y1', sy).attr('x2', ex).attr('y2', ey)
+      .attr('stroke', 'var(--color-ink)').attr('stroke-width', 1).attr('marker-end', 'url(#arrow63)');
+  });
+
+  // spokes
+  const gNodes = svg.append('g');
+  const sg = gNodes.selectAll('.spoke-g').data(spokes).join('g').attr('class', 'spoke-g node-g')
+    .attr('tabindex', 0).attr('role', 'img').attr('aria-label', d => `${d.label}: ${d.desc}`);
+  sg.append('circle').attr('class', 'node-shape').attr('cx', d => d.x).attr('cy', d => d.y).attr('r', nodeR)
+    .attr('fill', 'var(--color-ink)').attr('stroke', 'var(--color-ink)').attr('stroke-width', 1);
+  sg.append('text').attr('class', 'node-label').attr('x', d => d.x).attr('y', d => d.y + 4).attr('text-anchor', 'middle').text(d => d.label);
+
+  // hub
+  const hg = gNodes.append('g').attr('class', 'hub-g node-g').attr('tabindex', 0)
+    .attr('role', 'img').attr('aria-label', `${hub.label}: ${hub.desc}`).datum(hub);
+  hg.append('circle').attr('class', 'node-shape').attr('cx', cx).attr('cy', cy).attr('r', hubR)
+    .attr('fill', 'var(--color-red)').attr('stroke', 'var(--color-ink)').attr('stroke-width', 1);
+  hg.append('text').attr('class', 'node-label').attr('x', cx).attr('y', cy + 4).attr('text-anchor', 'middle')
+    .style('font-family', "'JetBrains Mono','Fira Code','Courier New',monospace").text(hub.label);
+
+  function show(event, d) { tooltip.html(`<strong>${d.label}</strong><br>${d.desc}`)
+    .style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px')
+    .transition().duration(150).style('opacity', 1); }
+  function move(event) { tooltip.style('left', (event.pageX + 12) + 'px').style('top', (event.pageY - 28) + 'px'); }
+  function hide() { tooltip.transition().duration(100).style('opacity', 0); }
+
+  d3.selectAll('.node-g')
+    .on('mouseover', function(event, d) {
+      d3.selectAll('.node-shape').attr('opacity', 0.35);
+      d3.select(this).select('.node-shape').attr('opacity', 1);
+      if (d.id !== 'hub') { d3.select(this).select('.node-shape').attr('opacity', 1); svg.select(`.spoke[data-id='${d.id}']`).attr('opacity', 1); }
+      else { gNodes.selectAll('.node-shape').attr('opacity', 1); }
+      show(event, d);
+    })
+    .on('mousemove', move)
+    .on('mouseout', function() { d3.selectAll('.node-shape').attr('opacity', 1); d3.selectAll('.spoke').attr('opacity', 1); hide(); })
+    .on('focus', function(event, d) { show(event, d); }).on('blur', hide);
+}
+
+draw();
+const ro = new ResizeObserver(() => draw());
+ro.observe(document.getElementById('chart'));
+</script>
+</body>
+</html>
