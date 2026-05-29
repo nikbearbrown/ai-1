@@ -2,19 +2,9 @@
 
 *The pantry is not a draft and it is not a citation list. It is the only thing standing between Cowork and an authoritative-sounding lie.*
 
-**Capability — one line:** Students run the Chapter Research Gatherer and evaluate the pantry output — distinguishing research-ready chapters from thin ones needing supplementation.
-
-**Learning objectives**
-
-- (Apply) Run the Chapter Research Gatherer so one notes file lands in `pantry/` for every chapter in your TIKTOC.md.
-- (Analyze) Read a notes file against four sharp questions and identify the strongest primary source, one claim that needs verification, and whether the domain examples match your reader.
-- (Evaluate) Triage every chapter as draft-ready, thin (supplement), or thin (return to Tic TOC) with a stated reason.
-
 ---
 
-## Opening — a pantry file that looks thorough and isn't
-
-You ran the Chapter Research Gatherer last night. This morning you open `pantry/ch-03-domain-research.md`. It looks substantial. Nine sections, three pages, dozens of bullet points. Here is what the first four sections actually contain.
+Open `pantry/ch-03-domain-research.md`. The file looks substantial — nine sections, three pages, dozens of bullet points. Here is what four of those sections actually contain.
 
 > **1. Primary Sources.**
 > - According to a 2024 article, "AI is transforming graphic design" — most designers will need to adopt new tools or face displacement. *(source: a Medium post by an account with 3 followers; no further citation)*
@@ -29,80 +19,93 @@ You ran the Chapter Research Gatherer last night. This morning you open `pantry/
 > **9. Sourcing Notes.**
 > Sources include articles from Forbes, Medium, LinkedIn, and a number of industry blogs. Primary sources were prioritized.
 
-Read it again. There is one primary source — a McKinsey reference too vague to find. The percentage is unattributed. The "Studies show" construction is the tell. Section 3 has no graphic designers in it. Section 9 claims primary sources were prioritized while citing four aggregators.
+Read Section 9 again. *Primary sources were prioritized.* Section 1 has one primary source — a McKinsey reference too vague to find. The percentage in the second bullet has no study behind it. "Studies show" is not a citation; it is the grammatical form of a citation with the substance removed. Section 3 contains zero graphic designers. Section 9 claims to have prioritized primary sources while citing four aggregators.
 
-This is the pantry the Gatherer produced for a chapter on AI's impact on graphic design. Cowork will read this file in two days. It will draft an authoritative-sounding chapter about AI and graphic design that cites no graphic designers, references percentages no one can check, and uses examples from marketing, small business, and education — every domain except the one the book is about.
+This is the pantry file the Chapter Research Gatherer produced for a chapter about AI's impact on graphic design. In two days, Cowork will read this file and draft the chapter. It will produce something authoritative-sounding about AI and graphic design that cites no graphic designers, references a percentage no one can verify, and draws examples from marketing, small business, and education — every domain except the one the book is about.
 
-This is what the chapter exists to prevent.
+Now read what the same chapter's pantry looks like after a forty-five-minute evaluation pass.
 
-Compare to the same chapter's pantry after the four-questions evaluation pass. Section 1 names the Adobe Firefly 3 release notes (March 2024, version-specific feature list), the Hoffmann & Wallace 2023 *Journal of Design Research* paper on AI-augmented studio workflows, and the Adobe Creative Cloud 2024 customer report (cited by document title, section, and date). Section 3 has five examples drawn from graphic design — brand identity, editorial layout, motion design, packaging, product lockups. Section 9 names specifically what was filtered out: aggregator summaries, undated trend reports, and posts that quoted unidentified studies.
+Section 1 names the Adobe Firefly 3 release notes from March 2024 with version-specific features sourced from Adobe's own release page, a peer-reviewed paper from *Journal of Design Research* on AI-augmented studio workflows, and the AIGA 2024 Design Census with methodology and sample size. Section 3 has five examples: a brand identity system for a regional law firm, an editorial layout for a quarterly magazine, a motion design project, a packaging redesign, a product lockup system — all graphic design, all specific. Section 9 names what was filtered out: Medium trend pieces, LinkedIn posts, listicles. The "Studies show" bullet is gone.
 
-The first pantry is a fluency-trap delivery vehicle. The second is research infrastructure. Same chapter, same TIKTOC.md, same Gatherer run. The difference is what you did after the script finished.
+Same chapter. Same TIKTOC.md. Same Gatherer run. The difference is what happened after the script finished.
 
----
-
-## What the Chapter Research Gatherer does
-
-The Gatherer is a Cowork prompt, not a separate piece of software. You give it your TIKTOC.md and your `chapters-spec.md`. It does three things, in order, for every chapter on the list.
-
-1. **It reads the chapter spec.** The capability statement, the learning outcomes, the bridge question, the application domain. This determines what it is looking for.
-2. **It scans your shared library.** Any file in `pantry/` whose name starts with `_lib_` is treated as shared context — glossary, recurring framework definitions, your house position on contested claims. The Gatherer consults but does not duplicate.
-3. **It runs web research and writes a nine-section notes file.** One file per chapter, saved as `pantry/research-ch-XX-<chapter-slug>.md`. The nine sections are: (1) Primary Sources, (2) State of the Field, (3) Application Domain Examples, (4) Book's Thesis Connection, (5) AI Wayback Machine Candidates, (6) Pedagogical Delivery Research, (7) Representation and Display Research, (8) Open Questions and Research Gaps, (9) Sourcing Notes.
-
-This is a research synthesis task in Cooper's sense [Cooper, Harris M., 1982, "Scientific Guidelines for Conducting Integrative Research Reviews," *Review of Educational Research* 52(2)]. Cooper named five stages — problem formulation, data collection, evaluation, analysis, presentation — and argued that compressing them was the move that hid the work. The Gatherer compresses Cooper's first three stages into one prompt. The two it cannot compress are *evaluation* and *analysis*. Those are yours. The four-questions pass below is where Cooper's missing stages get re-added by hand.
-
-A note on technology. The Gatherer is built on a long-context model with retrieval — what the literature now calls a "Deep Research" agent (a generation of tools shipped by Anthropic, OpenAI, and Google between 2024 and 2025). Retrieval-augmented generation has moved citation fabrication from "about half the time" [Goddard, Joel et al., 2023, "Hallucination in ChatGPT: A Cross-Disciplinary Investigation of References and Bibliographies"; Bhattacharyya, Mehul et al., 2023, "High Rates of Fabricated and Inaccurate References in ChatGPT-Generated Medical Content," *Cureus* 15(5)] to "fabricated when retrieval misses or the source is poorly indexed." The improvement is real. The risk is not gone.
-
-There is also a structural reason fabrication persists: language models trained on aggregate text model the *surface form* of citation — author-year-title shapes — without modeling the act of citing [Bender, Emily M. et al., 2021, "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?", FAccT '21]. Citation-shaped text is cheap. Verified citation is not. The pantry must be evaluated by someone who can tell the difference. That is the chapter's load-bearing claim.
+That difference is what this chapter is about.
 
 ---
 
-## How to evaluate a notes file — four questions before draft-ready
+## What the Gatherer does, and what it cannot do
 
-You will read each pantry file once. Mike Caulfield's SIFT method [Caulfield, Mike, 2017, *Web Literacy for Student Fact-Checkers*, CC-BY] gave undergraduates four moves — Stop, Investigate the source, Find better coverage, Trace claims. The CRAAP test [Blakeslee, Sarah, 2004, CSU Chico Meriam Library] gave them five — Currency, Relevance, Authority, Accuracy, Purpose. Both are too many to apply to fifteen pantry files in one sitting. The four below are adapted from SIFT, sharpened for AI-generated research notes, and small enough to be habitual.
+The Chapter Research Gatherer is a Cowork prompt, not a separate piece of software. You give it the TIKTOC.md and a chapter spec file. For every chapter on the list, it does three things in order: reads the capability statement, learning outcomes, bridge question, and application domain; consults any shared library files in `pantry/` (files named with the `_lib_` prefix, covered below); then runs web research and writes a nine-section notes file. One file per chapter, saved as `pantry/research-ch-XX-<chapter-slug>.md`.
+
+The nine sections are: Primary Sources, State of the Field, Application Domain Examples, Book's Thesis Connection, AI Wayback Machine Candidates, Pedagogical Delivery Research, Representation and Display Research, Open Questions and Research Gaps, Sourcing Notes.
+
+This is a research synthesis task in Harris Cooper's sense. Cooper's 1982 framework for integrative research reviews named five stages: problem formulation, data collection, evaluation, analysis, presentation — and argued that compressing any stage was the move that hid the work.[^cooper] The Gatherer compresses Cooper's first three stages into one prompt. The two it cannot compress are evaluation and analysis. Those are yours. The four-questions pass described below is where Cooper's missing stages get re-added by hand.
+
+[^cooper]: Cooper, Harris M. (1982). "Scientific Guidelines for Conducting Integrative Research Reviews." *Review of Educational Research*, 52(2), 291–302.
+
+The Gatherer runs on a long-context model with retrieval — what has been called a "Deep Research" agent since the generation of tools Anthropic, OpenAI, and Google shipped between 2024 and 2025. Retrieval-augmented generation has moved citation fabrication from roughly half the time toward something lower and harder to measure.[^goddard][^bhattacharyya] The improvement is real. The risk is not gone.
+
+There is a structural reason fabrication persists even with retrieval: language models trained on aggregate text learn the *surface form* of citation — the author-year-title shape — without modeling the act of verifying the source.[^parrots] Citation-shaped text is cheap to generate. Verified citation is not. Someone must do the verification. The pantry evaluation pass is where that someone is you.
+
+[^goddard]: Goddard, Joel et al. (2023). "Hallucination in ChatGPT: A Cross-Disciplinary Investigation of References and Bibliographies." Preprint.
+[^bhattacharyya]: Bhattacharyya, Mehul et al. (2023). "High Rates of Fabricated and Inaccurate References in ChatGPT-Generated Medical Content." *Cureus*, 15(5).
+[^parrots]: Bender, Emily M. et al. (2021). "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?" *FAccT '21*.
+
+---
+
+## Four questions before draft-ready
+
+You will read each pantry file once. The goal is not an exhaustive audit — fifteen chapter files in one sitting would make exhaustive impractical. The goal is a sharp triage. Mike Caulfield's SIFT method gave undergraduates four moves: Stop, Investigate the source, Find better coverage, Trace claims.[^sift] The CRAAP test gave five criteria: Currency, Relevance, Authority, Accuracy, Purpose.[^craap] Both are too many to apply habitually across an entire pantry. The four below are adapted from SIFT, sharpened for AI-generated research notes, and designed to fit in five to seven minutes per file.
+
+[^sift]: Caulfield, Mike (2017). *Web Literacy for Student Fact-Checkers*. CC-BY.
+[^craap]: Blakeslee, Sarah (2004). CSU Chico Meriam Library. CRAAP Test.
 
 **Question 1 — Is the strongest source primary or secondary?**
 
-Open Section 1. Find the source the Gatherer is leaning on most heavily. Is it a primary source — a study, a release note, a dataset, a court ruling, an organization's own publication? Or is it a secondary source — an article *about* a study, a blog post summarizing a report, a trend piece? If the strongest source in Section 1 is a Medium post or a Forbes article, the chapter is thin even if every other section looks full. Section 1 is the load-bearing slot. A thin Section 1 means Cowork will draft on summaries of summaries.
+Open Section 1. Find the source the Gatherer is leaning on most. Is it a study, a release note, a dataset, a court ruling, an organization's own publication — or is it an article *about* a study, a blog post summarizing a report, a trend piece? If the strongest source in Section 1 is a Medium post or a Forbes article, the chapter is thin even if every other section looks full. A thin Section 1 means Cowork will draft on summaries of summaries. The derivatives compound. The chapter that results sounds authoritative and cites nothing anyone can find.
 
 **Question 2 — Do the domain examples match your reader?**
 
-Open Section 3. Count the examples. Count the ones in your actual domain. If your book is for graphic designers and Section 3 contains marketing, small business, and education examples, the Gatherer found related content but missed the target. This is the most common failure pattern and the easiest to miss because the examples *sound* relevant — they're about creative work, or visual content, or working with clients. They are not about graphic design. The "neighborhood drift" is the version of the fluency trap that runs at the example level.
+Open Section 3. Count the examples. Count the ones in your actual domain. If the book is for graphic designers and Section 3 contains marketing, small business, and education examples, the Gatherer found related content but missed the target. This is the most common failure pattern and the easiest to miss, because the examples *sound* relevant — they involve creative work, or visual content, or working with clients. They are not about graphic design. The domain drift operates exactly like the fluency trap: the output has the right shape without the right substance, and the gap only becomes visible when a reader who knows the field opens the page.
 
 **Question 3 — Is anything flagged `[verify]` or `[contested]`?**
 
-Search the file. The Gatherer is instructed to flag any claim it could not source confidently. If the file contains zero flags, that is a yellow flag in itself. Either the chapter is on extremely well-trodden ground (cite indexing, basic typography, well-documented historical events) or the Gatherer is being more confident than the evidence warrants. Sycophancy in long-context models is real [Sharma, Mrinank et al., 2023, Anthropic, "Towards Understanding Sycophancy in Language Models"]; one of its forms is "fewer flags than the topic deserves." Trust files with flags more than files without.
+Search the file. The Gatherer is instructed to flag any claim it could not source confidently. If the file contains zero flags, that is a yellow flag in itself. Either the chapter covers genuinely well-documented ground or the Gatherer is more confident than the evidence warrants. Sycophancy in long-context models is a measured phenomenon — one of its forms is producing fewer uncertainty markers than the topic deserves.[^sycophancy] A pantry file with no flags is not necessarily a clean pantry file. It may be a pantry file that did not notice what it did not know.
 
-**Question 4 — Would a peer in your domain recognize the sources?**
+[^sycophancy]: Sharma, Mrinank et al. (2023). "Towards Understanding Sycophancy in Language Models." Anthropic preprint.
 
-This is the read-aloud version of the test. If you texted your most demanding colleague this file's Section 1, would they nod or wince? If wince, the chapter is thin. Designers can tell instantly whether a "designer source" was written by a designer; clinicians can tell instantly whether a "medical source" was written by a clinician. You have this instinct. Use it.
+**Question 4 — Would a peer in your domain recognize these sources?**
 
-Four questions. Five to seven minutes per pantry file. Fifteen chapters in a couple of hours.
+This is the read-aloud test. If you texted Section 1 to your most demanding colleague, would they nod or wince? Practitioners have fast and accurate instincts about what counts as a source in their field. Designers can tell instantly whether a "designer source" was written by a designer. Clinicians can tell instantly whether a "medical source" was written by a clinician. This instinct is the thing the Gatherer does not have. It is the thing you have. Use it.
 
-If all four answers are good, the file is **draft-ready**. Move on. If any answer fails, the chapter is **thin**, and the next section gives you the options.
+Four questions. Five to seven minutes per pantry file. Two hours for fifteen chapters, with attention left over.
+
+If all four answers are good: draft-ready. Move on. If any answer fails: thin. The next section gives you the three responses.
+
+<!-- → [TABLE: Four-question evaluation rubric — columns: Question, What to open, Pass condition, Fail signal, Common failure pattern — one row per question] -->
 
 ---
 
-## Thin-pantry chapters — three responses
+## What thin means, and the three responses
 
-Thin pantry has three causes, and the cause determines the response.
+Thin pantry has three causes. The cause determines the response, and picking the wrong response wastes either an hour of supplementation work on a problem that required a different fix, or weeks of Cowork drift on a problem that required supplementation.
 
-**Cause A — the research was hard.** The topic is recent, niche, or contested. The Gatherer did its best. Section 1 has two reasonable sources and a flagged third. Section 3 has three good domain examples and two stretches. This is a *supplementable* chapter. Spend forty-five minutes — open Google Scholar, your professional association's publications, the trade press in your domain. Add two primary sources to Section 1 by hand. Replace the stretched examples in Section 3 with examples you have lived. The pantry becomes draft-ready by the end of the hour.
+**Cause A: the research was hard.** The topic is recent, niche, or contested. The Gatherer found two reasonable sources and flagged a third. Section 3 has three good domain examples and two stretches. This is a *supplementable* chapter. Open Google Scholar, your professional association's publications, the trade press in your domain. Forty-five minutes. Add two primary sources to Section 1 by hand. Replace the stretched examples in Section 3 with ones you have lived. The pantry becomes draft-ready before the hour is up.
 
-**Cause B — the chapter is genuinely under-researched in the field.** This happens. AI's effect on a specific freelance niche may be reported only in trade newsletters; case law on a contested claim may be too recent. The Gatherer cannot find what does not yet exist. This is an *accept-with-flag* chapter. Add a banner to the pantry file:
+**Cause B: the field evidence is genuinely thin.** This happens. The Gatherer cannot find what does not yet exist. AI's effect on a specific freelance niche may be reported only in trade newsletters. Case law on a contested claim may be too recent. Qualitative effects that practitioners know from experience may not yet be formalized in anything citable. This is an *accept-with-flag* chapter. Add a banner to the pantry file:
 
 ```
 [contested — see pantry flag]
-Field evidence on this topic is thin. The chapter
-will rely on the author's domain experience and
-will be flagged in risks.md as a contested claim.
+Field evidence on this topic is thin. The chapter will rely on
+the author's domain experience and will be flagged in risks.md
+as a contested claim.
 ```
 
-Cowork will draft. The draft will be careful. The author will know to be especially careful in the human rewrite (Chapter 8). The chapter ships with eyes open.
+Cowork will draft carefully. The author will know to be especially careful in the human rewrite. The chapter ships with eyes open rather than eyes closed.
 
-**Cause C — the TIKTOC.md was vague.** The Gatherer prompt couldn't fix what the spec didn't ask for. Section 1 wanders. Section 3 is generic. Section 8 (Open Questions) is short — the Gatherer didn't even know what was missing. This is a *return-to-Tic-TOC* chapter. Open `/c1` again. Rewrite the capability statement to be specific. Add the missing learning outcome. Sharpen the application domain. Then rerun the Gatherer for just that chapter. The pantry quality is a downstream signal of TIKTOC.md quality. When the pantry is hopeless, the spec is what's broken.
+**Cause C: the TIKTOC.md was vague.** The Gatherer could not fix what the spec did not ask for. Section 1 wanders. Section 3 is generic. Section 8 — Open Questions — is short because the Gatherer did not know what was missing. This is a *return-to-Tic-TOC* chapter. Open `/c1` again. Rewrite the capability statement until it names a specific, demonstrable action. Sharpen the application domain. Then rerun the Gatherer for that chapter alone. A hopeless pantry is a downstream signal of a broken spec. The fix is upstream.
 
-The flowchart is small enough to memorize:
+The decision is short enough to memorize:
 
 ```
 Pantry file thin?
@@ -111,53 +114,45 @@ Pantry file thin?
    └── TIKTOC.md vague     → Return to /c1, sharpen spec, rerun Gatherer
 ```
 
-Three branches. Pick one per thin chapter. Write the choice in `risks.md` so future-you remembers.
+Write the choice in `risks.md`. Future-you, four chapters deep in the human rewrite, will need to remember which chapters were accepted with flags and why.
 
 ---
 
-## The shared markdown library — `_lib_` files
+## The shared markdown library
 
-Some content recurs across chapters. The glossary. The recurring framework definitions. The book's house position on contested claims. The author bio. Repeating this content in every pantry file is waste, and worse, it lets the content drift — two chapters citing the same definition with one-word differences that confuse the reader.
+Some content recurs across chapters: the glossary, the recurring framework definitions, the book's house position on contested claims. Repeating this content in every pantry file wastes space and — worse — lets the content drift. Two chapters citing the same definition with one-word differences confuse the reader in ways that are hard to trace and hard to fix.
 
-The Pragmatic Programmer's DRY principle [Hunt, Andrew and David Thomas, 2019, *The Pragmatic Programmer*, 20th Anniversary Edition] applies: every piece of knowledge has a single, authoritative home. In the AI+1 scaffold, that home is any file in `pantry/` whose name starts with `_lib_`. Examples: `_lib_glossary.md`, `_lib_ai-plus-one-frame.md`, `_lib_contested-claims.md`.
+The Pragmatic Programmer's DRY principle applies: every piece of knowledge has a single authoritative home.[^pragprog] In the AI+1 scaffold, that home is any file in `pantry/` whose name starts with `_lib_`. The glossary lives in `_lib_glossary.md`. The AI+1 framework definition lives in `_lib_ai-plus-one-frame.md`. The house position on contested claims lives in `_lib_contested-claims.md`.
 
-The Chapter Research Gatherer reads `_lib_` files before generating chapter-specific notes. Anything in `_lib_` is shared context. The Gatherer does not duplicate `_lib_` content into chapter pantry files; it references the definition and moves on. When the Chapter Writer runs in Chapter 7, it consults `_lib_` files the same way.
+[^pragprog]: Hunt, Andrew and David Thomas (2019). *The Pragmatic Programmer*, 20th Anniversary Edition. Addison-Wesley.
 
-**What goes in `_lib_`:**
+The Chapter Research Gatherer reads `_lib_` files before generating chapter-specific notes. Anything in `_lib_` is shared context. The Gatherer does not duplicate it into chapter pantry files; it references the definition and moves on. When the Chapter Writer runs in the next chapter, it consults `_lib_` files the same way. When you update a definition once, every subsequent run sees the update.
 
-- The glossary (every term used in more than two chapters).
-- Framework definitions (e.g., the AI+1 frame, the irreducibly human taxonomy).
-- The book's position on contested claims (so chapters don't relitigate).
-- Style notes that apply across chapters (voice section, capitalization rules).
-- Author bio, publication credits.
+What belongs in `_lib_`: terms used across more than two chapters, framework definitions, the book's position on contested claims, style notes that apply everywhere, author bio. What does not belong: chapter-specific examples, citations specific to one chapter's topic, per-chapter image briefs. The line is between what is shared and what is particular.
 
-**What does not go in `_lib_`:**
-
-- Chapter-specific examples.
-- Citations specific to one chapter's topic.
-- Per-chapter image briefs.
-
-The mechanism, currently, is a direct read by the Gatherer prompt. The author updates a `_lib_` file once; every subsequent Gatherer run sees the update. Symlinks would be cleaner; direct read is more portable across operating systems. [verify — confirm current `_lib_` mechanism in `SCRIPTS/` against the Gatherer prompt]
+<!-- → [TABLE: `_lib_` file taxonomy — columns: File, Contents, When Gatherer reads it, Update trigger — rows for glossary, framework definitions, contested claims, style notes] -->
 
 ---
 
-## What pantry is *not*
+## Pantry is not citation
 
-This is the section the chapter is sometimes mistaken for. The pantry is *reference, not citation*. The distinction matters and a designer's existing intuition makes it land.
+This is the section the chapter most wants to get right, because the distinction it draws is the one that collapses most easily under time pressure.
 
-Pantry is the moodboard, the competitor audit, the customer interview folder, the Pinterest board. It is what you consult while you work. It is not what the client sees. When you are drafting a logo, you may have looked at hundreds of references; you cite none of them in the deliverable. The reference shaped your judgment; the deliverable carries your judgment, not the reference.
+The pantry is reference, not citation. The distinction is the same one every designer already knows from moodboard practice. A moodboard is what you consult while working — competitive references, texture samples, typographic directions, visual precedents. You may have looked at two hundred references while developing a brand identity. You cite none of them in the deliverable. The references shaped your judgment; the deliverable carries your judgment, not the references.
 
-The pantry plays the same role for chapter drafting. Cowork consults it while drafting. The chapter draft does not cite the pantry. Chapter drafts cite primary sources. If a chapter draft references "according to a 2024 article" without naming the article, that draft is citing the pantry — which means the human rewrite (Chapter 8) must trace the claim back through the pantry to the original source and either cite it properly or remove the claim. Pantry-as-citation is the AI-laundered citation pattern; this is the structural defense against it.
+The pantry plays the same role for chapter drafting. Cowork consults it while drafting. The chapter draft does not cite the pantry. Chapter drafts cite primary sources. If a chapter draft says "according to a 2024 article" without naming the article, that draft is citing the pantry — which means the claim was sourced from the Gatherer's notes rather than traced back to a primary source. The human rewrite must then trace the claim through the pantry to the original source and either cite it properly or remove it. This is the AI-laundered citation pattern. The pantry structure is the defense against it, but only if the defense is maintained in the rewrite.
 
-The brand archaeology analogy may land harder. If you were doing a serious rebrand for a hundred-year-old company, you would not source the new identity from Wikipedia summaries of the company's history. You would go to the archives. Pantry files are Wikipedia-grade context for the drafting model. The chapter draft itself must reach further. The Goddard 2023 and Bhattacharyya 2023 findings — roughly half of GPT-3.5's medical citations were fabricated; GPT-4 reduced but did not eliminate — are the empirical reason. Even when retrieval works, citation-shaped text is cheap.
+Sönke Ahrens's *How to Take Smart Notes* describes the same distinction in a different vocabulary.[^ahrens] Niklas Luhmann's Zettelkasten — the 90,000-card archive that produced 70 books and 400 papers — had three layers: fleeting notes taken in the moment, literature notes recording what a source actually said, and permanent notes carrying the writer's own argued claim. Pantry files are Ahrens's literature notes. Chapter drafts are permanent notes. Treating literature notes as if they were already permanent — cutting from the Gatherer's prose into the chapter without tracing back to the primary source — is what produces academic embarrassment in human writers and hallucinated citations in language models. The fix is structural: keep the layers separate.
 
-Sönke Ahrens's *How to Take Smart Notes* [Ahrens, Sönke, 2017] describes the same distinction in a different vocabulary. Niklas Luhmann's Zettelkasten — the legendary 90,000-card archive that produced 70 books — had three layers: fleeting notes (raw, in-the-moment), literature notes (what a source actually said), and permanent notes (the writer's own argued claim). Pantry files are roughly Ahrens's literature notes. Chapter drafts are permanent notes. Treating literature notes as if they were already permanent is what produces academic embarrassment in human writers and hallucinated citations in language models. The structural fix is the same in both cases: separate the layers.
+Luhmann's system is worth knowing about for a second reason. It was boring. Index cards, a wooden cabinet, a numbering scheme he invented. No magic. The infrastructure was simple and the practice was relentless. The pantry is the same way. The technology is unimpressive. The discipline of evaluating each file before letting Cowork read it is the entire game.
+
+[^ahrens]: Ahrens, Sönke (2017). *How to Take Smart Notes*. North Star Media.
 
 ---
 
-## Worked example — the `ai-for-designers` Chapter 3 pantry
+## The annotated pantry — Chapter 3 of ai-for-designers
 
-This is the pantry file for `ai-for-designers` Chapter 3 (Domain Research) after the Gatherer ran and after a forty-five-minute supplementation pass. Strong entries and weak entries are annotated.
+This is the pantry file for Chapter 3 of the running example after the Gatherer ran and after the forty-five-minute supplementation pass. Strong and weak entries are annotated so the evaluation logic is visible in operation.
 
 ```
 # Research: Chapter 03 — Domain Research
@@ -176,12 +171,12 @@ own release page. URL preserved.
 Studio Workflows: An Ethnography of Three Design Practices."
 Journal of Design Research, 17(2). Peer-reviewed.
 
-[WEAK — REPLACE] "According to a 2024 trend report, AI adoption
+[WEAK — REPLACED] "According to a 2024 trend report, AI adoption
 in design is growing." [no source named, percentage unattributed —
 removed during supplementation pass]
 
-[STRONG, ADDED MANUALLY] AIGA (American Institute of Graphic Arts)
-2024 Design Census. URL, methodology, sample size all named.
+[STRONG, ADDED MANUALLY] AIGA 2024 Design Census. URL, methodology,
+and sample size named. Added by hand after Gatherer missed it.
 
 ## 2. State of the Field
 
@@ -205,27 +200,25 @@ typography hand-set.
 (5) Product lockup system — generative tools for exploration;
 production all manual.
 
-[WEAK — REMOVED] Marketing teams using AI for blog posts.
-Small business owners using ChatGPT for logos.
-[Wrong domain — removed during evaluation pass.]
+[REMOVED] Marketing teams using AI for blog posts. Small business
+owners using ChatGPT for logos. Wrong domain — removed during
+evaluation pass.
 
 ## 4. Book's Thesis Connection
 
 The fluency trap is most visible in Section 3 examples. AI tools
-produce design-shaped output without design judgment. The
-chapter's domain research must surface this distinction by
-example, not by claim.
+produce design-shaped output without design judgment. The chapter's
+domain research must surface this distinction by example, not claim.
 
 ## 5. AI Wayback Machine Candidates
 
 [STRONG] Lead: Paula Scher (1948–). Pentagram partner. Known for
-City Opera, MoMA identities. Substantive connection: Scher's
-career is the case that design is judgment, not output.
+City Opera, MoMA identities. Substantive connection: Scher's career
+is the case that design is judgment, not output.
 
-Alternate: Massimo Vignelli (1931–2014). Italian-American
-designer. The NYC Subway map. Quote: "If you can design one
-thing, you can design everything." Counter-position to AI's
-generic competence.
+Alternate: Massimo Vignelli (1931–2014). Italian-American designer.
+The NYC Subway map. Quote: "If you can design one thing, you can
+design everything." Counter-position to AI's generic competence.
 
 ## 6. Pedagogical Delivery Research
 
@@ -247,75 +240,108 @@ agreement/divergence. Designers read color-coded tables natively.
 ## 9. Sourcing Notes
 
 Primary: Adobe release notes, Hoffmann & Wallace 2023, AIGA 2024.
-Avoided: Medium trend pieces, LinkedIn posts, "best AI tools for
-designers" listicles. The chapter's source list is the chapter's
-seriousness.
+Avoided: Medium trend pieces, LinkedIn posts, design-tool listicles.
+The chapter's source list is the chapter's seriousness.
 ```
 
-Read the file twice. Notice what is *missing* that the bad version had: percentages no one can check, "Studies show" constructions, examples from wrong domains. Notice what is present: specific titles, version numbers, peer-reviewed citations, [verify] flags where confidence wavered. This is a literature-notes layer in Ahrens's sense. Cowork can draft from this without inventing.
+Notice what is missing that the bad version had: unverifiable percentages, the "Studies show" construction, examples from wrong domains. Notice what is present: specific titles, version numbers, peer-reviewed citations, explicit `[verify]` flags where confidence wavered. This is a literature-notes layer in Ahrens's sense. Cowork can draft from this without inventing. That is the only standard the pantry file needs to meet.
+
+<!-- → [IMAGE: Side-by-side spread of the bad pantry Section 1 and the good pantry Section 1 — annotated to show exactly which elements changed and why, with the caption: "Same Gatherer run. Different evaluation pass. The annotation is the chapter's argument made visible."] -->
+
+---
+
+## What the pantry makes possible downstream
+
+A pantry file is not interesting in itself. Its interest is entirely in what happens two chapters later, when Cowork opens it and drafts.
+
+The Cowork output from the bad pantry produces a chapter that uses the "Studies show 78%" figure as if it were settled. It uses the McKinsey reference in a sentence that sounds specific and cites nothing findable. It includes a worked example about a small business owner using ChatGPT to design a logo — which is not the reader, not the domain, not the book's argument. The human rewrite in Chapter 8 must find these problems, trace each claim back through the pantry to its non-existent source, and either find a real source or remove the claim. This is expensive. It is the upstream defect propagating downstream, in the same pattern Curtis, Krasner, and Iscoe described in software projects: requirements defects cost ten to a hundred times more to fix at implementation than at specification.[^curtis]
+
+The Cowork output from the good pantry opens with a specific scene drawn from one of the five domain examples in Section 3. It cites the Hoffmann and Wallace 2023 study when it makes a claim about studio workflows. It flags the contested question — augmentation versus displacement — without resolving it falsely. It puts a `[verify]` marker in the draft where the Davis op-ed venue is uncertain, which the human rewrite can resolve in five minutes. The rewrite is tightening and adding voice, not hunting ghosts.
+
+[^curtis]: Curtis, B., Krasner, H., & Iscoe, N. (1988). "A Field Study of the Software Design Process for Large Systems." *Communications of the ACM*, 31(11), 1268–1287.
+
+The difference is the pantry evaluation pass. Two hours of five-to-seven minutes per file. The cost at specification is a single afternoon. The cost at rewrite, without it, is a week.
+
+Padmakumar and He's 2024 measurement of 10–20% lexical-diversity reduction in LLM-assisted writing is the empirical underpinning of this.[^padmakumar] When a model is given thin research infrastructure and asked to draft authoritatively, it converges on the cheap citation forms that make up most of its training data. A well-constructed pantry file is not a constraint on Cowork's output — it is the input that makes a specific, non-generic output possible. The model will converge on what it is given.
+
+[^padmakumar]: Padmakumar, Vishakh and He He (2024). "Does Writing with Language Models Reduce Content Diversity?" *ICLR 2024*.
 
 ---
 
 ## AI Wayback Machine — Niklas Luhmann
 
-Wikipedia: "Niklas Luhmann."
+> **Prompt to run in Claude or ChatGPT:**
+>
+> "Read the Wikipedia article on Niklas Luhmann and his Zettelkasten. Then argue whether the AI+1 pantry system is a Zettelkasten or only resembles one. Identify the strongest disanalogy between the two systems — the place where the analogy breaks down most seriously."
 
-Luhmann (1927–1998) was a German sociologist who built, over thirty years, a personal note-taking system of roughly 90,000 paper slips, indexed by a numeric code he invented and cross-referenced by hand. The Zettelkasten. From it he produced 70 books and 400 papers — an output that has never been credibly explained by anything other than the system itself.
+Luhmann (1927–1998) was a German sociologist who built, over thirty years, a personal note-taking system of roughly 90,000 paper slips, indexed by a numeric code he invented and cross-referenced by hand. From it he produced 70 books and 400 papers — an output that has never been credibly explained by anything other than the system itself.
 
-The pantry is a Zettelkasten for one chapter. Luhmann's claim was that thinking happens in the notes, not in the head and not in the draft. The reason you cannot tell, looking at his finished books, where the work happened is that all the work happened in the notes. The same is the structural claim for the pantry: the chapter is downstream of the file. A thin pantry produces a thin chapter, no matter how hard the human rewrites later.
+His claim was that thinking happens in the notes, not in the head and not in the draft. The finished books are downstream of the Zettelkasten in the same way that chapter drafts are downstream of the pantry. A thin Zettelkasten produces thin books. A thin pantry produces thin chapters, no matter how hard the human rewrites later.
 
-Luhmann is worth knowing about for a second reason: his system was *boring*. Index cards, a wooden cabinet, a numbering scheme. No magic. The infrastructure was simple and the practice was relentless. The same is true of the pantry. The technology is unimpressive; the discipline of evaluating each file before letting Cowork read it is the entire game.
-
-**Try it:** Ask Claude: "Read about Luhmann's Zettelkasten. Argue whether AI+1's pantry is a Zettelkasten or only resembles one. What is the strongest disanalogy?"
+The Wikipedia article is substantive. The prompt asks you to read it once and find the strongest disanalogy — the place where the pantry is *not* a Zettelkasten. The disanalogy is the most informative result.
 
 ---
 
-## Exercises
+## LLM Exercises
 
-**Exercise 6.1 (Apply).** Run the Chapter Research Gatherer against your TIKTOC.md. Confirm that `pantry/` contains exactly one notes file per chapter on your chapter list. If any chapter is missing a notes file, identify why (Gatherer error, chapter not in spec, slug mismatch) and rerun.
+**Exercise 1 — Evaluate two pantry files against the four questions**
 
-**Exercise 6.2 (Analyze).** Pick any two pantry files. For each, answer the four questions in writing:
+Pick any two pantry files the Gatherer produced for your book. For each file, answer the four questions in writing:
 
-1. What is the strongest primary source? (Cite by title.)
-2. What is one claim that needs verification? (Quote the claim. Name what would settle it.)
-3. Do the Section 3 examples match your reader's domain? (Count: how many of N examples are in your actual domain?)
-4. Would a respected peer in your field recognize the sources in Section 1? (Yes / no, with reason.)
+1. What is the strongest primary source? Name it by title and explain why it is primary rather than secondary.
+2. What is one claim that needs verification? Quote the claim. Name what evidence would settle it.
+3. Do the Section 3 examples match your reader's domain? Count: how many of N examples are in your actual domain?
+4. Would a respected peer in your field recognize the sources in Section 1? State yes or no, with one sentence of reason.
 
-Two files. Four questions each. About ten minutes total.
+Then run the following prompt on one of the files:
 
-**Exercise 6.3 (Evaluate).** Read every pantry file. For each, write one line in `risks.md`:
+> "Here is a pantry notes file from an AI-generated research pass. Apply the SIFT method (Stop, Investigate the source, Find better coverage, Trace claims) to Section 1 specifically. Identify the single weakest citation and describe what a stronger replacement would look like."
+
+Compare the model's SIFT analysis to your own Question 1 evaluation. Where do they agree? Where does the model catch something you missed, or vice versa?
+
+**Exercise 2 — Triage and produce the risks.md entry**
+
+Read every pantry file in your `pantry/` directory. For each chapter, write one line in `risks.md` using this format:
 
 ```
-ch-03: DRAFT-READY
-ch-04: THIN — supplement (45 min, AIGA report missing)
-ch-05: THIN — accept-with-flag (field evidence sparse on Python install for designers)
-ch-06: THIN — return-to-Tic-TOC (capability statement too vague)
-...
+ch-XX: DRAFT-READY
+ch-XX: THIN — supplement (reason; what to add)
+ch-XX: THIN — accept-with-flag (reason; what the flag is)
+ch-XX: THIN — return-to-Tic-TOC (reason; which part of the spec is broken)
 ```
 
-This list is the input to Chapter 7. Cowork will draft every chapter on it. Chapters marked `return-to-Tic-TOC` should not be drafted until you have reopened `/c1` and resharpened the spec.
+When you have all entries, run this prompt on the completed `risks.md`:
+
+> "Here is a triage log for a set of chapter pantry files. Analyze the distribution of DRAFT-READY versus THIN entries. What does the distribution suggest about the quality of the TIKTOC.md specification — specifically, is the thinness concentrated in a particular phase (early chapters, late chapters, chapters with contested topics) or is it distributed? What does the pattern predict about the Cowork draft quality across the book?"
+
+Read the model's analysis. Is the pattern it identifies the one you would have predicted?
+
+**Exercise 3 — Stress-test the shared library**
+
+Examine your `_lib_` files. Identify one term or framework definition that appears in more than two chapter pantry files. Run the following:
+
+> "Here are three pantry file excerpts, each defining the same term: [paste the three excerpts]. Identify: (1) whether the definitions are consistent with each other, (2) what the strongest version would be, and (3) what downstream confusion a reader would experience if all three versions appeared in the final book."
+
+Use the model's response to decide whether the term belongs in `_lib_` and, if so, what the canonical definition should be.
+
+**Exercise 4 — Build a pantry file for a thin chapter**
+
+Take the chapter you triaged as *return-to-Tic-TOC* (or, if none, the thinnest chapter in the set). Rewrite the capability statement in `/c1` until it names a specific, demonstrable action at Apply level or above. Then run the Gatherer again for that chapter alone.
+
+Apply the four questions to the new pantry file. If the file is now draft-ready, document what changed in the capability statement that produced the better research output. If it is still thin, apply the correct triage response.
+
+Run this prompt on the before-and-after capability statements:
+
+> "Here are two capability statements for the same chapter — the original vague version and a revised version. Explain how the revision would change what a research assistant would look for when populating a pantry file for this chapter. What specifically would the revised statement cause the researcher to find that the original would cause them to miss?"
 
 ---
 
 ## Still puzzling
 
-- **Is there a recommended maximum pantry size per chapter?** The "lost in the middle" finding [Liu, Nelson F. et al., 2024, "Lost in the Middle: How Language Models Use Long Contexts," TACL] suggests very long pantry files are under-attended in the middle. Empirically, three to five pages per chapter pantry file seems to hit the sweet spot. Longer files should be split into multiple `_lib_` references plus a thinner chapter-specific file. [verify — exact context-window behavior of the current Chapter Writer]
-- **Does the Gatherer cite with URLs or with full bibliographic entries?** Currently a mix. Authors who plan to publish on Substack alongside Kindle benefit from URLs; authors planning print citations benefit from full entries. The Gatherer can be instructed to prefer one. [verify — current default]
-- **Should the Gatherer be told the reader's domain explicitly, or does it infer from TIKTOC.md?** Currently it infers. Authors in niche subfields (medical illustration, scientific publishing, motion design) sometimes get better Section 3 results by adding an explicit domain hint to the Gatherer prompt.
-- **What is the cost of running the Gatherer twice?** Idempotent at the file level (it warns before overwriting) but not at the source level — a second run may surface different sources because the web changes. Save a copy of the first run if you want to compare.
+Whether there is a recommended maximum pantry size per chapter is genuinely open. Liu and colleagues' 2024 "Lost in the Middle" finding — that language models systematically under-attend to content in the middle of long contexts — suggests that very long pantry files may produce partially ignored research.[^lost] Empirically, three to five pages per chapter pantry file seems to hit the useful range. Longer files should probably be split into `_lib_` references plus a thinner chapter-specific file, but the exact context-window behavior of the current Chapter Writer prompt needs verification against actual runs [verify — current Chapter Writer context-window behavior].
 
----
+Whether the Gatherer produces URLs or full bibliographic entries by default is a mix, and which is better depends on the author's publishing destination. Authors publishing to Substack alongside Kindle benefit from URLs; authors planning print citations benefit from full entries. The Gatherer can be instructed to prefer one. The current default is unspecified [verify — current Gatherer prompt default].
 
-## What would change my mind
+Whether the Gatherer infers the reader's domain from the TIKTOC.md or needs it stated explicitly is worth testing for niche subfields. Medical illustration, scientific publishing, and motion design authors sometimes get better Section 3 results by adding an explicit domain hint to the Gatherer prompt. This is a user-discovered workaround, not a documented feature.
 
-If a single AI tool ever closed the gap between literature notes and primary citation reliably — if retrieval became good enough that the Gatherer could be trusted to write draft-grade prose — the four-questions pass would become decorative. We are not there. Padmakumar and He's [2024, "Does Writing with Language Models Reduce Content Diversity?", ICLR 2024] measurement of 10–20% lexical-diversity reduction in LLM-assisted writing tells us the model's tendency is still to converge on cheap citation forms when allowed to. Until that number is near zero, the pantry must be evaluated by hand. The chapter is a bet on the necessity of human evaluation. If that bet ever becomes obsolete, the chapter becomes obsolete with it — and that would be excellent news for everyone.
-
----
-
-## Bridge to Chapter 7
-
-The pantry is populated. The Gatherer has done its work, and you have done yours — four questions per file, three responses for thin chapters. Cowork can now read every chapter's spec and consult every chapter's evaluated notes. It has what it needs to draft.
-
-The next thing that happens is fourteen chapters appear in `chapters/` over the course of a long afternoon. The `log.csv` will show everything green. You will open one chapter and read it.
-
-What you find on that page is Chapter 7.
+[^lost]: Liu, Nelson F. et al. (2024). "Lost in the Middle: How Language Models Use Long Contexts." *Transactions of the Association for Computational Linguistics*.
