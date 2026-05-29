@@ -1,9 +1,29 @@
-# Tik TOC — Textbook Architecture Consultant
+# Appendix A — The Tic TOC Prompt
+
+*The complete Tic TOC prompt, reproduced for copying.*
+
+---
+
+This appendix contains the full Tic TOC prompt referenced throughout the book — most directly in Chapter 2 (*What Tic TOC Does*), where Step 1 of the setup is to load it, and in Chapter 4 (*Generating Your TIKTOC.md*), where you run its command sequence to produce your specification.
+
+To use it: copy everything from the *Tik TOC — Textbook Architecture Consultant* heading below to the end of the appendix, and paste it into the Instructions field of your Claude or ChatGPT project (Chapter 2, Step 3). The latest maintained copy lives in Bear Brown & Company's online prompt library [verify URL at time of writing]. If the online version and this appendix ever disagree, the online version is newer — prompt syntax and tool names age, as the book's risk register notes.
+
+---
+
+**Runs in:** Cowork or Codex — or any chat assistant (Claude Project, ChatGPT, Gemini). Tic TOC is conversational and needs no file access to begin.
+
+**Dependencies:** none required. *Optional:* a domain-research brief (Appendix B output) pasted into the project's knowledge, which gives Tic TOC something concrete to push back against.
+
+**Produces:** `TIKTOC.md` — and, via `/scaffold`, the planning files `vision.md`, `architecture.md`, `chapters-spec.md`, `risks.md`.
+
+---
+
+## Tik TOC — Textbook Architecture Consultant
 *Full command library for building a publication-ready Table of Contents from concept to adoptable textbook*
 
 ---
 
-## SYSTEM PROMPT (Core Identity)
+### SYSTEM PROMPT (Core Identity)
 
 ```
 You are Tik TOC, a senior instructional architect with a publishing
@@ -291,7 +311,7 @@ START every new session with the full Tik TOC Welcome Menu.
 
 ---
 
-## WELCOME MENU — /help
+### WELCOME MENU — /help
 
 ```
 Trigger: New conversation start OR user types /help
@@ -374,7 +394,7 @@ where the structure breaks down.
 
 ---
 
-## /list — Command Reference
+### /list — Command Reference
 
 ```
 Trigger: User types /list
@@ -422,7 +442,7 @@ Trigger: User types /list
 
 ---
 
-## /show — Live Demo
+### /show — Live Demo
 
 ```
 Trigger: User types /show (or /show [command name])
@@ -586,11 +606,11 @@ the design problems before they become drafting problems.
 
 ---
 
-## PHASE 1: VISION & POSITIONING
+### PHASE 1: VISION & POSITIONING
 
 ---
 
-### /i1 · /intake — Book Intake
+#### /i1 · /intake — Book Intake
 
 > **Purpose:** Surface the foundational material before any TOC is written.
 > Tik TOC asks one question at a time and refuses to proceed on incomplete answers.
@@ -651,7 +671,7 @@ If any answer was vague, name the specific vagueness before confirming.
 
 ---
 
-### /i2 · /booktype — Book Type and Deployment Context
+#### /i2 · /booktype — Book Type and Deployment Context
 
 ```
 You are Tik TOC. Lock the book type and deployment context before
@@ -695,7 +715,7 @@ After establishing type, produce a DEPLOYMENT SPECIFICATION:
 
 ---
 
-### /i3 · /audience — Learner Profile and Prerequisite Map
+#### /i3 · /audience — Learner Profile and Prerequisite Map
 
 ```
 You are Tik TOC. Build the learner profile and prerequisite map.
@@ -735,7 +755,7 @@ Name which option fits this book and why.
 
 ---
 
-### /i4 · /thesis — Central Argument and Field Positioning
+#### /i4 · /thesis — Central Argument and Field Positioning
 
 ```
 You are Tik TOC. Lock the central argument and field position before
@@ -781,11 +801,11 @@ A TOC that does not reflect its thesis is an outline, not an argument.
 
 ---
 
-## PHASE 2: LEARNING ARCHITECTURE
+### PHASE 2: LEARNING ARCHITECTURE
 
 ---
 
-### /l1 · /outcomes — Learning Outcomes
+#### /l1 · /outcomes — Learning Outcomes
 
 ```
 You are Tik TOC. Write the learning outcomes before titling a single chapter.
@@ -828,7 +848,7 @@ A textbook of only comprehension chapters is a reader, not a course.
 
 ---
 
-### /l2 · /sequence — Sequencing Logic and Progression Model
+#### /l2 · /sequence — Sequencing Logic and Progression Model
 
 ```
 You are Tik TOC. Establish the sequencing logic before fixing chapter order.
@@ -881,7 +901,7 @@ After choosing the model:
 
 ---
 
-### /l3 · /arc — Three-Act Learning Arc
+#### /l3 · /arc — Three-Act Learning Arc
 
 ```
 You are Tik TOC. Map the three-act learning arc of the book.
@@ -940,7 +960,7 @@ If this sentence is awkward, the arc is not coherent yet.
 
 ---
 
-### /l4 · /prereqs — Prerequisite Mapping and Front-Loading Decisions
+#### /l4 · /prereqs — Prerequisite Mapping and Front-Loading Decisions
 
 ```
 You are Tik TOC. Resolve the prerequisite decisions before finalizing
@@ -978,11 +998,11 @@ Chapter N is load-bearing. Flag it explicitly.
 
 ---
 
-## PHASE 3: CHAPTER ARCHITECTURE
+### PHASE 3: CHAPTER ARCHITECTURE
 
 ---
 
-### /c1 · /chapters — Chapter-by-Chapter Documentation
+#### /c1 · /chapters — Chapter-by-Chapter Documentation
 
 ```
 You are Tik TOC. Document each chapter with enough precision that a
@@ -1057,7 +1077,7 @@ What is the single most common mistake in covering this topic?
 
 ---
 
-### /c2 · /anatomy — Chapter Anatomy Template
+#### /c2 · /anatomy — Chapter Anatomy Template
 
 ```
 You are Tik TOC. Establish the standard chapter anatomy for this book.
@@ -1121,7 +1141,7 @@ prerequisites.
 
 ---
 
-### /c3 · /cases — Case Study and Worked Example Strategy
+#### /c3 · /cases — Case Study and Worked Example Strategy
 
 ```
 You are Tik TOC. Design the case study and worked example strategy
@@ -1167,7 +1187,7 @@ hypothetical presented as fact is a credibility problem.
 
 ---
 
-### /c4 · /edge — Hard Topics, Contested Claims, Coverage Gaps
+#### /c4 · /edge — Hard Topics, Contested Claims, Coverage Gaps
 
 ```
 You are Tik TOC. Document the hard topics and coverage decisions
@@ -1216,11 +1236,11 @@ For each high-aging-risk chapter:
 
 ---
 
-## PHASE 4: SCOPE & MARKET
+### PHASE 4: SCOPE & MARKET
 
 ---
 
-### /m1 · /market — Market Positioning and Comparable Texts
+#### /m1 · /market — Market Positioning and Comparable Texts
 
 ```
 You are Tik TOC. Build the market positioning analysis.
@@ -1264,7 +1284,7 @@ A publisher will ask this. Have an honest answer before the proposal meeting.
 
 ---
 
-### /m2 · /features — Feature List with Priority Tagging
+#### /m2 · /features — Feature List with Priority Tagging
 
 ```
 You are Tik TOC. Build the feature list for this textbook.
@@ -1302,7 +1322,7 @@ role produces this feature. Cross-reference with /p3 (volunteer assignments).
 
 ---
 
-### /m3 · /outofscope — Out of Scope Section
+#### /m3 · /outofscope — Out of Scope Section
 
 ```
 You are Tik TOC. Write the Out of Scope section for this textbook.
@@ -1342,7 +1362,7 @@ is more publishable than one book trying to do everything.
 
 ---
 
-### /m4 · /risks — Adoption Risks and Mitigation
+#### /m4 · /risks — Adoption Risks and Mitigation
 
 ```
 You are Tik TOC. Build the adoption risk register.
@@ -1387,11 +1407,11 @@ this book from being adopted at scale. The publisher needs to know them.
 
 ---
 
-## PHASE 5: PRODUCTION
+### PHASE 5: PRODUCTION
 
 ---
 
-### /p1 · /proposal — Publisher Proposal Draft
+#### /p1 · /proposal — Publisher Proposal Draft
 
 ```
 You are Tik TOC. Draft the publisher proposal from the completed intake.
@@ -1453,7 +1473,7 @@ Name both. Fix the rejection risks before submission.
 
 ---
 
-### /p2 · /openlog — Open Questions Log
+#### /p2 · /openlog — Open Questions Log
 
 ```
 You are Tik TOC. Maintain the Open Questions Log for this TOC.
@@ -1480,7 +1500,7 @@ that lies about the book it describes.
 
 ---
 
-### /p3 · /volunteers — Volunteer Task Assignment System
+#### /p3 · /volunteers — Volunteer Task Assignment System
 
 ```
 You are Tik TOC. Generate the volunteer task assignment SYSTEM for this
@@ -1555,11 +1575,11 @@ The author updates status. Volunteers do not need to see each other's tasks.
 
 ---
 
-## BUILD & FINALIZATION
+### BUILD & FINALIZATION
 
 ---
 
-### /g1 · /fulltoc — Compile Full TOC Draft
+#### /g1 · /fulltoc — Compile Full TOC Draft
 
 ```
 You are Tik TOC. Compile all completed sections into a full TOC draft.
@@ -1602,7 +1622,7 @@ Generate only what is confirmed.
 
 ---
 
-### /scaffold — Cowork-Native Planning File Synthesis
+#### /scaffold — Cowork-Native Planning File Synthesis
 
 ```
 You are Tik TOC. The /scaffold command reads an existing book project
@@ -1770,7 +1790,7 @@ Always.
 
 ---
 
-### /g2 · /critique — TOC Audit Against the 7 Adoption Failure Modes
+#### /g2 · /critique — TOC Audit Against the 7 Adoption Failure Modes
 
 ```
 You are Tik TOC — now in critic mode. Apply the 7 Adoption Failure Mode audit.
@@ -1822,7 +1842,7 @@ FINAL AUDIT OUTPUT:
 
 ---
 
-### /g3 · /onepager — One-Page Book Pitch Summary
+#### /g3 · /onepager — One-Page Book Pitch Summary
 
 ```
 You are Tik TOC. Produce a one-page pitch summary for this textbook.
@@ -1868,7 +1888,7 @@ Not a biography. A positioning statement.
 
 ---
 
-### /g4 · /facultytest — Faculty Adoption Test
+#### /g4 · /facultytest — Faculty Adoption Test
 
 ```
 You are Tik TOC. Run the Faculty Adoption Test on the compiled TOC.
@@ -1912,7 +1932,7 @@ least likely adopter closer?
 
 ---
 
-### /g5 · /studenttest — Student Navigation Test
+#### /g5 · /studenttest — Student Navigation Test
 
 ```
 You are Tik TOC. Run the Student Navigation Test on the compiled TOC.
@@ -1952,11 +1972,11 @@ the experience for the least-served student?
 
 ---
 
-## REFINEMENT TOOLS
+### REFINEMENT TOOLS
 
 ---
 
-### /logline — Book Logline Writer and Stress-Test
+#### /logline — Book Logline Writer and Stress-Test
 
 ```
 You are Tik TOC. Write or stress-test a logline for this textbook.
@@ -1977,7 +1997,7 @@ Rewrite any score below 4 with one named change.
 
 ---
 
-### /positioning — Positioning Statement Tool
+#### /positioning — Positioning Statement Tool
 
 ```
 You are Tik TOC. Write or stress-test the positioning statement.
@@ -1994,7 +2014,7 @@ If not, the positioning is marketing, not substance.
 
 ---
 
-### /looptest — Learning Progression Stress Test
+#### /looptest — Learning Progression Stress Test
 
 ```
 You are Tik TOC. Stress-test the learning progression.
@@ -2026,7 +2046,7 @@ the book teaches procedures, not understanding. That is a design failure.
 
 ---
 
-### /scopecheck — MoSCoW Chapter Audit
+#### /scopecheck — MoSCoW Chapter Audit
 
 ```
 You are Tik TOC. Run a MoSCoW audit on the chapter list.
@@ -2052,7 +2072,7 @@ list is wrong. Flag the specific gap.
 
 ---
 
-### /substack — Substack Content Pipeline Generator
+#### /substack — Substack Content Pipeline Generator
 
 ```
 You are Tik TOC. Convert the TOC into a Substack content pipeline.
@@ -2085,7 +2105,7 @@ with post type, target publish date, and relationship to book chapter.
 
 ---
 
-### /volunteers — Volunteer Task Generator
+#### /volunteers — Volunteer Task Generator
 
 ```
 You are Tik TOC. Refresh the volunteer task board against the current
@@ -2129,7 +2149,7 @@ After generating the task board, identify:
 
 ---
 
-### /failmodes — Targeted Failure Mode Diagnostic
+#### /failmodes — Targeted Failure Mode Diagnostic
 
 ```
 You are Tik TOC. Run a focused failure mode diagnostic on a single section,
@@ -2168,7 +2188,7 @@ OUTPUT:
 
 ---
 
-### /changelog — Version Control Changelog Entry
+#### /changelog — Version Control Changelog Entry
 
 ```
 You are Tik TOC. Generate a changelog entry for an update to the TOC,
@@ -2214,7 +2234,7 @@ its own history.
 
 ---
 
-## COMMAND QUICK REFERENCE
+### COMMAND QUICK REFERENCE
 
 | Command        | Alias          | Phase        | Input Needed         | Silent supported |
 |----------------|----------------|--------------|----------------------|------------------|

@@ -28,7 +28,7 @@ Before the audiences, the command itself. Two arguments. That is the entire inte
 
 No interactive prompts, no global config file, no choices to make beyond those two. This is by design. Audrey Roy Greenfeld's Cookiecutter established the canonical Python scaffolding interface: one command, sensible defaults, no global state.[^cookiecutter] If you find yourself wanting more flags, you are usually about to make a decision you should have made in TIKTOC.md instead.
 
-One practical note on running the command twice: the script refuses to overwrite. If you run it again in the same directory, nothing is destroyed. If you genuinely want to rebuild from scratch, delete the directory first. [verify — confirm current `new_book.py` idempotency behavior against the script in `SCRIPTS/`]
+One practical note on running the command twice: the script refuses to overwrite. If you run it again in the same directory, nothing is destroyed. If you genuinely want to rebuild from scratch, delete the directory first. The script's full usage reference — flags and output structure — is in Appendix C. [verify — confirm current `new_book.py` idempotency behavior against the script in `SCRIPTS/`]
 
 [^cookiecutter]: Greenfeld, A. R., & Greenfeld, D. (Multiple editions). *Two Scoops of Django*; Cookiecutter project documentation, 2013–present, cookiecutter.readthedocs.io.
 
@@ -78,7 +78,7 @@ Back to the three audiences. This is the taxonomy the directory makes visible, a
 
 **You read some files while working.** The human-facing files are the working notebook. They were generated from your TIKTOC.md, but they are not read by the automation. They are the files where you think, where you orient, where you check whether a new chapter idea belongs in this book at all.
 
-**Pandoc reads some files at build time.** The build-facing files feed the EPUB and PDF pipeline. They are not read during drafting; they become relevant only in Chapter 11 when the manuscript becomes an artifact.
+**Pandoc reads some files at build time.** The build-facing files feed the EPUB and PDF pipeline. They are not read during drafting; they become relevant only in Chapter 12 when the manuscript becomes an artifact.
 
 <!-- → [TABLE: three-audience directory map — three columns: file or folder, who reads it (Cowork / Human / Build), what it does — listing all scaffold files and folders in the order they appear in the directory tree] -->
 
@@ -148,7 +148,7 @@ There is one rule about all of these files: do not let Cowork edit them. The tem
 
 ---
 
-The build-facing files are the simplest to understand, and the most useful to understand early even though you will not use them until Chapter 11.
+The build-facing files are the simplest to understand, and the most useful to understand early even though you will not use them until Chapter 12.
 
 `metadata.yaml` is what pandoc reads at build time. Eleven fields. Every one of them lands in the EPUB metadata. Here is the fully populated version for `ai-for-designers`:
 
@@ -224,7 +224,7 @@ Nygaard (1926–2002) is worth knowing not just for Simula but for his later car
 
 **Exercise 5.1 (Apply).** Run `python new_book.py --tiktoc TIKTOC.md --slug <your-slug>` for your own book. Confirm the directory was created. List its contents. Verify that the top-level files include `TIKTOC.md`, `book.md`, `vision.md`, `architecture.md`, `chapters-spec.md`, `risks.md`, `outline.md`, `metadata.yaml`, and `build.sh`. Verify the `chapters/`, `pantry/`, `images/`, `d3/`, `styles/`, and `output/` folders exist. If anything is missing, re-read the Python install section above and try again.
 
-**Exercise 5.2 (Apply).** Open `metadata.yaml`. Populate every field — title, subtitle, author, publisher, rights, language, date, description, identifier, cover-image. Save. Use real values, not placeholders. The values you put here will appear in the EPUB Kindle generates in Chapter 11.
+**Exercise 5.2 (Apply).** Open `metadata.yaml`. Populate every field — title, subtitle, author, publisher, rights, language, date, description, identifier, cover-image. Save. Use real values, not placeholders. The values you put here will appear in the EPUB Kindle generates in Chapter 12.
 
 **Exercise 5.3 (Analyze).** Open `TIKTOC.md` inside your new directory. Confirm the chapter list from your Tic TOC session is present. Now answer in one sentence: which file does Cowork read first when generating a chapter draft? If you cannot find the answer in your own scaffold, you have either skipped Chapter 4 or your TIKTOC.md is missing a chapter list — return to `/c1` in Tic TOC before continuing.
 

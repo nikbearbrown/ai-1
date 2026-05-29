@@ -69,7 +69,7 @@ Three rules for a brief that does not produce a generic figure. Name the data, n
 
 ---
 
-CAJAL Image Suggest runs across every chapter and proposes figures. It does not generate any SVG yet. It writes one file per chapter at `pantry/{chapter-slug}-cajal.md`, listing every figure it thinks would help, ranked by priority, with a full SCOPE prompt for each.
+CAJAL Image Suggest runs across every chapter and proposes figures. It does not generate any SVG yet. It writes one file per chapter at `pantry/{chapter-slug}-cajal.md`, listing every figure it thinks would help, ranked by priority, with a full SCOPE prompt for each. The Finishing Pass and Image Suggest prompts are reproduced in Appendix G.
 
 Think of `cajal.md` as a menu. You will reject some items. You will modify some. You will add candidates CAJAL missed. The point of having proposals in their own file before any SVG is generated is that you get an editorial pass between the candidate inventory and the rendered figure. What you do not edit, you ship.
 

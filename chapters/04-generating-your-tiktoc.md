@@ -169,7 +169,7 @@ The other three `/c` commands — `/c2` through `/c4` — are supporting passes.
 
 `/g2` runs the 7 Adoption Failure Mode diagnostic against the completed TIKTOC.md. It is the gate to Cowork handoff.
 
-The seven failure modes are roughly: audience drift, missing prerequisites, over-claimed outcomes, under-specified deliverables, contested claims left unflagged, bridge questions that do not actually bridge, and capability statements that are topics in disguise [verify — exact seven-mode list against current TikTOC_prompt.md; categories shift across prompt versions]. Each chapter entry is read against each failure mode. The output is a structured table — failure mode × chapter — with a status flag and a one-line diagnostic per cell.
+The seven failure modes are roughly: audience drift, missing prerequisites, over-claimed outcomes, under-specified deliverables, contested claims left unflagged, bridge questions that do not actually bridge, and capability statements that are topics in disguise [verify — exact seven-mode list against the current prompt, reproduced in Appendix A; categories shift across prompt versions]. Each chapter entry is read against each failure mode. The output is a structured table — failure mode × chapter — with a status flag and a one-line diagnostic per cell.
 
 Here is the `/g2` table from the ai-for-designers running example, lightly trimmed:
 

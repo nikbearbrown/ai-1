@@ -1,4 +1,4 @@
-# Chapter 10 — Enrichment: The LLM Layer
+# Chapter 10 — Enrichment for AI
 
 *The fluency trap, one more time — this time inside the textbook that warned you about it.*
 
@@ -67,9 +67,21 @@ The failure mode: putting what should be an LLM Exercise inline as a Dig Deeper,
 
 ---
 
+## Enrichment is a category — the LLM layer is one band
+
+Everything so far has been about one form of enrichment: the LLM layer — the Dig Deeper prompts and the LLM Exercises that turn a textbook into an *AI+1* textbook. It is the most important form, and the rest of this chapter builds it in full. But it is not the only one, and treating it as the whole of enrichment is its own quiet version of the fluency trap — mistaking the part you can generate for the part that matters. Two other forms earn their place, and both are prompts in Appendix H.
+
+The first is **deep-research enrichment**. A chapter drafted in May reads as current in May and stale by the following spring — a tool gets renamed, a ruling lands, a number moves. A deep-research prompt, run in Gemini's or ChatGPT's research mode (or Claude), takes a chapter and a field and comes back with what has changed, what new sources exist, and the specific places the chapter could be made more relevant to *this* topic and *this* reader. It is the standing answer to the aging-risk register: not the one-time fact-check of Chapter 12, but a recurring pass that keeps a living book alive.
+
+The second is the **when-to-use / when-not-to-use-AI map**, and this one is the book's whole thesis turned into a deliverable. For a given field, where should a practitioner reach for AI, and where is reaching for it malpractice? The answer is not universal — it moves by subject. A radiologist and a family-court mediator draw the line in different places, for good reasons. The map names both sides for *your* field, with the reasoning attached, so the reader inherits a position rather than a vibe. It is the irreducibly-human taxonomy from Chapter 3, sharpened to the point of use.
+
+The rest of this chapter builds the LLM-exercise layer in depth. The other two forms are prompts you run when the book needs them.
+
+---
+
 ## The enrichment generator — three phases
 
-The pipeline has a name: *"With LLMs" Series — Curriculum Enrichment Generator*. It runs in three phases and pauses for judgment between them.
+The pipeline has a name: *"With LLMs" Series — Curriculum Enrichment Generator*. It runs in three phases and pauses for judgment between them. The generator prompts are reproduced in Appendix H.
 
 **Phase one** detects the book's state. Three possibilities: flat chapters in `chapters/` (most readers of this book, by Chapter 10); source subfolders with multi-file chapter directories (the OpenStax-import pattern); or chapters that live elsewhere and need to be brought in. If you are in Phase one after completing Chapter 8, you are in the flat-chapters state. The generator proceeds.
 
@@ -186,3 +198,11 @@ Then run this stress-test:
 > "Here is a revised LLM Exercise I wrote by hand for a textbook on [your field]. I am claiming this exercise passes the AI+1 standard — that it could not appear in a different field's textbook unchanged, that it requires domain-specific knowledge only this reader has, and that its deliverable is a judgment rather than a generation. Test these three claims. For each, either confirm the claim holds or identify the specific phrase in the exercise that undermines it."
 
 If the model finds a phrase that undermines any claim, revise it. Repeat until the model confirms all three.
+
+---
+
+## Bridge — Chapter 11
+
+The enrichment layer is in. The exercises treat the reader as a domain expert, not a generic AI user, and the prompts are useful in this field and no other.
+
+One craft remains before the book ships. You ran the figure pipeline back in Chapter 9 — the finishing pass, CAJAL Image Suggest, the SVG-to-PNG build — and it produced figures. Whether those figures *teach* is a separate question, and it is the one Chapter 11 answers: how a single figure decides what it is allowed to contain, and how to make a generator that wants to give you everything give you only that.

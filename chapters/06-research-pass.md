@@ -35,7 +35,7 @@ That difference is what this chapter is about.
 
 ## What the Gatherer does, and what it cannot do
 
-The Chapter Research Gatherer is a Cowork prompt, not a separate piece of software. You give it the TIKTOC.md and a chapter spec file. For every chapter on the list, it does three things in order: reads the capability statement, learning outcomes, bridge question, and application domain; consults any shared library files in `pantry/` (files named with the `_lib_` prefix, covered below); then runs web research and writes a nine-section notes file. One file per chapter, saved as `pantry/research-ch-XX-<chapter-slug>.md`.
+The Chapter Research Gatherer is a Cowork prompt, not a separate piece of software. You give it the TIKTOC.md and a chapter spec file. For every chapter on the list, it does three things in order: reads the capability statement, learning outcomes, bridge question, and application domain; consults any shared library files in `pantry/` (files named with the `_lib_` prefix, covered below); then runs web research and writes a nine-section notes file. One file per chapter, saved as `pantry/research-ch-XX-<chapter-slug>.md`. Both research prompts — the Gatherer and the deeper Research Pass — are reproduced in Appendix D.
 
 The nine sections are: Primary Sources, State of the Field, Application Domain Examples, Book's Thesis Connection, AI Wayback Machine Candidates, Pedagogical Delivery Research, Representation and Display Research, Open Questions and Research Gaps, Sourcing Notes.
 

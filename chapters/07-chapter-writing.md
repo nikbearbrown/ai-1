@@ -18,7 +18,8 @@ chapter,status,tokens,runtime_sec,timestamp,verify_count
 08-the-human-rewrite,OK,5247,209,2026-05-28T11:26:22,4
 09-finishing-pass,OK,4733,182,2026-05-28T11:29:24,3
 10-enrichment,OK,4956,191,2026-05-28T11:32:35,4
-11-final-check,OK,4612,178,2026-05-28T11:35:33,2
+11-creating-figures,OK,4488,174,2026-05-28T11:35:09,3
+12-final-check,OK,4612,178,2026-05-28T11:38:21,2
 00-frontmatter,OK,1842,68,2026-05-28T11:36:41,0
 99-back-matter,OK,2105,79,2026-05-28T11:38:00,1
 ```
@@ -33,7 +34,7 @@ The `log.csv` was honest. The Chapter Writer did exactly what it was asked to do
 
 ---
 
-Before the five failure modes, a brief orientation on what the Chapter Writer actually is, because "Cowork" has been doing more work than it should in these chapters.
+Before the five failure modes, a brief orientation on what the Chapter Writer actually is, because "Cowork" has been doing more work than it should in these chapters. The Chapter Writer prompt itself is reproduced in Appendix E.
 
 Cowork is, as of 2026, a feature inside Claude's desktop application — currently in research preview. It is not a separate product you install. It is a runtime that gives Claude access to a project folder on your machine, the ability to read and write files in that folder, and the ability to execute commands in an isolated shell. When the Chapter Writer "runs," Claude is reading your `TIKTOC.md`, `book.md`, `pantry/*.md`, and `chapters-spec.md`, then writing one chapter draft at a time into `chapters/`.
 
@@ -148,7 +149,7 @@ Sometimes a chapter does not draft. The `log.csv` row reads `BLOCKED`. The chapt
 
 Three causes are common. The pantry is missing or empty: the Gatherer failed for that chapter, or the file was deleted, or the slug doesn't match. The Writer refuses rather than fabricate a pantry; fix by rerunning the Gatherer for that chapter. The capability statement is uninterpretable: the TIKTOC.md spec is too vague for the Writer to know what success looks like; fix by returning to `/c1` in Tic TOC, sharpening the spec, and rerunning. A contested-claim flag appears in the pantry but `_lib_contested-claims.md` does not declare the book's position; the Writer refuses to take a position the author has not declared; fix by declaring the position and rerunning.
 
-A BLOCKED chapter in Act Two becomes an incomplete chapter in Act Three becomes a hole in the EPUB in Chapter 11. The default is to resolve before continuing. Proceeding manually over a BLOCKED chapter is sometimes the right call; it is never the easy one.
+A BLOCKED chapter in Act Two becomes an incomplete chapter in Act Three becomes a hole in the EPUB in Chapter 12. The default is to resolve before continuing. Proceeding manually over a BLOCKED chapter is sometimes the right call; it is never the easy one.
 
 ---
 

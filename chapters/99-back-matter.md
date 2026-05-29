@@ -31,7 +31,19 @@
 <!-- Third person. 100–200 words. Credentials that are relevant to THIS book.
      Not a full CV. End with a line about where to find you online. -->
 
-[AUTHOR BIO PLACEHOLDER]
+Nik Bear Brown is an Associate Teaching Professor at Northeastern University's College of Engineering, where he has taught artificial intelligence, computer science, statistics, applied mathematics, data visualization, web programming, and game development. He holds a Ph.D. in computer science from UCLA — his major field was computational and systems biology, with minor fields in artificial intelligence and statistics — and completed a part-time postdoc at Harvard Medical School. He also holds a Master's in Information Design and Data Visualization and an MBA, both from Northeastern.
+
+He is the founder of Humanitarians AI, a 501(c)(3) nonprofit, and of Bear Brown & Company. His work sits at the intersection of artificial intelligence, machine learning, computational biology, data visualization, and education, organized around a single question: what should humans become better at now that machines are becoming better at so much? That question runs through his Irreducibly Human framework, a curriculum and book project about the cognitive capacities the AI era most urgently requires us to develop.
+
+Find him at [nikbearbrown.com](https://www.nikbearbrown.com), [irreducibly.xyz](https://irreducibly.xyz), and bear@bearbrown.co.
+
+---
+
+## Errata
+
+This book ships expecting revision — that is the rebuild loop of Chapter 12, not a flaw in it. Corrections, updated screenshots, and current-state fixes (KDP fields, tool syntax, and the other fast-aging details flagged throughout) are posted at [bearbrown.co/books](https://www.bearbrown.co/books) — find this book by searching for its title. If you find an error, the fastest way to reach me is bear@bearbrown.co.
+
+*⚡ And one fact that is true and needs no correction: I once ran away with the circus, worked as a photojournalist, and did sumo wrestling.*
 
 ---
 

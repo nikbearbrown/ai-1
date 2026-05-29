@@ -199,7 +199,7 @@ The session has thirteen gates total. They do not all run this deep. Some confir
 
 The deployment is mechanical. The session is not.
 
-**Step 1.** Get the Tic TOC prompt. The current version lives in `pantry/TikTOC_prompt.md` in this book's project directory, and at Bear Brown & Company's prompt library online [verify URL at time of writing]. Copy the entire contents.
+**Step 1.** Get the Tic TOC prompt. It is reproduced in full in Appendix A of this book — copy the entire contents from there. The latest maintained version lives at Bear Brown & Company's prompt library online [verify URL at time of writing]; if it differs from the appendix, the online copy is newer.
 
 **Step 2.** Create a Claude Project. In claude.ai, click *Projects* in the left sidebar, then *Create Project*. Name it specifically — *Tic TOC — [your working title]*. You will keep this project open across multiple sessions.
 

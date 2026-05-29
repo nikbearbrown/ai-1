@@ -123,7 +123,7 @@ Three patterns to watch for:
 
 *The precision illusion.* Gemini reported "93% of graphic designers use AI weekly" — a precise-feeling number that comes from a specific named report (Figma's State of the Designer 2026). GPT reported "over 90%." Claude reported "a substantial majority." All three are probably describing the same underlying survey, but only Gemini names the source. The 93% is defensible; verify the methodology before treating it as canonical.
 
-The fluency trap check is a five-minute pass: for each numeric claim and each named study, ask *can I verify this in five minutes?* If yes, do. If no, downgrade the claim — replace "X%" with "a majority" or with `[verify]`. You will run this same move in Chapter 6 when evaluating pantry research output, in Chapter 8 when rewriting Cowork drafts, and in Chapter 11 with the Fact-Checking Assistant. The habit starts here.
+The fluency trap check is a five-minute pass: for each numeric claim and each named study, ask *can I verify this in five minutes?* If yes, do. If no, downgrade the claim — replace "X%" with "a majority" or with `[verify]`. You will run this same move in Chapter 6 when evaluating pantry research output, in Chapter 8 when rewriting Cowork drafts, and in Chapter 12 with the Fact-Checking Assistant. The habit starts here.
 
 ---
 
@@ -181,7 +181,7 @@ Length: 600–800 words. Run the five-minute fluency trap check before you call 
 
 ### Exercise 3 (Create) — Produce a four-section brief ready for /i1
 
-Distill the synthesis from Exercise 2 into a four-section brief: state of the field; fluency trap and irreducibly human taxonomy; reader's specific risk context; market gap and book positioning. Total length: 700–1,400 words. This is the document you will paste into the Project Knowledge of your Claude Project before running Tic TOC.
+Distill the synthesis from Exercise 2 into a four-section brief: state of the field; fluency trap and irreducibly human taxonomy; reader's specific risk context; market gap and book positioning. Total length: 700–1,400 words. This is the document you will paste into the Project Knowledge of your Claude Project before running Tic TOC. The full multi-LLM research prompt is reproduced in Appendix B.
 
 **Deliverable:** One markdown file, 700–1,400 words, four sections.
 

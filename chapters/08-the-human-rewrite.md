@@ -34,7 +34,7 @@ Every other chapter in this book describes a step the pipeline enforces. Skip Ch
 
 You can skip Chapter 8.
 
-Nothing in the pipeline stops you. You can run the Chapter Writer in Chapter 7, accept whatever it produces, run the Finishing Pass in Chapter 9 over Cowork's prose, add the LLM enrichment in Chapter 10, and submit to KDP in Chapter 11. The build script will produce an EPUB. Kindle will accept it. You will have a book on sale within a week.
+Nothing in the pipeline stops you. You can run the Chapter Writer in Chapter 7, accept whatever it produces, run the Finishing Pass in Chapter 9 over Cowork's prose, add the LLM enrichment in Chapter 10, and submit to KDP in Chapter 12. The build script will produce an EPUB. Kindle will accept it. You will have a book on sale within a week.
 
 What you will not have is your book. You will have a Cowork dump with figures, indistinguishable in voice from any other Cowork dump produced anywhere else in your field this month. The fluency trap returns — this time not in a chapter your reader might catch, but in the entire artifact your name is on. The book you produce by skipping this chapter is exactly the kind of generic output Chapter 1 taught you to recognize in someone else's work.
 
@@ -94,7 +94,7 @@ A sixth rewrite target, off the official list: *sycophancy reversal*. Cowork dra
 
 `[verify — author to confirm canonical Combined Test items; the fourteen below are constructed from the five Cowork failure modes (Ch 7), Sommers's 1980 revision distinction, Wiggins & McTighe's Stage 3 assessment principles, and standard pedagogical quality criteria. The canonical list belongs in _lib_combined-test.md.]`
 
-Fourteen items in four groups. Applied in a twenty-minute sitting, not a three-hour one — the author at this point is fatigued, and a checklist that takes a full afternoon does not get used.
+Fourteen items in four groups, reproduced as a scorecard in Appendix F. Applied in a twenty-minute sitting, not a three-hour one — the author at this point is fatigued, and a checklist that takes a full afternoon does not get used.
 
 **Group A — Voice and specificity**
 
@@ -169,6 +169,14 @@ What changed from first to second pass: the opening is now a scene — Tuesday, 
 <!-- → [IMAGE: Side-by-side spread of the three-pass progression — Cowork draft, first-pass, second-pass — with marginal annotations matching each revision to the Combined Test item it addresses] -->
 
 Sommers's 1980 distinction maps directly onto this progression. The first pass is novice revision: word-level and sentence-level improvement. The second pass is experienced revision: argument-level and voice-level reconstruction. The delta from Cowork to first-pass is fixing failure. The delta from first-pass to second-pass is the chapter the book is actually about.
+
+---
+
+## The rewrite moves are teachable
+
+Look again at what the second pass did, because none of it was talent. It converted *summary* into *scene* — "domain research is important" became a Tuesday afternoon and three named models — and that single move, summary to scene, is the most reliable way to make flat prose yours. It combined sentences for rhythm, letting a long clause build and a short one land, so the paragraph reads aloud the way you would actually say it. And it kept *voice* separate from *style*: style is the surface — word choice, sentence length, the things a model imitates easily — while voice is what only you carry in, the specific reads and judgments a model has never lived. A model can match your style in a sentence. It cannot supply your voice, because it was not there.
+
+None of these are improvised. They are composition craft with a long pedagogy behind them — scene versus summary, sentence combining, the idiolect that makes your sentences yours. The companion volume *AI for Writing: A Practitioner's Guide* (Bear Brown) gives each a full chapter, including the move most useful at this seam: how to use an LLM to sound *more* like yourself, not less. If the rewrite is the one stage of this pipeline no prompt can do for you, that book is where the rewrite craft itself is taught. At a dollar, it is cheaper than the hour you would otherwise spend reinventing it.
 
 ---
 
