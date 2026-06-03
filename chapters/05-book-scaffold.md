@@ -30,7 +30,7 @@ No interactive prompts, no global config file, no choices to make beyond those t
 
 One practical note on running the command twice: the script refuses to overwrite. If you run it again in the same directory, nothing is destroyed. If you genuinely want to rebuild from scratch, delete the directory first. The script's full usage reference — flags and output structure — is in Appendix C. [verify — confirm current `new_book.py` idempotency behavior against the script in `SCRIPTS/`]
 
-![A horizontal three-stage process flow: the TIKTOC.md spec document on the left feeds the new_book.py process node, with the --tiktoc and --slug arguments entering the process node from below as two short prongs; an arrow runs from the process node to the generated project directory on the right; a small self-return guard arc on the process node marks its refuse-to-overwrite behavior.](images/05-book-scaffold-fig-02.png)
+![A horizontal three-stage process flow: the TIKTOC.md spec document on the left feeds the new_book.py process node, with the --tiktoc and --slug arguments entering the process node from below as two short prongs; an arrow runs from the process node to the generated project directory on the right; a small self-return guard arc on the process node marks its refuse-to-overwrite behavior.](../images/05-book-scaffold-fig-02.png)
 *Figure 5.2 — TIKTOC.md → new_book.py → directory*
 
 [^cookiecutter]: Greenfeld, A. R., & Greenfeld, D. (Multiple editions). *Two Scoops of Django*; Cookiecutter project documentation, 2013–present, cookiecutter.readthedocs.io.
@@ -137,7 +137,7 @@ ai-for-designers/
 
 Commit the three-color taxonomy to memory. Cowork-facing in one mental color, human-facing in another, build-facing in a third. The cognitive load of the pipeline mostly lives in not knowing which color a file is. Once you know, the rest is ordinary file management.
 
-![A vertical directory tree for the scaffold, root folder at top with its top-level entries indented beneath, color-coded into three audience clusters — a Cowork-facing cluster, a human-facing cluster, and a build-facing cluster — with the chapters/ node carrying a split dual-audience marker showing it is both written by Cowork and read by the build script.](images/05-book-scaffold-fig-01.png)
+![A vertical directory tree for the scaffold, root folder at top with its top-level entries indented beneath, color-coded into three audience clusters — a Cowork-facing cluster, a human-facing cluster, and a build-facing cluster — with the chapters/ node carrying a split dual-audience marker showing it is both written by Cowork and read by the build script.](../images/05-book-scaffold-fig-01.png)
 *Figure 5.1 — The scaffold directory tree by audience*
 
 ---
@@ -216,7 +216,7 @@ pandoc _working/combined.md \
 
 Concatenation: every file in `chapters/` is glued together in filename order. This is why the numbering prefix matters. The number is the build order. Pandoc: the universal document converter takes Markdown plus a metadata file and produces EPUB and PDF.[^pandoc] The `metadata.yaml` schema is pandoc's own, not invented by this pipeline. Output: everything lands in `output/`, which is gitignored. The output directory is not the book. The book is in `chapters/`. Treat `output/` as disposable — if you delete it, the next `./build.sh` recreates it in under a minute.
 
-![An ordered sequence of numbered chapter file tiles on the left, stacked top to bottom in ascending filename-prefix order (00-frontmatter, 01, 02, an ellipsis tile, 99-back-matter), with an arrow feeding a single concatenated document stack on the right whose internal divisions mirror the tile order — showing that lexical filename order is preserved as final EPUB chapter order.](images/05-book-scaffold-fig-03.png)
+![An ordered sequence of numbered chapter file tiles on the left, stacked top to bottom in ascending filename-prefix order (00-frontmatter, 01, 02, an ellipsis tile, 99-back-matter), with an arrow feeding a single concatenated document stack on the right whose internal divisions mirror the tile order — showing that lexical filename order is preserved as final EPUB chapter order.](../images/05-book-scaffold-fig-03.png)
 *Figure 5.3 — Chapter filename order = EPUB build order*
 
 The Turing Way community calls a build script "the covenant that anyone can reproduce the artifact."[^turingway] `build.sh` is your covenant with future-you. Six months from now, after a typo fix, you run one command. No memory required. Quarto and Jupyter Book offer more elaborate build systems for scientific publishing; they are excellent and they are overkill for a practitioner handbook produced by one author. `new_book.py` ships pandoc and bash because that combination has been stable for fifteen years and will be stable for another ten.

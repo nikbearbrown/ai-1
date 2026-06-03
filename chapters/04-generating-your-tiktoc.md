@@ -24,7 +24,7 @@ You will spend roughly two hours in Tic TOC. Most of that time will be spent dis
 
 [^curtis]: Curtis, B., Krasner, H., & Iscoe, N. (1988). "A Field Study of the Software Design Process for Large Systems." *Communications of the ACM*, 31(11), 1268–1287.
 
-![Horizontal process flowchart of the three-phase Tic TOC pipeline: a Phase One block, a Phase Two block, and a Phase Three block in sequence — each carrying four small command sub-ticks — feeding a /g2 diagnostic decision diamond that loops back to the relevant phase on a re-run and arrows forward to the Cowork handoff terminal.](images/04-generating-your-tiktoc-fig-01.png)
+![Horizontal process flowchart of the three-phase Tic TOC pipeline: a Phase One block, a Phase Two block, and a Phase Three block in sequence — each carrying four small command sub-ticks — feeding a /g2 diagnostic decision diamond that loops back to the relevant phase on a re-run and arrows forward to the Cowork handoff terminal.](../images/04-generating-your-tiktoc-fig-01.png)
 *Figure 4.1 — The three-phase Tic TOC pipeline*
 
 ---
@@ -53,7 +53,7 @@ Here is the `/i1` exchange that produced the ai-for-designers capability stateme
 >
 > **Tic TOC:** Confirmed. That is a capability statement. Note: this statement now constrains every downstream chapter. Every chapter must contribute to either identification (which decisions stay human) or defense (how to articulate the delegation). Chapters that do neither are out of scope.
 
-![Ascending staircase of four refinement rungs left to right — a vague topic rung, a rung that adds a constraint, a rung that adds an action, and a confirmed-capability rung at the top — connected by arrows, with three short Mager-criterion stubs (performance, condition, criterion) branching off the final rung.](images/04-generating-your-tiktoc-fig-02.png)
+![Ascending staircase of four refinement rungs left to right — a vague topic rung, a rung that adds a constraint, a rung that adds an action, and a confirmed-capability rung at the top — connected by arrows, with three short Mager-criterion stubs (performance, condition, criterion) branching off the final rung.](../images/04-generating-your-tiktoc-fig-02.png)
 *Figure 4.2 — Capability statement: topic vs. demonstrable outcome*
 
 Read the last note again. The moment the capability statement is committed, the chapter list narrows. Topics that seemed essential — an introduction to Midjourney, say — may no longer fit. Topics that seemed peripheral — the disclosure conversation — may now be load-bearing. The commitment does not just define the book. It defines what is not the book.
@@ -87,7 +87,7 @@ A practitioner handbook should have no chapter with an outcome below Apply as it
 
 Robert Mager's 1962 criterion gives the analytical foundation.[^mager] A real learning outcome names three things: the *performance* (what the reader does), the *condition* (under what circumstances), and the *criterion* (what counts as success). "The reader will understand the fluency trap" fails all three. "The reader will identify three fluency trap patterns in their own AI-assisted work from the last six months, distinguishing patterns that collapse under client questioning from patterns that do not" satisfies them. The difference is not pedantry. It is the difference between a chapter Cowork can draft against and a chapter Cowork will pad.
 
-![Bar chart of the six Bloom's taxonomy levels in order — Remember, Understand, Apply, Analyze, Evaluate, Create — with bars rising from a zero baseline to encode increasing cognitive ceiling, and a single horizontal threshold line drawn at the Apply level marking the practitioner-handbook working floor; bars below the floor (Remember, Understand) shown in lower saturation than bars at or above it.](images/04-generating-your-tiktoc-fig-03.png)
+![Bar chart of the six Bloom's taxonomy levels in order — Remember, Understand, Apply, Analyze, Evaluate, Create — with bars rising from a zero baseline to encode increasing cognitive ceiling, and a single horizontal threshold line drawn at the Apply level marking the practitioner-handbook working floor; bars below the floor (Remember, Understand) shown in lower saturation than bars at or above it.](../images/04-generating-your-tiktoc-fig-03.png)
 *Figure 4.3 — Bloom's verb ceiling for a practitioner handbook*
 
 [^anderson]: Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A Taxonomy for Learning, Teaching, and Assessing*. Longman.
@@ -217,7 +217,7 @@ Five warnings, each addressable in ten to twenty minutes. Robert Marzano's 2001 
 
 After resolving the warnings, re-run `/g2`. If the second pass returns clean, the TIKTOC.md is ready for Cowork. If warnings persist, the choice is binary: resolve them, or log them to `/p2` as BLOCKED with explicit rationale. Logged and acknowledged is acceptable. Unaddressed is not.
 
-![A seven-row by seven-column status grid — seven failure modes read against seven chapters — with five cells filled solid to mark WARN and the remaining forty-four shown as outline-only PASS cells, and zero FAIL; thin grid rules throughout.](images/04-generating-your-tiktoc-fig-04.png)
+![A seven-row by seven-column status grid — seven failure modes read against seven chapters — with five cells filled solid to mark WARN and the remaining forty-four shown as outline-only PASS cells, and zero FAIL; thin grid rules throughout.](../images/04-generating-your-tiktoc-fig-04.png)
 *Figure 4.4 — The /g2 failure-mode × chapter diagnostic grid*
 
 <!-- → [TABLE: The /g2 failure mode table from the ai-for-designers session, full version — all seven failure modes × all seven chapters, with warning cells highlighted and one-line diagnostic for each warning] -->

@@ -73,7 +73,7 @@ Three rules for a brief that does not produce a generic figure. Name the data, n
 | The bracket type | Tells the enrichment pass which generator to invoke | `INFOGRAPHIC`, `CHART`, `TABLE`, `IMAGE`, `DIAGRAM` |
 | The brief (after the colon) | The instruction the figure-generation step reads — names data, constraint, and load | `Five Failure Modes — a 5-row table... Two-color (ink + ochre), no gradients.` |
 
-![A single placeholder-comment string segmented into three regions left to right — the arrow as grep target, the bracket type as generator selector, the brief after the colon — each region dropping a callout line to a reserved cell naming its downstream role.](images/09-finishing-pass-and-figures-fig-01.png)
+![A single placeholder-comment string segmented into three regions left to right — the arrow as grep target, the bracket type as generator selector, the brief after the colon — each region dropping a callout line to a reserved cell naming its downstream role.](../images/09-finishing-pass-and-figures-fig-01.png)
 *Figure 9.1 — Anatomy of a visual placeholder comment*
 
 ---
@@ -112,7 +112,7 @@ The SCOPE prompt is what the SVG Generator reads. Title, ranking, trigger, and f
 
 The editorial pass through a `cajal.md` takes ten minutes per chapter and is worth every minute of it. Critical figures should map directly to a primary learning outcome. Open the chapter. If the Critical figure does not encode the thing the reader is supposed to leave knowing, demote it and find one that does. Important figures support a key argument but are not load-bearing — these are usually safe. Supplementary figures are nice-to-have, and the honest answer is often "skip this one." A textbook is not improved by having a figure on every page.
 
-![A top-to-bottom decision tree with three nodes — Critical (does it map to a primary outcome?), Important (does it support a key argument?), Supplementary (skip unless time allows) — each with a pass-through arrow to the next test, the Critical node carrying a demote redirect and the Supplementary node terminating in a skip glyph.](images/09-finishing-pass-and-figures-fig-02.png)
+![A top-to-bottom decision tree with three nodes — Critical (does it map to a primary outcome?), Important (does it support a key argument?), Supplementary (skip unless time allows) — each with a pass-through arrow to the next test, the Critical node carrying a demote redirect and the Supplementary node terminating in a skip glyph.](../images/09-finishing-pass-and-figures-fig-02.png)
 *Figure 9.2 — CAJAL figure-priority decision path*
 
 <!-- → [INFOGRAPHIC: CAJAL figure priority decision tree — three nodes: Critical (does it map to a primary outcome?), Important (does it support a key argument?), Supplementary (skip unless time allows) — flat two-color, no decorative elements] -->
@@ -129,7 +129,7 @@ You do not write any JavaScript. You read the `cajal-svg-log.md` written at the 
 
 PNG is the publication artifact. Kindle's reflow engine renders PNGs reliably across every device — Paperwhite, iPad, iPhone, Colorsoft, desktop Kindle app. SVG is the source artifact. You keep it because it is editable, version-controlled, and re-renderable at any resolution. PNG is what ships in the EPUB. SVG is what survives a redesign. This is the same separation as `combined.md` → EPUB+PDF: the source is text, the build output is the binary the device renders. You do not edit the build output. You edit the source and rebuild.
 
-![A left-to-right systems diagram of the CAJAL pipeline — Finishing Pass, CAJAL Image Suggest producing cajal.md, SVG Generator producing SVG source, the svg-to-png converter producing the 300-DPI PNG, the enrichment pass inserting markdown links — with a downward D3 companion branch off the source stage and a divider marking SVG and D3 as source artifacts versus the PNG that ships in the EPUB.](images/09-finishing-pass-and-figures-fig-03.png)
+![A left-to-right systems diagram of the CAJAL pipeline — Finishing Pass, CAJAL Image Suggest producing cajal.md, SVG Generator producing SVG source, the svg-to-png converter producing the 300-DPI PNG, the enrichment pass inserting markdown links — with a downward D3 companion branch off the source stage and a divider marking SVG and D3 as source artifacts versus the PNG that ships in the EPUB.](../images/09-finishing-pass-and-figures-fig-03.png)
 *Figure 9.3 — The CAJAL pipeline: prose to publication artifact*
 
 The D3 files in `d3/` are for figures that have data structure underneath them — anything CAJAL flagged as MC or PQ that could be interactive. What they are honestly for: not for the published EPUB (EPUBs do not reliably execute JavaScript), but as authorable source artifacts so the next edition has editable chart code, and optionally as a companion-web property if you want readers to explore the data. If you do not plan to host the D3 files anywhere, they cost nothing to keep in the repository. The PNG is what the reader sees in the book.

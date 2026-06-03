@@ -53,7 +53,7 @@ An exercise that passes all three is doing AI+1 work. An exercise that fails any
 | Does it require the reader to bring something only they have? | The reader must supply a real brief, a real portfolio, a real client whose voice they have calibrated, or a remembered failure. | "Pick a topic of your choice" — nothing the reader owns is required; any input would do. | The exercise runs fine on invented or hypothetical material, so no irreducibly human layer is exercised. |
 | Is the deliverable a judgment the reader produces, not just LLM output? | The reader writes the verdict — three places Claude missed, three it misread, one decision they will change. | The deliverable is "read Claude's answer" with nothing the reader is asked to author. | The artifact is the model's text, not the reader's analysis of it — consumption mistaken for assessment. |
 
-![A horizontal chain of three decision gates with a passing arrow continuing rightward to a PASS terminal node, and each gate also draining downward to a single shared FAIL sink below.](images/10-enrichment-for-ai-fig-01.png)
+![A horizontal chain of three decision gates with a passing arrow continuing rightward to a PASS terminal node, and each gate also draining downward to a single shared FAIL sink below.](../images/10-enrichment-for-ai-fig-01.png)
 *Figure 10.1 — The three-question audit scorecard*
 
 ---
@@ -72,7 +72,7 @@ An **LLM Exercise** sits at the end of the chapter, inside the assessable-exerci
 
 Same chapter. Same client brief. Different scaffolding. The Dig Deeper is permission-to-explore. The LLM Exercise is the assignment. The 250-word comparison from the Exercise becomes part of the *running project* — the cumulative artifact the reader builds across chapters — that the next chapter will reference.
 
-![Two side-by-side panels against a shared horizontal attribute axis — left panel Dig Deeper, right panel LLM Exercise — with three aligned rows comparing placement, obligation, and output.](images/10-enrichment-for-ai-fig-02.png)
+![Two side-by-side panels against a shared horizontal attribute axis — left panel Dig Deeper, right panel LLM Exercise — with three aligned rows comparing placement, obligation, and output.](../images/10-enrichment-for-ai-fig-02.png)
 *Figure 10.2 — Dig Deeper vs LLM Exercise*
 
 The failure mode: putting what should be an LLM Exercise inline as a Dig Deeper, or giving a Dig Deeper the formal structure of an Exercise. An LLM Exercise without an explicit "Save this. You will use it in Chapter X" belongs as a Dig Deeper. A Dig Deeper that says "write 250 words and submit them in your portfolio" belongs as an LLM Exercise. The distinction is structural, not just cosmetic — the scaffolding tells the reader what to keep and what to let go.
@@ -103,7 +103,7 @@ The pipeline has a name: *"With LLMs" Series — Curriculum Enrichment Generator
 
 Two failure modes appear regularly in phase three. First: the generator produces a Dig Deeper that is too generic because the chapter prose did not give it enough domain hooks. If the chapter prose does not name specific tools, specific deliverables, or specific moments in the reader's workflow, the generator has nothing to attach to. The fix is to enrich the chapter prose before re-running the generator on that chapter. Second: the LLM Exercise does not advance the running project because the chapter covers a topic that does not cleanly connect. Either the running project was poorly chosen — pick a different one and regenerate — or the chapter needs a different end-of-chapter exercise that does not advance the project. A book does not need every chapter to feed the running project. Three-quarters is fine.
 
-![A horizontal flow of three phase nodes connected by arrows, with small interrupt glyphs sitting on the arrows between phases to mark author-judgment pauses, ending in a terminal node.](images/10-enrichment-for-ai-fig-03.png)
+![A horizontal flow of three phase nodes connected by arrows, with small interrupt glyphs sitting on the arrows between phases to mark author-judgment pauses, ending in a terminal node.](../images/10-enrichment-for-ai-fig-03.png)
 *Figure 10.3 — The enrichment generator, three phases*
 
 ---
@@ -156,7 +156,7 @@ When an exercise fails the audit, rewrite it by hand, not by re-running the enri
 | Claude-documentation | The exercise teaches Claude itself — "try this prompt format and observe how Claude responds." | This is documentation, not pedagogy; it tests prompt syntax, not domain integration. | Move it to Chapter 00 if it belongs anywhere; replace the chapter-end slot with a domain-integration exercise. |
 | No-deliverable | The exercise ends without a saved artifact the reader will reference later. | This is a Dig Deeper wearing Exercise clothing — permission-to-explore, not an assignment. | Demote it to an inline Dig Deeper, or add an explicit "Save this; you will use it in Chapter X" deliverable. |
 
-![A blank ruled grid with one header band over three labeled pattern rows, each row marked by a distinct left-edge color swatch, and four empty columns reading left to right as a diagnostic-to-fix progression.](images/10-enrichment-for-ai-fig-04.png)
+![A blank ruled grid with one header band over three labeled pattern rows, each row marked by a distinct left-edge color swatch, and four empty columns reading left to right as a diagnostic-to-fix progression.](../images/10-enrichment-for-ai-fig-04.png)
 *Figure 10.4 — Audit pattern table*
 
 ---

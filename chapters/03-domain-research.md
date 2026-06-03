@@ -30,7 +30,7 @@ And then there is the thing one model surfaced that the other two missed. Only G
 
 That is the entire argument for the three-LLM domain research prompt. One model gives you an answer. Three give you the map of confidence — what is settled, what is contested, what is conjecture, and what one model retrieved that the others missed. The rest of this chapter is how to draw that map for your own field.
 
-![Three equal text-block panels side by side under one shared "same question" input node that splits into three arrows. The left panel (Claude) carries hollow hedge-ring markers in its margin for explicit uncertainty; the center panel (GPT) carries uniform solid enumerated bars with no source ticks for confident listing; the right panel (Gemini) carries solid bars with attached source-pin marks for retrieval-grounding. The three signatures are contrastable from the margin markers alone, without reading any text.](images/03-domain-research-fig-01.png)
+![Three equal text-block panels side by side under one shared "same question" input node that splits into three arrows. The left panel (Claude) carries hollow hedge-ring markers in its margin for explicit uncertainty; the center panel (GPT) carries uniform solid enumerated bars with no source ticks for confident listing; the right panel (Gemini) carries solid bars with attached source-pin marks for retrieval-grounding. The three signatures are contrastable from the margin markers alone, without reading any text.](../images/03-domain-research-fig-01.png)
 *Figure 3.1 — Three LLM signatures on the same question*
 <!-- → [INFOGRAPHIC: three-column side-by-side of the three LLM opening paragraphs, annotated to show the uncertainty-explicit signature (Claude), the confident-enumeration signature (GPT), and the retrieval-grounded signature (Gemini) — arrows pointing to specific phrases that exemplify each] -->
 
@@ -85,7 +85,7 @@ Section 1 inventories what tools are actually being used, by whom, at what step.
 
 The closing instruction — *cite sources where you can; mark contested claims* — changes the register of what comes back. Without it, the models produce summary text at blog-post confidence. With it, you get something closer to a research memo with hedges. The hedges are the signal.
 
-![A left-to-right crosswalk schematic mapping the eight research-prompt sections to the Tic TOC intake targets. Eight uniform section blocks are stacked on the left; five intake-target nodes (/i2, /i3, /i4, /l1, /m1) are stacked on the right; thin connector lines link each section to the intake question it feeds, drawn only for the mappings the chapter states.](images/03-domain-research-fig-02.png)
+![A left-to-right crosswalk schematic mapping the eight research-prompt sections to the Tic TOC intake targets. Eight uniform section blocks are stacked on the left; five intake-target nodes (/i2, /i3, /i4, /l1, /m1) are stacked on the right; thin connector lines link each section to the intake question it feeds, drawn only for the mappings the chapter states.](../images/03-domain-research-fig-02.png)
 *Figure 3.2 — Eight-section prompt mapped to Tic TOC intake*
 
 <!-- → [TABLE: eight-section prompt schema — three columns: section number, what it asks for, what Tic TOC intake question it feeds — showing how each research section maps to /i2, /i3, /i4, /l1, /m1] -->
@@ -115,7 +115,7 @@ Read all three outputs in one sitting, without yet writing anything. Read for th
 
 **ONE ONLY** means one model raises a claim the other two did not. Investigate whether the omission is a gap (the other two missed something real) or a correction (the other two are right to exclude it). Verify before including.
 
-![Three overlapping circles, one per source LLM, drawn as outlines so the overlap regions read. Leader dots call out the four marker regions: the central triple-overlap is ALL THREE AGREE, a pairwise-overlap lens is TWO AGREE, and a single-circle crescent is ONE ONLY. A separate forked-arrow marker beside the cluster denotes DIVERGENT — all positions stated, not merged — since divergence is disagreement rather than absence of overlap. The key is source-agnostic and carries no model names.](images/03-domain-research-fig-03.png)
+![Three overlapping circles, one per source LLM, drawn as outlines so the overlap regions read. Leader dots call out the four marker regions: the central triple-overlap is ALL THREE AGREE, a pairwise-overlap lens is TWO AGREE, and a single-circle crescent is ONE ONLY. A separate forked-arrow marker beside the cluster denotes DIVERGENT — all positions stated, not merged — since divergence is disagreement rather than absence of overlap. The key is source-agnostic and carries no model names.](../images/03-domain-research-fig-03.png)
 *Figure 3.3 — The four synthesis markers*
 <!-- → [TABLE: synthesis marker table — four rows, three columns: marker, meaning, what to do — as described in the paragraph above] -->
 
@@ -162,7 +162,7 @@ The four sections collapse the eight-section synthesis into the structure that m
 
 Total brief length: 700 to 1,400 words. No longer. The brief is a working document, not a publication. If it runs longer, the /i1 session loses focus on actionable items. If it cannot answer four questions — *who is your specific reader; what is the central professional risk your book argues against; what is the current state of AI that makes the book necessary now; what existing materials does the book sit beside and what gap does it fill* — the session stalls, and you spend the first thirty minutes of your timebox drafting answers in real time. Forty minutes on the brief saves an hour of stalling.
 
-![A left-to-right proportional funnel in four stages. Three stacked input slabs, each sized to roughly 3,000-plus words, narrow into a single synthesis block sized to 600–800 words (a sharp reduction), which narrows again into a four-section /i1 brief block sized to 700–1,400 words, before fanning out to four small endpoint nodes representing the four Tic TOC intake questions. Stage areas are scaled honestly to the word counts so the compression is visually truthful.](images/03-domain-research-fig-04.png)
+![A left-to-right proportional funnel in four stages. Three stacked input slabs, each sized to roughly 3,000-plus words, narrow into a single synthesis block sized to 600–800 words (a sharp reduction), which narrows again into a four-section /i1 brief block sized to 700–1,400 words, before fanning out to four small endpoint nodes representing the four Tic TOC intake questions. Stage areas are scaled honestly to the word counts so the compression is visually truthful.](../images/03-domain-research-fig-04.png)
 *Figure 3.4 — Compression funnel: 3 outputs to synthesis to /i1 brief*
 <!-- → [INFOGRAPHIC: funnel diagram showing the three-LLM outputs (3,000+ words each) compressing into the 600–800 word synthesis, then into the 700–1,400 word four-section /i1 brief — with the four Tic TOC questions annotated alongside the sections they map to] -->
 

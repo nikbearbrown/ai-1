@@ -14,7 +14,7 @@ If that brief reaches the founder, the designer loses the account inside one qua
 
 This is the fluency trap. It is worth understanding precisely, because the dangerous AI output is never the obviously bad output. Ugly logos and broken typography are easy to reject. The dangerous output is the output that looks finished. It is good enough to stop your judgment before your judgment has begun.
 
-![Two side-by-side document panels: the left panel shows a generic AI brief as six uniformly filled sections; the right panel shows the same six-section skeleton with faint section content and six hollow callout markers in the margin, each connected by a thin leader line to a section that needs institutional knowledge — the same surface, holes underneath.](images/01-what-ai-plus-one-is-fig-01.png)
+![Two side-by-side document panels: the left panel shows a generic AI brief as six uniformly filled sections; the right panel shows the same six-section skeleton with faint section content and six hollow callout markers in the margin, each connected by a thin leader line to a section that needs institutional knowledge — the same surface, holes underneath.](../images/01-what-ai-plus-one-is-fig-01.png)
 *Figure 1.1 — Generic brief vs. client-informed brief*
 <!-- → [IMAGE: side-by-side of a generic AI-generated creative brief vs. a client-specific brief annotated to show what institutional knowledge each section requires — caption should highlight exactly where the generic version goes blank] -->
 
@@ -27,7 +27,7 @@ Cognitive science adds the second piece. *Processing fluency* is the ease with w
 
 Put those two ideas together and the trap snaps shut. The model produces text whose surface statistics match professional work. The reader's cognitive system rewards fluency with a feeling of correctness. Nothing in either process checks whether the content is *informed*. That check belongs to the professional in the room. When the professional outsources it, the trap closes.
 
-![Causal diagram of the fluency trap: a model-output node (statistical coherence, no communicative intent) and a reader-cognition node (processing-fluency reward) reinforce each other through an amplification arc; both feed forward past a bypassed "is it informed?" check shown off the main line with a dashed connector, toward a closed-trap terminal state, with an interruption marker before closure showing where professional judgment can still break the chain.](images/01-what-ai-plus-one-is-fig-02.png)
+![Causal diagram of the fluency trap: a model-output node (statistical coherence, no communicative intent) and a reader-cognition node (processing-fluency reward) reinforce each other through an amplification arc; both feed forward past a bypassed "is it informed?" check shown off the main line with a dashed connector, toward a closed-trap terminal state, with an interruption marker before closure showing where professional judgment can still break the chain.](../images/01-what-ai-plus-one-is-fig-02.png)
 *Figure 1.2 — The fluency trap as a two-component mechanism*
 
 [^bender]: Bender, E. M., Gebru, T., McMillan-Major, A., & Mitchell, M. (2021). "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?" *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency* (FAccT '21), 610–623.
@@ -50,7 +50,7 @@ The empirical case that AI+1 is economically real — not just a comfortable sto
 
 What survives the caveats is the directional finding. The AI-fluent practitioner in a domain that retains an irreducibly human core is currently more valuable than either the domain expert who refuses AI or the AI user who doesn't have a domain. That is the AI+1 frame as labor-market arithmetic. The wage premium is the evidence, not the promise.
 
-![Vertical bar chart of AI wage-premium percentages by source and cut, all bars rising from a zero baseline: a PwC US advanced-AI-skills premium of about 56 percent, a Lightcast AI-posting premium of about 28 percent, and a shorter contested cut shown in a distinct fill to signal that the premium is uneven and sector-specific rather than universal.](images/01-what-ai-plus-one-is-fig-03.png)
+![Vertical bar chart of AI wage-premium percentages by source and cut, all bars rising from a zero baseline: a PwC US advanced-AI-skills premium of about 56 percent, a Lightcast AI-posting premium of about 28 percent, and a shorter contested cut shown in a distinct fill to signal that the premium is uneven and sector-specific rather than universal.](../images/01-what-ai-plus-one-is-fig-03.png)
 *Figure 1.3 — Wage premium by sector and skill level*
 <!-- → [CHART: bar chart comparing wage premium by sector and skill level from PwC AI Jobs Barometer 2025 — student should see that the premium is uneven and sector-specific, not universal] -->
 
@@ -121,7 +121,7 @@ Run this verbatim in Claude with web research enabled. Run it verbatim in ChatGP
 
 What to look for when you read the three outputs: mark each claim as ALL THREE AGREE, TWO AGREE, DIVERGENT, or ONE ONLY. Where all three agree, you have settled territory. Where one model adds what the others missed, decide whether to keep it (and attribute it) or drop it. The synthesis that comes out of this reading is what Chapter 4 turns into a working book structure.
 
-![Convergence diagram with three source nodes across the top — Claude, GPT, and Gemini — whose arrows flow downward through a three-way Venn-like overlap region. The overlap zones encode the four claim categories: the central triple-overlap is all-three-agree, the pairwise lenses are two-agree, the single-source spurs are one-only, and non-overlap marks divergence; a caveat band notes that the sources share training data, so agreement is not full independence. All three feed one synthesis node at the bottom.](images/01-what-ai-plus-one-is-fig-04.png)
+![Convergence diagram with three source nodes across the top — Claude, GPT, and Gemini — whose arrows flow downward through a three-way Venn-like overlap region. The overlap zones encode the four claim categories: the central triple-overlap is all-three-agree, the pairwise lenses are two-agree, the single-source spurs are one-only, and non-overlap marks divergence; a caveat band notes that the sources share training data, so agreement is not full independence. All three feed one synthesis node at the bottom.](../images/01-what-ai-plus-one-is-fig-04.png)
 *Figure 1.4 — Three-LLM triangulation to synthesis*
 <!-- → [INFOGRAPHIC: three-column diagram showing the three-LLM triangulation method — left column Claude, center column GPT, right column Gemini, with arrows converging on a synthesis layer; annotate with the four claim categories (all agree, two agree, divergent, one only)] -->
 

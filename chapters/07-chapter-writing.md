@@ -49,7 +49,7 @@ The Chapter Writer does five things for every undrafted chapter, in order.
 
 It reads `TIKTOC.md` in full — spec, voice section, chapter list, three-act arc, contested claims. This is the contract. It reads `book.md` for cross-chapter context, so it knows what came before and what is coming next. It audits `chapters/` and leaves any existing chapter alone; the idempotency contract means re-running the Writer does not overwrite finished work. It reads the chapter's pantry file — the nine-section notes populated in Chapter 6. Then it drafts, targeting the house style the TIKTOC.md calls "Attenborough × Feynman."
 
-![A left-to-right flow of five sequential nodes — read TIKTOC.md, read book.md, audit chapters/ and skip existing work, read the pantry file, draft — with a downward branch at the audit step marking the idempotency skip that leaves finished chapters untouched.](images/07-chapter-writing-fig-02.png)
+![A left-to-right flow of five sequential nodes — read TIKTOC.md, read book.md, audit chapters/ and skip existing work, read the pantry file, draft — with a downward branch at the audit step marking the idempotency skip that leaves finished chapters untouched.](../images/07-chapter-writing-fig-02.png)
 *Figure 7.2 — The Chapter Writer's five-step read-then-draft sequence*
 
 Long-context models in 2026 (context windows in the 100k–1M token range) make full-chapter generation viable in a way it was not five years ago.[^liu] The constraint is no longer context length. The constraint is what the model attends to *inside* the context — which is the root cause of most of what goes wrong.
@@ -140,7 +140,7 @@ A sixth failure mode worth naming, though not on the official list: sycophancy. 
 | Bridge questions that don't bridge | Read the closing question, then open the next chapter's spec; does it answer it? | Inter-chapter logic assumed in TIKTOC.md rather than specified |
 | Sycophancy (off the official list) | Does the draft ever genuinely push back on a TIKTOC.md framing? | No declared "What would change my mind" position to externalize disagreement |
 
-![A vertical taxonomy of the five Cowork failure modes, each row carrying three cells — mode name, diagnostic test, and upstream signal — with the upstream-signal column tinted to set it apart.](images/07-chapter-writing-fig-01.png)
+![A vertical taxonomy of the five Cowork failure modes, each row carrying three cells — mode name, diagnostic test, and upstream signal — with the upstream-signal column tinted to set it apart.](../images/07-chapter-writing-fig-01.png)
 *Figure 7.1 — The five Cowork failure modes*
 
 ---
@@ -157,7 +157,7 @@ A draft with zero `[verify]` flags is more suspect than a draft with many. Zero 
 
 When you find a `[verify]` flag, you do one of three things: verify and replace (the claim is true; find the source; replace the flag with the citation); verify and remove (the claim is wrong or unfindable; cut the sentence); or leave for later with a note (convert the inline flag to a comment in your tracking file and address it before publication). What you do not do is delete the flag and keep the sentence. That is laundering the model's uncertainty into your authorial voice.
 
-![A branch decision from a single source node — a verify flag found — fanning into three valid output branches (replace with a citation, remove the sentence, convert to a tracked note) and one forbidden branch (delete the flag, keep the sentence) terminated with a blockage glyph.](images/07-chapter-writing-fig-03.png)
+![A branch decision from a single source node — a verify flag found — fanning into three valid output branches (replace with a citation, remove the sentence, convert to a tracked note) and one forbidden branch (delete the flag, keep the sentence) terminated with a blockage glyph.](../images/07-chapter-writing-fig-03.png)
 *Figure 7.3 — The three responses to a verify flag*
 
 [^bansal]: Bansal, G., et al. (2021). "Does the Whole Exceed its Parts? The Effect of AI Explanations on Complementary Team Performance." *CHI 2021*.

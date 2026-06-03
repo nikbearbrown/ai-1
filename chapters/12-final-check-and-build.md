@@ -17,7 +17,7 @@ The author did not write a bad book. The author wrote a book and skipped the fin
 
 Four things, in order. Run the Fact-Checking Assistant, triage, resolve the contradicted claims at minimum. Run `./build.sh` and produce the EPUB and the PDF. Read the EPUB on a device — not on a desktop, on an actual Kindle or the Kindle app on your phone. Submit to KDP. Then accept that you will rebuild. The rebuild loop is not a failure of the pipeline. It is the pipeline.
 
-![Four step nodes — fact-check, build, device-read, submit — connected left to right by forward arrows, with a single curved return arc looping from the final node back to the build step to mark the intentional rebuild loop.](images/12-final-check-and-build-fig-01.png)
+![Four step nodes — fact-check, build, device-read, submit — connected left to right by forward arrows, with a single curved return arc looping from the final node back to the build step to mark the intentional rebuild loop.](../images/12-final-check-and-build-fig-01.png)
 *Figure 12.1 — The four-step ship sequence*
 
 ---
@@ -28,7 +28,7 @@ The five claim types come from Sarah Harrison Smith's *The Fact Checker's Bible*
 
 The six content categories are drawn from professional fact-checking practice — Peter Canby's department at *The New Yorker* is the gold standard.[^canby] **STAT** covers statistical claims, which must be verified against the primary source, not a derivative summary. **GUIDELINE** covers best-practice claims attributed to a standards body, verified against current published guidance. **APPROVAL** covers claims about authority decisions, verified against the authority's published policy as of a named date. **EVIDENCE** covers claims that evidence supports a conclusion, verified against the cited study with strength assessed. **SPECIALIST** covers claims attributed to a named expert, verified against published work. **CURRENT** covers claims true *now* — the most aging-prone category, requiring a verification date.
 
-![A blank two-axis classification grid — five claim-type rows stacked down the left vertical axis, six content-category columns across the top horizontal axis, and the empty intersection matrix they define, with cell labels left for typography.](images/12-final-check-and-build-fig-02.png)
+![A blank two-axis classification grid — five claim-type rows stacked down the left vertical axis, six content-category columns across the top horizontal axis, and the empty intersection matrix they define, with cell labels left for typography.](../images/12-final-check-and-build-fig-02.png)
 *Figure 12.2 — Fact-check classification: claim type by content category*
 
 Every assertion returns one of four statuses: VERIFIED, OUTDATED, CONTRADICTED, or UNVERIFIED. You triage in that exact order, because the order tracks both urgency and effort.
@@ -39,7 +39,7 @@ CONTRADICTED second. A claim where the cited or implied source says something di
 
 UNVERIFIED third. A claim the checker could not verify in either direction. *"About 80% of indie ebook units in the US are sold through KDP"* — no single authoritative source confirms this number. Two resolutions: find a source and upgrade to VERIFIED, or rewrite to make the uncertainty visible. *"Probably the largest share of indie ebook units in the US, though no single authoritative source confirms a precise figure"* is honest in a way the original was not.
 
-![Three actionable status nodes — OUTDATED, CONTRADICTED, UNVERIFIED — arranged left to right in triage priority order and joined by progression arrows, with the VERIFIED node set off the action track as the resolved no-action state.](images/12-final-check-and-build-fig-03.png)
+![Three actionable status nodes — OUTDATED, CONTRADICTED, UNVERIFIED — arranged left to right in triage priority order and joined by progression arrows, with the VERIFIED node set off the action track as the resolved no-action state.](../images/12-final-check-and-build-fig-03.png)
 *Figure 12.3 — The four-status triage order*
 
 The pipeline does not require you to resolve every UNVERIFIED claim. It requires you to make a deliberate decision on each one — keep with caveat language, find a source, or remove the claim. The Fact-Checking Assistant writes its output to `factchecks/MASTER_REPORT.md` and inserts inline `<!-- FACT-CHECK FLAG -->` comments at every claim that did not return VERIFIED. The flags travel with the chapter file until you resolve them.
@@ -96,7 +96,7 @@ The KDP royalty structure: books priced between $2.99 and $9.99 earn 70%. Outsid
 
 KDP Select grants Amazon 90-day exclusivity — no distribution through Apple Books, Kobo, or your own site — in exchange for Kindle Unlimited inclusion, promotional pricing windows, and debated discoverability benefits. [verify — 90-day term, KU page-read economics, and Countdown Deal rules subject to Amazon policy change] Pro (Howey, Penn early-career): KU access dwarfs the cross-platform reach most new authors would build otherwise. Con (Penn more recent, authors with existing mailing lists): exclusivity locks you out of platforms where your audience already exists. For the AI+1 series the decision was to enroll: audience is on Amazon, workshop distribution is well-served by KU, cross-platform loss is acceptable at current series scale. Defensible, not the only defensible position.
 
-![A step function of royalty rate against list price on a zero-based percentage axis — a low 35% band below $2.99, a raised 70% band between $2.99 and $9.99, a drop back to 35% above $9.99, with a single marker on the $0.99 series price sitting in the leftmost low band.](images/12-final-check-and-build-fig-04.png)
+![A step function of royalty rate against list price on a zero-based percentage axis — a low 35% band below $2.99, a raised 70% band between $2.99 and $9.99, a drop back to 35% above $9.99, with a single marker on the $0.99 series price sitting in the leftmost low band.](../images/12-final-check-and-build-fig-04.png)
 *Figure 12.4 — KDP royalty tiers by price*
 
 Click *Publish*. The book enters review. Approval typically arrives within 24–72 hours.

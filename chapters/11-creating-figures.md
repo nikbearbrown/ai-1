@@ -32,7 +32,7 @@ So here is the trade-off, named plainly, because every figure decision is a trad
 
 This is why the operative rule across the entire craft is a ceiling: **six to eight labeled components per figure, and never more.** Not as a stylistic preference — as a working-memory budget. When a concept genuinely has more than eight moving parts, the answer is not a smaller font and a bigger canvas. The answer is two figures.
 
-![Two vertical bars on a shared zero-based count axis — a taller bar for Miller's seven-item claim and a shorter bar for Cowan's four-chunk capacity — crossed by a horizontal threshold line marking the six-to-eight component ceiling.](images/11-creating-figures-fig-01.png)
+![Two vertical bars on a shared zero-based count axis — a taller bar for Miller's seven-item claim and a shorter bar for Cowan's four-chunk capacity — crossed by a horizontal threshold line marking the six-to-eight component ceiling.](../images/11-creating-figures-fig-01.png)
 *Figure 11.1 — The component ceiling: seven vs four*
 
 Knowing *when* to split is itself a decision with criteria. The cleanest test is Cowan's number applied directly: more than four distinct interacting components, and you are probably past one figure. Branching structure — parallel paths, competing outcomes, a policy that hits the economic and legal and social systems at once — splits, because branches multiply the relations a reader must track. A process that crosses scales (individual to institution to society; short-run to long-run) splits, because forcing a reader to translate between scales inside one frame is its own load. The reductive instinct here is correct. When in doubt, the figure wants to be two figures.
@@ -59,14 +59,14 @@ If the component ceiling is the constraint, SCOPE is the instrument for staying 
 
 Here is the claim at the center of the whole craft, the one sentence to carry out of this chapter: **the exclusion list is more important than the inclusion list.** Anyone can say what a figure is about. The figures that fail — the fourteen-node monsters — fail because no one ever wrote down what the figure was *not* about. Left without that list, every image model defaults to comprehensive. It will pull in adjacent concepts, upstream context, the downstream implications, the related framework you mentioned once. A populated E block is the difference between a figure that clarifies and a figure you spend an afternoon editing clutter out of. A SCOPE prompt without an E block is not finished.
 
-![Five stacked horizontal bands in fixed S-C-O-P-E order, with the bottom E band rendered visibly larger than the four uniform bands above it to encode its dominant weight.](images/11-creating-figures-fig-02.png)
+![Five stacked horizontal bands in fixed S-C-O-P-E order, with the bottom E band rendered visibly larger than the four uniform bands above it to encode its dominant weight.](../images/11-creating-figures-fig-02.png)
 *Figure 11.2 — The SCOPE frame, E carries the weight*
 
 This is also where the tool's two personalities diverge, and choosing between them is a real decision. In **silent mode**, CAJAL infers concept, audience, and components from whatever text you hand it and returns a clean SCOPE immediately — no questions. Fast, and correct often enough to be useful when you already know what you want. In **interactive mode**, it refuses to move until you have answered, in order: what chapter is this for; what is the concept, in exactly one sentence; what does the reader already know; what are the three-to-eight components; and — the gate it holds hardest — what must not appear. It will not generate output while the exclusion list is empty.
 
 The gates are not bureaucracy. They are the order in which a figure has to be decided to come out clarifying. Skip the one-sentence concept and you get a figure about two things. Skip the audience and you get components a novice can't read or an expert doesn't need. Skip the exclusions and you get the consulting deck. Silent mode trades the gates for speed; you take that trade knowingly, on figures simple enough that the inference is safe.
 
-![Two left-to-right tracks converging on one shared SCOPE-output node — a top track running a single silent node straight to the output, and a bottom track passing through five sequential gate nodes whose final exclusions gate is drawn as a hard blocking lock.](images/11-creating-figures-fig-03.png)
+![Two left-to-right tracks converging on one shared SCOPE-output node — a top track running a single silent node straight to the output, and a bottom track passing through five sequential gate nodes whose final exclusions gate is drawn as a hard blocking lock.](../images/11-creating-figures-fig-03.png)
 *Figure 11.3 — Silent vs interactive mode gates*
 
 Before any of this, the tool reads the chapter and triages — one pass per *concept*, not per section, because a section with six ideas wants six independent decisions, not one averaged compromise. Three signals fire a figure. **Mechanism complexity:** a process with three or more interdependent steps. **Verification gap:** a structural claim the reader can't confirm from prose alone — "the test has fourteen items in two groups" is something you must be *shown*. **Proportional or quantitative:** any number that compares to another number. Each candidate comes ranked. Critical means the reader misunderstands a core claim without it. Important means it cuts real cognitive load. Supplementary means the prose stands without it — and the honest fate of most Supplementary figures is the cutting-room floor. A textbook is not improved by a figure on every page.
@@ -115,7 +115,7 @@ E — No interface screenshots. No pantry/Writer depiction. No metrics.
     No return arrows. No example text inside boxes.
 ```
 
-![Eight identical section boxes stacked vertically and connected by a single downward arrow between each adjacent pair — a flat linear sequence sitting exactly at the eight-component ceiling, with no branches or return loops.](images/11-creating-figures-fig-04.png)
+![Eight identical section boxes stacked vertically and connected by a single downward arrow between each adjacent pair — a flat linear sequence sitting exactly at the eight-component ceiling, with no branches or return loops.](../images/11-creating-figures-fig-04.png)
 *Figure 11.4 — The worked example: eight-section vertical process flow*
 
 What did the discipline buy? A reader scans the figure in about twelve seconds and leaves knowing the sequence — which was the only job. The version without an exclusion list would have arrived with a Cowork logo, a sidebar of token counts, and a helpful loop back to the top, and it would have taught the sequence to no one.

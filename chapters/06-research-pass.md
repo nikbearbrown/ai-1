@@ -43,7 +43,7 @@ This is a research synthesis task in Harris Cooper's sense. Cooper's 1982 framew
 
 [^cooper]: Cooper, Harris M. (1982). "Scientific Guidelines for Conducting Integrative Research Reviews." *Review of Educational Research*, 52(2), 291–302.
 
-![A horizontal six-stage process flow along Cooper's review chain: problem formulation, data collection, and presentation grouped inside a machine band on the left, then a vertical dividing seam marking the machine-to-human hand-off, then evaluation and analysis inside a human band, ending in a draft-ready pantry-file terminal; machine stages tinted one color, human stages another.](images/06-research-pass-fig-01.png)
+![A horizontal six-stage process flow along Cooper's review chain: problem formulation, data collection, and presentation grouped inside a machine band on the left, then a vertical dividing seam marking the machine-to-human hand-off, then evaluation and analysis inside a human band, ending in a draft-ready pantry-file terminal; machine stages tinted one color, human stages another.](../images/06-research-pass-fig-01.png)
 *Figure 6.1 — The Gatherer pipeline and where the human re-enters*
 
 The Gatherer runs on a long-context model with retrieval — what has been called a "Deep Research" agent since the generation of tools Anthropic, OpenAI, and Google shipped between 2024 and 2025. Retrieval-augmented generation has moved citation fabrication from roughly half the time toward something lower and harder to measure.[^goddard][^bhattacharyya] The improvement is real. The risk is not gone.
@@ -124,7 +124,7 @@ Pantry file thin?
    └── TIKTOC.md vague     → Return to /c1, sharpen spec, rerun Gatherer
 ```
 
-![A left-to-right decision tree: one root node "pantry thin?" branching into three cause nodes — topic hard, field evidence thin, TIKTOC.md vague — each routing by a single arrow to one paired response on the right: supplement by hand, accept with flag into risks.md, and return to /c1; the return-to-/c1 response carries an upstream back-loop arc.](images/06-research-pass-fig-02.png)
+![A left-to-right decision tree: one root node "pantry thin?" branching into three cause nodes — topic hard, field evidence thin, TIKTOC.md vague — each routing by a single arrow to one paired response on the right: supplement by hand, accept with flag into risks.md, and return to /c1; the return-to-/c1 response carries an upstream back-loop arc.](../images/06-research-pass-fig-02.png)
 *Figure 6.2 — Thin-pantry triage: three causes, three responses*
 
 Write the choice in `risks.md`. Future-you, four chapters deep in the human rewrite, will need to remember which chapters were accepted with flags and why.
@@ -143,7 +143,7 @@ The Chapter Research Gatherer reads `_lib_` files before generating chapter-spec
 
 What belongs in `_lib_`: terms used across more than two chapters, framework definitions, the book's position on contested claims, style notes that apply everywhere, author bio. What does not belong: chapter-specific examples, citations specific to one chapter's topic, per-chapter image briefs. The line is between what is shared and what is particular.
 
-![A radial hub-and-spoke diagram: a central _lib_ hub node with four to five chapter pantry-file nodes arranged around it, each connected by a reference arrow pointing from the hub into the chapter file — the definition flowing outward from a single authoritative source, so one update at the hub propagates along every arrow.](images/06-research-pass-fig-03.png)
+![A radial hub-and-spoke diagram: a central _lib_ hub node with four to five chapter pantry-file nodes arranged around it, each connected by a reference arrow pointing from the hub into the chapter file — the definition flowing outward from a single authoritative source, so one update at the hub propagates along every arrow.](../images/06-research-pass-fig-03.png)
 *Figure 6.3 — The `_lib_` shared library: one authoritative home*
 
 <!-- → [TABLE: `_lib_` file taxonomy — columns: File, Contents, When Gatherer reads it, Update trigger — rows for glossary, framework definitions, contested claims, style notes] -->
@@ -167,7 +167,7 @@ The pantry plays the same role for chapter drafting. Cowork consults it while dr
 
 Sönke Ahrens's *How to Take Smart Notes* describes the same distinction in a different vocabulary.[^ahrens] Niklas Luhmann's Zettelkasten — the 90,000-card archive that produced 70 books and 400 papers — had three layers: fleeting notes taken in the moment, literature notes recording what a source actually said, and permanent notes carrying the writer's own argued claim. Pantry files are Ahrens's literature notes. Chapter drafts are permanent notes. Treating literature notes as if they were already permanent — cutting from the Gatherer's prose into the chapter without tracing back to the primary source — is what produces academic embarrassment in human writers and hallucinated citations in language models. The fix is structural: keep the layers separate.
 
-![A vertical three-tier stack — fleeting notes at the base, literature notes (the pantry) in the middle, permanent notes (the chapter draft) at the top — with a correct-path arrow routing from the literature layer through a primary-source waypoint up to the permanent layer, and a second arrow attempting to skip the waypoint terminated by a blockage glyph marking the forbidden AI-laundered citation shortcut.](images/06-research-pass-fig-04.png)
+![A vertical three-tier stack — fleeting notes at the base, literature notes (the pantry) in the middle, permanent notes (the chapter draft) at the top — with a correct-path arrow routing from the literature layer through a primary-source waypoint up to the permanent layer, and a second arrow attempting to skip the waypoint terminated by a blockage glyph marking the forbidden AI-laundered citation shortcut.](../images/06-research-pass-fig-04.png)
 *Figure 6.4 — Three note layers: literature notes vs. permanent notes*
 
 Luhmann's system is worth knowing about for a second reason. It was boring. Index cards, a wooden cabinet, a numbering scheme he invented. No magic. The infrastructure was simple and the practice was relentless. The pantry is the same way. The technology is unimpressive. The discipline of evaluating each file before letting Cowork read it is the entire game.

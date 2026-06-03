@@ -88,7 +88,7 @@ A sixth rewrite target, off the official list: *sycophancy reversal*. Cowork dra
 
 [^sycophancy]: Sharma, Mrinank et al. (2023). "Towards Understanding Sycophancy in Language Models." Anthropic preprint.
 
-![Five paired rows mapping each failure mode on the left to its rewrite move on the right, joined by a left-to-right arrow: voice drift to specificity injection, fabricated specificity to cite-replace-or-cut, missing domain judgment to one judgment per page, padded middle to cut 25 percent, bridge question to name the next deliverable.](images/08-the-human-rewrite-fig-02.png)
+![Five paired rows mapping each failure mode on the left to its rewrite move on the right, joined by a left-to-right arrow: voice drift to specificity injection, fabricated specificity to cite-replace-or-cut, missing domain judgment to one judgment per page, padded middle to cut 25 percent, bridge question to name the next deliverable.](../images/08-the-human-rewrite-fig-02.png)
 *Figure 8.2 — Five failure modes mapped to their rewrite moves*
 
 ---
@@ -154,7 +154,7 @@ Fourteen items in four groups, reproduced as a scorecard in Appendix F. Applied 
 | D — Authorial accountability | 13 | Contested claims flagged or argued | | |
 | D — Authorial accountability | 14 | What would change my mind | | |
 
-![The Combined Test laid out as a scorecard — four group blocks stacked top to bottom (Group A four items, Group B four items, Group C three items, Group D three items) with item rows indented beneath each header and a single right-hand column reserved for the Pass/Fail mark.](images/08-the-human-rewrite-fig-01.png)
+![The Combined Test laid out as a scorecard — four group blocks stacked top to bottom (Group A four items, Group B four items, Group C three items, Group D three items) with item rows indented beneath each header and a single right-hand column reserved for the Pass/Fail mark.](../images/08-the-human-rewrite-fig-01.png)
 *Figure 8.1 — The Combined Test: fourteen items in four groups*
 
 The two hardest to self-assess: items 3 and 8. Voice drift is gradual and you read your own chapter in your own voice even where the words are not yours. Bridge failures are invisible because you know what is coming in the next chapter — the reader does not. Both require an outside ear. Designers have peers. This is what peers are for.
@@ -189,7 +189,7 @@ This is the version most authors stop at. It feels finished because the worst fa
 
 What changed from first to second pass: the opening is now a scene — Tuesday, Wednesday, three named LLMs; the mechanism is explained from first principles, with each LLM's training texture named; a trade-off is embedded — three answers won't match, and that is the point, not a problem; one judgment is present — "worth flagging" is the author's call, not the model's. Items 1, 3, 5, 6, 12 now pass. The paragraph is forty words longer than the first pass, but every word is doing work.
 
-![Three panels left to right — the Cowork draft, the first-pass structural rewrite, the second-pass voice rewrite — joined by two transition arrows differentiated to mark the novice fix-failure delta and the expert argument-and-voice delta.](images/08-the-human-rewrite-fig-03.png)
+![Three panels left to right — the Cowork draft, the first-pass structural rewrite, the second-pass voice rewrite — joined by two transition arrows differentiated to mark the novice fix-failure delta and the expert argument-and-voice delta.](../images/08-the-human-rewrite-fig-03.png)
 *Figure 8.3 — The three-pass rewrite progression*
 
 <!-- → [IMAGE: Side-by-side spread of the three-pass progression — Cowork draft, first-pass, second-pass — with marginal annotations matching each revision to the Combined Test item it addresses] -->

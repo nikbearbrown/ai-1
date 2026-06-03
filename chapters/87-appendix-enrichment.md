@@ -717,7 +717,7 @@ d3/{chapter-slug}-fig-{NN}.html
 Insert the image above the original comment (and any adjacent stub `![Figure …]` placeholder) with:
 
 ```markdown
-![{descriptive alt text from the figure description}](images/{chapter-slug}-fig-{NN}.png)
+![{descriptive alt text from the figure description}](../images/{chapter-slug}-fig-{NN}.png)
 *Figure {N.N} — {short title from the description}*
 ```
 
@@ -763,7 +763,7 @@ If it does exist:
    c. Insert the markdown reference:
 
 ```markdown
-![{descriptive alt text from CAJAL figure description}](images/{chapter-slug}-fig-{NN}.png)
+![{descriptive alt text from CAJAL figure description}](../images/{chapter-slug}-fig-{NN}.png)
 *Figure {N.N} — {figure title from CAJAL}*
 ```
 
