@@ -1,13 +1,8 @@
 ---
 title: "AI+1"
-subtitle: ""
 author: "Nik Bear Brown"
-language: en-US
-rights: "Copyright © 2026 Nik Bear Brown"
+date: 2026
+lang: en-US
+rights: "Copyright © 2026 Nik Bear Brown. All rights reserved."
 publisher: "Bear Brown, LLC"
-date: "2026-05-27"
-cover-image: cover.jpg
-stylesheet: styles/kindle.css
-toc: true
-toc-depth: 2
----
+...

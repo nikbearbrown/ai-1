@@ -1,17 +1,26 @@
-# AI+1
+# Introduction
 
-**Author:** Nik Bear Brown  
-**Publisher:** Bear Brown, LLC  
-**Copyright:** Copyright © 2026 Nik Bear Brown. All rights reserved.  
-**Edition:** 2026
+A learner opens the first chapter of *AI+1* with a familiar problem: there is too much information and not enough structure. The terms are available. The examples are available. The missing thing is a route through the material that turns exposure into understanding.
 
-## Summary
+This book is about the gap between knowing the name of AI+1's subject and being able to use its ideas with judgment.
 
-*AI+1* is a structured textbook for readers who need a clear path through the subject rather than a loose collection of explanations. It begins with Chapter 1 — What AI+1 Is and Why It Works, moves through 12 core chapters, and ends with Chapter 12 — Final Check and Build: EPUB + PDF.
+The central argument is that AI+1 is best learned as a sequence of distinctions, practices, and recurring problems rather than as a list of topics. A reader who can name those distinctions can move through the field with more confidence than a reader who has only memorized definitions.
 
-AI matters to *AI+1* because the modern textbook is no longer only a static container. It is also part of a learning system: searchable, remixable, explainable, and increasingly connected to tools such as Medhavy. For Bear Brown books, the relevant question is not whether AI can replace the learner or the teacher. It cannot. The useful question is what AI can make easier to inspect: definitions, worked examples, misconceptions, practice sequences, alternate explanations, and the structure of an argument. This book treats AI as infrastructure for practical AI-assisted authorship, analysis, and production. The chapters should still stand on their own as readable prose, but they are also designed to be legible to an intelligent textbook system.
+This is written for learners, teachers, practitioners, and builders who want a clear path through the material.
 
-## Table of Contents
+## What This Book Is
+
+This book is a structured introduction to AI+1. It teaches the vocabulary of the field, shows how the main ideas connect, and gives readers enough conceptual grip to continue with more specialized work. It is designed to be read as a book, used as a reference, and integrated into an intelligent textbook system.
+
+## What This Book Is Not
+
+This book is not a substitute for practice, mentorship, experimentation, or domain-specific judgment. It does not try to say everything. It tries to say enough, in the right order, so that the reader can recognize what matters next.
+
+## The Concept Running Through the Book
+
+The recurring idea is transfer: the movement from explanation to usable understanding. Each chapter should help the reader carry an idea from the page into a problem, a classroom, a project, or a decision.
+
+## How This Book Is Organized
 
 - **Chapter 1: Chapter 1 — What AI+1 Is and Why It Works.** *The fluency trap is not bad AI. It is good-looking AI that quietly replaces the decisions you are paid to make.* The phrase "fluency trap" has a precise academic lineage, and knowing that lineage clarifies what the trap actually is. In 2021,...
 - **Chapter 2: Chapter 2 — What Tic TOC Does and Why You Spend Two Hours Here First.** *The architecture comes before the writing — and the architecture is the harder work.* > **AI for Designers: A Practitioner's Guide** > Full TOC Draft — compiled from all phase outputs > Author: [redacted] · Series: AI+1 · Status: Pre-draft > >...
@@ -26,13 +35,20 @@ AI matters to *AI+1* because the modern textbook is no longer only a static cont
 - **Chapter 11: Chapter 11 — Creating Figures.** *Why the hard part of a figure is deciding what to leave out.* Start with the constraint that governs everything else, because it is a fact about the reader's head, not a matter of taste. In 1956 George Miller published the most...
 - **Chapter 12: Chapter 12 — Final Check and Build: EPUB + PDF.** *Where the book ships — and discovers what the pipeline could not check on your behalf.* The Fact-Checking Assistant scans every chapter file and classifies every assertion along two dimensions: what kind of claim it is, and what the claim is about....
 
-## Files
+## How to Read This Book
 
-- `chapters/00-frontmatter.md` — title page, copyright, dedication, and preface
-- `chapters/00-introduction.md` — roadmap and book-level AI note
-- `chapters/99-back-matter.md` — acknowledgments, author note, references placeholder, and Medhavy note
-- `LICENSE.md` — rights and reuse terms
+Read the chapters in order if you are new to the subject. If you already know the area, use the chapter titles as a map and move directly to the parts where your understanding is weakest. The chapters are designed to be self-contained enough for reference, but they work best as a progression from Chapter 1 — What AI+1 Is and Why It Works to Chapter 12 — Final Check and Build: EPUB + PDF.
 
-## Medhavy
+## A Note About AI
 
-This book is prepared for Kindle, online publication, and integration with Medhavy: https://www.medhavy.com/
+AI matters to *AI+1* because the modern textbook is no longer only a static container. It is also part of a learning system: searchable, remixable, explainable, and increasingly connected to tools such as Medhavy. For Bear Brown books, the relevant question is not whether AI can replace the learner or the teacher. It cannot. The useful question is what AI can make easier to inspect: definitions, worked examples, misconceptions, practice sequences, alternate explanations, and the structure of an argument. This book treats AI as infrastructure for practical AI-assisted authorship, analysis, and production. The chapters should still stand on their own as readable prose, but they are also designed to be legible to an intelligent textbook system.
+
+## Closing Return
+
+The learner at the opening does not need more noise. They need a path. This book is that path: not the whole territory, but a reliable way to begin moving through it.
+
+Let's go.
+
+## Tags
+
+AI+1, textbook, Medhavy, AI-assisted learning, Bear Brown

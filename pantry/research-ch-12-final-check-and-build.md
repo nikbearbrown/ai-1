@@ -1,4 +1,4 @@
-# Research: Chapter 11 — Final Check and Build: EPUB + PDF
+# Research: Chapter 12 — Final Check and Build: EPUB + PDF
 ## AI+1: AI Native Personalized Textbooks
 
 **Chapter one-line:** Students run the final check sequence, build the EPUB and PDF, and submit to Kindle Direct Publishing — understanding the rebuild loop as normal finishing process.

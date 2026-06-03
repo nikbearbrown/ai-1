@@ -50,10 +50,10 @@ function draw() {
     .attr('width', totalWidth).attr('height', totalHeight)
     .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
   svg.append('title').attr('id','chart-title').text('Wage premium by sector and skill level');
-  svg.append('desc').attr('id','chart-desc').text('A bar chart of AI wage-premium percentages from a zero baseline: PwC US advanced-skills 56 percent, Lightcast AI postings 28 percent, and a contested cut at 14 percent shown in a distinct fill to mark the premium as uneven.');
+  svg.append('desc').attr('id','chart-desc').text('A bar chart of AI wage-premium percentages from a zero baseline: PwC US advanced-skills 56 percent, Lightcast AI postings 28 percent, and a contested cut at 14 percent shown in a distinct fill, with a note that the measures differ.');
 
   svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('AI wage premium');
-  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Uneven and sector-specific, not universal');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Related evidence, not identical measures');
 
   const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
   const x = d3.scaleBand().domain(data.map(d=>d.source)).range([0,w]).padding(0.28);
@@ -86,6 +86,8 @@ function draw() {
   g.append('g').call(d3.axisLeft(y).ticks(6).tickFormat(d=>d+'%'));
   g.append('text').attr('class','axis-title').attr('transform','rotate(-90)')
     .attr('x',-h/2).attr('y',-46).attr('text-anchor','middle').text('Wage premium (%)');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',totalHeight-12)
+    .style('font-size','11px').text('PwC = worker-skill premium; Lightcast = job-posting salary premium; contested cut = sector/geography sensitivity');
 }
 draw();
 const ro = new ResizeObserver(() => draw());

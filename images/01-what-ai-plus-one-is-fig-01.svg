@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The fluency trap as a two-component mechanism
+  Generic brief vs. client-informed brief
   Book: AI+1
   Chapter: 01-what-ai-plus-one-is
   Figure: 01
-  Type: systems diagram
+  Type: comparison panels
   Generated: 2026-05-28
   Source: pantry/01-what-ai-plus-one-is-cajal.md
 -->
-<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
-  <title id="fig-title-01">The fluency trap as a two-component mechanism</title>
-  <desc>Two amplifying components: statistically coherent model output and the reader's processing-fluency reward reinforce each other, bypass the "is it informed?" check, and close the trap unless professional judgment interrupts.</desc>
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
+  <title id="fig-title-01">Generic brief vs. client-informed brief</title>
+  <desc>Two identical-looking briefs. The generic AI brief reads as complete; the client-informed panel keeps faint surface content visible while exposing six holes where institutional knowledge is required.</desc>
   <metadata>
     <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
       book="AI+1" book-slug="ai-1" chapter="01-what-ai-plus-one-is"
-      figure-number="01" figure-title="The fluency trap as a two-component mechanism" figure-slug="fluency-trap-mechanism"
-      figure-type="systems diagram" priority="Critical"
+      figure-number="01" figure-title="Generic brief vs. client-informed brief" figure-slug="generic-vs-client-brief"
+      figure-type="comparison panels" priority="Important"
       author="Nik Bear Brown" date-generated="2026-05-28"
       source-file="pantry/01-what-ai-plus-one-is-cajal.md"/>
   </metadata>
@@ -24,48 +24,58 @@
       <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
     </marker>
   </defs>
-  <rect x="0" y="0" width="700" height="420" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
 
-  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The fluency trap as a two-component mechanism</text>
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">Generic brief vs. client-informed brief</text>
 
-  <!-- Node 1: model output -->
-  <rect x="40" y="120" width="170" height="72" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="125" y="150" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Model output</text>
-  <text x="125" y="168" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">statistical coherence,</text>
-  <text x="125" y="182" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">no communicative intent</text>
+  <!-- LEFT PANEL: generic, all filled -->
+  <text x="40" y="80" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Generic AI brief</text>
+  <rect x="40" y="92" width="220" height="350" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <!-- six filled sections -->
+  <rect x="60" y="110" width="180" height="44" rx="0" fill="#787878"/>
+  <rect x="60" y="166" width="180" height="44" rx="0" fill="#787878"/>
+  <rect x="60" y="222" width="180" height="44" rx="0" fill="#787878"/>
+  <rect x="60" y="278" width="180" height="44" rx="0" fill="#787878"/>
+  <rect x="60" y="334" width="180" height="44" rx="0" fill="#787878"/>
+  <rect x="60" y="390" width="180" height="44" rx="0" fill="#787878"/>
+  <text x="150" y="468" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">looks complete</text>
 
-  <!-- Node 2: reader cognition -->
-  <rect x="280" y="120" width="170" height="72" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="365" y="150" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Reader cognition</text>
-  <text x="365" y="168" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">processing-fluency</text>
-  <text x="365" y="182" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">reward</text>
+  <!-- RIGHT PANEL: same skeleton, six gap callouts -->
+  <text x="440" y="80" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Client-informed brief</text>
+  <rect x="440" y="92" width="220" height="350" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
+  <!-- same six sections with faint surface content; callouts mark missing institutional knowledge -->
+  <rect x="460" y="110" width="180" height="44" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <rect x="460" y="166" width="180" height="44" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <rect x="460" y="222" width="180" height="44" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <rect x="460" y="278" width="180" height="44" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <rect x="460" y="334" width="180" height="44" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
+  <rect x="460" y="390" width="180" height="44" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
 
-  <!-- forward arrow 1 -> 2 -->
-  <line x1="210" y1="156" x2="280" y2="156" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- six hollow gap callouts in margin with leader lines + labels -->
+  <!-- 1 gradient grudge -->
+  <line x1="460" y1="132" x2="430" y2="132" stroke="#2a1a0e" stroke-width="1"/>
+  <circle cx="424" cy="132" r="6" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="412" y="136" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">gradient grudge</text>
+  <!-- 2 PMS green -->
+  <line x1="460" y1="188" x2="430" y2="188" stroke="#2a1a0e" stroke-width="1"/>
+  <circle cx="424" cy="188" r="6" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="412" y="192" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">PMS green</text>
+  <!-- 3 new VP -->
+  <line x1="460" y1="244" x2="430" y2="244" stroke="#2a1a0e" stroke-width="1"/>
+  <circle cx="424" cy="244" r="6" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="412" y="248" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">new VP</text>
+  <!-- 4 budget number -->
+  <line x1="460" y1="300" x2="430" y2="300" stroke="#2a1a0e" stroke-width="1"/>
+  <circle cx="424" cy="300" r="6" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="412" y="304" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">budget number</text>
+  <!-- 5 three rival shops -->
+  <line x1="460" y1="356" x2="430" y2="356" stroke="#2a1a0e" stroke-width="1"/>
+  <circle cx="424" cy="356" r="6" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="412" y="360" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">three rival shops</text>
+  <!-- 6 six-person committee -->
+  <line x1="460" y1="412" x2="430" y2="412" stroke="#2a1a0e" stroke-width="1"/>
+  <circle cx="424" cy="412" r="6" stroke="#C8860E" stroke-width="1.5" fill="#FFFFFF"/>
+  <text x="412" y="416" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">six-person committee</text>
 
-  <!-- amplification feedback arc (the highlighted primary) -->
-  <path d="M 280 138 C 245 108, 245 108, 210 138" stroke="#C8102E" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-  <text x="245" y="102" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8102E">amplification</text>
-
-  <!-- forward arrow 2 -> terminal segment -->
-  <line x1="450" y1="156" x2="560" y2="156" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-
-  <!-- bypassed check node off the main line, dashed connector -->
-  <line x1="475" y1="156" x2="475" y2="270" stroke="#2a1a0e" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-  <rect x="405" y="270" width="140" height="56" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="475" y="298" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">"Is it informed?"</text>
-  <text x="475" y="315" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">check — bypassed</text>
-
-  <!-- judgment interruption blockage on final segment -->
-  <line x1="540" y1="142" x2="540" y2="170" stroke="#C8860E" stroke-width="2.5"/>
-  <text x="540" y="132" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8860E">professional</text>
-  <text x="540" y="118" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#C8860E">judgment</text>
-
-  <!-- terminal trap state -->
-  <rect x="560" y="120" width="110" height="72" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
-  <text x="615" y="152" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Trap closed</text>
-  <text x="615" y="170" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">uninformed output</text>
-  <text x="615" y="184" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">accepted</text>
-
-  <text x="32" y="392" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">FEELS RIGHT IS NOT IS RIGHT — THE CHECK IS WHERE JUDGMENT RE-ENTERS</text>
+  <text x="550" y="468" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">same surface, holes underneath</text>
 </svg>

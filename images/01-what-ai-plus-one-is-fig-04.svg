@@ -10,7 +10,7 @@
 -->
 <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-04">
   <title id="fig-title-04">Three-LLM triangulation to a synthesis</title>
-  <desc>The same prompt runs in Claude, ChatGPT and Gemini; their answers overlap in four ways — all three agree, two agree, divergent, or one only — and converge into one synthesis.</desc>
+  <desc>The same prompt runs in Claude, ChatGPT and Gemini; their answers overlap in four ways — all three agree, two agree, divergent, or one only — while a caveat notes shared training data and weak independence before the outputs converge into one synthesis.</desc>
   <metadata>
     <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
       book="AI+1" book-slug="ai-1" chapter="01-what-ai-plus-one-is"
@@ -57,11 +57,16 @@
   <!-- divergent = single spur other side -->
   <text x="470" y="300" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">divergent</text>
 
+  <!-- weak-independence caveat -->
+  <rect x="238" y="332" width="224" height="32" rx="0" stroke="#C8860E" stroke-width="1" fill="#FFFFFF"/>
+  <text x="350" y="346" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#C8860E">weak independence:</text>
+  <text x="350" y="359" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#C8860E">shared training data</text>
+
   <!-- converge to synthesis node -->
-  <line x1="350" y1="330" x2="350" y2="380" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <line x1="350" y1="364" x2="350" y2="380" stroke="#2a1a0e" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
   <rect x="250" y="385" width="200" height="56" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#F5F5F5"/>
   <text x="350" y="412" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Synthesis</text>
   <text x="350" y="428" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">read across all three</text>
 
-  <text x="32" y="464" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">OVERLAP GEOMETRY ENCODES THE FOUR CLAIM CATEGORIES</text>
+  <text x="32" y="464" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.05em">OVERLAP SHOWS AGREEMENT PATTERNS, NOT CLEAN STATISTICAL INDEPENDENCE</text>
 </svg>

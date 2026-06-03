@@ -48,7 +48,7 @@ function draw() {
     .attr('width', totalWidth).attr('height', totalHeight)
     .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
   svg.append('title').attr('id','chart-title').text('Three-LLM triangulation to synthesis');
-  svg.append('desc').attr('id','chart-desc').text('Three source circles for Claude, GPT, and Gemini overlap in a Venn whose regions encode the four claim categories, feeding a single synthesis node below.');
+  svg.append('desc').attr('id','chart-desc').text('Three source circles for Claude, GPT, and Gemini overlap in a Venn whose regions encode the four claim categories, with a caveat that shared training data means weak independence, feeding a single synthesis node below.');
 
   svg.append('text').attr('class','chart-title').attr('x',margin.left).attr('y',26).text('Three-LLM triangulation');
   svg.append('text').attr('class','chart-sub').attr('x',margin.left).attr('y',46).text('Overlap geometry encodes the four claim categories');
@@ -80,8 +80,14 @@ function draw() {
   g.append('path').attr('d',`M ${fx} ${fy} l 14 -10 M ${fx} ${fy} l 14 10`).attr('stroke','var(--color-red)').attr('stroke-width',2).attr('fill','none').attr('aria-hidden','true');
   g.append('text').attr('class','region-label').attr('fill','var(--color-red)').attr('x',fx).attr('y',fy+24).text('divergent');
 
+  const caveatW = Math.min(250, w * 0.42), caveatH = 34;
+  g.append('rect').attr('x', cx - caveatW/2).attr('y', cy + r + 18).attr('width', caveatW).attr('height', caveatH).attr('rx', 4)
+    .attr('fill', 'none').attr('stroke', 'var(--color-ochre)').attr('stroke-width', 1);
+  g.append('text').attr('class','region-label').attr('fill','var(--color-ochre)').attr('x',cx).attr('y',cy+r+32).attr('text-anchor','middle').text('weak independence');
+  g.append('text').attr('class','region-label').attr('fill','var(--color-ochre)').attr('x',cx).attr('y',cy+r+46).attr('text-anchor','middle').text('shared training data');
+
   // arrows to synthesis
-  const sy = h*0.86, synW = w*0.42, synH = 44, synX = cx - synW/2;
+  const sy = h*0.88, synW = w*0.42, synH = 44, synX = cx - synW/2;
   centers.forEach(s => {
     g.append('path').attr('d',`M ${s.x} ${s.y+r} L ${cx} ${sy}`)
       .attr('stroke','var(--color-secondary)').attr('stroke-width',1).attr('fill','none')
