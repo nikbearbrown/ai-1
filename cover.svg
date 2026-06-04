@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2560" width="1600" height="2560" preserveAspectRatio="xMidYMid meet" shape-rendering="geometricPrecision">
+  <g id="background"><rect x="0" y="0" width="1600" height="2560" fill="#1B6B5A"/></g>
+  <g id="symbol-fragments" transform="rotate(-2, 800, 800)">
+    <path d="M 230 310 L 330 223 L 480 267 L 630 393 L 780 228 L 930 352 L 1080 318 L 1230 249" fill="none" stroke="#F5F0E8" stroke-width="44" stroke-linecap="butt" stroke-linejoin="miter"/>
+    <path d="M 230 486 L 330 565 L 480 473 L 630 464 L 780 425 L 930 402 L 1080 563 L 1230 447" fill="none" stroke="#F5F0E8" stroke-width="50" stroke-linecap="butt" stroke-linejoin="miter"/>
+    <path d="M 230 613 L 330 667 L 480 641 L 630 544 L 780 566 L 930 568 L 1080 532 L 1230 643" fill="none" stroke="#F5C518" stroke-width="56" stroke-linecap="butt" stroke-linejoin="miter"/>
+    <path d="M 230 770 L 330 792 L 480 694 L 630 825 L 780 764 L 930 844 L 1080 791 L 1230 795" fill="none" stroke="#F5F0E8" stroke-width="62" stroke-linecap="butt" stroke-linejoin="miter"/>
+    <path d="M 230 928 L 330 945 L 480 976 L 630 921 L 780 982 L 930 917 L 1080 955 L 1230 863" fill="none" stroke="#F5F0E8" stroke-width="68" stroke-linecap="butt" stroke-linejoin="miter"/>
+  </g>
+  <g id="title-letterforms">
+    <text x="120" y="1510" font-family="Arial Black, Arial, sans-serif" font-size="250" font-weight="900" letter-spacing="0" fill="#F5C518">AI 1</text>
+  </g>
+</svg>

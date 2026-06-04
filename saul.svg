@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The /g2 Failure-Mode by Chapter Diagnostic Grid
+  Book: AI+1
+  Chapter: 04-generating-your-tiktoc
+  Figure: 04
+  Type: structural schematic
+  Generated: 2026-05-28
+  Source: pantry/04-generating-your-tiktoc-cajal.md
+-->
+<svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-04">
+  <title id="fig-title-04">The /g2 Failure-Mode by Chapter Diagnostic Grid</title>
+  <desc>A seven-by-seven grid of failure modes against chapters; five cells flagged WARN, the rest PASS, zero FAIL — the /g2 gate's structural read of the book.</desc>
+  <metadata>
+    <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
+      book="AI+1" book-slug="ai-1" chapter="04-generating-your-tiktoc"
+      figure-number="04" figure-title="The /g2 Failure-Mode by Chapter Diagnostic Grid" figure-slug="g2-failure-mode-grid"
+      figure-type="structural schematic" priority="Critical"
+      author="Nik Bear Brown" date-generated="2026-05-28"
+      source-file="pantry/04-generating-your-tiktoc-cajal.md"/>
+  </metadata>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2a1a0e"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="480" fill="#FFFFFF"/>
+
+  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The /g2 Failure-Mode by Chapter Diagnostic Grid</text>
+  <text x="32" y="62" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">Seven failure modes read against seven chapters: five warnings, zero fails</text>
+
+  <!-- column headers (chapters) -->
+  <text x="276" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch1</text>
+  <text x="324" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch2</text>
+  <text x="372" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch3</text>
+  <text x="420" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch4</text>
+  <text x="468" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch5</text>
+  <text x="516" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch6</text>
+  <text x="564" y="100" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','Courier New',monospace" font-size="11" fill="#545454">Ch7</text>
+
+  <!-- row labels (failure modes) -->
+  <text x="244" y="132" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Audience drift</text>
+  <text x="244" y="180" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Over-claimed</text>
+  <text x="244" y="228" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Contested claims</text>
+  <text x="244" y="276" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Bridge fails</text>
+  <text x="244" y="324" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Ceiling too low</text>
+  <text x="244" y="372" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Thin evidence</text>
+  <text x="244" y="420" text-anchor="end" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#2a1a0e">Citation gap</text>
+
+  <!-- 7x7 grid: cells 48px, x from 252, y from 108 -->
+  <!-- Row 1 Audience drift -->
+  <rect x="252" y="108" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="108" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="108" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="108" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="108" width="48" height="48" fill="#C8860E" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="108" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="108" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- Row 2 Over-claimed (Ch3 + Ch4 both WARN, per source 5 warnings) -->
+  <rect x="252" y="156" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="156" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="156" width="48" height="48" fill="#C8860E" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="156" width="48" height="48" fill="#C8860E" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="156" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="156" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="156" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- Row 3 Contested claims (Ch1 WARN) -->
+  <rect x="252" y="204" width="48" height="48" fill="#C8860E" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="204" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="204" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="204" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="204" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="204" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="204" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- Row 4 Bridge fails (Ch6 WARN) -->
+  <rect x="252" y="252" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="252" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="252" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="252" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="252" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="252" width="48" height="48" fill="#C8860E" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="252" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- Row 5 Ceiling too low -->
+  <rect x="252" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="300" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- Row 6 Thin evidence -->
+  <rect x="252" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="348" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <!-- Row 7 Citation gap -->
+  <rect x="252" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="300" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="348" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="396" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="444" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="492" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <rect x="540" y="396" width="48" height="48" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+
+  <!-- legend -->
+  <rect x="252" y="456" width="14" height="14" fill="#C8860E" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="272" y="467" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">WARN (5)</text>
+  <rect x="356" y="456" width="14" height="14" fill="#FFFFFF" stroke="#2a1a0e" stroke-width="1"/>
+  <text x="376" y="467" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="11" fill="#545454">PASS (44)   FAIL (0)</text>
+</svg>
