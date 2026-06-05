@@ -31,12 +31,12 @@
 const parts = [
   { n:1, label:'Book concept and thesis', shown:true },
   { n:2, label:'Learner profile',          shown:true },
-  { n:3, label:'',                          shown:false },
-  { n:4, label:'',                          shown:false },
-  { n:5, label:'',                          shown:false },
-  { n:6, label:'',                          shown:false },
+  { n:3, label:'Book type and deployment specification', shown:false },
+  { n:4, label:'Field positioning',        shown:false },
+  { n:5, label:'Three-act learning arc',   shown:false },
+  { n:6, label:'Prerequisite map',         shown:false },
   { n:7, label:'Learning outcomes by chapter', shown:true },
-  { n:8, label:'Chapter entries',           shown:true }
+  { n:8, label:'Chapter-by-chapter TOC',    shown:true }
 ];
 
 function draw() {
@@ -52,10 +52,10 @@ function draw() {
     .attr('width', totalWidth).attr('height', totalHeight)
     .attr('role','img').attr('aria-labelledby','chart-title chart-desc');
   svg.append('title').attr('id','chart-title').text('The TIKTOC.md document map');
-  svg.append('desc').attr('id','chart-desc').text('Eight Part boxes stacked top to bottom on a spine; Parts 1, 2, 7 and 8 are filled because the chapter shows them, Parts 3 through 6 are hollow.');
+  svg.append('desc').attr('id','chart-desc').text('Eight Part boxes stacked top to bottom on a spine; Parts 1, 2, 7 and 8 are filled because the chapter excerpts them, and Parts 3 through 6 are hollow but labeled.');
 
   svg.append('text').attr('class','chart-title').attr('x',margin.left-20).attr('y',26).text('TIKTOC.md structure');
-  svg.append('text').attr('class','chart-sub').attr('x',margin.left-20).attr('y',46).text('Eight Parts; filled = shown in chapter, hollow = not shown');
+  svg.append('text').attr('class','chart-sub').attr('x',margin.left-20).attr('y',46).text('Eight Parts; filled = excerpted in chapter, hollow = structure exists');
 
   const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
   const rowH = h / parts.length, boxH = rowH*0.7, boxW = w*0.86, spineX = -20;
@@ -71,7 +71,7 @@ function draw() {
   const sel = g.selectAll('.part').data(parts).join('g')
     .attr('transform',(d,i)=>`translate(0,${i*rowH+(rowH-boxH)/2})`)
     .attr('tabindex',0).attr('role','listitem')
-    .attr('aria-label',d=>`Part ${d.n}${d.shown?': '+d.label:': not shown in chapter'}`);
+    .attr('aria-label',d=>`Part ${d.n}: ${d.label}${d.shown?'':'; not excerpted in chapter'}`);
   sel.append('line').attr('x1',spineX).attr('y1',boxH/2).attr('x2',0).attr('y2',boxH/2)
     .attr('stroke','var(--color-ink)').attr('stroke-width',1).attr('aria-hidden','true');
   sel.append('rect').attr('width',boxW).attr('height',boxH).attr('rx',6)
@@ -82,8 +82,8 @@ function draw() {
     .attr('fill',d=>d.shown?'var(--color-red)':'var(--color-secondary)').text(d=>'Part '+d.n);
   sel.append('text').attr('class','part-label').attr('x',78).attr('y',boxH/2+4)
     .attr('fill',d=>d.shown?'var(--color-ink)':'var(--color-secondary)')
-    .text(d=>d.shown?d.label:'(structure exists, not shown)');
-  sel.on('mouseover',(e,d)=>tip.html(`<strong>Part ${d.n}</strong><br>${d.shown?d.label:'not shown in chapter'}`).transition().duration(150).style('opacity',1))
+    .text(d=>d.label);
+  sel.on('mouseover',(e,d)=>tip.html(`<strong>Part ${d.n}</strong><br>${d.label}${d.shown?'':'<br><em>not excerpted in chapter</em>'}`).transition().duration(150).style('opacity',1))
      .on('mousemove',(e)=>tip.style('left',(e.pageX+12)+'px').style('top',(e.pageY-28)+'px'))
      .on('mouseout',()=>tip.transition().duration(100).style('opacity',0));
 }

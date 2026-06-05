@@ -10,7 +10,7 @@
 -->
 <svg viewBox="0 0 700 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title-01">
   <title id="fig-title-01">The shape of the TIKTOC.md document</title>
-  <desc>Eight stacked Parts of the TIKTOC.md artifact in reading order. Parts named in the chapter are solid; Parts 3 to 6, whose titles the chapter never states, are shown as hollow placeholders.</desc>
+  <desc>Eight stacked Parts of the TIKTOC.md artifact in reading order. Parts excerpted in the chapter are solid; Parts 3 to 6 are shown as hollow boxes but still carry their section names.</desc>
   <metadata>
     <cajal:figure xmlns:cajal="https://bearbrown.ai/cajal/1.0"
       book="AI+1" book-slug="ai-1" chapter="02-what-tic-toc-does"
@@ -26,35 +26,38 @@
   </defs>
   <rect x="0" y="0" width="700" height="540" fill="#FFFFFF"/>
 
-  <text x="32" y="44" font-family="'EB Garamond','Garamond',Georgia,serif" font-size="14" font-weight="400" fill="#2a1a0e">The shape of the TIKTOC.md document</text>
+  <text x="32" y="44" font-family="Arial" font-size="14" font-weight="400" fill="#2a1a0e">The shape of the TIKTOC.md document</text>
 
   <!-- spine line -->
   <line x1="350" y1="72" x2="350" y2="496" stroke="#D4D4D4" stroke-width="1"/>
 
   <!-- Part 1 solid -->
   <rect x="230" y="72" width="240" height="48" rx="0" stroke="#2a1a0e" stroke-width="1" fill="#F5F5F5"/>
-  <text x="350" y="101" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Part 1 · Book Concept &amp; Thesis</text>
+  <text x="350" y="101" text-anchor="middle" font-family="Arial" font-size="12" fill="#2a1a0e">Part 1 · Book Concept &amp; Thesis</text>
   <!-- Part 2 solid -->
   <rect x="230" y="128" width="240" height="48" rx="0" stroke="#2a1a0e" stroke-width="1" fill="#F5F5F5"/>
-  <text x="350" y="157" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Part 2 · Learner Profile</text>
+  <text x="350" y="157" text-anchor="middle" font-family="Arial" font-size="12" fill="#2a1a0e">Part 2 · Learner Profile</text>
   <!-- Part 3 hollow -->
   <rect x="230" y="184" width="240" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="350" y="213" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#545454">Part 3</text>
+  <text x="350" y="202" text-anchor="middle" font-family="Arial" font-size="10" fill="#545454">
+    <tspan x="350" y="202">Part 3 · Book Type &amp;</tspan>
+    <tspan x="350" y="216">Deployment Specification</tspan>
+  </text>
   <!-- Part 4 hollow -->
   <rect x="230" y="240" width="240" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="350" y="269" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#545454">Part 4</text>
+  <text x="350" y="269" text-anchor="middle" font-family="Arial" font-size="12" fill="#545454">Part 4 · Field Positioning</text>
   <!-- Part 5 hollow -->
   <rect x="230" y="296" width="240" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="350" y="325" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#545454">Part 5</text>
+  <text x="350" y="325" text-anchor="middle" font-family="Arial" font-size="12" fill="#545454">Part 5 · Three-Act Learning Arc</text>
   <!-- Part 6 hollow -->
   <rect x="230" y="352" width="240" height="48" rx="0" stroke="#D4D4D4" stroke-width="1" fill="#FFFFFF"/>
-  <text x="350" y="381" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#545454">Part 6</text>
+  <text x="350" y="381" text-anchor="middle" font-family="Arial" font-size="12" fill="#545454">Part 6 · Prerequisite Map</text>
   <!-- Part 7 solid -->
   <rect x="230" y="408" width="240" height="48" rx="0" stroke="#2a1a0e" stroke-width="1" fill="#F5F5F5"/>
-  <text x="350" y="437" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Part 7 · Learning Outcomes</text>
+  <text x="350" y="437" text-anchor="middle" font-family="Arial" font-size="12" fill="#2a1a0e">Part 7 · Learning Outcomes</text>
   <!-- Part 8 solid -->
   <rect x="230" y="464" width="240" height="48" rx="0" stroke="#2a1a0e" stroke-width="1" fill="#F5F5F5"/>
-  <text x="350" y="493" text-anchor="middle" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="12" fill="#2a1a0e">Part 8 · Chapter Entries</text>
+  <text x="350" y="493" text-anchor="middle" font-family="Arial" font-size="12" fill="#2a1a0e">Part 8 · Chapter-by-Chapter TOC</text>
 
-  <text x="32" y="524" font-family="'Inter',-apple-system,'Helvetica Neue',sans-serif" font-size="10" fill="#545454" letter-spacing="0.08em">HOLLOW BOXES = STRUCTURE EXISTS BUT TITLE NOT STATED IN THE CHAPTER</text>
+  <text x="32" y="524" font-family="Arial" font-size="10" fill="#545454" letter-spacing="0.08em">HOLLOW BOXES = STRUCTURE EXISTS BUT IS NOT EXCERPTED IN THE CHAPTER</text>
 </svg>
